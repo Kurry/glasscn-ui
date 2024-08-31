@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.11 (2024-08-31)
+
+
+### Bug Fixes
+
+* **sb:** improve styles ([82f80f4](https://github.com/itsjavi/glassy-ui/commit/82f80f4c0eb23bd6e7a42ad220a3e497f25ee232))
+
 ### 0.1.10 (2024-08-31)
 
 ### 0.1.9 (2024-08-31)
