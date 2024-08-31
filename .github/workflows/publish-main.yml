@@ -39,11 +39,6 @@ jobs:
       - name: "Increase build versions"
         run: pnpm release --tag-prefix --commit-all
 
-      - name: "Push new version to git"
-        run: |
-          git add .
-          git push --follow-tags
-
       # Uncomment when we have a package to publish
       - name: "Publish package"
         env:
@@ -51,6 +46,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm publish --no-git-checks
+
+      - name: "Push new version to git"
+        run: |
+          git add .
+          git push --follow-tags
 
   publishStorybook:
     name: "Publish Storybook to GitHub Pages"
