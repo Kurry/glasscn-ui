@@ -1,6 +1,16 @@
-# template-react-component-library
+# Glassy UI
 
-Components Library template with Vite, React and Storybook
+Beautifully-crafted Glassmorphic Component Library based on shadcn/ui.
+
+## What components are not included?
+In order to reduce the bundle size and complexity, some components are not included:
+
+- Calendar
+- Carousel
+- Chart(s)
+- Form
+- Sonner
+
 
 ## React + TypeScript + Vite
 
