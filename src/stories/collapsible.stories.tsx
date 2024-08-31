@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../components/ui/collapsible';
 import { Button } from '../components/ui/button';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../components/ui/collapsible';
 
 const meta: Meta<typeof Collapsible> = {
   title: 'UI/Collapsible',
@@ -18,7 +18,7 @@ export const Default: Story = {
         <Button variant="outline">Toggle</Button>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="p-4 mt-2 rounded-md bg-slate-100">
+        <div className="p-4 mt-2 rounded-md bg-background">
           Content that can be collapsed
         </div>
       </CollapsibleContent>

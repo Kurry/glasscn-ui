@@ -1,19 +1,6 @@
-.dark .sbdocs {
-  background: #000 !important;
-  color: #fff !important;
-}
 
-.dark .sbdocs-title, 
-.dark .sb-anchor h2, 
-.dark .sb-anchor h3, 
-.dark .sb-anchor h4, 
-.dark .docblock-argstable thead,
-.dark [class^="css-"] thead th {
-  color: #fff !important;
-}
 
-.sbdocs-preview,
-.dark .sbdocs-preview {
+.sbdocs-preview {
   background: var(--background) !important;
   color: var(--foreground) !important;
 }
