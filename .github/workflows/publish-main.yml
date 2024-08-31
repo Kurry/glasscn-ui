@@ -65,7 +65,7 @@ jobs:
       - name: "Build storybook"
         run: pnpm build:storybook
 
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+      - uses: ./.github/actions/deploy-storybook
         with:
           install_command: pnpm install # default: npm ci
           build_command: pnpm build:storybook # default: npm run build-storybook
