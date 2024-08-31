@@ -1,0 +1,57 @@
+name: "Release dev version from branch"
+
+on:
+  workflow_dispatch:
+
+env:
+  PACKAGE_VERSION: 0.0.0-dev-${{ github.sha }}
+  PACKAGE_TAG: ${{ github.ref_name || 'dev' }}
+  COMMENT_MESSAGE: |
+    A package version based on the selected workflow branch will be published when the build succeeds, 
+    recreated for every run.
+
+    **Status:** The package has been published based on `${{ github.ref_name || github.sha }}`.
+    Use the following command to install it:
+
+    ```sh
+    pnpm i @itsjavi/template-react-component-library@0.0.0-dev-${{ github.sha }}
+    ```
+
+jobs:
+  build:
+    name: "Build branch"
+    runs-on: ubuntu-latest
+    if: github.sha
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Setup Project"
+        uses: ./.github/actions/setup-project
+        # with:
+        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+
+      - name: "Check code quality"
+        uses: ./.github/actions/check-code-quality
+
+      # - name: "Authenticate with GitHub package registry (publish)"
+      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
+
+      - name: "Publish tagged component package for selected branch"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+        run: |
+          npm version --no-git-tag-version "${{ env.PACKAGE_VERSION }}"
+          pnpm publish --no-git-checks --tag "${{ env.PACKAGE_TAG }}"
+
+      - run: |
+          echo "${{ env.COMMENT_MESSAGE }}"
+
+      - name: Create commit comment
+        uses: peter-evans/commit-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          edit-mode: replace
+          body: ${{ env.COMMENT_MESSAGE }}
+          reactions: "+1"

@@ -1,0 +1,25 @@
+name: "Check code quality"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: checkCodeQuality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checkCodeQuality:
+    name: "Check code quality"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Setup Project"
+        uses: ./.github/actions/setup-project
+        # with:
+        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+
+      - name: "Check code quality"
+        uses: ./.github/actions/check-code-quality

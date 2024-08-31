@@ -1,0 +1,80 @@
+name: Upgrade dependencies
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+jobs:
+  upgradeDependencies:
+    name: "Upgrade dependencies"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Setup Project"
+        uses: ./.github/actions/setup-project
+        # with:
+        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+
+      - name: "Upgrade dependencies"
+        run: pnpm run upgrade-deps
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+
+      - name: "Check and fix code style"
+        run: pnpm lint:fix
+
+      - name: "Check code quality"
+        uses: ./.github/actions/check-code-quality
+
+      - name: "Prepare artifact"
+        run: tar -czf /tmp/package.tar.gz package.json pnpm-lock.yaml node_modules
+
+      - name: "Upload artifact"
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace
+          path: /tmp/package.tar.gz
+          retention-days: 1
+
+  pushUpgrade:
+    name: "Push upgrade to git"
+    needs: [upgradeDependencies]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Download artifact"
+        uses: actions/download-artifact@v4
+        with:
+          name: workspace
+          path: /tmp
+
+      - name: "Extract artifact"
+        run: tar -xf /tmp/package.tar.gz -C .
+
+      - name: "Setup Project"
+        uses: ./.github/actions/setup-project
+        # with:
+        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+
+      - name: "Check and fix code style"
+        run: pnpm lint:fix
+
+      - name: "Check code quality"
+        uses: ./.github/actions/check-code-quality
+
+      - name: "Prepare git"
+        run: |
+          git config --global user.email "noreply@github.com"
+          git config --global user.name "github-actions"
+          git branch -u origin/main main
+
+      - name: "Push to git"
+        run: |
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: upgrade dependencies"
+            git push
+          fi
