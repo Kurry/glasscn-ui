@@ -4,6 +4,43 @@
 
 @layer base {
   :root {
-    --radius: 0.5rem
+    --radius: 0.5rem;
+    --background: #fff;
+    --foreground: #111;
+    --border: #ccc;
+  }
+
+  .dark {
+    --background: #111;
+    --foreground: #fff;
+    --border: #333;
+  }
+
+  *,
+  ::before,
+  ::after {
+    @apply border-border;
+  }
+
+  * {
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  [inert] {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }

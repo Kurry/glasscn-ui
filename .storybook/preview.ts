@@ -1,6 +1,7 @@
 import "../src/globals.css";
 
 import type { Preview } from "@storybook/react";
+import * as darkModeConstants from "./addons/toggle-dark-mode/addon-constants";
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +11,9 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+  },
+  globalTypes: {
+    ...darkModeConstants.globalTypes,
   },
 };
 
