@@ -14,13 +14,9 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Upgrade dependencies"
         run: pnpm run upgrade-deps
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Check and fix code style"
         run: pnpm lint:fix
@@ -56,8 +52,6 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Check and fix code style"
         run: pnpm lint:fix

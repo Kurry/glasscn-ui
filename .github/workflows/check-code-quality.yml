@@ -18,8 +18,6 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Check code quality"
         uses: ./.github/actions/check-code-quality

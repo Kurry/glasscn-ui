@@ -1,15 +1,9 @@
 name: "Setup project"
 description: "Sets up project with dependencies and credentials"
 
-inputs:
-  PACKAGE_REGISTRY_TOKEN:
-    required: true
-
 env:
   NODE_VERSION: 22
   PNPM_VERSION: 9.9.0
-
-# TODO: Uncomment the following code blocks if we have plan to publish to Github Package Registry instead of NPM.
 
 runs:
   using: "composite"
@@ -24,7 +18,6 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
-        # registry-url: https://npm.pkg.github.com
         cache: "pnpm"
         cache-dependency-path: "./pnpm-lock.yaml"
 
@@ -34,12 +27,6 @@ runs:
         path: "**/node_modules"
         key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-    # - name: "Authenticate with GitHub package registry (publish)"
-    #   shell: bash
-    #   run: echo "//npm.pkg.github.com/:_authToken=${{ inputs.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
-
     - name: "Install project dependencies"
       shell: bash
       run: pnpm install --frozen-lockfile
-      # env:
-      #   NODE_AUTH_TOKEN: ${{ inputs.PACKAGE_REGISTRY_TOKEN }}

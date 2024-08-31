@@ -23,14 +23,12 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Check code quality"
         uses: ./.github/actions/check-code-quality
 
       # - name: "Authenticate with GitHub package registry (publish)"
-      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
+      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: "Prepare git"
         run: |
@@ -39,19 +37,19 @@ jobs:
           git branch -u origin/main main
 
       - name: "Increase build versions"
-        run: pnpm standard-version --tag-prefix --commit-all
+        run: pnpm release --tag-prefix --commit-all
 
       - name: "Push new version to git"
         run: |
           git add .
           git push --follow-tags
 
-      ## Uncomment when we have a package to publish
-      # - name: "Publish package"
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
-      #   run: pnpm publish --no-git-checks
+      # Uncomment when we have a package to publish
+      - name: "Publish package"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm publish --no-git-checks
 
   publishStorybook:
     name: "Publish Storybook to GitHub Pages"
@@ -62,11 +60,6 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
-
-      # - name: "Authenticate with GitHub package registry (publish)"
-      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
 
       - name: "Build storybook"
         run: pnpm build:storybook

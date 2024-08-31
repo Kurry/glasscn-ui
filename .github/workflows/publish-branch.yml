@@ -14,7 +14,7 @@ env:
     Use the following command to install it:
 
     ```sh
-    pnpm i @itsjavi/template-react-component-library@0.0.0-dev-${{ github.sha }}
+    pnpm i @itsjavi/glassy-ui@0.0.0-dev-${{ github.sha }}
     ```
 
 jobs:
@@ -28,19 +28,17 @@ jobs:
 
       - name: "Setup Project"
         uses: ./.github/actions/setup-project
-        # with:
-        #   PACKAGE_REGISTRY_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
 
       - name: "Check code quality"
         uses: ./.github/actions/check-code-quality
 
       # - name: "Authenticate with GitHub package registry (publish)"
-      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
+      #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: "Publish tagged component package for selected branch"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm version --no-git-tag-version "${{ env.PACKAGE_VERSION }}"
           pnpm publish --no-git-checks --tag "${{ env.PACKAGE_TAG }}"
