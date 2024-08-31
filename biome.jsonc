@@ -10,7 +10,8 @@
       "**/build",
       "**/coverage",
       "**/public",
-      "**/stories"
+      "**/stories",
+      "**/storybook-static"
     ]
   },
   "linter": {
