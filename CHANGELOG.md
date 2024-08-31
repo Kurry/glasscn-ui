@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.9 (2024-08-31)
+
+
+### Features
+
+* **ui:** add stories for all components ([ef146f9](https://github.com/itsjavi/glassy-ui/commit/ef146f9896d827998e814a6bf5bc9ddeb800213e))
+
 ### 0.1.8 (2024-08-31)
 
 ### 0.1.7 (2024-08-31)
