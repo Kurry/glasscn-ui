@@ -1,4 +1,5 @@
 import "../src/globals.css";
+import "./preview.css";
 
 import type { Preview } from "@storybook/react";
 import * as darkModeConstants from "./addons/toggle-dark-mode/addon-constants";

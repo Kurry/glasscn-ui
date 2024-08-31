@@ -4,11 +4,11 @@ import { Button } from "../components/ui/button";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/Button",
+  title: "UI/Button",
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    // layout: "centered",
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -38,4 +38,20 @@ export const Secondary: Story = {
     size: "default",
     children: "Secondary",
   },
+};
+
+export const Destructive: Story = {
+  render: () => <Button variant="destructive">Destructive Button</Button>,
+};
+
+export const Outline: Story = {
+  render: () => <Button variant="outline">Outline Button</Button>,
+};
+
+export const Ghost: Story = {
+  render: () => <Button variant="ghost">Ghost Button</Button>,
+};
+
+export const Link: Story = {
+  render: () => <Button variant="link">Link Button</Button>,
 };

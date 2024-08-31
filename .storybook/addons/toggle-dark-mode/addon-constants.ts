@@ -6,6 +6,6 @@ export const TOOL_TITLE = "Toggle Dark Mode (D)";
 export const globalTypes = {
   darkMode: {
     description: "Global dark mode for components",
-    defaultValue: "",
+    defaultValue: "true",
   },
 };
