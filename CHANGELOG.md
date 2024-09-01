@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.1 (2024-09-01)
+
+
+### Bug Fixes
+
+* linting ([4df32ec](https://github.com/itsjavi/glassy-ui/commit/4df32eccd3af5bb7ea602da90c2e5fc925a01997))
+
 ### 0.1.13 (2024-09-01)
 
 ### 0.1.12 (2024-09-01)
