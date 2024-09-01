@@ -3,8 +3,8 @@ import { create } from "@storybook/theming/create";
 export default create({
   base: "dark",
   brandTitle: "Glassy UI",
-  brandUrl: "https://itsjavi.com/glassy-ui",
-  brandTarget: "_self",
+  brandUrl: "https://github.com/itsjavi/glassy-ui",
+  brandTarget: "_blank",
   brandImage: undefined, //url
 });
 
