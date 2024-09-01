@@ -37,6 +37,24 @@ const twStyles = {
       "dark:text-gray-50 dark:decoration-gray-100",
     ],
   },
+  colors: {
+    primary: [
+      "ring-offset-white focus-visible:ring-primary-900",
+      "dark:ring-offset-primary-900 dark:focus-visible:ring-primary-300",
+    ],
+    secondary: [
+      "ring-offset-white focus-visible:ring-secondary-900",
+      "dark:ring-offset-secondary-900 dark:focus-visible:ring-secondary-300",
+    ],
+    danger: [
+      "ring-offset-white focus-visible:ring-red-900",
+      "dark:ring-offset-red-900 dark:focus-visible:ring-red-300",
+    ],
+    warning: [
+      "ring-offset-white focus-visible:ring-yellow-900",
+      "dark:ring-offset-yellow-900 dark:focus-visible:ring-yellow-300",
+    ],
+  },
   colorVariants: {
     primary: {
       default: [
@@ -145,10 +163,10 @@ const buttonVariants = cva(cn(twStyles.base), {
     },
     color: {
       default: "",
-      primary: "",
-      secondary: "",
-      danger: "",
-      warning: "",
+      primary: cn(twStyles.colors.primary),
+      secondary: cn(twStyles.colors.secondary),
+      danger: cn(twStyles.colors.danger),
+      warning: cn(twStyles.colors.warning),
     },
     radius: {
       none: "rounded-none",
