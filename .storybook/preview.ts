@@ -9,7 +9,7 @@ const preview: Preview = {
   parameters: {
     docs: {
       theme: customTheme,
-      controls: { exclude: ['onClick', 'children', 'asChild'] },
+      controls: { exclude: ["onClick", "children", "asChild"] },
     },
     controls: {
       matchers: {
