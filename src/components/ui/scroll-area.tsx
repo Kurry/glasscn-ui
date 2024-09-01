@@ -3,16 +3,29 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+const twStyles = {
+  root: "relative overflow-hidden",
+  viewport: "h-full w-full rounded-[inherit]",
+  scrollbar: [
+    "flex touch-none select-none transition-colors",
+    "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5",
+    "data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col",
+  ],
+  scrollbarThumb: [
+    "relative flex-1 rounded-full bg-neutral-200 dark:bg-neutral-800",
+  ],
+};
+
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
-    className={cn("relative overflow-hidden", className)}
+    className={cn(twStyles.root, className)}
     {...props}
   >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+    <ScrollAreaPrimitive.Viewport className={twStyles.viewport}>
       {children}
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
@@ -28,17 +41,10 @@ const ScrollBar = React.forwardRef<
   <ScrollAreaPrimitive.ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
-    className={cn(
-      "flex touch-none select-none transition-colors",
-      orientation === "vertical" &&
-        "h-full w-2.5 border-l border-l-transparent p-[1px]",
-      orientation === "horizontal" &&
-        "h-2.5 flex-col border-t border-t-transparent p-[1px]",
-      className,
-    )}
+    className={cn(twStyles.scrollbar, className)}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-neutral-200 dark:bg-neutral-800" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className={twStyles.scrollbarThumb} />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;

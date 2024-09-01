@@ -5,6 +5,10 @@ import * as React from "react";
 import { toggleVariants } from "@/components/ui/toggle";
 import { cn } from "@/lib/utils";
 
+const twStyles = {
+  toggleGroup: "flex items-center justify-center gap-1",
+};
+
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>
 >({
@@ -19,7 +23,7 @@ const ToggleGroup = React.forwardRef<
 >(({ className, variant, size, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
-    className={cn("flex items-center justify-center gap-1", className)}
+    className={cn(twStyles.toggleGroup, className)}
     {...props}
   >
     <ToggleGroupContext.Provider value={{ variant, size }}>

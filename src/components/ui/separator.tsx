@@ -3,6 +3,12 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+const twStyles = {
+  separator: "shrink-0 bg-neutral-200 dark:bg-neutral-800",
+  horizontal: "h-[1px] w-full",
+  vertical: "h-full w-[1px]",
+};
+
 const Separator = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
@@ -16,8 +22,8 @@ const Separator = React.forwardRef<
       decorative={decorative}
       orientation={orientation}
       className={cn(
-        "shrink-0 bg-neutral-200 dark:bg-neutral-800",
-        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        twStyles.separator,
+        orientation === "horizontal" ? twStyles.horizontal : twStyles.vertical,
         className,
       )}
       {...props}

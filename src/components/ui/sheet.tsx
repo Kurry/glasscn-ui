@@ -5,6 +5,26 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+const twStyles = {
+  overlay: [
+    "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in",
+    "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+    "data-[state=open]:fade-in-0",
+  ],
+  close: [
+    "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity",
+    "hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neutral-950",
+    "focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100",
+    "dark:ring-offset-neutral-950 dark:focus:ring-neutral-300",
+    "dark:data-[state=open]:bg-neutral-800",
+  ],
+  closeIcon: "h-4 w-4",
+  header: "flex flex-col space-y-2 text-center sm:text-left",
+  footer: "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+  title: "text-lg font-semibold text-neutral-950 dark:text-neutral-50",
+  description: "text-sm text-neutral-500 dark:text-neutral-400",
+};
+
 const Sheet = SheetPrimitive.Root;
 
 const SheetTrigger = SheetPrimitive.Trigger;
@@ -18,10 +38,7 @@ const SheetOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
-    className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className,
-    )}
+    className={cn(twStyles.overlay, className)}
     {...props}
     ref={ref}
   />
@@ -63,8 +80,8 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 dark:data-[state=open]:bg-neutral-800">
-        <X className="h-4 w-4" />
+      <SheetPrimitive.Close className={cn(twStyles.close)}>
+        <X className={twStyles.closeIcon} />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
@@ -76,13 +93,7 @@ const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left",
-      className,
-    )}
-    {...props}
-  />
+  <div className={cn(twStyles.header, className)} {...props} />
 );
 SheetHeader.displayName = "SheetHeader";
 
@@ -90,13 +101,7 @@ const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className,
-    )}
-    {...props}
-  />
+  <div className={cn(twStyles.footer, className)} {...props} />
 );
 SheetFooter.displayName = "SheetFooter";
 
@@ -106,10 +111,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn(
-      "text-lg font-semibold text-neutral-950 dark:text-neutral-50",
-      className,
-    )}
+    className={cn(twStyles.title, className)}
     {...props}
   />
 ));
@@ -121,7 +123,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-neutral-500 dark:text-neutral-400", className)}
+    className={cn(twStyles.description, className)}
     {...props}
   />
 ));
@@ -129,13 +131,13 @@ SheetDescription.displayName = SheetPrimitive.Description.displayName;
 
 export {
   Sheet,
-  SheetPortal,
-  SheetOverlay,
-  SheetTrigger,
   SheetClose,
   SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
   SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetPortal,
+  SheetTitle,
+  SheetTrigger,
 };

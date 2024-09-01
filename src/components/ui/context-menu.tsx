@@ -4,16 +4,59 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+const twStyles = {
+  subTrigger: [
+    "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
+    "focus:bg-neutral-100 focus:text-neutral-900 data-[state=open]:bg-neutral-100",
+    "data-[state=open]:text-neutral-900 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
+    "dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-50",
+  ],
+  subContent: [
+    "z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200",
+    "bg-white p-1 text-neutral-950 shadow-lg data-[state=open]:animate-in",
+    "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+    "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+    "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+    "dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+  ],
+  content: [
+    "z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200",
+    "bg-white p-1 text-neutral-950 shadow-md animate-in fade-in-80",
+    "data-[state=open]:animate-in data-[state=closed]:animate-out",
+    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+    "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+    "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+    "dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+  ],
+  item: [
+    "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm",
+    "outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
+    "data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
+  ],
+  checkboxItem: [
+    "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
+    "outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
+    "data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
+  ],
+  radioItem: [
+    "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
+    "outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
+    "data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
+  ],
+  label:
+    "px-2 py-1.5 text-sm font-semibold text-neutral-950 dark:text-neutral-50",
+  separator: "-mx-1 my-1 h-px bg-neutral-200 dark:bg-neutral-800",
+  shortcut:
+    "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
+};
+
 const ContextMenu = ContextMenuPrimitive.Root;
-
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
-
 const ContextMenuGroup = ContextMenuPrimitive.Group;
-
 const ContextMenuPortal = ContextMenuPrimitive.Portal;
-
 const ContextMenuSub = ContextMenuPrimitive.Sub;
-
 const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 
 const ContextMenuSubTrigger = React.forwardRef<
@@ -24,11 +67,7 @@ const ContextMenuSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
-    className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[state=open]:bg-neutral-100 data-[state=open]:text-neutral-900 dark:focus:bg-neutral-800 dark:focus:text-neutral-50 dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-50",
-      inset && "pl-8",
-      className,
-    )}
+    className={cn(twStyles.subTrigger, inset && "pl-8", className)}
     {...props}
   >
     {children}
@@ -43,10 +82,7 @@ const ContextMenuSubContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.SubContent
     ref={ref}
-    className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200 bg-white p-1 text-neutral-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
-      className,
-    )}
+    className={cn(twStyles.subContent, className)}
     {...props}
   />
 ));
@@ -59,10 +95,7 @@ const ContextMenuContent = React.forwardRef<
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
       ref={ref}
-      className={cn(
-        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200 bg-white p-1 text-neutral-950 shadow-md animate-in fade-in-80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
-        className,
-      )}
+      className={cn(twStyles.content, className)}
       {...props}
     />
   </ContextMenuPrimitive.Portal>
@@ -77,11 +110,7 @@ const ContextMenuItem = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <ContextMenuPrimitive.Item
     ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
-      inset && "pl-8",
-      className,
-    )}
+    className={cn(twStyles.item, inset && "pl-8", className)}
     {...props}
   />
 ));
@@ -93,10 +122,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
 >(({ className, children, checked, ...props }, ref) => (
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
-      className,
-    )}
+    className={cn(twStyles.checkboxItem, className)}
     checked={checked}
     {...props}
   >
@@ -117,10 +143,7 @@ const ContextMenuRadioItem = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <ContextMenuPrimitive.RadioItem
     ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
-      className,
-    )}
+    className={cn(twStyles.radioItem, className)}
     {...props}
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
@@ -141,11 +164,7 @@ const ContextMenuLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <ContextMenuPrimitive.Label
     ref={ref}
-    className={cn(
-      "px-2 py-1.5 text-sm font-semibold text-neutral-950 dark:text-neutral-50",
-      inset && "pl-8",
-      className,
-    )}
+    className={cn(twStyles.label, inset && "pl-8", className)}
     {...props}
   />
 ));
@@ -157,10 +176,7 @@ const ContextMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.Separator
     ref={ref}
-    className={cn(
-      "-mx-1 my-1 h-px bg-neutral-200 dark:bg-neutral-800",
-      className,
-    )}
+    className={cn(twStyles.separator, className)}
     {...props}
   />
 ));
@@ -170,15 +186,7 @@ const ContextMenuShortcut = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
-  return (
-    <span
-      className={cn(
-        "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
-        className,
-      )}
-      {...props}
-    />
-  );
+  return <span className={cn(twStyles.shortcut, className)} {...props} />;
 };
 ContextMenuShortcut.displayName = "ContextMenuShortcut";
 
