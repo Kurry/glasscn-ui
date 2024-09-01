@@ -12,7 +12,7 @@ html {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: url("/bgs/retro-future-07.png") no-repeat center center fixed;
+  background: url("/glassy-ui/bgs/retro-future-07.png") no-repeat center center fixed;
   background-size: cover;
 }
 
