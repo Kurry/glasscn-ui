@@ -4,7 +4,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 const meta: Meta<typeof Table> = {
   title: 'UI/Table',
   component: Table,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

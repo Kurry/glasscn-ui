@@ -4,7 +4,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 const meta: Meta<typeof NavigationMenu> = {
   title: 'UI/NavigationMenu',
   component: NavigationMenu,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

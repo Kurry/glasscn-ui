@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../components/ui/tooltip';
 import { Button } from '../components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../components/ui/tooltip';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'UI/Tooltip',
   component: Tooltip,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;
@@ -19,7 +19,7 @@ export const Default: Story = {
           <Button variant="outline">Hover</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Add to library</p>
+          <p>This is a tooltip</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

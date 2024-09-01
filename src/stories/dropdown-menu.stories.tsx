@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 const meta: Meta<typeof DropdownMenu> = {
   title: 'UI/DropdownMenu',
   component: DropdownMenu,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

@@ -4,7 +4,7 @@ import { ScrollArea } from '../components/ui/scroll-area';
 const meta: Meta<typeof ScrollArea> = {
   title: 'UI/ScrollArea',
   component: ScrollArea,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

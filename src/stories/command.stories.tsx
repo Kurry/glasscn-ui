@@ -4,7 +4,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 const meta: Meta<typeof Command> = {
   title: 'UI/Command',
   component: Command,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

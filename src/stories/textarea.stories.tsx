@@ -4,7 +4,7 @@ import { Textarea } from '../components/ui/textarea';
 const meta: Meta<typeof Textarea> = {
   title: 'UI/Textarea',
   component: Textarea,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

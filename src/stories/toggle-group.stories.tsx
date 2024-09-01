@@ -4,7 +4,7 @@ import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
 const meta: Meta<typeof ToggleGroup> = {
   title: 'UI/ToggleGroup',
   component: ToggleGroup,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

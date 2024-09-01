@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 const meta: Meta<typeof Tabs> = {
   title: 'UI/Tabs',
   component: Tabs,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

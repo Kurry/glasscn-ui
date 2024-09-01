@@ -7,6 +7,43 @@
   --font-serif: "Inter", sans-serif;
 }
 
+html {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url("/bgs/retro-future-07.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#storybook-root,
+#storybook-preview-wrapper {
+  padding: 1rem;
+  background: #ffffff;
+  /* =100, 200= #FAFAFA */
+  /* https://vercel.com/geist/colors */
+  border-radius: 1rem;
+}
+
+.dark #storybook-root,
+.dark #storybook-preview-wrapper {
+  background: #0a0a0a;
+  /* =100, 200= #000000 */
+  /* https://vercel.com/geist/colors */
+}
+
+/* .sbdocs-preview {
+  background: url("/bgs/retro-future-08.png") no-repeat center center fixed !important;
+  background-size: cover !important;
+} */
+
 .sbdocs-preview {
   background: var(--background) !important;
   color: var(--foreground) !important;

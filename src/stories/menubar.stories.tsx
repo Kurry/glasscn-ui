@@ -4,7 +4,7 @@ import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } fro
 const meta: Meta<typeof Menubar> = {
   title: 'UI/Menubar',
   component: Menubar,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;
@@ -14,7 +14,7 @@ export const Default: Story = {
   render: () => (
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarTrigger>File Menu</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>New Tab</MenubarItem>
           <MenubarItem>New Window</MenubarItem>

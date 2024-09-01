@@ -4,7 +4,7 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, Pagi
 const meta: Meta<typeof Pagination> = {
   title: 'UI/Pagination',
   component: Pagination,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

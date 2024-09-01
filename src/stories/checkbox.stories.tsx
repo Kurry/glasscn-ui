@@ -4,7 +4,7 @@ import { Checkbox } from '../components/ui/checkbox';
 const meta: Meta<typeof Checkbox> = {
   title: 'UI/Checkbox',
   component: Checkbox,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

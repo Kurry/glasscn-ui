@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import { Button } from '../components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 
 const meta: Meta<typeof Dialog> = {
   title: 'UI/Dialog',
   component: Dialog,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

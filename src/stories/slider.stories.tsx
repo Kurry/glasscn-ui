@@ -4,7 +4,7 @@ import { Slider } from '../components/ui/slider';
 const meta: Meta<typeof Slider> = {
   title: 'UI/Slider',
   component: Slider,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

@@ -7,7 +7,7 @@ import { useToast } from "../hooks/use-toast";
 const meta: Meta<typeof Toast> = {
   title: "UI/Toast",
   component: Toast,
-  tags: ["autodocs"],
+  // tags: ["autodocs"],
 };
 
 export default meta;

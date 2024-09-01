@@ -4,7 +4,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../compone
 const meta: Meta<typeof ResizablePanelGroup> = {
   title: 'UI/Resizable',
   component: ResizablePanelGroup,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

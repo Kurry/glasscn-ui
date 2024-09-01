@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 const meta: Meta<typeof Drawer> = {
   title: 'UI/Drawer',
   component: Drawer,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

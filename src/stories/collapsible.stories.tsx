@@ -5,7 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../componen
 const meta: Meta<typeof Collapsible> = {
   title: 'UI/Collapsible',
   component: Collapsible,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

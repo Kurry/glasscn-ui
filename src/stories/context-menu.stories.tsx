@@ -4,7 +4,7 @@ import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } 
 const meta: Meta<typeof ContextMenu> = {
   title: 'UI/ContextMenu',
   component: ContextMenu,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;

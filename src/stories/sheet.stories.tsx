@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 const meta: Meta<typeof Sheet> = {
   title: 'UI/Sheet',
   component: Sheet,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
 };
 
 export default meta;
