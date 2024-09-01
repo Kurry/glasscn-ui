@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { createTailwindPreset } from "./src/tools/createTailwindPreset";
+import { createTailwindPreset } from "./src/lib/create-preset";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,md,mdx}"],

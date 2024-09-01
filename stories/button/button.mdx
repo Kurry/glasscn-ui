@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+ 
+import * as Stories from './button.stories';
+ 
+<Meta of={Stories} />
+ 
+# Button
+
+Extends the shadcn/ui button component, with many additional styles for existing and new  
+`color`, `radius` and `loading` variants. Example usage:
+
+```tsx
+import { Button } from "@itsjavi/glassy-ui";
+
+<Button color="primary" radius="xl" loading>Submitting...</Button>
+```
+ 
+<Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />
