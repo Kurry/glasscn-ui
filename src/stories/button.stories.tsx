@@ -15,8 +15,21 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     // bg: { control: 'color' },
-    variant: { control: "select", options: ["default", "destructive", "outline", "secondary", "ghost", "link"] },
-    size: { control: "select", options: ["default", "sm", "lg", "icon"] },
+    variant: {
+      control: "select",
+      options: ["default", "subtle", "outline", "ghost", "link"],
+    },
+    color: {
+      control: "select",
+      options: ["default", "primary", "secondary", "danger", "warning"],
+    },
+    loading: { control: "boolean" },
+    disabled: { control: "boolean" },
+    size: { control: "select", options: ["default", "sm", "lg", "xl", "icon"] },
+    radius: {
+      control: "select",
+      options: ["default", "none", "sm", "lg", "xl", "2xl", "3xl", "full"],
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() },
@@ -26,32 +39,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-  args: {
-    children: "Primary",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-    size: "default",
-    children: "Secondary",
-  },
-};
-
-export const Destructive: Story = {
-  render: () => <Button variant="destructive">Destructive Button</Button>,
-};
-
-export const Outline: Story = {
-  render: () => <Button variant="outline">Outline Button</Button>,
-};
-
-export const Ghost: Story = {
-  render: () => <Button variant="ghost">Ghost Button</Button>,
-};
-
-export const Link: Story = {
-  render: () => <Button variant="link">Link Button</Button>,
+export const Default: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" {...args}>
+        Default
+      </Button>
+      <Button variant="default" {...args} color="primary">
+        Primary
+      </Button>
+      <Button variant="default" {...args} color="secondary">
+        Secondary
+      </Button>
+      <Button variant="default" {...args} color="danger">
+        Danger
+      </Button>
+      <Button variant="default" {...args} color="warning">
+        Warning
+      </Button>
+    </div>
+  ),
 };
