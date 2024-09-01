@@ -20,13 +20,14 @@ const twStyles = {
   ],
   tableCell: "p-4 align-middle [&:has([role=checkbox])]:pr-0",
   tableCaption: "mt-4 text-sm text-neutral-500 dark:text-neutral-400",
+  tableWrapper: "relative w-full overflow-auto",
 };
 
 const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-auto">
+  <div className={cn(twStyles.tableWrapper)}>
     <table ref={ref} className={cn(twStyles.table, className)} {...props} />
   </div>
 ));
@@ -94,11 +95,11 @@ TableCaption.displayName = "TableCaption";
 
 export {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 };

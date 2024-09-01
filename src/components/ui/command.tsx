@@ -42,8 +42,10 @@ const twStyles = {
     "aria-selected:bg-neutral-100 aria-selected:text-neutral-900",
     "dark:aria-selected:bg-neutral-800 dark:aria-selected:text-neutral-50",
   ],
-  shortcut:
+  shortcut: [
     "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
+  ],
+  searchIcon: "mr-2 h-4 w-4 shrink-0 opacity-50",
 };
 
 const Command = React.forwardRef<
@@ -75,7 +77,7 @@ const CommandInput = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
   <div className={twStyles.inputWrapper} cmdk-input-wrapper="">
-    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+    <Search className={cn(twStyles.searchIcon)} />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(twStyles.input, className)}

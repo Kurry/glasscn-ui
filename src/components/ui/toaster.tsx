@@ -7,6 +7,11 @@ import {
   ToastViewport,
 } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+
+const twStyles = {
+  toastWrapper: "grid gap-1",
+};
 
 export function Toaster() {
   const { toasts } = useToast();
@@ -15,7 +20,7 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(({ id, title, description, action, ...props }) => (
         <Toast key={id} {...props}>
-          <div className="grid gap-1">
+          <div className={cn(twStyles.toastWrapper)}>
             {title && <ToastTitle>{title}</ToastTitle>}
             {description && <ToastDescription>{description}</ToastDescription>}
           </div>

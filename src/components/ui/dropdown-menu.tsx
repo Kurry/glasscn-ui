@@ -51,6 +51,11 @@ const twStyles = {
     "data-[side=top]:slide-in-from-bottom-2 dark:border-neutral-800",
     "dark:bg-neutral-950 dark:text-neutral-50",
   ],
+  chevronRight: "ml-auto h-4 w-4",
+  itemIndicatorWrapper:
+    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+  checkIcon: "h-4 w-4",
+  circleIcon: "h-2 w-2 fill-current",
 };
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -72,7 +77,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className={twStyles.chevronRight} />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -130,9 +135,9 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={twStyles.itemIndicatorWrapper}>
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
+        <Check className={twStyles.checkIcon} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -150,9 +155,9 @@ const DropdownMenuRadioItem = React.forwardRef<
     className={cn(twStyles.radioItem, className)}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={twStyles.itemIndicatorWrapper}>
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle className={twStyles.circleIcon} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

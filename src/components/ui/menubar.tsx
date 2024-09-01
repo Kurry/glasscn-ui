@@ -58,9 +58,19 @@ const twStyles = {
   menubarSeparator: "-mx-1 my-1 h-px bg-neutral-100 dark:bg-neutral-800",
   menubarShortcut:
     "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
+  menubarSubTriggerInset: "pl-8",
+  menubarItemInset: "pl-8",
+  menubarLabelInset: "pl-8",
+  menubarItemIndicator:
+    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+  menubarRadioItemIndicator:
+    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+  menubarSubTriggerChevron: "ml-auto h-4 w-4",
+  menubarCheckboxItemCheck: "h-4 w-4",
+  menubarRadioItemCircle: "h-2 w-2 fill-current",
 };
 
-const MenubarMenu = MenubarPrimitive.Menu;
+const MenubarMenu: typeof MenubarPrimitive.Menu = MenubarPrimitive.Menu;
 const MenubarGroup = MenubarPrimitive.Group;
 const MenubarPortal = MenubarPrimitive.Portal;
 const MenubarSub = MenubarPrimitive.Sub;
@@ -98,11 +108,15 @@ const MenubarSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <MenubarPrimitive.SubTrigger
     ref={ref}
-    className={cn(twStyles.menubarSubTrigger, inset && "pl-8", className)}
+    className={cn(
+      twStyles.menubarSubTrigger,
+      inset && twStyles.menubarSubTriggerInset,
+      className,
+    )}
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className={twStyles.menubarSubTriggerChevron} />
   </MenubarPrimitive.SubTrigger>
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
@@ -149,7 +163,11 @@ const MenubarItem = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <MenubarPrimitive.Item
     ref={ref}
-    className={cn(twStyles.menubarItem, inset && "pl-8", className)}
+    className={cn(
+      twStyles.menubarItem,
+      inset && twStyles.menubarItemInset,
+      className,
+    )}
     {...props}
   />
 ));
@@ -165,9 +183,9 @@ const MenubarCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={twStyles.menubarItemIndicator}>
       <MenubarPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
+        <Check className={twStyles.menubarCheckboxItemCheck} />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -184,9 +202,9 @@ const MenubarRadioItem = React.forwardRef<
     className={cn(twStyles.menubarRadioItem, className)}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={twStyles.menubarRadioItemIndicator}>
       <MenubarPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle className={twStyles.menubarRadioItemCircle} />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -202,7 +220,11 @@ const MenubarLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <MenubarPrimitive.Label
     ref={ref}
-    className={cn(twStyles.menubarLabel, inset && "pl-8", className)}
+    className={cn(
+      twStyles.menubarLabel,
+      inset && twStyles.menubarLabelInset,
+      className,
+    )}
     {...props}
   />
 ));

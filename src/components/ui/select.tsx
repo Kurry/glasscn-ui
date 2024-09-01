@@ -36,6 +36,7 @@ const twStyles = {
   itemIndicator: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
   itemIndicatorIcon: "h-4 w-4",
   separator: "-mx-1 my-1 h-px bg-neutral-100 dark:bg-neutral-800",
+  chevrons: "h-4 w-4",
 };
 
 const Select = SelectPrimitive.Root;
@@ -70,7 +71,7 @@ const SelectScrollUpButton = React.forwardRef<
     className={cn(twStyles.scrollUpButton, className)}
     {...props}
   >
-    <ChevronUp className="h-4 w-4" />
+    <ChevronUp className={cn(twStyles.chevrons)} />
   </SelectPrimitive.ScrollUpButton>
 ));
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
@@ -84,7 +85,7 @@ const SelectScrollDownButton = React.forwardRef<
     className={cn(twStyles.scrollDownButton, className)}
     {...props}
   >
-    <ChevronDown className="h-4 w-4" />
+    <ChevronDown className={cn(twStyles.chevrons)} />
   </SelectPrimitive.ScrollDownButton>
 ));
 SelectScrollDownButton.displayName =

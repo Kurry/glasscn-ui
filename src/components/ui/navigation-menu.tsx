@@ -43,6 +43,8 @@ const twStyles = {
     "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-neutral-200 shadow-md",
     "dark:bg-neutral-800",
   ],
+  chevronIcon:
+    "relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180",
 };
 
 const navigationMenuTriggerStyle = cva(
@@ -88,10 +90,7 @@ const NavigationMenuTrigger = React.forwardRef<
     {...props}
   >
     {children}{" "}
-    <ChevronDown
-      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
-      aria-hidden="true"
-    />
+    <ChevronDown className={twStyles.chevronIcon} aria-hidden="true" />
   </NavigationMenuPrimitive.Trigger>
 ));
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
@@ -134,20 +133,20 @@ const NavigationMenuIndicator = React.forwardRef<
     className={cn(twStyles.navigationMenuIndicator, className)}
     {...props}
   >
-    <div className={twStyles.navigationMenuIndicatorInner} />
+    <div className={cn(twStyles.navigationMenuIndicatorInner)} />
   </NavigationMenuPrimitive.Indicator>
 ));
 NavigationMenuIndicator.displayName =
   NavigationMenuPrimitive.Indicator.displayName;
 
 export {
-  navigationMenuTriggerStyle,
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
   NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
   NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
   NavigationMenuViewport,
 };

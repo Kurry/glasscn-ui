@@ -11,6 +11,13 @@ const twStyles = {
     "data-[state=open]:text-neutral-900 dark:focus:bg-neutral-800 dark:focus:text-neutral-50",
     "dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-50",
   ],
+  chevronRight: "ml-auto h-4 w-4",
+  checkboxItemIndicator:
+    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+  checkIcon: "h-4 w-4",
+  radioItemIndicator:
+    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
+  circleIcon: "h-2 w-2 fill-current",
   subContent: [
     "z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200",
     "bg-white p-1 text-neutral-950 shadow-lg data-[state=open]:animate-in",
@@ -71,7 +78,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className={cn(twStyles.chevronRight)} />
   </ContextMenuPrimitive.SubTrigger>
 ));
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
@@ -126,9 +133,9 @@ const ContextMenuCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={cn(twStyles.checkboxItemIndicator)}>
       <ContextMenuPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
+        <Check className={cn(twStyles.checkIcon)} />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -146,9 +153,9 @@ const ContextMenuRadioItem = React.forwardRef<
     className={cn(twStyles.radioItem, className)}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className={cn(twStyles.radioItemIndicator)}>
       <ContextMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle className={cn(twStyles.circleIcon)} />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -192,18 +199,18 @@ ContextMenuShortcut.displayName = "ContextMenuShortcut";
 
 export {
   ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuItem,
   ContextMenuCheckboxItem,
-  ContextMenuRadioItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
   ContextMenuLabel,
+  ContextMenuPortal,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
-  ContextMenuGroup,
-  ContextMenuPortal,
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuRadioGroup,
+  ContextMenuTrigger,
 };

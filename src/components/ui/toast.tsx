@@ -9,7 +9,7 @@ const ToastProvider = ToastPrimitives.Provider;
 
 const twStyles = {
   viewport: [
-    "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0",
+    "fixed top-0 z-[100] gap-2 flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0",
     "sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
   ],
   toast: [
@@ -144,13 +144,13 @@ type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
 
 export {
-  type ToastProps,
-  type ToastActionElement,
-  ToastProvider,
-  ToastViewport,
   Toast,
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
   ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+  type ToastActionElement,
+  type ToastProps,
 };
