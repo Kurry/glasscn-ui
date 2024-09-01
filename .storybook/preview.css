@@ -1,4 +1,11 @@
 
+:root {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Inter", sans-serif;
+  --font-comic: "Inter", sans-serif;
+  --font-mono: "Inter", sans-serif;
+  --font-serif: "Inter", sans-serif;
+}
 
 .sbdocs-preview {
   background: var(--background) !important;
