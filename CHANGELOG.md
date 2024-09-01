@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.2 (2024-09-01)
+
+
+### Bug Fixes
+
+* **sb:** bg paths ([702b0d8](https://github.com/itsjavi/glassy-ui/commit/702b0d8cca1993ac7148278e1db1fd44be5fe458))
+
 ### 0.2.1 (2024-09-01)
 
 
