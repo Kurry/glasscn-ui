@@ -7,6 +7,20 @@ import type { PluginCreator } from "tailwindcss/types/config";
 type PluginAPI = Parameters<PluginCreator>[0];
 export type TailwindColor = keyof typeof twColors;
 
+type CustomColorLevel =
+  | 50
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 950;
+type CustomColor = Record<CustomColorLevel, string>;
+
 type PresetConfig = {
   primaryColor?: TailwindColor;
   secondaryColor?: TailwindColor;
@@ -14,6 +28,7 @@ type PresetConfig = {
   backgroundColor?: string;
   foregrondColor?: string;
   borderColor?: string;
+  customColors?: Record<string, CustomColor | string>;
 };
 
 export const createTailwindPreset = ({
@@ -23,7 +38,12 @@ export const createTailwindPreset = ({
   backgroundColor = "var(--background)",
   foregrondColor = "var(--foreground)",
   borderColor = "var(--border)",
+  customColors = {},
 }: PresetConfig = {}): Partial<Config> => {
+  const _colors = {
+    ...twColors,
+    ...customColors,
+  };
   const preset: Partial<Config> = {
     darkMode: ["class"],
     safelist: ["dark"],
@@ -33,12 +53,13 @@ export const createTailwindPreset = ({
           background: backgroundColor,
           foreground: foregrondColor,
           border: borderColor,
-          primary: twColors[primaryColor],
-          secondary: twColors[secondaryColor],
-          gray: twColors[grayColor],
-          danger: twColors.red,
-          warn: twColors.yellow,
-          twgray: twColors.gray,
+          primary: _colors[primaryColor],
+          secondary: _colors[secondaryColor],
+          gray: _colors[grayColor],
+          danger: _colors.red,
+          warn: _colors.yellow,
+          twgray: _colors.gray,
+          ...customColors,
         },
         // backdropBlur: {
         //   DEFAULT: "12px",
