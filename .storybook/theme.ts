@@ -1,5 +1,6 @@
 import { create } from "@storybook/theming/create";
 
+// @see https://storybook.js.org/docs/configure/user-interface/theming#create-a-theme-quickstart
 export default create({
   base: "dark",
   brandTitle: "Glassy UI",
@@ -7,5 +8,3 @@ export default create({
   brandTarget: "_blank",
   brandImage: undefined, //url
 });
-
-// @see https://storybook.js.org/docs/configure/user-interface/theming#create-a-theme-quickstart

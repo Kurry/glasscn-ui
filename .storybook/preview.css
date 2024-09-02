@@ -26,7 +26,7 @@ body {
 #storybook-root,
 #storybook-preview-wrapper {
   padding: 1rem;
-  background: #ffffff;
+  background: #ffffff88;
   /* =100, 200= #FAFAFA */
   /* https://vercel.com/geist/colors */
   border-radius: 1rem;
@@ -34,15 +34,10 @@ body {
 
 .dark #storybook-root,
 .dark #storybook-preview-wrapper {
-  background: #0a0a0a;
+  background: #0a0a0a88;
   /* =100, 200= #000000 */
   /* https://vercel.com/geist/colors */
 }
-
-/* .sbdocs-preview {
-  background: url("/bgs/retro-future-08.png") no-repeat center center fixed !important;
-  background-size: cover !important;
-} */
 
 .sbdocs-preview {
   background: var(--background) !important;

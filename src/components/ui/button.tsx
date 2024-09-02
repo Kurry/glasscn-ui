@@ -159,7 +159,6 @@ const buttonVariants = cva(cn(twStyles.base), {
       outline: cn(twStyles.variant.outline),
       ghost: cn(twStyles.variant.ghost),
       link: cn(twStyles.variant.link),
-      // destructive: cn(twStyles.variant.destructive),
     },
     color: {
       default: "",
