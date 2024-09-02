@@ -25,6 +25,8 @@ export const decorators = [
     themes: {
       light: "light",
       dark: "dark",
+      lightGlass: "light glass",
+      darkGlass: "dark glass",
     },
     defaultTheme: "dark",
   }),

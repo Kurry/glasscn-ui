@@ -13,19 +13,23 @@ html {
   padding: 0;
   background: url("bgs/retro-future-01.png") no-repeat center center fixed;
   background-size: cover;
-  animation: bg-rotator 40s linear alternate infinite; /* 10s per image */
+  animation: bg-rotator 40s linear alternate infinite;
+  /* 10s per image */
 }
 
 @keyframes bg-rotator {
   0% {
     background-image: url("bgs/retro-future-01.png");
   }
+
   33% {
     background-image: url("bgs/retro-future-04.png");
   }
+
   66% {
     background-image: url("bgs/retro-future-03.png");
   }
+
   100% {
     background-image: url("bgs/retro-future-02.png");
   }
@@ -41,19 +45,31 @@ body {
 #storybook-root,
 #storybook-preview-wrapper {
   padding: 1rem;
-  background: #ffffff88;
+  /* background: #ffffff88; */
   /* =100, 200= #FAFAFA */
   /* https://vercel.com/geist/colors */
-  border-radius: 1rem;
+  border-radius: var(--radius);
   backdrop-filter: blur(20px);
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
-.dark #storybook-root,
+.glass {
+
+  #storybook-root,
+  #storybook-preview-wrapper {
+    backdrop-filter: blur(20px);
+    background-color: color-mix(in sRGB, var(--background) 60%, transparent);
+    color: var(--foreground);
+  }
+}
+
+/* =100, 200= #000000 */
+/* https://vercel.com/geist/colors */
+/* .dark #storybook-root,
 .dark #storybook-preview-wrapper {
   background: #0a0a0a88;
-  /* =100, 200= #000000 */
-  /* https://vercel.com/geist/colors */
-}
+} */
 
 .sbdocs-preview {
   background: var(--background) !important;
