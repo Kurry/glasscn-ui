@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.20 (2024-09-02)
+
+
+### Bug Fixes
+
+* **ui:** remove fonts config ([e4d2010](https://github.com/itsjavi/glassy-ui/commit/e4d2010fa74b326c352fd7a267436cb3c9525eae))
+
 ### 0.2.19 (2024-09-02)
 
 
