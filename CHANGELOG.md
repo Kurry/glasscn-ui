@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.10 (2024-09-02)
+
+
+### Features
+
+* **button:** make outline variant more transparent ([43e8f5d](https://github.com/itsjavi/glassy-ui/commit/43e8f5d35a9e55a829192fa2dd6e025029eb832d))
+
 ### 0.2.9 (2024-09-02)
 
 
