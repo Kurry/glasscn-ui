@@ -15,7 +15,10 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  staticDirs: [{ from: "../public", to: "assets" }],
+  staticDirs: [
+    "../public",
+    // { from: "../public", to: "assets" }
+  ],
   viteFinal: (config) => {
     config.base = "/glassy-ui/";
     return config;
