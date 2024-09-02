@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.12 (2024-09-02)
+
+
+### Bug Fixes
+
+* **ui:** add RSC compatibility ([1ea2f75](https://github.com/itsjavi/glassy-ui/commit/1ea2f7542ff2c9b84bb52b00705a4516a5b6e915))
+
 ### 0.2.11 (2024-09-02)
 
 ### 0.2.10 (2024-09-02)
