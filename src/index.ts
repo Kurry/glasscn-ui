@@ -46,6 +46,7 @@ export * from "./components/ui/tooltip";
 
 // extra components
 export * from "./components/ui-extras/dot-indicator";
+export * from "./components/ui-extras/heading-title";
 export * from "./components/ui-extras/submit-button";
 
 // hooks
