@@ -36,6 +36,8 @@ export const createTailwindPreset = ({
           primary: twColors[primaryColor],
           secondary: twColors[secondaryColor],
           gray: twColors[grayColor],
+          danger: twColors.red,
+          warn: twColors.yellow,
           twgray: twColors.gray,
         },
         // backdropBlur: {

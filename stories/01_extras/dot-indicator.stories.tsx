@@ -26,7 +26,7 @@ export const Absolute: Story = {
   render: () => (
     <>
       Notifications
-      <DotIndicator absolute className="bg-red-600">
+      <DotIndicator absolute className="bg-danger-600">
         6
       </DotIndicator>
     </>

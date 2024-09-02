@@ -47,12 +47,12 @@ const twStyles = {
       "dark:ring-offset-secondary-900 dark:focus-visible:ring-secondary-300",
     ],
     danger: [
-      "ring-offset-white focus-visible:ring-red-900",
-      "dark:ring-offset-red-900 dark:focus-visible:ring-red-300",
+      "ring-offset-white focus-visible:ring-danger-900",
+      "dark:ring-offset-danger-900 dark:focus-visible:ring-danger-300",
     ],
     warning: [
-      "ring-offset-white focus-visible:ring-yellow-900",
-      "dark:ring-offset-yellow-900 dark:focus-visible:ring-yellow-300",
+      "ring-offset-white focus-visible:ring-warn-900",
+      "dark:ring-offset-warn-900 dark:focus-visible:ring-warn-300",
     ],
   },
   colorVariants: {
@@ -104,48 +104,48 @@ const twStyles = {
     },
     danger: {
       default: [
-        "bg-red-600 text-white hover:bg-red-600/90",
-        "dark:bg-red-600 dark:text-white dark:hover:bg-red-600/90",
+        "bg-danger-600 text-white hover:bg-danger-600/90",
+        "dark:bg-danger-600 dark:text-white dark:hover:bg-danger-600/90",
       ],
       subtle: [
-        "bg-red-100 text-red-900 hover:bg-red-100/80",
-        "dark:bg-red-800 dark:text-red-50 dark:hover:bg-red-800/80",
+        "bg-danger-100 text-danger-900 hover:bg-danger-100/80",
+        "dark:bg-danger-800 dark:text-danger-50 dark:hover:bg-danger-800/80",
       ],
       outline: [
-        "border border-red-300 bg-white hover:bg-red-100 text-red-900 hover:text-red-900",
-        "dark:border-red-800 dark:bg-red-950 dark:hover:bg-red-800",
-        "dark:text-red-50 dark:hover:text-red-50",
+        "border border-danger-300 bg-white hover:bg-danger-100 text-danger-900 hover:text-danger-900",
+        "dark:border-danger-800 dark:bg-danger-950 dark:hover:bg-danger-800",
+        "dark:text-danger-50 dark:hover:text-danger-50",
       ],
       ghost: [
-        "hover:bg-red-100 hover:text-red-900",
-        "dark:hover:bg-red-800 dark:hover:text-red-50",
+        "hover:bg-danger-100 hover:text-danger-900",
+        "dark:hover:bg-danger-800 dark:hover:text-danger-50",
       ],
       link: [
-        "text-red-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
-        "dark:text-red-500 dark:decoration-current",
+        "text-danger-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
+        "dark:text-danger-500 dark:decoration-current",
       ],
     },
     warning: {
       default: [
-        "bg-yellow-500 text-black hover:bg-yellow-500/90",
-        "dark:bg-yellow-500 dark:text-black dark:hover:bg-yellow-500/90",
+        "bg-warn-500 text-black hover:bg-warn-500/90",
+        "dark:bg-warn-500 dark:text-black dark:hover:bg-warn-500/90",
       ],
       subtle: [
-        "bg-yellow-100 text-yellow-900 hover:bg-yellow-100/80",
-        "dark:bg-yellow-700 dark:text-yellow-50 dark:hover:bg-yellow-700/80",
+        "bg-warn-100 text-warn-900 hover:bg-warn-100/80",
+        "dark:bg-warn-700 dark:text-warn-50 dark:hover:bg-warn-700/80",
       ],
       outline: [
-        "border border-yellow-300 bg-white hover:bg-yellow-100 text-yellow-900 hover:text-yellow-900",
-        "dark:border-yellow-800 dark:bg-yellow-950 dark:hover:bg-yellow-800",
-        "dark:text-yellow-50 dark:hover:text-yellow-50",
+        "border border-warn-300 bg-white hover:bg-warn-100 text-warn-900 hover:text-warn-900",
+        "dark:border-warn-800 dark:bg-warn-950 dark:hover:bg-warn-800",
+        "dark:text-warn-50 dark:hover:text-warn-50",
       ],
       ghost: [
-        "hover:bg-yellow-100 hover:text-yellow-900",
-        "dark:hover:bg-yellow-700 dark:hover:text-yellow-50",
+        "hover:bg-warn-100 hover:text-warn-900",
+        "dark:hover:bg-warn-700 dark:hover:text-warn-50",
       ],
       link: [
-        "text-yellow-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
-        "dark:text-yellow-500 dark:decoration-current",
+        "text-warn-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
+        "dark:text-warn-500 dark:decoration-current",
       ],
     },
   },
