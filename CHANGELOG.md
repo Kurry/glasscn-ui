@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.5 (2024-09-02)
+
+
+### Bug Fixes
+
+* **sb:** wrong base path. use bg rotator. ([ee2a12c](https://github.com/itsjavi/glassy-ui/commit/ee2a12c5d5c6f4e2a2b1cc1f6942c1be7f370d90))
+
 ### 0.2.4 (2024-09-02)
 
 
