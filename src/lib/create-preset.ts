@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 import animatePlugin from "tailwindcss-animate";
 import twColors from "tailwindcss/colors";
-import { fontFamily } from "tailwindcss/defaultTheme";
 import type { PluginCreator } from "tailwindcss/types/config";
 
 type PluginAPI = Parameters<PluginCreator>[0];
@@ -62,13 +61,6 @@ export const createTailwindPreset = ({
           warn: _colors.yellow,
           twgray: _colors.gray,
           ...customColors,
-        },
-        fontFamily: {
-          sans: ["var(--font-sans)", ...fontFamily.sans],
-          heading: ["var(--font-heading)", ...fontFamily.sans],
-          comic: ["var(--font-comic)", ...fontFamily.sans],
-          mono: ["var(--font-mono)", ...fontFamily.mono],
-          serif: ["var(--font-serif)", ...fontFamily.serif],
         },
         fontWeight: {
           base: "400",
