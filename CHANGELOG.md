@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.15 (2024-09-02)
+
+
+### Features
+
+* **ui:** add inner glow effect to glass surfaces ([f8cd91f](https://github.com/itsjavi/glassy-ui/commit/f8cd91ffe755f7552be2c1d0887b211ebf1b95f4))
+
 ### 0.2.14 (2024-09-02)
 
 
