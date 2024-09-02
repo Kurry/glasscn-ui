@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.13 (2024-09-02)
+
+
+### Bug Fixes
+
+* **button:** Slot cannot have more than 1 child ([c1752e8](https://github.com/itsjavi/glassy-ui/commit/c1752e877f913b326640f9c45db34ed325560bed))
+
 ### 0.2.12 (2024-09-02)
 
 
