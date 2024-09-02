@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.19 (2024-09-02)
+
+
+### Features
+
+* **tw:** improve TS compat and add new defaults ([e2b8843](https://github.com/itsjavi/glassy-ui/commit/e2b88436a249b55e410b10f1b52b9f8d62030860))
+
 ### 0.2.18 (2024-09-02)
 
 
