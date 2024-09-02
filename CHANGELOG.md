@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.14 (2024-09-02)
+
+
+### Features
+
+* **ui:** implement new ComboBox component ([150c542](https://github.com/itsjavi/glassy-ui/commit/150c542bdcb759a9a2f8a0599fcbbeaa086c3827))
+
 ### 0.2.13 (2024-09-02)
 
 
