@@ -16,6 +16,8 @@ export default defineConfig({
     }),
   ],
   build: {
+    sourcemap: true,
+    // minify: false,
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, "src/index.ts"),
@@ -23,7 +25,14 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), "/node_modules/"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        ...Object.keys(pkg.dependencies),
+        "/node_modules/",
+      ],
     },
   },
   resolve: {
