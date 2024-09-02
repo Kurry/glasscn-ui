@@ -1,10 +1,9 @@
-
 :root {
-  --font-sans: "Inter", sans-serif;
-  --font-heading: "Inter", sans-serif;
-  --font-comic: "Inter", sans-serif;
-  --font-mono: "Inter", sans-serif;
-  --font-serif: "Inter", sans-serif;
+  --font-sans: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", "system-ui", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", "system-ui", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-comic: "Comic Sans MS", "Comic Sans", cursive;
+  --font-mono: "Monaco", "Fira Code", monospace;
+  --font-serif: Times, serif;
 }
 
 html {
@@ -30,6 +29,7 @@ body {
   /* =100, 200= #FAFAFA */
   /* https://vercel.com/geist/colors */
   border-radius: 1rem;
+  backdrop-filter: blur(20px);
 }
 
 .dark #storybook-root,
