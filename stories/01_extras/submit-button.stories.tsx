@@ -2,7 +2,7 @@ import { SubmitButton } from "@/components/ui-extras/submit-button";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof SubmitButton> = {
-  title: "UI Extras/Submit Button",
+  title: "UI (New)/Submit Button",
   // id: "ui-submit-button",
   component: SubmitButton,
   // tags: ['autodocs'],
@@ -16,7 +16,8 @@ const meta: Meta<typeof SubmitButton> = {
       >
         <Story />
         <p className="text-black/70 dark:text-white/80 text-sm italic">
-          Click on the button to see it in action.
+          This button uses a new React 19 hook: <code>useFormStatus</code>.
+          Click to see it in action.
         </p>
       </form>
     ),
