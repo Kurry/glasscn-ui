@@ -1,6 +1,7 @@
 export const recipeStyles = {
   glassBorder: ["border-gray-200/60 dark:border-gray-700/60"],
-  glassBg: ["bg-white/70 dark:bg-gray-950/60"],
+  glassBg: ["bg-white/60 dark:bg-gray-950/60"],
+  glassInnerShadow: ["shadow-inset-white", "dark:shadow-inset-gray"],
 };
 
 export const glassContainerClasses = [

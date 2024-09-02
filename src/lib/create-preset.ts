@@ -62,6 +62,11 @@ export const createTailwindPreset = ({
           md: "calc(var(--radius) - 2px)",
           sm: "calc(var(--radius) - 4px)",
         },
+        boxShadow: {
+          "inset-white": "inset 0 0 12px rgba(255,255,255,0.80)",
+          "inset-gray": "inset 0 0 12px rgba(127,127,127,0.08)",
+          "inset-black": "inset 0 0 12px rgba(0,0,0,0.80)",
+        },
         keyframes: {
           "accordion-down": {
             from: {

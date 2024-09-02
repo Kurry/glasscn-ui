@@ -15,6 +15,9 @@ const meta: Meta<typeof AlertDialogContent> = {
       control: "select",
       options: ["default", "sm", "md", "lg", "xl", "2xl", "3xl"],
     },
+    innerGlow: {
+      control: "boolean",
+    },
   },
   args: {
     variant: "glass",

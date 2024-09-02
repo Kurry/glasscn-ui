@@ -6,7 +6,7 @@ import * as React from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
-import { blurVariant, glassContainerClasses } from "../recipes";
+import { blurVariant, glassContainerClasses, recipeStyles } from "../recipes";
 
 const twStyles = {
   overlay: [
@@ -66,17 +66,25 @@ const alertDialogContentVariants = cva(cn(twStyles.content), {
 
 export interface AlertDialogProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>,
-    VariantProps<typeof alertDialogContentVariants> {}
+    VariantProps<typeof alertDialogContentVariants> {
+  innerGlow?: boolean;
+}
 
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
   AlertDialogProps
->(({ className, blur, variant, ...props }, ref) => (
+>(({ className, blur, variant, innerGlow, ...props }, ref) => (
   <AlertDialogPortal>
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
       ref={ref}
-      className={cn(alertDialogContentVariants({ blur, variant }), className)}
+      className={cn(
+        alertDialogContentVariants({ blur, variant }),
+        {
+          [recipeStyles.glassInnerShadow.join(" ")]: innerGlow,
+        },
+        className,
+      )}
       {...props}
     />
   </AlertDialogPortal>
