@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { expect, fn, within } from "@storybook/test";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -40,22 +40,114 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByTestId("btn-default")).toBeInTheDocument();
+  },
   render: (args) => (
     <div className="flex gap-4">
-      <Button variant="default" {...args}>
+      <Button data-testid="btn-default" variant="default" {...args}>
         Default
       </Button>
-      <Button variant="default" {...args} color="primary">
-        Primary
+      <Button variant="subtle" {...args}>
+        Subtle
       </Button>
-      <Button variant="default" {...args} color="secondary">
-        Secondary
+      <Button variant="outline" {...args}>
+        Outline
       </Button>
-      <Button variant="default" {...args} color="danger">
-        Danger
+      <Button variant="ghost" {...args}>
+        Ghost
       </Button>
-      <Button variant="default" {...args} color="warning">
-        Warning
+      <Button variant="link" {...args}>
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+export const Primary: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" color="primary" {...args}>
+        Default
+      </Button>
+      <Button variant="subtle" color="primary" {...args}>
+        Subtle
+      </Button>
+      <Button variant="outline" color="primary" {...args}>
+        Outline
+      </Button>
+      <Button variant="ghost" color="primary" {...args}>
+        Ghost
+      </Button>
+      <Button variant="link" color="primary" {...args}>
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+export const Secondary: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" color="secondary" {...args}>
+        Default
+      </Button>
+      <Button variant="subtle" color="secondary" {...args}>
+        Subtle
+      </Button>
+      <Button variant="outline" color="secondary" {...args}>
+        Outline
+      </Button>
+      <Button variant="ghost" color="secondary" {...args}>
+        Ghost
+      </Button>
+      <Button variant="link" color="secondary" {...args}>
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+export const Danger: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" color="danger" {...args}>
+        Default
+      </Button>
+      <Button variant="subtle" color="danger" {...args}>
+        Subtle
+      </Button>
+      <Button variant="outline" color="danger" {...args}>
+        Outline
+      </Button>
+      <Button variant="ghost" color="danger" {...args}>
+        Ghost
+      </Button>
+      <Button variant="link" color="danger" {...args}>
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+export const Warning: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" color="warning" {...args}>
+        Default
+      </Button>
+      <Button variant="subtle" color="warning" {...args}>
+        Subtle
+      </Button>
+      <Button variant="outline" color="warning" {...args}>
+        Outline
+      </Button>
+      <Button variant="ghost" color="warning" {...args}>
+        Ghost
+      </Button>
+      <Button variant="link" color="warning" {...args}>
+        Link
       </Button>
     </div>
   ),
