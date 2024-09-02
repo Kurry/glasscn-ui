@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.2.3 (2024-09-02)
+
+
+### Features
+
+* **accordion:** reduce chevron animation duration ([166c471](https://github.com/itsjavi/glassy-ui/commit/166c471264d503bfd095eb124e88818ca7859c0d))
+
 ### 0.2.2 (2024-09-01)
 
 
