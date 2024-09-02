@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 const twStyles = {
   card: [
-    "rounded-lg border border-neutral-200 bg-white text-neutral-950 shadow-sm",
-    "dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+    "rounded-lg border border-gray-200 bg-white text-neutral-950 shadow-sm",
+    "dark:border-gray-800 dark:bg-gray-950 dark:text-neutral-50",
   ],
   header: "flex flex-col space-y-1.5 p-6",
   title: "text-2xl font-semibold leading-none tracking-tight",

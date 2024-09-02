@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const twStyles = {
-  skeleton: "animate-pulse rounded-md bg-neutral-100 dark:bg-neutral-800",
+  skeleton: "animate-pulse rounded-md bg-gray-100 dark:bg-gray-800",
 };
 
 function Skeleton({

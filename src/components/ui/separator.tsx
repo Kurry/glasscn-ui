@@ -6,7 +6,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const twStyles = {
-  separator: "shrink-0 bg-neutral-200 dark:bg-neutral-800",
+  separator: "shrink-0 bg-gray-200 dark:bg-gray-800",
   horizontal: "h-[1px] w-full",
   vertical: "h-full w-[1px]",
 };

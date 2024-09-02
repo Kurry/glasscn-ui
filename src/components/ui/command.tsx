@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const twStyles = {
   command: [
     "flex h-full w-full flex-col overflow-hidden rounded-md bg-white",
-    "text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50",
+    "text-neutral-950 dark:bg-gray-950 dark:text-neutral-50",
   ],
   dialogContent: "overflow-hidden p-0 shadow-lg",
   commandInner: [
@@ -37,12 +37,12 @@ const twStyles = {
     "[&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-neutral-500",
     "dark:text-neutral-50 dark:[&_[cmdk-group-heading]]:text-neutral-400",
   ],
-  separator: "-mx-1 h-px bg-neutral-200 dark:bg-neutral-800",
+  separator: "-mx-1 h-px bg-gray-200 dark:bg-gray-800",
   item: [
     "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm",
     "outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
-    "aria-selected:bg-neutral-100 aria-selected:text-neutral-900",
-    "dark:aria-selected:bg-neutral-800 dark:aria-selected:text-neutral-50",
+    "aria-selected:bg-gray-100 aria-selected:text-neutral-900",
+    "dark:aria-selected:bg-gray-800 dark:aria-selected:text-neutral-50",
   ],
   shortcut: [
     "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
@@ -161,11 +161,11 @@ CommandShortcut.displayname = "CommandShortcut";
 export {
   Command,
   CommandDialog,
-  CommandInput,
-  CommandList,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
-  CommandShortcut,
+  CommandList,
   CommandSeparator,
+  CommandShortcut,
 };

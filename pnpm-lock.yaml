@@ -113,9 +113,6 @@ importers:
       react-resizable-panels:
         specifier: ^2.1.2
         version: 2.1.2(react-dom@19.0.0-rc-e56f4ae3-20240830(react@19.0.0-rc-e56f4ae3-20240830))(react@19.0.0-rc-e56f4ae3-20240830)
-      standard-version:
-        specifier: ^9.5.0
-        version: 9.5.0
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.2
@@ -207,6 +204,9 @@ importers:
       sort-package-json:
         specifier: ^2.10.1
         version: 2.10.1
+      standard-version:
+        specifier: ^9.5.0
+        version: 9.5.0
       storybook:
         specifier: ^8.2.9
         version: 8.2.9(@babel/preset-env@7.25.4(@babel/core@7.25.2))

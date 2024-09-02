@@ -13,18 +13,18 @@ const twStyles = {
   ],
   inputGroup: "flex items-center",
   inputSlot: [
-    "relative flex h-10 w-10 items-center justify-center border-y border-r border-neutral-200",
+    "relative flex h-10 w-10 items-center justify-center border-y border-r border-gray-200",
     "text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
-    "dark:border-neutral-800",
+    "dark:border-gray-800",
   ],
   inputSlotActive: [
-    "z-10 ring-2 ring-neutral-950 ring-offset-white dark:ring-neutral-300",
+    "z-10 ring-2 ring-gray-950 ring-offset-white dark:ring-gray-300",
     "dark:ring-offset-neutral-950",
   ],
   inputSlotCaret: [
     "pointer-events-none absolute inset-0 flex items-center justify-center",
-    "after:h-4 after:w-px after:animate-caret-blink after:bg-neutral-950",
-    "after:duration-1000 dark:after:bg-neutral-50",
+    "after:h-4 after:w-px after:animate-caret-blink after:bg-gray-950",
+    "after:duration-1000 dark:after:bg-gray-50",
   ],
   separator: "[&>svg]:size-4",
 };

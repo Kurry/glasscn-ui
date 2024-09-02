@@ -7,12 +7,12 @@ const twStyles = {
   tableHeader: "[&_tr]:border-b",
   tableBody: "[&_tr:last-child]:border-0",
   tableFooter: [
-    "border-t bg-neutral-100/50 font-medium [&>tr]:last:border-b-0",
-    "dark:bg-neutral-800/50",
+    "border-t bg-gray-100/50 font-medium [&>tr]:last:border-b-0",
+    "dark:bg-gray-800/50",
   ],
   tableRow: [
-    "border-b transition-colors hover:bg-neutral-100/50 data-[state=selected]:bg-neutral-100",
-    "dark:hover:bg-neutral-800/50 dark:data-[state=selected]:bg-neutral-800",
+    "border-b transition-colors hover:bg-gray-100/50 data-[state=selected]:bg-gray-100",
+    "dark:hover:bg-gray-800/50 dark:data-[state=selected]:bg-gray-800",
   ],
   tableHead: [
     "h-12 px-4 text-left align-middle font-medium text-neutral-500",

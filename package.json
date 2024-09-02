@@ -64,14 +64,9 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
     "cmdk": "1.0.0",
     "input-otp": "^1.2.4",
-    "lucide-react": "^0.438.0",
-    "react": "rc",
-    "react-dom": "rc",
     "react-resizable-panels": "^2.1.2",
-    "standard-version": "^9.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1"
@@ -104,11 +99,18 @@
     "publint": "^0.2.10",
     "rollup-preserve-directives": "^1.1.1",
     "sort-package-json": "^2.10.1",
+    "standard-version": "^9.5.0",
     "storybook": "^8.2.9",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.1.0"
+  },
+  "peerDependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.438.0",
+    "react": "rc",
+    "react-dom": "rc"
   },
   "packageManager": "pnpm@9.9.0",
   "publishConfig": {

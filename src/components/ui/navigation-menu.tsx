@@ -15,12 +15,12 @@ const twStyles = {
   navigationMenuItem: "",
   navigationMenuTrigger: [
     "group inline-flex h-10 w-max items-center justify-center rounded-md bg-white px-4 py-2",
-    "text-sm font-medium transition-colors hover:bg-neutral-100 hover:text-neutral-900",
-    "focus:bg-neutral-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none",
-    "disabled:opacity-50 data-[active]:bg-neutral-100/50 data-[state=open]:bg-neutral-100/50",
-    "dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
-    "dark:focus:bg-neutral-800 dark:focus:text-neutral-50 dark:data-[active]:bg-neutral-800/50",
-    "dark:data-[state=open]:bg-neutral-800/50",
+    "text-sm font-medium transition-colors hover:bg-gray-100 hover:text-neutral-900",
+    "focus:bg-gray-100 focus:text-neutral-900 focus:outline-none disabled:pointer-events-none",
+    "disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50",
+    "dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-neutral-50",
+    "dark:focus:bg-gray-800 dark:focus:text-neutral-50 dark:data-[active]:bg-gray-800/50",
+    "dark:data-[state=open]:bg-gray-800/50",
   ],
   navigationMenuContent: [
     "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out",
@@ -31,10 +31,10 @@ const twStyles = {
   navigationMenuLink: "",
   navigationMenuViewport: [
     "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)]",
-    "w-full overflow-hidden rounded-md border border-neutral-200 bg-white text-neutral-950",
+    "w-full overflow-hidden rounded-md border border-gray-200 bg-white text-neutral-950",
     "shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95",
     "data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
-    "dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+    "dark:border-gray-800 dark:bg-gray-950 dark:text-neutral-50",
   ],
   navigationMenuIndicator: [
     "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
@@ -42,8 +42,8 @@ const twStyles = {
     "data-[state=visible]:fade-in",
   ],
   navigationMenuIndicatorInner: [
-    "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-neutral-200 shadow-md",
-    "dark:bg-neutral-800",
+    "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-gray-200 shadow-md",
+    "dark:bg-gray-800",
   ],
   chevronIcon:
     "relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180",

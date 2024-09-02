@@ -16,24 +16,24 @@ const twStyles = {
   ],
   toast: [
     "group pointer-events-auto relative flex w-full items-center justify-between space-x-4",
-    "overflow-hidden rounded-md border border-neutral-200 p-6 pr-8 shadow-lg transition-all",
+    "overflow-hidden rounded-md border border-gray-200 p-6 pr-8 shadow-lg transition-all",
     "data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)]",
     "data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none",
     "data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out",
     "data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full",
     "data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
-    "dark:border-neutral-800",
+    "dark:border-gray-800",
   ],
   action: [
-    "inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-neutral-200",
+    "inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-gray-200",
     "bg-transparent px-3 text-sm font-medium ring-offset-white transition-colors",
-    "hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-950",
+    "hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-950",
     "focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-    "group-[.destructive]:border-neutral-100/40 group-[.destructive]:hover:border-danger-500/30",
+    "group-[.destructive]:border-gray-100/40 group-[.destructive]:hover:border-danger-500/30",
     "group-[.destructive]:hover:bg-danger-500 group-[.destructive]:hover:text-neutral-50",
-    "group-[.destructive]:focus:ring-danger-500 dark:border-neutral-800 dark:ring-offset-neutral-950",
-    "dark:hover:bg-neutral-800 dark:focus:ring-neutral-300",
-    "dark:group-[.destructive]:border-neutral-800/40 dark:group-[.destructive]:hover:border-danger-900/30",
+    "group-[.destructive]:focus:ring-danger-500 dark:border-gray-800 dark:ring-offset-neutral-950",
+    "dark:hover:bg-gray-800 dark:focus:ring-gray-300",
+    "dark:group-[.destructive]:border-gray-800/40 dark:group-[.destructive]:hover:border-danger-900/30",
     "dark:group-[.destructive]:hover:bg-danger-900 dark:group-[.destructive]:hover:text-neutral-50",
     "dark:group-[.destructive]:focus:ring-danger-900",
   ],
@@ -65,7 +65,7 @@ const toastVariants = cva(twStyles.toast, {
   variants: {
     variant: {
       default:
-        "border bg-white text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50",
+        "border bg-white text-neutral-950 dark:bg-gray-950 dark:text-neutral-50",
       destructive:
         "destructive group border-danger-500 bg-danger-500 text-neutral-50 dark:border-danger-900 dark:bg-danger-900 dark:text-neutral-50",
     },

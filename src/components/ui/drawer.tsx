@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 const twStyles = {
   content: [
     "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px]",
-    "border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950",
+    "border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950",
   ],
   overlay: "fixed inset-0 z-50 bg-black/80",
   handle:
-    "mx-auto mt-4 h-2 w-[100px] rounded-full bg-neutral-100 dark:bg-neutral-800",
+    "mx-auto mt-4 h-2 w-[100px] rounded-full bg-gray-100 dark:bg-gray-800",
   header: "grid gap-1.5 p-4 text-center sm:text-left",
   footer: "mt-auto flex flex-col gap-2 p-4",
   title: "text-lg font-semibold leading-none tracking-tight",
@@ -108,13 +108,13 @@ DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 
 export {
   Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
   DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
 };

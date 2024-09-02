@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 
 const twStyles = {
   root: [
-    "relative h-4 w-full overflow-hidden rounded-full bg-neutral-100",
-    "dark:bg-neutral-800",
+    "relative h-4 w-full overflow-hidden rounded-full bg-gray-100",
+    "dark:bg-gray-800",
   ],
   indicator: [
-    "h-full w-full flex-1 bg-neutral-900 transition-all",
-    "dark:bg-neutral-50",
+    "h-full w-full flex-1 bg-gray-900 transition-all",
+    "dark:bg-gray-50",
   ],
 };
 

@@ -4,12 +4,12 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border border-neutral-200 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-neutral-950 dark:border-neutral-800 dark:[&>svg]:text-neutral-50",
+  "relative w-full rounded-lg border border-gray-200 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-neutral-950 dark:border-gray-800 dark:[&>svg]:text-neutral-50",
   {
     variants: {
       variant: {
         default:
-          "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50",
+          "bg-white text-neutral-950 dark:bg-gray-950 dark:text-neutral-50",
         destructive:
           "border-danger-500/50 text-danger-500 dark:border-danger-500 [&>svg]:text-danger-500 dark:border-danger-900/50 dark:text-danger-900 dark:dark:border-danger-900 dark:[&>svg]:text-danger-900",
       },
@@ -54,4 +54,4 @@ const AlertDescription = React.forwardRef<
 ));
 AlertDescription.displayName = "AlertDescription";
 
-export { Alert, AlertTitle, AlertDescription };
+export { Alert, AlertDescription, AlertTitle };

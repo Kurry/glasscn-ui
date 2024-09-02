@@ -10,7 +10,7 @@ const twStyles = {
   image: ["aspect-square h-full w-full"],
   fallback: [
     "flex h-full w-full items-center justify-center rounded-full",
-    "bg-neutral-100 dark:bg-neutral-800",
+    "bg-gray-100 dark:bg-gray-800",
   ],
 };
 

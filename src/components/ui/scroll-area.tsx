@@ -13,9 +13,7 @@ const twStyles = {
     "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5",
     "data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col",
   ],
-  scrollbarThumb: [
-    "relative flex-1 rounded-full bg-neutral-200 dark:bg-neutral-800",
-  ],
+  scrollbarThumb: ["relative flex-1 rounded-full bg-gray-200 dark:bg-gray-800"],
 };
 
 const ScrollArea = React.forwardRef<
