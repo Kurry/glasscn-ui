@@ -317,24 +317,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       color,
       asChild = false,
       loading = false,
-      disabled = false,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
-    const isDisabled = loading || disabled;
 
     return (
       <Comp
         className={cn(
           buttonVariants({ variant, size, radius, color, className }),
           {
-            "cursor-not-allowed": isDisabled,
+            "cursor-not-allowed": props.disabled,
           },
         )}
         ref={ref}
-        disabled={isDisabled}
         {...props}
       >
         {loading && <LoaderCircle className="mr-2" />}

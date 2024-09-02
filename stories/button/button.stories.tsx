@@ -18,6 +18,19 @@ const meta = {
     variant: {
       control: "select",
       options: ["default", "subtle", "outline", "ghost", "link"],
+      table: {
+        disable: true,
+      },
+    },
+    onClick: {
+      table: {
+        disable: true,
+      },
+    },
+    asChild: {
+      table: {
+        disable: true,
+      },
     },
     color: {
       control: "select",
@@ -66,6 +79,13 @@ export const Default: Story = {
 };
 
 export const Primary: Story = {
+  argTypes: {
+    color: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   render: (args) => (
     <div className="flex gap-4">
       <Button variant="default" color="primary" {...args}>
