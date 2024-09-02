@@ -1,5 +1,6 @@
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react-swc";
+import rollupPreserveDirectives from "rollup-preserve-directives";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import pkg from "./package.json";
@@ -9,6 +10,7 @@ import pkg from "./package.json";
 export default defineConfig({
   plugins: [
     react(),
+    rollupPreserveDirectives(), // to preserve directives like `use client`
     dts({
       tsconfigPath: resolve(__dirname, "tsconfig.app.json"),
     }),

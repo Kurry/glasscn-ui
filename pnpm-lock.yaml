@@ -192,6 +192,9 @@ importers:
       publint:
         specifier: ^0.2.10
         version: 0.2.10
+      rollup-preserve-directives:
+        specifier: ^1.1.1
+        version: 1.1.1(rollup@4.21.2)
       sort-package-json:
         specifier: ^2.10.1
         version: 2.10.1
@@ -4413,6 +4416,11 @@ packages:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
     deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
+
+  rollup-preserve-directives@1.1.1:
+    resolution: {integrity: sha512-+eQafbuEfDPfxQ9hQPlwaROfin4yiVRxap8hnrvvvcSGoukv1tTiYpAW9mvm3uR8J+fe4xd8FdVd5rz9q7jZ+Q==}
+    peerDependencies:
+      rollup: ^2.0.0 || ^3.0.0 || ^4.0.0
 
   rollup@4.21.2:
     resolution: {integrity: sha512-e3TapAgYf9xjdLvKQCkQTnbTKd4a6jwlpQSJJFokHGaX2IVjoEqkIIhiQfqsi0cdwlOD+tQGuOd5AJkc5RngBw==}
@@ -9564,6 +9572,11 @@ snapshots:
   rimraf@2.6.3:
     dependencies:
       glob: 7.2.3
+
+  rollup-preserve-directives@1.1.1(rollup@4.21.2):
+    dependencies:
+      magic-string: 0.30.11
+      rollup: 4.21.2
 
   rollup@4.21.2:
     dependencies:
