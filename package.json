@@ -26,13 +26,13 @@
     "format": "pnpm lint:fix",
     "lint": "biome check .",
     "lint:fix": "sort-package-json && biome check --write .",
-    "prepare": "sort-package-json",
+    "prepare": "husky && sort-package-json",
     "prepublishOnly": "pnpm run lint && pnpm run build && publint",
     "release": "standard-version",
     "storybook": "storybook dev -p 6006",
     "test": "echo \"No tests yet\"",
     "test:ci": "echo \"No tests yet\"",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc -b && tsc --noEmit",
     "upgrade-deps": "pnpm update --latest"
   },
   "dependencies": {
@@ -68,8 +68,8 @@
     "cmdk": "1.0.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.438.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "react-resizable-panels": "^2.1.2",
     "standard-version": "^9.5.0",
     "tailwind-merge": "^2.5.2",
@@ -78,6 +78,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@commitlint/config-conventional": "^19.4.1",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/addon-links": "^8.2.9",
@@ -92,12 +93,14 @@
     "@storybook/test": "^8.2.9",
     "@storybook/theming": "^8.2.9",
     "@types/node": "^22.5.2",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.20",
+    "commitlint": "^19.4.1",
     "globals": "^15.9.0",
-    "postcss": "^8.4.43",
+    "husky": "^9.1.5",
+    "postcss": "^8.4.44",
     "publint": "^0.2.10",
     "rollup-preserve-directives": "^1.1.1",
     "sort-package-json": "^2.10.1",
@@ -111,5 +114,9 @@
   "publishConfig": {
     "access": "restricted",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }
