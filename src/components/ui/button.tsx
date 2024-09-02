@@ -334,8 +334,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {loading && <LoaderCircle className="mr-2" />}
-        {children}
+        {loading ? (
+          <span className="flex items-center">
+            <LoaderCircle className="mr-2" />
+            {children}
+          </span>
+        ) : (
+          children
+        )}
       </Comp>
     );
   },

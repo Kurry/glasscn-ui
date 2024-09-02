@@ -71,8 +71,8 @@ export const Default: Story = {
       <Button variant="ghost" {...args}>
         Ghost
       </Button>
-      <Button variant="link" {...args}>
-        Link
+      <Button variant="link" {...args} asChild>
+        <a href="https://localhost:3000">Link</a>
       </Button>
     </div>
   ),
