@@ -8,6 +8,7 @@ type PluginAPI = Parameters<PluginCreator>[0];
 export type TailwindColor = keyof typeof twColors;
 
 type CustomColorLevel =
+  | "DEFAULT"
   | 50
   | 100
   | 200
@@ -18,13 +19,14 @@ type CustomColorLevel =
   | 700
   | 800
   | 900
-  | 950;
+  | 950
+  | string;
 type CustomColor = Record<CustomColorLevel, string>;
 
 type PresetConfig = {
-  primaryColor?: TailwindColor;
-  secondaryColor?: TailwindColor;
-  grayColor?: TailwindColor;
+  primaryColor?: TailwindColor | string;
+  secondaryColor?: TailwindColor | string;
+  grayColor?: TailwindColor | string;
   backgroundColor?: string;
   foregrondColor?: string;
   borderColor?: string;
@@ -53,26 +55,24 @@ export const createTailwindPreset = ({
           background: backgroundColor,
           foreground: foregrondColor,
           border: borderColor,
-          primary: _colors[primaryColor],
-          secondary: _colors[secondaryColor],
-          gray: _colors[grayColor],
+          primary: _colors[primaryColor as TailwindColor],
+          secondary: _colors[secondaryColor as TailwindColor],
+          gray: _colors[grayColor as TailwindColor],
           danger: _colors.red,
           warn: _colors.yellow,
           twgray: _colors.gray,
           ...customColors,
         },
-        // backdropBlur: {
-        //   DEFAULT: "12px",
-        // },
-        // backgroundOpacity: {
-        //   DEFAULT: "0.1",
-        // },
         fontFamily: {
           sans: ["var(--font-sans)", ...fontFamily.sans],
           heading: ["var(--font-heading)", ...fontFamily.sans],
           comic: ["var(--font-comic)", ...fontFamily.sans],
           mono: ["var(--font-mono)", ...fontFamily.mono],
           serif: ["var(--font-serif)", ...fontFamily.serif],
+        },
+        fontWeight: {
+          base: "400",
+          heading: "800",
         },
         borderWidth: {
           DEFAULT: "1px",
@@ -87,6 +87,20 @@ export const createTailwindPreset = ({
           "inset-white": "inset 0 0 12px rgba(255,255,255,0.80)",
           "inset-gray": "inset 0 0 12px rgba(127,127,127,0.08)",
           "inset-black": "inset 0 0 12px rgba(0,0,0,0.80)",
+          "neobrutal-sm": "2px 2px 0px 0px #000",
+          neobrutal: "4px 4px 0px 0px #000",
+          "neobrutal-lg": "8px 8px 0px 0px #000",
+          "halo-cyan": "0 0 40px 4px #00ebffa8",
+          "halo-cyan-dark": "0 0 40px 4px #00b6de",
+        },
+        textShadow: {
+          sm: "2px 2px var(--tw-shadow-color, black)",
+          DEFAULT: "0 2px 4px var(--tw-shadow-color, black)",
+          lg: "0 8px 16px var(--tw-shadow-color, black)",
+        },
+        spacing: {
+          fulldh: "100dvh",
+          fulldw: "100dvw",
         },
         keyframes: {
           "accordion-down": {
