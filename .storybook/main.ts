@@ -16,5 +16,9 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["./static"],
+  viteFinal: (config) => {
+    config.base = "/glassy-ui/";
+    return config;
+  },
 };
 export default config;
