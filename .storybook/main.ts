@@ -15,10 +15,10 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  staticDirs: ["./static"],
-  // viteFinal: (config) => {
-  //   config.base = "/glassy-ui/";
-  //   return config;
-  // },
+  staticDirs: [{ from: "../public", to: "assets" }],
+  viteFinal: (config) => {
+    config.base = "/glassy-ui/";
+    return config;
+  },
 };
 export default config;

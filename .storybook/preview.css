@@ -11,7 +11,7 @@ html {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background: url("bgs/retro-future-01.png") no-repeat center center fixed;
+  background: url("/assets/bgs/retro-future-01.png") no-repeat center center fixed;
   background-size: cover;
   animation: bg-rotator 40s linear alternate infinite;
   /* 10s per image */
@@ -19,19 +19,19 @@ html {
 
 @keyframes bg-rotator {
   0% {
-    background-image: url("bgs/retro-future-01.png");
+    background-image: url("/assets/bgs/retro-future-01.png");
   }
 
   33% {
-    background-image: url("bgs/retro-future-04.png");
+    background-image: url("/assets/bgs/retro-future-04.png");
   }
 
   66% {
-    background-image: url("bgs/retro-future-03.png");
+    background-image: url("/assets/bgs/retro-future-03.png");
   }
 
   100% {
-    background-image: url("bgs/retro-future-02.png");
+    background-image: url("/assets/bgs/retro-future-02.png");
   }
 }
 
