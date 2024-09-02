@@ -2,22 +2,36 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Button } from '@/components/ui/button';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof AlertDialog> = {
+const meta: Meta<typeof AlertDialogContent> = {
   title: 'UI/AlertDialog',
-  component: AlertDialog,
+  component: AlertDialogContent,
   // tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["default", "glass"],
+    },
+    blur: {
+      control: "select",
+      options: ["default", "sm", "md", "lg", "xl", "2xl", "3xl"],
+    },
+  },
+  args: {
+    variant: "glass",
+    blur: "lg",
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof AlertDialog>;
+type Story = StoryObj<typeof AlertDialogContent>;
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Open Alert Dialog</Button>
+        <Button color="primary">Open Alert Dialog</Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent variant="glass" blur="lg" {...args}>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
