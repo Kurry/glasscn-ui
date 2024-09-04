@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.3.1 (2024-09-04)
+
+
+### Bug Fixes
+
+* use scoped pkg name for now ([c9c8e0a](https://github.com/itsjavi/glasscn-ui/commit/c9c8e0a46247b25c2fb2669891d4a23e82ab381f))
+
 ### 0.2.20 (2024-09-02)
 
 
