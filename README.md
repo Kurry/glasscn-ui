@@ -46,7 +46,7 @@ npm install glasscn-ui
 ### Tailwind CSS configuration
 
 ```js
-import { createTailwindPreset } from "glasscn-ui";
+import { createTailwindPreset } from "@itsjavi/glasscn-ui";
 
 // Example preset configuration (config object is optional)
 const glasscnPreset = createTailwindPreset({
