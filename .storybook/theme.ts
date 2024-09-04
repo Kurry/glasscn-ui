@@ -4,7 +4,7 @@ import { create } from "@storybook/theming/create";
 export default create({
   base: "dark",
   brandTitle: "Glassmorphic shadcn/ui",
-  brandUrl: "https://github.com/itsjavi/glassy-ui",
+  brandUrl: "https://github.com/itsjavi/glasscn-ui",
   brandTarget: "_blank",
   brandImage: undefined, //url
 });

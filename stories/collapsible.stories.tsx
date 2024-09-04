@@ -18,7 +18,7 @@ export const Default: Story = {
         <Button variant="outline">Toggle</Button>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="p-4 mt-2 rounded-md bg-background">
+        <div className="p-4 mt-2 rounded-md bg-white dark:bg-black">
           Content that can be collapsed
         </div>
       </CollapsibleContent>

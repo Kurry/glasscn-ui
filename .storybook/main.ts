@@ -20,7 +20,7 @@ const config: StorybookConfig = {
     // { from: "../public", to: "assets" }
   ],
   viteFinal: (config) => {
-    config.base = "/glassy-ui/";
+    config.base = "/glasscn-ui/";
     return config;
   },
 };

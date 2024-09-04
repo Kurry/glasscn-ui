@@ -14,7 +14,7 @@ env:
     Use the following command to install it:
 
     ```sh
-    pnpm i @itsjavi/glassy-ui@0.0.0-dev-${{ github.sha }}
+    pnpm i glasscn-ui@0.0.0-dev-${{ github.sha }}
     ```
 
 jobs:

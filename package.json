@@ -1,5 +1,5 @@
 {
-  "name": "@itsjavi/glassy-ui",
+  "name": "glasscn-ui",
   "version": "0.2.20",
   "license": "MIT",
   "type": "module",
@@ -20,7 +20,8 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && pnpm build:postprocess",
+    "build:postprocess": "rm -r dist/bgs dist/glasscn-ui",
     "build:storybook": "storybook build",
     "dev": "pnpm storybook",
     "format": "pnpm lint:fix",
