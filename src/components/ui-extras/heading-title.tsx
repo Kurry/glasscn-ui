@@ -2,13 +2,13 @@ import { cn } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 
 const twStyles = {
-  base: ["font-heading font-black tracking-tight py-1 text-balance"],
+  base: ["font-heading tracking-tight py-1 text-balance"],
   variant: {
     default: [""],
     gradient: ["bg-clip-text text-transparent bg-gradient-to-br"],
   },
   colors: {
-    default: ["text-foreground"],
+    default: ["text-foreground dark:text-foreground-dark"],
     primary: ["text-primary-600"],
     secondary: ["text-secondary-600"],
   },

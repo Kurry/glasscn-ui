@@ -3,8 +3,39 @@ import animatePlugin from "tailwindcss-animate";
 import twColors from "tailwindcss/colors";
 import type { PluginCreator } from "tailwindcss/types/config";
 
+// "slate" | "gray" | "zinc" | "neutral" | "stone" | "red" | "orange" | "amber" | "yellow"
+// | "lime" | "green" | "emerald" | "teal" | "cyan" | "sky" | "blue" | "indigo" | "violet"
+// | "purple" | "fuchsia" | "pink" | "rose"
+
+export type TailwindColor = Exclude<
+  keyof typeof twColors,
+  | "inherit"
+  | "current"
+  | "transparent"
+  | "black"
+  | "white"
+  | "lightBlue"
+  | "warmGray"
+  | "trueGray"
+  | "coolGray"
+  | "blueGray"
+>;
+
+const deprecatedColors = [
+  "lightBlue",
+  "warmGray",
+  "trueGray",
+  "coolGray",
+  "blueGray",
+];
+const twColorKeys = Object.keys(twColors).filter(
+  (key) => !deprecatedColors.includes(key),
+);
+const safeTwColors = Object.fromEntries(
+  twColorKeys.map((key) => [key, twColors[key as TailwindColor]]),
+);
+
 type PluginAPI = Parameters<PluginCreator>[0];
-export type TailwindColor = keyof typeof twColors;
 
 type CustomColorLevel =
   | "DEFAULT"
@@ -21,46 +52,176 @@ type CustomColorLevel =
   | 950
   | string;
 type CustomColor = Record<CustomColorLevel, string>;
-
-type PresetConfig = {
-  primaryColor?: TailwindColor | string;
-  secondaryColor?: TailwindColor | string;
-  grayColor?: TailwindColor | string;
-  backgroundColor?: string;
-  foregrondColor?: string;
-  borderColor?: string;
-  customColors?: Record<string, CustomColor | string>;
+type DarkLightColor = {
+  light: string;
+  dark: string;
 };
 
-export const createTailwindPreset = ({
-  primaryColor = "blue",
-  secondaryColor = "fuchsia",
-  grayColor = "neutral",
-  backgroundColor = "var(--background)",
-  foregrondColor = "var(--foreground)",
-  borderColor = "var(--border)",
-  customColors = {},
-}: PresetConfig = {}): Partial<Config> => {
-  const _colors = {
-    ...twColors,
-    ...customColors,
-  };
+type PresetConfigColors = {
+  /**
+   * Primary color name or custom color palette object
+   * @default 'blue'
+   */
+  primary: TailwindColor | CustomColor;
+  /**
+   * Secondary color name or custom color palette object
+   * @default 'fuchsia'
+   */
+  secondary: TailwindColor | CustomColor;
+  /**
+   * Gray color name or custom color palette object
+   * @default 'neutral'
+   */
+  gray: TailwindColor | CustomColor;
+  /**
+   * Danger color name or custom color palette object
+   * @default 'red'
+   */
+  danger: TailwindColor | CustomColor;
+  /**
+   * Warn color name or custom color palette object
+   * @default 'yellow'
+   */
+  warn: TailwindColor | CustomColor;
+  /**
+   * Default background color in light and dark modes
+   * @default 'bg-white' and 'bg-gray-950'
+   */
+  background: DarkLightColor;
+  /**
+   * Default foreground color in light and dark modes
+   * @default 'text-gray-950' and 'text-white'
+   */
+  foreground: DarkLightColor;
+  /**
+   * Default muted foreground color in light and dark modes
+   * @default 'text-gray-500' and 'text-gray-400'
+   */
+  foregroundMuted: DarkLightColor;
+  /**
+   * Default border color in light and dark modes
+   * @default 'border-gray-300' and 'border-gray-700'
+   */
+  border: DarkLightColor;
+  /**
+   * Default muted border color in light and dark modes
+   * @default 'border-gray-200' and 'border-gray-800'
+   */
+  borderMuted: DarkLightColor;
+};
+
+type PresetConfig = {
+  /**
+   * Base border radous
+   * @default '0.5em'
+   */
+  baseRadius: string;
+  /**
+   * Theme colors
+   */
+  colors: PresetConfigColors;
+};
+
+type PartialPresetConfig = Partial<Omit<PresetConfig, "colors">> & {
+  colors?: Partial<PresetConfigColors>;
+};
+
+const defaultConfig: PresetConfig = {
+  baseRadius: "0.5em",
+  colors: {
+    primary: "blue",
+    secondary: "fuchsia",
+    gray: "neutral",
+    danger: "red",
+    warn: "yellow",
+    background: {
+      light: "#ffffff",
+      dark: safeTwColors.gray[950],
+    },
+    foreground: {
+      light: safeTwColors.gray[950],
+      dark: "#ffffff",
+    },
+    foregroundMuted: {
+      light: safeTwColors.gray[500],
+      dark: safeTwColors.gray[400],
+    },
+    border: {
+      light: safeTwColors.gray[300],
+      dark: safeTwColors.gray[700],
+    },
+    borderMuted: {
+      light: safeTwColors.gray[200],
+      dark: safeTwColors.gray[800],
+    },
+  },
+};
+
+function resolveColor(color: TailwindColor | CustomColor): CustomColor {
+  if (typeof color === "string") {
+    return safeTwColors[color];
+  }
+  return color;
+}
+
+function resolveConfig(config: PartialPresetConfig): PresetConfig {
+  const resolvedConfig: PresetConfig = {
+    ...defaultConfig,
+    ...config,
+    colors: {
+      ...defaultConfig.colors,
+      ...config.colors,
+    },
+  } as Required<PresetConfig>;
+
+  const colors = resolvedConfig.colors;
+
+  resolvedConfig.colors.primary = resolveColor(colors.primary);
+  resolvedConfig.colors.secondary = resolveColor(colors.secondary);
+  resolvedConfig.colors.gray = resolveColor(colors.gray);
+  resolvedConfig.colors.danger = resolveColor(colors.danger);
+  resolvedConfig.colors.warn = resolveColor(colors.warn);
+
+  return resolvedConfig;
+}
+
+export function createTailwindPreset(
+  config: PartialPresetConfig = {},
+): Partial<Config> {
+  const resolvedConfig = resolveConfig(config);
+
   const preset: Partial<Config> = {
     darkMode: ["class"],
     safelist: ["dark"],
     theme: {
       extend: {
         colors: {
-          background: backgroundColor,
-          foreground: foregrondColor,
-          border: borderColor,
-          primary: _colors[primaryColor as TailwindColor],
-          secondary: _colors[secondaryColor as TailwindColor],
-          gray: _colors[grayColor as TailwindColor],
-          danger: _colors.red,
-          warn: _colors.yellow,
-          twgray: _colors.gray,
-          ...customColors,
+          background: {
+            DEFAULT: resolvedConfig.colors.background.light,
+            dark: resolvedConfig.colors.background.dark,
+            // muted: resolvedConfig.colors.backgroundMuted,
+          },
+          foreground: {
+            DEFAULT: resolvedConfig.colors.foreground.light,
+            dark: resolvedConfig.colors.foreground.dark,
+            muted: {
+              DEFAULT: resolvedConfig.colors.foregroundMuted.light,
+              dark: resolvedConfig.colors.foregroundMuted.dark,
+            },
+          },
+          border: {
+            DEFAULT: resolvedConfig.colors.border.light,
+            dark: resolvedConfig.colors.border.dark,
+            muted: {
+              DEFAULT: resolvedConfig.colors.borderMuted.light,
+              dark: resolvedConfig.colors.borderMuted.dark,
+            },
+          },
+          primary: resolvedConfig.colors.primary,
+          secondary: resolvedConfig.colors.secondary,
+          gray: resolvedConfig.colors.gray,
+          danger: resolvedConfig.colors.danger,
+          warn: resolvedConfig.colors.warn,
         },
         fontWeight: {
           base: "400",
@@ -71,9 +232,9 @@ export const createTailwindPreset = ({
           3: "3px",
         },
         borderRadius: {
-          lg: "var(--radius)",
-          md: "calc(var(--radius) - 2px)",
-          sm: "calc(var(--radius) - 4px)",
+          lg: `${resolvedConfig.baseRadius}`,
+          md: `calc(${resolvedConfig.baseRadius} - 2px)`,
+          sm: `calc(${resolvedConfig.baseRadius} - 4px)`,
         },
         boxShadow: {
           "inset-white": "inset 0 0 12px rgba(255,255,255,0.80)",
@@ -139,4 +300,4 @@ export const createTailwindPreset = ({
   };
 
   return preset;
-};
+}

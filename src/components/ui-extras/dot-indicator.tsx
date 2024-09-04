@@ -14,7 +14,7 @@ export function DotIndicator({
     <span
       className={cn(
         "inline-flex items-center justify-center w-4 h-4 font-light text-[11px] rounded-full",
-        "align-middle bg-green-600 text-white",
+        "align-middle bg-green-600 text-white aspect-square",
         className,
         absClasses,
       )}

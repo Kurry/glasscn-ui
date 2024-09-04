@@ -72,10 +72,7 @@ export function ComboBox({
           role="combobox"
           disabled={disabled}
           aria-expanded={open}
-          className={cn(
-            "min-w-[200px] justify-between bg-background",
-            triggerClassName,
-          )}
+          className={cn("min-w-[200px] justify-between", triggerClassName)}
         >
           <span
             title={labelText}
