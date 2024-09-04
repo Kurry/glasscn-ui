@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,21 +14,18 @@ const twStyles = {
   ],
 };
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.ComponentPropsWithRef<"input"> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={cn(twStyles.input, className)}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Input = ({ ref, className, type, ...props }: InputProps) => {
+  return (
+    <input
+      type={type}
+      className={cn(twStyles.input, className)}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 Input.displayName = "Input";
 
 export { Input };

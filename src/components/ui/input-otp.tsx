@@ -29,31 +29,38 @@ const twStyles = {
   separator: "[&>svg]:size-4",
 };
 
-const InputOTP = React.forwardRef<
-  React.ElementRef<typeof OTPInput>,
-  React.ComponentPropsWithoutRef<typeof OTPInput>
->(({ className, containerClassName, ...props }, ref) => (
+const InputOTP = ({
+  ref,
+  className,
+  containerClassName,
+  ...props
+}: React.ComponentPropsWithRef<typeof OTPInput>) => (
   <OTPInput
     ref={ref}
     containerClassName={cn(twStyles.input, containerClassName)}
     className={cn(twStyles.input, className)}
     {...props}
   />
-));
+);
 InputOTP.displayName = "InputOTP";
 
-const InputOTPGroup = React.forwardRef<
-  React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<"div">
->(({ className, ...props }, ref) => (
+const InputOTPGroup = ({
+  ref,
+  className,
+  ...props
+}: React.ComponentPropsWithRef<"div">) => (
   <div ref={ref} className={cn(twStyles.inputGroup, className)} {...props} />
-));
+);
 InputOTPGroup.displayName = "InputOTPGroup";
 
-const InputOTPSlot = React.forwardRef<
-  React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<"div"> & { index: number }
->(({ index, className, ...props }, ref) => {
+const InputOTPSlot = ({
+  ref,
+  index,
+  className,
+  ...props
+}: React.ComponentPropsWithRef<"div"> & {
+  index: number;
+}) => {
   const inputOTPContext = React.useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
 
@@ -71,18 +78,18 @@ const InputOTPSlot = React.forwardRef<
       {hasFakeCaret && <div className={cn(twStyles.inputSlotCaret)} />}
     </div>
   );
-});
+};
 InputOTPSlot.displayName = "InputOTPSlot";
 
-const InputOTPSeparator = React.forwardRef<
-  React.ElementRef<"div">,
-  React.ComponentPropsWithoutRef<"div">
->(({ ...props }, ref) => (
+const InputOTPSeparator = ({
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<"div">) => (
   // biome-ignore lint/a11y/useAriaPropsForRole: <explanation>
   <div ref={ref} role="separator" className={cn(twStyles.separator)} {...props}>
     <Dot />
   </div>
-));
+);
 InputOTPSeparator.displayName = "InputOTPSeparator";
 
 export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot };

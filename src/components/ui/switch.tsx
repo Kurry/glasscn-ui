@@ -1,7 +1,7 @@
 "use client";
 
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -21,10 +21,11 @@ const twStyles = {
   ],
 };
 
-const Switch = React.forwardRef<
-  React.ElementRef<typeof SwitchPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
->(({ className, ...props }, ref) => (
+const Switch = ({
+  ref,
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>) => (
   <SwitchPrimitives.Root
     className={cn(twStyles.root, className)}
     {...props}
@@ -32,7 +33,7 @@ const Switch = React.forwardRef<
   >
     <SwitchPrimitives.Thumb className={cn(twStyles.thumb)} />
   </SwitchPrimitives.Root>
-));
+);
 Switch.displayName = SwitchPrimitives.Root.displayName;
 
 export { Switch };

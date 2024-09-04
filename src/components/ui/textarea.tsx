@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,19 +14,17 @@ const twStyles = {
 };
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+  extends React.ComponentPropsWithRef<"textarea"> {}
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <textarea
-        className={cn(twStyles.textarea, className)}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Textarea = ({ ref, className, ...props }: TextareaProps) => {
+  return (
+    <textarea
+      className={cn(twStyles.textarea, className)}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 Textarea.displayName = "Textarea";
 
 export { Textarea };

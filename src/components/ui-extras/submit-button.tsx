@@ -12,6 +12,7 @@ export function SubmitButton({
   children,
   pendingChildren,
   disabled,
+  ref,
   ...props
 }: SubmitButtonProps) {
   const formStatus = useFormStatus();
@@ -19,6 +20,7 @@ export function SubmitButton({
 
   return (
     <Button
+      ref={ref}
       type="submit"
       loading={formStatus.pending}
       disabled={isDisabled}

@@ -3,11 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: theme('colors.background.DEFAULT');
+    --foreground: theme('colors.foreground.DEFAULT');
+    --foreground-muted: theme('colors.foreground.muted.DEFAULT');
+    --border: theme('colors.border.DEFAULT');
+    --border-muted: theme('colors.border.muted.DEFAULT');
+  }
+
+  .dark {
+    --background: theme('colors.background.dark');
+    --foreground: theme('colors.foreground.dark');
+    --foreground-muted: theme('colors.foreground.muted.dark');
+    --border: theme('colors.border.dark');
+    --border-muted: theme('colors.border.muted.dark');
+  }
 
   *,
   ::before,
   ::after {
-    @apply border-border dark:border-border-dark;
+    border-color: var(--border);
   }
 
   * {
@@ -20,8 +35,8 @@
   }
 
   body {
-    @apply bg-background dark:bg-background-dark;
-    @apply text-foreground dark:text-foreground-dark;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   [hidden] {
