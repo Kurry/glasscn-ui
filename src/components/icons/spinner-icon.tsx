@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export const LoaderCircle = ({ className }: { className?: string }) => {
+export const SpinnerIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       strokeLinejoin="round"
@@ -9,7 +9,7 @@ export const LoaderCircle = ({ className }: { className?: string }) => {
       height="16"
       className={cn("text-current animate-spin duration-1000", className)}
     >
-      <title>Loader Circle</title>
+      <title>Spinner Icon</title>
       <g clipPath="url(#clip0_2393_1490)">
         <path d="M8 0V4" stroke="currentColor" strokeWidth="1.5" />
         <path

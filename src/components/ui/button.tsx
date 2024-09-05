@@ -4,7 +4,7 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
-import { LoaderCircle } from "../icons/LoaderCircle";
+import { SpinnerIcon } from "../icons/spinner-icon";
 
 const twStyles = {
   base: [
@@ -333,7 +333,7 @@ const Button = ({
     >
       {loading ? (
         <span className="flex items-center">
-          <LoaderCircle className="mr-2" />
+          <SpinnerIcon className="mr-2" />
           {children}
         </span>
       ) : (

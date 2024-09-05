@@ -44,6 +44,9 @@ export * from "./components/ui/toggle";
 export * from "./components/ui/toggle-group";
 export * from "./components/ui/tooltip";
 
+// icons
+export * from "./components/icons/spinner-icon";
+
 // extra components
 export * from "./components/ui-extras/combobox";
 export * from "./components/ui-extras/dot-indicator";
