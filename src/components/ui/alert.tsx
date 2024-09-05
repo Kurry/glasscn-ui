@@ -16,6 +16,7 @@ const twStyles = {
     "border-danger-500/50 text-danger-500 dark:border-danger-500 [&>svg]:text-danger-500",
     "dark:border-danger-900/50 dark:text-danger-900 dark:dark:border-danger-900",
     "dark:[&>svg]:text-danger-900",
+    "bg-danger-950/20",
   ],
   title: ["mb-1 font-medium leading-none tracking-tight"],
   description: ["text-sm [&_p]:leading-relaxed"],

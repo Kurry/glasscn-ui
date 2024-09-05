@@ -7,7 +7,7 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 const twStyles = {
-  item: ["border-b"],
+  item: ["border-b border-b-gray-600/30 dark:border-b-gray-500/40"],
   trigger: [
     "flex flex-1 items-center justify-between py-4 font-medium transition-all",
     "hover:underline [&[data-state=open]>svg]:rotate-180",
