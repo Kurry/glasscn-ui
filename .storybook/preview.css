@@ -55,8 +55,7 @@ body {
   padding: 10px;
 }
 
-#storybook-root,
-#storybook-preview-wrapper {
+.bg-decorator {
   padding: 1rem;
   border-radius: var(--radius);
   background-color: var(--background);
@@ -64,8 +63,7 @@ body {
   border-radius: 0.5rem;
 }
 
-.glass #storybook-root,
-.glass #storybook-preview-wrapper {
+.glass .bg-decorator {
   backdrop-filter: blur(20px);
   background-color: color-mix(in sRGB, var(--background) 60%, transparent);
 }
