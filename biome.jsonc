@@ -5,6 +5,8 @@
   },
   "files": {
     "ignore": [
+      "dist/**/*.js",
+      "dist/**/*.css",
       "**/node_modules",
       "**/dist",
       "**/build",
