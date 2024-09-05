@@ -240,11 +240,6 @@ export function createTailwindPreset(
           "inset-white": "inset 0 0 12px rgba(255,255,255,0.80)",
           "inset-gray": "inset 0 0 12px rgba(127,127,127,0.08)",
           "inset-black": "inset 0 0 12px rgba(0,0,0,0.80)",
-          "neobrutal-sm": "2px 2px 0px 0px #000",
-          neobrutal: "4px 4px 0px 0px #000",
-          "neobrutal-lg": "8px 8px 0px 0px #000",
-          "halo-cyan": "0 0 40px 4px #00ebffa8",
-          "halo-cyan-dark": "0 0 40px 4px #00b6de",
         },
         textShadow: {
           sm: "2px 2px var(--tw-shadow-color, black)",

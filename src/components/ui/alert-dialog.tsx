@@ -5,8 +5,8 @@ import type * as React from "react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
 import { type VariantProps, cva } from "class-variance-authority";
-import { blurVariant, glassContainerClasses, recipeStyles } from "../recipes";
 
 const twStyles = {
   overlay: [
@@ -27,12 +27,13 @@ const twStyles = {
     "border-gray-200 bg-white",
     "dark:border-gray-800 dark:bg-gray-950",
   ],
-  contentGlass: glassContainerClasses,
   header: ["flex flex-col space-y-2 text-center sm:text-left"],
   footer: ["flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"],
   title: ["text-lg font-semibold leading-none tracking-tight"],
   description: ["text-sm text-neutral-600/90 dark:text-neutral-400"],
 };
+
+const alertDialogContentVariants = cva(cn(twStyles.content), glassCvaConfig);
 
 const AlertDialog = AlertDialogPrimitive.Root;
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
@@ -51,45 +52,22 @@ const AlertDialogOverlay = ({
 );
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
 
-const alertDialogContentVariants = cva(cn(twStyles.content), {
-  variants: {
-    variant: {
-      default: "",
-      glass: cn(twStyles.contentGlass),
-    },
-    blur: blurVariant,
-  },
-  defaultVariants: {
-    variant: "default",
-    blur: "default",
-  },
-});
-
 export interface AlertDialogProps
   extends React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Content>,
-    VariantProps<typeof alertDialogContentVariants> {
-  innerGlow?: boolean;
-}
+    VariantProps<typeof alertDialogContentVariants> {}
 
 const AlertDialogContent = ({
   ref,
   className,
   blur,
   variant,
-  innerGlow,
   ...props
 }: AlertDialogProps) => (
   <AlertDialogPortal>
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
       ref={ref}
-      className={cn(
-        alertDialogContentVariants({ blur, variant }),
-        {
-          [recipeStyles.glassInnerShadow.join(" ")]: innerGlow,
-        },
-        className,
-      )}
+      className={cn(alertDialogContentVariants({ blur, variant }), className)}
       {...props}
     />
   </AlertDialogPortal>

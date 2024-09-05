@@ -9,19 +9,16 @@ const meta: Meta<typeof AlertDialogContent> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "glass"],
+      options: ["standard", "glass"],
     },
     blur: {
       control: "select",
-      options: ["default", "sm", "md", "lg", "xl", "2xl", "3xl"],
-    },
-    innerGlow: {
-      control: "boolean",
-    },
+      options: ["none", "sm", "md", "lg", "xl", "2xl", "3xl"],
+    }
   },
   args: {
     variant: "glass",
-    blur: "lg",
+    blur: "md"
   },
 };
 
