@@ -8,7 +8,7 @@ const twStyles = {
     gradient: ["bg-clip-text text-transparent bg-gradient-to-br"],
   },
   colors: {
-    default: ["text-foreground dark:text-foreground-dark"],
+    default: ["text-foreground"],
     primary: ["text-primary-600"],
     secondary: ["text-secondary-600"],
   },

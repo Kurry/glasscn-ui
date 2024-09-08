@@ -49,8 +49,7 @@ type CustomColorLevel =
   | 700
   | 800
   | 900
-  | 950
-  | string;
+  | 950;
 type CustomColor = Record<CustomColorLevel, string>;
 type DarkLightColor = {
   light: string;
@@ -159,7 +158,7 @@ const defaultConfig: PresetConfig = {
 
 function resolveColor(color: TailwindColor | CustomColor): CustomColor {
   if (typeof color === "string") {
-    return safeTwColors[color];
+    return safeTwColors[color] as CustomColor;
   }
   return color;
 }
@@ -185,6 +184,10 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
   return resolvedConfig;
 }
 
+function getColorMix(color: string) {
+  return `color-mix(in srgb, ${color}, transparent calc(100% - <alpha-value> * 100%))`;
+}
+
 export function createTailwindPreset(
   config: PartialPresetConfig = {},
 ): Partial<Config> {
@@ -197,23 +200,28 @@ export function createTailwindPreset(
       extend: {
         colors: {
           background: {
-            DEFAULT: resolvedConfig.colors.background.light,
+            DEFAULT: getColorMix("var(--background)"),
+            light: resolvedConfig.colors.background.light,
             dark: resolvedConfig.colors.background.dark,
             // muted: resolvedConfig.colors.backgroundMuted,
           },
           foreground: {
-            DEFAULT: resolvedConfig.colors.foreground.light,
+            DEFAULT: getColorMix("var(--foreground)"),
+            light: resolvedConfig.colors.foreground.light,
             dark: resolvedConfig.colors.foreground.dark,
             muted: {
-              DEFAULT: resolvedConfig.colors.foregroundMuted.light,
+              DEFAULT: getColorMix("var(--foreground-muted)"),
+              light: resolvedConfig.colors.foregroundMuted.light,
               dark: resolvedConfig.colors.foregroundMuted.dark,
             },
           },
           border: {
-            DEFAULT: resolvedConfig.colors.border.light,
+            DEFAULT: getColorMix("var(--border)"),
+            light: resolvedConfig.colors.border.light,
             dark: resolvedConfig.colors.border.dark,
             muted: {
-              DEFAULT: resolvedConfig.colors.borderMuted.light,
+              DEFAULT: getColorMix("var(--border-muted)"),
+              light: resolvedConfig.colors.borderMuted.light,
               dark: resolvedConfig.colors.borderMuted.dark,
             },
           },

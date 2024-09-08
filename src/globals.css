@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: theme('colors.background.DEFAULT');
-    --foreground: theme('colors.foreground.DEFAULT');
-    --foreground-muted: theme('colors.foreground.muted.DEFAULT');
-    --border: theme('colors.border.DEFAULT');
-    --border-muted: theme('colors.border.muted.DEFAULT');
+    --background: theme('colors.background.light');
+    --foreground: theme('colors.foreground.light');
+    --foreground-muted: theme('colors.foreground.muted.light');
+    --border: theme('colors.border.light');
+    --border-muted: theme('colors.border.muted.light');
   }
 
   .dark {

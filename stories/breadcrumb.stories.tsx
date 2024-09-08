@@ -1,17 +1,17 @@
 import {
-    Breadcrumb,
-    BreadcrumbEllipsis,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -19,6 +19,17 @@ const meta: Meta<typeof Breadcrumb> = {
   title: "UI/Breadcrumb",
   component: Breadcrumb,
   // tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className="bg-decorator">
+        <Story />
+        <div className="text-foreground">FG text </div>
+        <div className="text-foreground-muted">
+          FG text muted
+        </div>
+      </div>
+    ),
+  ],
 };
 
 export default meta;

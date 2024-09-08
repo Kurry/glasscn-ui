@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 const twStyles = {
   nav: "mx-auto flex w-full justify-center",
   list: [
-    "flex flex-wrap items-center gap-1.5 break-words text-sm text-neutral-500",
-    "sm:gap-2.5 dark:text-neutral-400",
+    "flex flex-wrap items-center gap-1.5 break-words text-sm text-foreground-muted",
+    "sm:gap-2.5",
   ],
   item: "inline-flex items-center gap-1.5",
-  link: "transition-colors hover:text-neutral-950 dark:hover:text-neutral-50",
-  page: "font-normal text-neutral-950 dark:text-neutral-50",
+  link: "transition-colors hover:text-foreground",
+  page: "font-normal text-foreground",
   separator: "[&>svg]:size-3.5",
   ellipsis: "flex h-9 w-9 items-center justify-center",
 };

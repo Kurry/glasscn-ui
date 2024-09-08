@@ -36,8 +36,7 @@ a glassmorphic style:
 
 ## Installation
 
-This is a Tailwind CSS component library, so you need to install the package,
-and also adjust your `tailwind.config.js|ts` configuration.
+This is a Tailwind CSS component library, so you need to install the package, adjust your `tailwind.config.js|ts` configuration and some global styles.
 
 ```bash
 npm install glasscn-ui
@@ -100,6 +99,32 @@ export default {
   ],
   presets: [glasscnPreset],
 };
+```
+
+### Global styles
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: theme("colors.background.DEFAULT");
+    --foreground: theme("colors.foreground.DEFAULT");
+    --foreground-muted: theme("colors.foreground.muted.DEFAULT");
+    --border: theme("colors.border.DEFAULT");
+    --border-muted: theme("colors.border.muted.DEFAULT");
+  }
+
+  .dark {
+    --background: theme("colors.background.dark");
+    --foreground: theme("colors.foreground.dark");
+    --foreground-muted: theme("colors.foreground.muted.dark");
+    --border: theme("colors.border.dark");
+    --border-muted: theme("colors.border.muted.dark");
+  }
+}
 ```
 
 ## What components are not included?

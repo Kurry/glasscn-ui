@@ -69,7 +69,7 @@ export function NavigationMenuDemo() {
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground">
+                    <p className="text-sm leading-tight text-foreground-muted">
                       Beautifully designed components that you can copy and
                       paste into your apps. Accessible. Customizable. Open
                       Source.
@@ -131,7 +131,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-foreground-muted dark:text-foreground-muted-dark group-hover:text-white group-focus:text-white">
+          <p className="line-clamp-2 text-sm leading-snug text-foreground-muted group-hover:text-white group-focus:text-white">
             {children}
           </p>
         </a>
