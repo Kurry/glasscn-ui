@@ -64,12 +64,12 @@ type PresetConfigColors = {
   primary: TailwindColor | CustomColor;
   /**
    * Secondary color name or custom color palette object
-   * @default 'green'
+   * @default 'fuchsia'
    */
   secondary: TailwindColor | CustomColor;
   /**
    * Accent color name or custom color palette object
-   * @default 'fuchsia'
+   * @default 'cyan'
    */
   accent: TailwindColor | CustomColor;
   /**
@@ -86,7 +86,7 @@ type PresetConfigColors = {
    * Warn color name or custom color palette object
    * @default 'yellow'
    */
-  warn: TailwindColor | CustomColor;
+  warning: TailwindColor | CustomColor;
   /**
    * Default background color in light and dark modes
    * @default 'bg-white' and 'bg-gray-950'
@@ -154,10 +154,10 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
     colors: {
       gray: grayColor,
       primary: resolveColor(config.colors?.primary ?? "blue"),
-      secondary: resolveColor(config.colors?.secondary ?? "green"),
-      accent: resolveColor(config.colors?.accent ?? "fuchsia"),
+      secondary: resolveColor(config.colors?.secondary ?? "fuchsia"),
+      accent: resolveColor(config.colors?.accent ?? "cyan"),
       danger: resolveColor(config.colors?.danger ?? "red"),
-      warn: resolveColor(config.colors?.warn ?? "yellow"),
+      warning: resolveColor(config.colors?.warning ?? "yellow"),
       background: config.colors?.background ?? {
         light: "#ffffff",
         dark: grayColor[950],
@@ -238,7 +238,7 @@ export function createTailwindPreset(
           accent: resolvedConfig.colors.accent,
           gray: resolvedConfig.colors.gray,
           danger: resolvedConfig.colors.danger,
-          warn: resolvedConfig.colors.warn,
+          warning: resolvedConfig.colors.warning,
 
           // Just kept for original shadcn/ui compatibility, but not used by the glasscn components:
           input: getColorMix("var(--border)"),

@@ -56,8 +56,8 @@ const twStyles = {
       "dark:ring-offset-danger-900 dark:focus-visible:ring-danger-300",
     ],
     warning: [
-      "ring-offset-white focus-visible:ring-warn-900",
-      "dark:ring-offset-warn-900 dark:focus-visible:ring-warn-300",
+      "ring-offset-white focus-visible:ring-warning-900",
+      "dark:ring-offset-warning-900 dark:focus-visible:ring-warning-300",
     ],
   },
   colorVariants: {
@@ -155,25 +155,25 @@ const twStyles = {
     },
     warning: {
       default: [
-        "bg-warn-500 text-black hover:bg-warn-500/90",
-        "dark:bg-warn-500 dark:text-black dark:hover:bg-warn-500/90",
+        "bg-warning-500 text-black hover:bg-warning-500/90",
+        "dark:bg-warning-500 dark:text-black dark:hover:bg-warning-500/90",
       ],
       subtle: [
-        "bg-warn-100 text-warn-900 hover:bg-warn-100/80",
-        "dark:bg-warn-700 dark:text-warn-50 dark:hover:bg-warn-700/80",
+        "bg-warning-100 text-warning-900 hover:bg-warning-100/80",
+        "dark:bg-warning-700 dark:text-warning-50 dark:hover:bg-warning-700/80",
       ],
       outline: [
-        "border border-warn-300 bg-white hover:bg-warn-100 text-warn-900 hover:text-warn-900",
-        "dark:border-warn-800 dark:bg-warn-950 dark:hover:bg-warn-800",
-        "dark:text-warn-50 dark:hover:text-warn-50",
+        "border border-warning-300 bg-white hover:bg-warning-100 text-warning-900 hover:text-warning-900",
+        "dark:border-warning-800 dark:bg-warning-950 dark:hover:bg-warning-800",
+        "dark:text-warning-50 dark:hover:text-warning-50",
       ],
       ghost: [
-        "hover:bg-warn-100 hover:text-warn-900",
-        "dark:hover:bg-warn-700 dark:hover:text-warn-50",
+        "hover:bg-warning-100 hover:text-warning-900",
+        "dark:hover:bg-warning-700 dark:hover:text-warning-50",
       ],
       link: [
-        "text-warn-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
-        "dark:text-warn-500 dark:decoration-current",
+        "text-warning-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
+        "dark:text-warning-500 dark:decoration-current",
       ],
     },
   },

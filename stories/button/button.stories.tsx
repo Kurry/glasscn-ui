@@ -129,6 +129,29 @@ export const Secondary: Story = {
   ),
 };
 
+export const Accent: Story = {
+  render: (args) => (
+    <div className="flex gap-4">
+      <Button variant="default" color="accent" {...args}>
+        Default
+      </Button>
+      <Button variant="subtle" color="accent" {...args}>
+        Subtle
+      </Button>
+      <Button variant="outline" color="accent" {...args}>
+        Outline
+      </Button>
+      <Button variant="ghost" color="accent" {...args}>
+        Ghost
+      </Button>
+      <Button variant="link" color="accent" {...args}>
+        Link
+      </Button>
+    </div>
+  ),
+};
+
+
 export const Danger: Story = {
   render: (args) => (
     <div className="flex gap-4">

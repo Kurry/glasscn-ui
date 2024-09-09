@@ -8,7 +8,7 @@ shadcn/ui components with glassmorphism variants, with many extras to make your 
 
 - Component classes are defined at the top of each file, and chopped down into shorter lines
   to make them more readable and maintainable.
-- Color aliases for primary, secondary, gray, danger and warn colors. Easy to identify and refactor.
+- Color aliases for primary, secondary, gray, danger and warning colors. Easy to identify and refactor.
 - `createTailwindPreset()`: Switch your theme colors quickly, without having to rewrite CSS vars or classes.
 
 ### New components
@@ -26,7 +26,7 @@ shadcn/ui components with glassmorphism variants, with many extras to make your 
 - Toast: Allows up to 3 toast notifications to be shown at once. Improved spacing between them.
 
 Many components having a solid color (for example buttons), will now have a `color` prop to change the color to one of
-`default` (gray), `primary`, `secondary`, `danger` or `warn`.
+`default` (gray), `primary`, `secondary`, `danger` or `warning`.
 
 ### Opt-in Glassmorphic Style
 
@@ -53,7 +53,7 @@ import { createTailwindPreset } from "@itsjavi/glasscn-ui";
 const glasscnPreset = createTailwindPreset({
   baseRadius: "0.5em",
   colors: {
-    // For primary, secondary, gray, danger and warn colors,
+    // For primary, secondary, gray, danger and warning colors,
     // you can use any Tailwind color name, or a custom color palette.
     primary: "blue",
     secondary: "yellow",
@@ -70,7 +70,7 @@ const glasscnPreset = createTailwindPreset({
       900: "#111827",
     },
     danger: "red",
-    warn: "yellow",
+    warning: "yellow",
     background: {
       light: "#ffffff",
       dark: "#000000",
