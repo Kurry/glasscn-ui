@@ -47,6 +47,10 @@ const twStyles = {
       "ring-offset-white focus-visible:ring-secondary-900",
       "dark:ring-offset-secondary-900 dark:focus-visible:ring-secondary-300",
     ],
+    accent: [
+      "ring-offset-white focus-visible:ring-accent-900",
+      "dark:ring-offset-accent-900 dark:focus-visible:ring-accent-300",
+    ],
     danger: [
       "ring-offset-white focus-visible:ring-danger-900",
       "dark:ring-offset-danger-900 dark:focus-visible:ring-danger-300",
@@ -101,6 +105,29 @@ const twStyles = {
       link: [
         "text-secondary-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
         "dark:text-secondary-500 dark:decoration-current",
+      ],
+    },
+    accent: {
+      default: [
+        "bg-accent-600 text-white hover:bg-accent-600/90",
+        "dark:bg-accent-600 dark:text-white dark:hover:bg-accent-600/90",
+      ],
+      subtle: [
+        "bg-accent-100 text-accent-900 hover:bg-accent-100/80",
+        "dark:bg-accent-800 dark:text-accent-50 dark:hover:bg-accent-800/80",
+      ],
+      outline: [
+        "border border-accent-300 bg-white hover:bg-accent-100 text-accent-900 hover:text-accent-900",
+        "dark:border-accent-800 dark:bg-accent-950 dark:hover:bg-accent-800",
+        "dark:text-accent-50 dark:hover:text-accent-50",
+      ],
+      ghost: [
+        "hover:bg-accent-100 hover:text-accent-900",
+        "dark:hover:bg-accent-800 dark:hover:text-accent-50",
+      ],
+      link: [
+        "text-accent-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid",
+        "dark:text-accent-500 dark:decoration-current",
       ],
     },
     danger: {
@@ -165,6 +192,7 @@ const buttonVariants = cva(cn(twStyles.base), {
       default: "",
       primary: cn(twStyles.colors.primary),
       secondary: cn(twStyles.colors.secondary),
+      accent: cn(twStyles.colors.accent),
       danger: cn(twStyles.colors.danger),
       warning: cn(twStyles.colors.warning),
     },
@@ -244,6 +272,33 @@ const buttonVariants = cva(cn(twStyles.base), {
       variant: "link",
       color: "secondary",
       className: cn(twStyles.colorVariants.secondary.link),
+    },
+
+    // accent color variants
+    {
+      variant: "default",
+      color: "accent",
+      className: cn(twStyles.colorVariants.accent.default),
+    },
+    {
+      variant: "subtle",
+      color: "accent",
+      className: cn(twStyles.colorVariants.accent.subtle),
+    },
+    {
+      variant: "outline",
+      color: "accent",
+      className: cn(twStyles.colorVariants.accent.outline),
+    },
+    {
+      variant: "ghost",
+      color: "accent",
+      className: cn(twStyles.colorVariants.accent.ghost),
+    },
+    {
+      variant: "link",
+      color: "accent",
+      className: cn(twStyles.colorVariants.accent.link),
     },
     // danger color variants
     {

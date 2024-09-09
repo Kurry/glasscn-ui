@@ -34,7 +34,7 @@ const meta = {
     },
     color: {
       control: "select",
-      options: ["default", "primary", "secondary", "danger", "warning"],
+      options: ["default", "primary", "secondary", "accent", "danger", "warning"],
     },
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
