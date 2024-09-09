@@ -1,12 +1,25 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
+import { type VariantProps, cva } from "class-variance-authority";
 
 const twStyles = {
-  card: [
-    "rounded-lg border border-gray-200 bg-white text-neutral-950 shadow-sm",
-    "dark:border-gray-800 dark:bg-gray-950 dark:text-neutral-50",
-  ],
+  card: ["rounded-lg shadow-sm"],
+  colors: {
+    primary:
+      "text-foreground-dark bg-primary dark:bg-primary border-primary dark:border-primary",
+    secondary:
+      "text-foreground-dark bg-secondary dark:bg-secondary border-secondary dark:border-secondary",
+    accent:
+      "text-foreground-dark bg-accent dark:bg-accent border-accent dark:border-accent",
+    warning:
+      "text-foreground-dark bg-warning dark:bg-warning border-warning dark:border-warning",
+    danger:
+      "text-foreground-dark bg-danger dark:bg-danger border-danger dark:border-danger",
+    // success: "bg-success",
+    // info: "bg-info",
+  },
   header: "flex flex-col space-y-1.5 p-6",
   title: "text-2xl font-semibold leading-none tracking-tight",
   description: "text-sm text-neutral-500 dark:text-neutral-400",
@@ -14,12 +27,36 @@ const twStyles = {
   footer: "flex items-center p-6 pt-0",
 };
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn(twStyles.card, className)} {...props} />
-));
+const cardVariants = cva(cn(twStyles.card), {
+  variants: {
+    ...glassCvaConfig.variants,
+    color: {
+      default: "",
+      primary: cn(twStyles.colors.primary),
+      secondary: cn(twStyles.colors.secondary),
+      accent: cn(twStyles.colors.accent),
+      warning: cn(twStyles.colors.warning),
+      danger: cn(twStyles.colors.danger),
+    },
+  },
+  defaultVariants: {
+    ...glassCvaConfig.defaultVariants,
+    color: "default",
+  },
+});
+interface CardProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">,
+    VariantProps<typeof cardVariants> {}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant, blur, color, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(cardVariants({ variant, blur, color }), className)}
+      {...props}
+    />
+  ),
+);
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
