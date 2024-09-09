@@ -26,6 +26,10 @@
       "section": "Testing"
     },
     {
+      "type": "ci",
+      "section": "Other"
+    },
+    {
       "type": "chore",
       "section": "Other"
     },

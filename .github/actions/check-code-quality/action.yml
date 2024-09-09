@@ -19,6 +19,6 @@ runs:
         shell: bash
         run: pnpm publint
 
-      - name: 'Build storybook'
-        shell: bash
-        run: pnpm build:storybook
+      # - name: 'Build storybook'
+      #   shell: bash
+      #   run: pnpm build:storybook
