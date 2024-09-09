@@ -21,7 +21,7 @@ const meta: Meta<typeof DropdownMenuContent> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["standard", "glass"],
+      options: ["solid", "glass"],
     },
     blur: {
       control: "select",

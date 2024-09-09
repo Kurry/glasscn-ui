@@ -9,7 +9,7 @@ const meta: Meta<typeof AlertDialogContent> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["standard", "glass"],
+      options: ["solid", "glass"],
     },
     blur: {
       control: "select",

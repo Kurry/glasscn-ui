@@ -12,11 +12,11 @@ const glassSurfaceStyles = {
 export const glassCvaConfig = {
   variants: {
     variant: {
+      solid: "",
       glass: cn([
         ...glassSurfaceStyles.glassBorder,
         ...glassSurfaceStyles.glassBg,
       ]),
-      standard: "",
     },
     blur: {
       none: "",
