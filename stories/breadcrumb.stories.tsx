@@ -19,13 +19,7 @@ const meta: Meta<typeof Breadcrumb> = {
   title: "UI/Breadcrumb",
   component: Breadcrumb,
   // tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <div className="bg-decorator">
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [],
 };
 
 export default meta;

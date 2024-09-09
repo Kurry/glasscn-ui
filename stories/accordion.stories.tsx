@@ -5,13 +5,7 @@ const meta: Meta<typeof Accordion> = {
   title: 'UI/Accordion',
   component: Accordion,
   // tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div className="bg-decorator">
-        <Story />
-      </div>
-    ),
-  ],
+  decorators: [],
 };
 
 export default meta;

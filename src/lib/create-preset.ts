@@ -183,7 +183,7 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
         dark: grayColor[800],
       },
     },
-  }
+  };
 
   return finalConfig;
 }

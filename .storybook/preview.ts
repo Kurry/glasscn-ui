@@ -17,6 +17,32 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        method: "alphabetical",
+      },
+    },
+    backgrounds: {
+      default: "",
+      values: [
+        {
+          name: "bg-background",
+          value: "var(--background)",
+        },
+        {
+          name: "black",
+          value: "#000000",
+        },
+        {
+          name: "gray",
+          value: "#808080",
+        },
+        {
+          name: "white",
+          value: "#ffffff",
+        },
+      ],
+    },
   },
 };
 
@@ -25,8 +51,8 @@ export const decorators = [
     themes: {
       light: "light",
       dark: "dark",
-      lightGlass: "light glass",
-      darkGlass: "dark glass",
+      // lightGlass: "light glass",
+      // darkGlass: "dark glass",
     },
     defaultTheme: "dark",
   }),
