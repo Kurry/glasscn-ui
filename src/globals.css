@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --background: theme('colors.background.light');
+    --background-muted: theme('colors.background.muted.light');
     --foreground: theme('colors.foreground.light');
     --foreground-muted: theme('colors.foreground.muted.light');
     --border: theme('colors.border.light');
@@ -13,6 +14,7 @@
 
   .dark {
     --background: theme('colors.background.dark');
+    --background-muted: theme('colors.background.muted.dark');
     --foreground: theme('colors.foreground.dark');
     --foreground-muted: theme('colors.foreground.muted.dark');
     --border: theme('colors.border.dark');

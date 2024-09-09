@@ -68,6 +68,11 @@ type PresetConfigColors = {
    */
   secondary: TailwindColor | CustomColor;
   /**
+   * Accent color name or custom color palette object
+   * @default 'fuchsia'
+   */
+  accent: TailwindColor | CustomColor;
+  /**
    * Gray color name or custom color palette object
    * @default 'neutral'
    */
@@ -87,6 +92,11 @@ type PresetConfigColors = {
    * @default 'bg-white' and 'bg-gray-950'
    */
   background: DarkLightColor;
+  /**
+   * Default muted background color in light and dark modes
+   * @default 'bg-gray-100' and 'bg-gray-900'
+   */
+  backgroundMuted: DarkLightColor;
   /**
    * Default foreground color in light and dark modes
    * @default 'text-gray-950' and 'text-white'
@@ -130,12 +140,17 @@ const defaultConfig: PresetConfig = {
   colors: {
     primary: "blue",
     secondary: "fuchsia",
+    accent: "fuchsia",
     gray: "neutral",
     danger: "red",
     warn: "yellow",
     background: {
       light: "#ffffff",
       dark: safeTwColors.gray[950],
+    },
+    backgroundMuted: {
+      light: safeTwColors.gray[100],
+      dark: safeTwColors.gray[900],
     },
     foreground: {
       light: safeTwColors.gray[950],
@@ -177,6 +192,7 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
 
   resolvedConfig.colors.primary = resolveColor(colors.primary);
   resolvedConfig.colors.secondary = resolveColor(colors.secondary);
+  resolvedConfig.colors.accent = resolveColor(colors.accent);
   resolvedConfig.colors.gray = resolveColor(colors.gray);
   resolvedConfig.colors.danger = resolveColor(colors.danger);
   resolvedConfig.colors.warn = resolveColor(colors.warn);
@@ -203,7 +219,11 @@ export function createTailwindPreset(
             DEFAULT: getColorMix("var(--background)"),
             light: resolvedConfig.colors.background.light,
             dark: resolvedConfig.colors.background.dark,
-            // muted: resolvedConfig.colors.backgroundMuted,
+            muted: {
+              DEFAULT: getColorMix("var(--background-muted)"),
+              light: resolvedConfig.colors.backgroundMuted.light,
+              dark: resolvedConfig.colors.backgroundMuted.dark,
+            },
           },
           foreground: {
             DEFAULT: getColorMix("var(--foreground)"),
@@ -227,9 +247,30 @@ export function createTailwindPreset(
           },
           primary: resolvedConfig.colors.primary,
           secondary: resolvedConfig.colors.secondary,
+          accent: resolvedConfig.colors.accent,
           gray: resolvedConfig.colors.gray,
           danger: resolvedConfig.colors.danger,
           warn: resolvedConfig.colors.warn,
+
+          // Just kept for original shadcn/ui compatibility, but not used by the glasscn components:
+          input: getColorMix("var(--border)"),
+          ring: "currentColor",
+          destructive: {
+            DEFAULT: resolvedConfig.colors.danger[500],
+            foreground: getColorMix("var(--foreground)"),
+          },
+          muted: {
+            DEFAULT: getColorMix("var(--background-muted)"),
+            foreground: getColorMix("var(--foreground-muted)"),
+          },
+          popover: {
+            DEFAULT: getColorMix("var(--background-muted)"),
+            foreground: getColorMix("var(--foreground-muted)"),
+          },
+          card: {
+            DEFAULT: getColorMix("var(--background-muted)"),
+            foreground: getColorMix("var(--foreground-muted)"),
+          },
         },
         fontWeight: {
           base: "400",

@@ -110,19 +110,50 @@ export default {
 
 @layer base {
   :root {
-    --background: theme("colors.background.DEFAULT");
-    --foreground: theme("colors.foreground.DEFAULT");
-    --foreground-muted: theme("colors.foreground.muted.DEFAULT");
-    --border: theme("colors.border.DEFAULT");
-    --border-muted: theme("colors.border.muted.DEFAULT");
+    --background: theme('colors.background.light');
+    --background-muted: theme('colors.background.muted.light');
+    --foreground: theme('colors.foreground.light');
+    --foreground-muted: theme('colors.foreground.muted.light');
+    --border: theme('colors.border.light');
+    --border-muted: theme('colors.border.muted.light');
   }
 
   .dark {
-    --background: theme("colors.background.dark");
-    --foreground: theme("colors.foreground.dark");
-    --foreground-muted: theme("colors.foreground.muted.dark");
-    --border: theme("colors.border.dark");
-    --border-muted: theme("colors.border.muted.dark");
+    --background: theme('colors.background.dark');
+    --background-muted: theme('colors.background.muted.dark');
+    --foreground: theme('colors.foreground.dark');
+    --foreground-muted: theme('colors.foreground.muted.dark');
+    --border: theme('colors.border.dark');
+    --border-muted: theme('colors.border.muted.dark');
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  * {
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  [inert] {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 ```
