@@ -23,12 +23,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * add support for fallback, accent and bg muted colors ([e312f14](https://github.com/itsjavi/glasscn-ui/commit/e312f149489a7bddeac018dfb6bf5413e4114100))
 
-### 0.4.3 (2024-09-08)
-
-### 0.4.2 (2024-09-05)
-
-### 0.4.1 (2024-09-04)
-
 ### 0.3.1 (2024-09-04)
 
 
@@ -56,10 +50,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * **tw:** allow custom colors in createPreset ([c43edd0](https://github.com/itsjavi/glasscn-ui/commit/c43edd0db835b49088ad56ffb560c055c6087442))
-
-### 0.2.17 (2024-09-02)
-
-### 0.2.16 (2024-09-02)
 
 ### 0.2.15 (2024-09-02)
 
@@ -89,8 +79,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **ui:** add RSC compatibility ([1ea2f75](https://github.com/itsjavi/glasscn-ui/commit/1ea2f7542ff2c9b84bb52b00705a4516a5b6e915))
 
-### 0.2.11 (2024-09-02)
-
 ### 0.2.10 (2024-09-02)
 
 
@@ -118,8 +106,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * **sb:** bgs base path. ([6761dd7](https://github.com/itsjavi/glasscn-ui/commit/6761dd7f27a8f0d69ea5398253107f8fbad395f7))
-
-### 0.2.6 (2024-09-02)
 
 ### 0.2.5 (2024-09-02)
 
@@ -156,9 +142,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * linting ([4df32ec](https://github.com/itsjavi/glasscn-ui/commit/4df32eccd3af5bb7ea602da90c2e5fc925a01997))
 
-### 0.1.13 (2024-09-01)
-
-### 0.1.12 (2024-09-01)
 
 ### 0.1.11 (2024-08-31)
 
@@ -167,27 +150,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **sb:** improve styles ([82f80f4](https://github.com/itsjavi/glasscn-ui/commit/82f80f4c0eb23bd6e7a42ad220a3e497f25ee232))
 
-### 0.1.10 (2024-08-31)
-
 ### 0.1.9 (2024-08-31)
 
 
 ### Features
 
 * **ui:** add stories for all components ([ef146f9](https://github.com/itsjavi/glasscn-ui/commit/ef146f9896d827998e814a6bf5bc9ddeb800213e))
-
-### 0.1.8 (2024-08-31)
-
-### 0.1.7 (2024-08-31)
-
-### 0.1.6 (2024-08-31)
-
-### 0.1.5 (2024-08-31)
-
-### 0.1.4 (2024-08-31)
-
-### 0.1.3 (2024-08-31)
-
-### 0.1.2 (2024-08-31)
-
-### 0.1.1 (2024-08-31)
