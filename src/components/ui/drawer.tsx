@@ -4,11 +4,12 @@ import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
+import { type VariantProps, cva } from "class-variance-authority";
 
 const twStyles = {
   content: [
     "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px]",
-    "border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950",
   ],
   overlay: "fixed inset-0 z-50 bg-black/80",
   handle:
@@ -48,15 +49,20 @@ const DrawerOverlay = React.forwardRef<
 ));
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
+const drawerContentVariants = cva(cn(twStyles.content), glassCvaConfig);
+interface DrawerContentProps
+  extends React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
+    VariantProps<typeof drawerContentVariants> {}
+
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  DrawerContentProps
+>(({ className, children, variant, blur, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
     <DrawerPrimitive.Content
       ref={ref}
-      className={cn(twStyles.content, className)}
+      className={cn(drawerContentVariants({ variant, blur }), className)}
       {...props}
     >
       <div className={twStyles.handle} />
