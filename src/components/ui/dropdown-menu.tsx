@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { glassCvaConfig } from "@/recipes/glass-cva";
 import { type VariantProps, cva } from "class-variance-authority";
 
-const twStyles = {
+export const dropDownTwStyles = {
   content: [
     "z-50 min-w-[8rem] overflow-hidden rounded-md border",
     "p-1 shadow-lg data-[state=open]:animate-in",
@@ -28,7 +28,7 @@ const twStyles = {
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     // colors:
     // "focus:bg-gray-100 focus:text-neutral-900",
-    "focus:bg-primary-600 focus:text-primary-50",
+    "focus:bg-accent-600 focus:text-accent-50",
   ],
   checkboxItem: [
     "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
@@ -36,7 +36,7 @@ const twStyles = {
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     // colors:
     // "focus:bg-gray-100 focus:text-neutral-900",
-    "focus:bg-primary-600 focus:text-primary-50",
+    "focus:bg-accent-600 focus:text-accent-50",
   ],
   radioItem: [
     "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
@@ -44,7 +44,7 @@ const twStyles = {
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     // colors:
     // "focus:bg-gray-100 focus:text-neutral-900",
-    "focus:bg-primary-600 focus:text-primary-50",
+    "focus:bg-accent-600 focus:text-accent-50",
   ],
   label: "px-2 py-1.5 text-sm font-semibold",
   separator: "mx-1 my-1 h-px bg-gray-500/30",
@@ -54,8 +54,8 @@ const twStyles = {
     // colors:
     // "focus:bg-gray-100 data-[state=open]:bg-gray-100",
     // "dark:focus:bg-gray-800 dark:data-[state=open]:bg-gray-800",
-    "focus:text-primary-50",
-    "focus:focus:bg-primary-600 data-[state=open]:focus:bg-primary-600",
+    "focus:text-accent-50",
+    "focus:focus:bg-accent-600 data-[state=open]:focus:bg-accent-600",
   ],
   subContent: [
     "z-50 min-w-[8rem] overflow-hidden rounded-md border",
@@ -77,9 +77,12 @@ const twStyles = {
   circleIcon: "h-2 w-2 fill-current",
 };
 
-const dropdownMenuContentVariants = cva(cn(twStyles.content), glassCvaConfig);
+const dropdownMenuContentVariants = cva(
+  cn(dropDownTwStyles.content),
+  glassCvaConfig,
+);
 const dropdownMenuSubContentVariants = cva(
-  cn(twStyles.subContent),
+  cn(dropDownTwStyles.subContent),
   glassCvaConfig,
 );
 
@@ -108,11 +111,11 @@ const DropdownMenuSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
-    className={cn(twStyles.subTrigger, inset && "pl-8", className)}
+    className={cn(dropDownTwStyles.subTrigger, inset && "pl-8", className)}
     {...props}
   >
     {children}
-    <ChevronRight className={twStyles.chevronRight} />
+    <ChevronRight className={dropDownTwStyles.chevronRight} />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -154,7 +157,7 @@ const DropdownMenuItem = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
-    className={cn(twStyles.item, inset && "pl-8", className)}
+    className={cn(dropDownTwStyles.item, inset && "pl-8", className)}
     {...props}
   />
 ));
@@ -166,13 +169,13 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 >(({ className, children, checked, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
-    className={cn(twStyles.checkboxItem, className)}
+    className={cn(dropDownTwStyles.checkboxItem, className)}
     checked={checked}
     {...props}
   >
-    <span className={twStyles.itemIndicatorWrapper}>
+    <span className={dropDownTwStyles.itemIndicatorWrapper}>
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check className={twStyles.checkIcon} />
+        <Check className={dropDownTwStyles.checkIcon} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -187,12 +190,12 @@ const DropdownMenuRadioItem = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
-    className={cn(twStyles.radioItem, className)}
+    className={cn(dropDownTwStyles.radioItem, className)}
     {...props}
   >
-    <span className={twStyles.itemIndicatorWrapper}>
+    <span className={dropDownTwStyles.itemIndicatorWrapper}>
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className={twStyles.circleIcon} />
+        <Circle className={dropDownTwStyles.circleIcon} />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -208,7 +211,7 @@ const DropdownMenuLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={cn(twStyles.label, inset && "pl-8", className)}
+    className={cn(dropDownTwStyles.label, inset && "pl-8", className)}
     {...props}
   />
 ));
@@ -220,7 +223,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn(twStyles.separator, className)}
+    className={cn(dropDownTwStyles.separator, className)}
     {...props}
   />
 ));
@@ -230,7 +233,9 @@ const DropdownMenuShortcut = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
-  return <span className={cn(twStyles.shortcut, className)} {...props} />;
+  return (
+    <span className={cn(dropDownTwStyles.shortcut, className)} {...props} />
+  );
 };
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 

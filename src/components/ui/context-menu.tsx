@@ -5,61 +5,11 @@ import { Check, ChevronRight, Circle } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
+import { type VariantProps, cva } from "class-variance-authority";
+import { dropDownTwStyles } from "./dropdown-menu";
 
-const twStyles = {
-  subTrigger: [
-    "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
-    "focus:bg-gray-100 focus:text-neutral-900 data-[state=open]:bg-gray-100",
-    "data-[state=open]:text-neutral-900 dark:focus:bg-gray-800 dark:focus:text-neutral-50",
-    "dark:data-[state=open]:bg-gray-800 dark:data-[state=open]:text-neutral-50",
-  ],
-  chevronRight: "ml-auto h-4 w-4",
-  checkboxItemIndicator:
-    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-  checkIcon: "h-4 w-4",
-  radioItemIndicator:
-    "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-  circleIcon: "h-2 w-2 fill-current",
-  subContent: [
-    "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200",
-    "bg-white p-1 text-neutral-950 shadow-lg data-[state=open]:animate-in",
-    "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
-    "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-    "dark:border-gray-800 dark:bg-gray-950 dark:text-neutral-50",
-  ],
-  content: [
-    "z-50 min-w-[8rem] overflow-hidden rounded-md border border-gray-200",
-    "bg-white p-1 text-neutral-950 shadow-md animate-in fade-in-80",
-    "data-[state=open]:animate-in data-[state=closed]:animate-out",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-    "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
-    "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-    "dark:border-gray-800 dark:bg-gray-950 dark:text-neutral-50",
-  ],
-  item: [
-    "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm",
-    "outline-none focus:bg-gray-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
-    "data-[disabled]:opacity-50 dark:focus:bg-gray-800 dark:focus:text-neutral-50",
-  ],
-  checkboxItem: [
-    "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
-    "outline-none focus:bg-gray-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
-    "data-[disabled]:opacity-50 dark:focus:bg-gray-800 dark:focus:text-neutral-50",
-  ],
-  radioItem: [
-    "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm",
-    "outline-none focus:bg-gray-100 focus:text-neutral-900 data-[disabled]:pointer-events-none",
-    "data-[disabled]:opacity-50 dark:focus:bg-gray-800 dark:focus:text-neutral-50",
-  ],
-  label:
-    "px-2 py-1.5 text-sm font-semibold text-neutral-950 dark:text-neutral-50",
-  separator: "-mx-1 my-1 h-px bg-gray-200 dark:bg-gray-800",
-  shortcut:
-    "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
-};
+const twStyles = dropDownTwStyles;
 
 const ContextMenu = ContextMenuPrimitive.Root;
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
@@ -85,26 +35,41 @@ const ContextMenuSubTrigger = React.forwardRef<
 ));
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
 
+const contextMenuSubContentVariants = cva(
+  cn(twStyles.subContent),
+  glassCvaConfig,
+);
+interface ContextMenuSubContentProps
+  extends React.ComponentPropsWithoutRef<
+      typeof ContextMenuPrimitive.SubContent
+    >,
+    VariantProps<typeof contextMenuSubContentVariants> {}
+
 const ContextMenuSubContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.SubContent>,
-  React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent>
->(({ className, ...props }, ref) => (
+  ContextMenuSubContentProps
+>(({ className, variant, blur, ...props }, ref) => (
   <ContextMenuPrimitive.SubContent
     ref={ref}
-    className={cn(twStyles.subContent, className)}
+    className={cn(contextMenuSubContentVariants({ variant, blur }), className)}
     {...props}
   />
 ));
 ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName;
 
+const contextMenuContentVariants = cva(cn(twStyles.content), glassCvaConfig);
+interface ContextMenuContentProps
+  extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>,
+    VariantProps<typeof contextMenuContentVariants> {}
+
 const ContextMenuContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>
->(({ className, ...props }, ref) => (
+  ContextMenuContentProps
+>(({ className, variant, blur, ...props }, ref) => (
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
       ref={ref}
-      className={cn(twStyles.content, className)}
+      className={cn(contextMenuContentVariants({ variant, blur }), className)}
       {...props}
     />
   </ContextMenuPrimitive.Portal>
@@ -135,7 +100,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <span className={cn(twStyles.checkboxItemIndicator)}>
+    <span className={cn(twStyles.itemIndicatorWrapper)}>
       <ContextMenuPrimitive.ItemIndicator>
         <Check className={cn(twStyles.checkIcon)} />
       </ContextMenuPrimitive.ItemIndicator>
@@ -155,7 +120,7 @@ const ContextMenuRadioItem = React.forwardRef<
     className={cn(twStyles.radioItem, className)}
     {...props}
   >
-    <span className={cn(twStyles.radioItemIndicator)}>
+    <span className={cn(twStyles.itemIndicatorWrapper)}>
       <ContextMenuPrimitive.ItemIndicator>
         <Circle className={cn(twStyles.circleIcon)} />
       </ContextMenuPrimitive.ItemIndicator>
