@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/itsjavi/glasscn-ui/compare/v0.4.6...v0.5.1) (2024-09-09)
+
+
+### Features
+
+* **card:** add glass variant support ([4be3dff](https://github.com/itsjavi/glasscn-ui/commit/4be3dffb77a010e1ae7cd39780536eb3bb871391))
+* **command:** add glass variant support ([e3a7774](https://github.com/itsjavi/glasscn-ui/commit/e3a7774fdbf01718d990a8ec021599ee68051edd))
+* **context-menu:** add glass variant support ([dee900d](https://github.com/itsjavi/glasscn-ui/commit/dee900d6fc357edcb06b44c3471213e283e61335))
+* **dialog:** add glass variant support ([e6e6946](https://github.com/itsjavi/glasscn-ui/commit/e6e6946b68acdcaf5da7769cc66e899ee52d6b0c))
+* **drawer:** add glass variant support ([20e23cd](https://github.com/itsjavi/glasscn-ui/commit/20e23cd88c1b9d174228c17fc44f51012a621726))
+
+
+### Other
+
+* set accent color same as primary by default ([3e9eedf](https://github.com/itsjavi/glasscn-ui/commit/3e9eedf6230f69e6bfac7cb3fa5e47a34b0e7c4b))
+
+
+### Refactorings
+
+* rename warn to warning color ([c4135d7](https://github.com/itsjavi/glasscn-ui/commit/c4135d746a920c99f0408de122d901917ac14d2a))
+* unify border styles for containers ([e5d078e](https://github.com/itsjavi/glasscn-ui/commit/e5d078e3f9a001aaa36092e4a2729d4d9877dfeb))
+
 ### [0.4.6](https://github.com/itsjavi/glasscn-ui/compare/v0.4.5...v0.4.6) (2024-09-09)
 
 
