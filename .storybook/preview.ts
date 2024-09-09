@@ -23,7 +23,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: "",
+      default: "bg-background",
       values: [
         {
           name: "bg-background",

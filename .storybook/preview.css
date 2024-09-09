@@ -26,17 +26,12 @@
 
 html {
   width: 100%;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   background: url("/glasscn-ui/bgs/retro-future-01.png") no-repeat center center fixed;
   background-size: cover;
   animation: bg-rotator 40s linear alternate infinite;
   /* 10s per image */
-}
-
-html, body {
-  min-height: 100dvh;
 }
 
 body {
