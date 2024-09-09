@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/itsjavi/glasscn-ui/compare/v0.4.4...v0.4.5) (2024-09-09)
+
+
+### Features
+
+* **alert:** add glass variant support ([96efbc3](https://github.com/itsjavi/glasscn-ui/commit/96efbc3d72fdd49762125c814261729c3804eb38))
+* **button:** add blur to outline style ([d06fb47](https://github.com/itsjavi/glasscn-ui/commit/d06fb47081e8573add59374f5bb1b2502529df34))
+* **button:** support accent color ([6599cc9](https://github.com/itsjavi/glasscn-ui/commit/6599cc95f8ce74fcee0b5a426b6bdfe664b9b216))
+
+
+### Bug Fixes
+
+* preset was not resolving gray properly ([9bf620a](https://github.com/itsjavi/glasscn-ui/commit/9bf620a4bd667546a4fdf3a339eab8699d08481e))
+
 ### 0.4.4 (2024-09-09)
 
 
