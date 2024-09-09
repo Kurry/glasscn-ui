@@ -5,13 +5,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof DrawerContent> = {
   title: 'UI/Drawer',
-  // component: DrawerContent,
+  component: DrawerContent,
   // tags: ['autodocs'],
   ...glassStorybookConfig
 };
 
 export default meta;
-type Story = StoryObj<typeof Drawer>;
+type Story = StoryObj<typeof DrawerContent>;
 
 export const Default: Story = {
   render: (args) => (

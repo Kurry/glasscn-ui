@@ -24,8 +24,6 @@ const twStyles = {
     "data-[state=closed]:slide-out-to-top-[48%]",
     "data-[state=open]:slide-in-from-left-1/2",
     "data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
-    "border-gray-200 bg-white",
-    "dark:border-gray-800 dark:bg-gray-950",
   ],
   header: ["flex flex-col space-y-2 text-center sm:text-left"],
   footer: ["flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"],

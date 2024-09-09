@@ -25,6 +25,8 @@ const twStyles = {
     "[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
     "dark:[&_[cmdk-group-heading]]:text-neutral-400",
   ],
+  // separator: "-mx-1 h-px bg-gray-200 dark:bg-gray-800",
+  separator: "mx-1 my-1 h-px bg-gray-500/30",
   inputWrapper: "flex items-center border-b px-3 border-gray-500/30",
   input: [
     "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none",
@@ -39,8 +41,6 @@ const twStyles = {
     "[&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-neutral-500",
     "dark:text-neutral-50 dark:[&_[cmdk-group-heading]]:text-neutral-400",
   ],
-  // separator: "-mx-1 h-px bg-gray-200 dark:bg-gray-800",
-  separator: "mx-1 my-1 h-px bg-gray-500/30",
   item: [
     "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm",
     "outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",

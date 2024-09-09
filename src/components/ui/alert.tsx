@@ -6,9 +6,9 @@ import { glassCvaConfig } from "@/recipes/glass-cva";
 
 const twStyles = {
   base: [
-    "relative w-full rounded-lg border border-gray-200 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px]",
+    "relative w-full rounded-lg p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px]",
     "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-current",
-    "dark:border-gray-800 dark:[&>svg]:text-current",
+    "dark:[&>svg]:text-current",
   ],
   defaultVariant: [
     // "bg-white dark:bg-gray-950 text-neutral-950 dark:text-neutral-50",

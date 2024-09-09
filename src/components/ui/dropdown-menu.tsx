@@ -10,7 +10,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 
 export const dropDownTwStyles = {
   content: [
-    "z-50 min-w-[8rem] overflow-hidden rounded-md border",
+    "z-50 min-w-[8rem] overflow-hidden rounded-md",
     "p-1 shadow-lg data-[state=open]:animate-in",
     "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
     "data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95",
@@ -18,7 +18,7 @@ export const dropDownTwStyles = {
     "data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2",
     "data-[side=top]:slide-in-from-bottom-2",
     // colors:
-    "border-gray-200 dark:border-gray-800",
+    // "border-gray-200 dark:border-gray-800",
     "bg-white text-neutral-950",
     "dark:bg-gray-950 dark:text-neutral-50",
   ],
@@ -58,7 +58,7 @@ export const dropDownTwStyles = {
     "focus:focus:bg-accent-600 data-[state=open]:focus:bg-accent-600",
   ],
   subContent: [
-    "z-50 min-w-[8rem] overflow-hidden rounded-md border",
+    "z-50 min-w-[8rem] overflow-hidden rounded-md",
     "p-1 shadow-lg data-[state=open]:animate-in",
     "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
     "data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95",
@@ -66,7 +66,7 @@ export const dropDownTwStyles = {
     "data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2",
     "data-[side=top]:slide-in-from-bottom-2",
     // colors:
-    "border-gray-200 dark:border-gray-800",
+    // "border-gray-200 dark:border-gray-800",
     "bg-white text-neutral-950",
     "dark:bg-gray-950 dark:text-neutral-50",
   ],
