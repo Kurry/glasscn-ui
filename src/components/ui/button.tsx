@@ -27,6 +27,7 @@ const twStyles = {
       "border border-gray-300 bg-white hover:bg-gray-100 text-gray-900 hover:text-gray-900",
       "dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800",
       "dark:text-gray-50 dark:hover:text-gray-50 bg-opacity-30 dark:bg-opacity-30",
+      "backdrop-blur-sm",
     ],
     ghost: [
       "hover:bg-gray-100 hover:text-gray-900",
