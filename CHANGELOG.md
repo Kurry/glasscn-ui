@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/itsjavi/glasscn-ui/compare/v0.4.5...v0.4.6) (2024-09-09)
+
+
+### Other
+
+* add versionrc config ([75489e9](https://github.com/itsjavi/glasscn-ui/commit/75489e9365a5a70db85b214389537381f175d4b5))
+
 ### [0.4.5](https://github.com/itsjavi/glasscn-ui/compare/v0.4.4...v0.4.5) (2024-09-09)
 
 
