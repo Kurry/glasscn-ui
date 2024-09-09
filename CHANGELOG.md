@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/itsjavi/glasscn-ui/compare/v0.5.1...v0.5.2) (2024-09-09)
+
+
+### Other
+
+* dont build storybook on quality checks ([b67a2cf](https://github.com/itsjavi/glasscn-ui/commit/b67a2cf00e834282ff3b9755de13779d63df154e))
+
 ### [0.5.1](https://github.com/itsjavi/glasscn-ui/compare/v0.4.6...v0.5.1) (2024-09-09)
 
 
