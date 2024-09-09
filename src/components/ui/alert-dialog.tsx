@@ -50,13 +50,13 @@ const AlertDialogOverlay = React.forwardRef<
 AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
 
 const alertDialogContentVariants = cva(cn(twStyles.content), glassCvaConfig);
-export interface AlertDialogProps
+export interface AlertDialogContentProps
   extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>,
     VariantProps<typeof alertDialogContentVariants> {}
 
 const AlertDialogContent = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Content>,
-  AlertDialogProps
+  AlertDialogContentProps
 >(({ className, blur, variant, ...props }, ref) => (
   <AlertDialogPortal>
     <AlertDialogOverlay />

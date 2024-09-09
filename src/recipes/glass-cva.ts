@@ -4,19 +4,24 @@ import { cva } from "class-variance-authority";
 // type CvaOptionsWithoutUndefined<T> = Exclude<Parameters<typeof cva<T>>[1], undefined>;
 
 const glassSurfaceStyles = {
-  glassBorder: ["border-gray-200/60 dark:border-gray-600/60"],
+  solidBg: ["bg-white dark:bg-gray-950"],
+  solidBorder: ["border-gray-300 dark:border-gray-800"],
   glassBg: ["bg-white/60 dark:bg-gray-950/50"],
+  glassBorder: ["border-gray-200/60 dark:border-gray-600/60"],
   // glassInnerShadow: ["shadow-inset-white", "dark:shadow-inset-gray"], // this overrides the outset shadow.
 };
 
 export const glassCvaConfig = {
   variants: {
     variant: {
-      solid: "",
-      glass: cn([
+      solid: cn(
+        ...glassSurfaceStyles.solidBg,
+        ...glassSurfaceStyles.solidBorder,
+      ),
+      glass: cn(
         ...glassSurfaceStyles.glassBorder,
         ...glassSurfaceStyles.glassBg,
-      ]),
+      ),
     },
     blur: {
       none: "",
@@ -36,6 +41,23 @@ export const glassCvaConfig = {
     variant: "glass",
     blur: "md",
     // innerGlow: false,
+  },
+} as const;
+
+export const glassStorybookConfig = {
+  argTypes: {
+    variant: {
+      control: "select",
+      options: Object.keys(glassCvaConfig.variants.variant),
+    },
+    blur: {
+      control: "select",
+      options: Object.keys(glassCvaConfig.variants.blur),
+    },
+  },
+  args: {
+    variant: glassCvaConfig.defaultVariants.variant,
+    blur: glassCvaConfig.defaultVariants.blur,
   },
 } as const;
 

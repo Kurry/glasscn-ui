@@ -2,21 +2,21 @@ import { type VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
 
 const twStyles = {
   base: [
     "relative w-full rounded-lg border border-gray-200 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px]",
-    "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-neutral-950",
-    "dark:border-gray-800 dark:[&>svg]:text-neutral-50",
+    "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-current",
+    "dark:border-gray-800 dark:[&>svg]:text-current",
   ],
   defaultVariant: [
-    "bg-white text-neutral-950 dark:bg-gray-950 dark:text-neutral-50",
+    // "bg-white dark:bg-gray-950 text-neutral-950 dark:text-neutral-50",
   ],
   destructiveVariant: [
-    "border-danger-500/50 text-danger-500 dark:border-danger-500 [&>svg]:text-danger-500",
-    "dark:border-danger-900/50 dark:text-danger-900 dark:dark:border-danger-900",
-    "dark:[&>svg]:text-danger-900",
-    "bg-danger-950/20",
+    "border-danger-600 dark:border-danger-600",
+    "text-danger-600 dark:text-danger-600",
+    // "[&>svg]:text-current dark:[&>svg]:text-current",
   ],
   title: ["mb-1 font-medium leading-none tracking-tight"],
   description: ["text-sm [&_p]:leading-relaxed"],
@@ -24,24 +24,33 @@ const twStyles = {
 
 const alertVariants = cva(cn(twStyles.base), {
   variants: {
-    variant: {
+    ...glassCvaConfig.variants,
+    color: {
       default: cn(twStyles.defaultVariant),
       destructive: cn(twStyles.destructiveVariant),
     },
   },
   defaultVariants: {
-    variant: "default",
+    color: "default",
+    ...glassCvaConfig.defaultVariants,
   },
+  compoundVariants: [
+    {
+      color: "destructive",
+      variant: "glass",
+      // className: "bg-transparent dark:bg-transparent",
+    },
+  ],
 });
 
 const Alert = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<"div"> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
+>(({ className, variant, color, blur, ...props }, ref) => (
   <div
     ref={ref}
     role="alert"
-    className={cn(alertVariants({ variant }), className)}
+    className={cn(alertVariants({ variant, color, blur }), className)}
     {...props}
   />
 ));
