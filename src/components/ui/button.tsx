@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
@@ -306,42 +306,46 @@ export interface ButtonProps
   loading?: boolean;
 }
 
-const Button = ({
-  ref,
-  className,
-  children,
-  variant,
-  size,
-  radius,
-  color,
-  asChild = false,
-  loading = false,
-  ...props
-}: ButtonProps) => {
-  const Comp = asChild ? Slot : "button";
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      children,
+      variant,
+      size,
+      radius,
+      color,
+      asChild = false,
+      loading = false,
+      ...props
+    },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : "button";
 
-  return (
-    <Comp
-      className={cn(
-        buttonVariants({ variant, size, radius, color, className }),
-        {
-          "cursor-not-allowed": props.disabled,
-        },
-      )}
-      ref={ref}
-      {...props}
-    >
-      {loading ? (
-        <span className="flex items-center">
-          <SpinnerIcon className="mr-2" />
-          {children}
-        </span>
-      ) : (
-        children
-      )}
-    </Comp>
-  );
-};
+    return (
+      <Comp
+        className={cn(
+          buttonVariants({ variant, size, radius, color, className }),
+          {
+            "cursor-not-allowed": props.disabled,
+          },
+        )}
+        ref={ref}
+        {...props}
+      >
+        {loading ? (
+          <span className="flex items-center">
+            <SpinnerIcon className="mr-2" />
+            {children}
+          </span>
+        ) : (
+          children
+        )}
+      </Comp>
+    );
+  },
+);
 Button.displayName = "Button";
 
 function ButtonContent({

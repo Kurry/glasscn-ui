@@ -1,4 +1,4 @@
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,58 +14,52 @@ const twStyles = {
   footer: "flex items-center p-6 pt-0",
 };
 
-const Card = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"div">) => (
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn(twStyles.card, className)} {...props} />
-);
+));
 Card.displayName = "Card";
 
-const CardHeader = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"div">) => (
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn(twStyles.header, className)} {...props} />
-);
+));
 CardHeader.displayName = "CardHeader";
 
-const CardTitle = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"h3">) => (
+const CardTitle = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
   <h3 ref={ref} className={cn(twStyles.title, className)} {...props} />
-);
+));
 CardTitle.displayName = "CardTitle";
 
-const CardDescription = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"p">) => (
+const CardDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
   <p ref={ref} className={cn(twStyles.description, className)} {...props} />
-);
+));
 CardDescription.displayName = "CardDescription";
 
-const CardContent = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"div">) => (
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn(twStyles.content, className)} {...props} />
-);
+));
 CardContent.displayName = "CardContent";
 
-const CardFooter = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"div">) => (
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn(twStyles.footer, className)} {...props} />
-);
+));
 CardFooter.displayName = "CardFooter";
 
 export {

@@ -23,10 +23,6 @@ const meta: Meta<typeof Breadcrumb> = {
     (Story) => (
       <div className="bg-decorator">
         <Story />
-        <div className="text-foreground">FG text </div>
-        <div className="text-foreground-muted">
-          FG text muted
-        </div>
       </div>
     ),
   ],

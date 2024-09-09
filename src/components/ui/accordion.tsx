@@ -2,7 +2,7 @@
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -12,6 +12,7 @@ const twStyles = {
     "flex flex-1 items-center justify-between py-4 font-medium transition-all",
     "hover:underline [&[data-state=open]>svg]:rotate-180",
   ],
+  triggerHeader: ["flex"],
   chevron: ["h-4 w-4 shrink-0 transition-transform duration-100"],
   content: [
     "overflow-hidden text-sm transition-all",
@@ -22,26 +23,23 @@ const twStyles = {
 
 const Accordion = AccordionPrimitive.Root;
 
-const AccordionItem = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Item>) => (
+const AccordionItem = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(twStyles.item, className)}
     {...props}
   />
-);
-AccordionItem.displayName = "AccordionItem";
+));
+AccordionItem.displayName = AccordionPrimitive.Item.displayName;
 
-const AccordionTrigger = ({
-  ref,
-  className,
-  children,
-  ...props
-}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Trigger>) => (
-  <AccordionPrimitive.Header className="flex">
+const AccordionTrigger = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <AccordionPrimitive.Header className={cn(twStyles.triggerHeader)}>
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(twStyles.trigger, className)}
@@ -51,15 +49,13 @@ const AccordionTrigger = ({
       <ChevronDown className={cn(twStyles.chevron)} />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
-);
+));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
-const AccordionContent = ({
-  ref,
-  className,
-  children,
-  ...props
-}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Content>) => (
+const AccordionContent = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(twStyles.content)}
@@ -67,8 +63,7 @@ const AccordionContent = ({
   >
     <div className={cn(twStyles.contentInner, className)}>{children}</div>
   </AccordionPrimitive.Content>
-);
-
+));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

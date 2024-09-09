@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -34,37 +34,33 @@ const alertVariants = cva(cn(twStyles.base), {
   },
 });
 
-const Alert = ({
-  ref,
-  className,
-  variant,
-  ...props
-}: React.ComponentPropsWithRef<"div"> & VariantProps<typeof alertVariants>) => (
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div"> & VariantProps<typeof alertVariants>
+>(({ className, variant, ...props }, ref) => (
   <div
     ref={ref}
     role="alert"
     className={cn(alertVariants({ variant }), className)}
     {...props}
   />
-);
+));
 Alert.displayName = "Alert";
 
-const AlertTitle = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"h5">) => (
+const AlertTitle = React.forwardRef<
+  HTMLHeadingElement,
+  React.ComponentPropsWithoutRef<"h5">
+>(({ className, ...props }, ref) => (
   <h5 ref={ref} className={cn(twStyles.title, className)} {...props} />
-);
+));
 AlertTitle.displayName = "AlertTitle";
 
-const AlertDescription = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"div">) => (
+const AlertDescription = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<"div">
+>(({ className, ...props }, ref) => (
   <div ref={ref} className={cn(twStyles.description, className)} {...props} />
-);
+));
 AlertDescription.displayName = "AlertDescription";
 
 export { Alert, AlertDescription, AlertTitle };

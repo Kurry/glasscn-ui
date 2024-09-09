@@ -2,7 +2,7 @@
 
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -20,11 +20,10 @@ const twStyles = {
   icon: "h-4 w-4",
 };
 
-const Checkbox = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root>) => (
+const Checkbox = React.forwardRef<
+  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
+>(({ className, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(twStyles.root, className)}
@@ -34,7 +33,7 @@ const Checkbox = ({
       <Check className={cn(twStyles.icon)} />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
-);
+));
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export { Checkbox };

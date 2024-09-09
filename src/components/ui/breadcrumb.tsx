@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -17,48 +17,41 @@ const twStyles = {
   ellipsis: "flex h-9 w-9 items-center justify-center",
 };
 
-const Breadcrumb = ({ ref, ...props }: React.ComponentPropsWithRef<"nav">) => (
-  <nav ref={ref} aria-label="breadcrumb" {...props} />
-);
+const Breadcrumb = React.forwardRef<
+  HTMLElement,
+  React.ComponentPropsWithoutRef<"nav">
+>(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
 Breadcrumb.displayName = "Breadcrumb";
 
-const BreadcrumbList = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"ol">) => (
+const BreadcrumbList = React.forwardRef<
+  HTMLOListElement,
+  React.ComponentPropsWithoutRef<"ol">
+>(({ className, ...props }, ref) => (
   <ol ref={ref} className={cn(twStyles.list, className)} {...props} />
-);
+));
 BreadcrumbList.displayName = "BreadcrumbList";
 
-const BreadcrumbItem = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"li">) => (
+const BreadcrumbItem = React.forwardRef<
+  HTMLLIElement,
+  React.ComponentPropsWithoutRef<"li">
+>(({ className, ...props }, ref) => (
   <li ref={ref} className={cn(twStyles.item, className)} {...props} />
-);
+));
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
-const BreadcrumbLink = ({
-  ref,
-  asChild,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"a"> & {
-  asChild?: boolean;
-}) => {
+const BreadcrumbLink = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }
+>(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
-
   return <Comp ref={ref} className={cn(twStyles.link, className)} {...props} />;
-};
+});
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
-const BreadcrumbPage = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<"span">) => (
+const BreadcrumbPage = React.forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithoutRef<"span">
+>(({ className, ...props }, ref) => (
   <span
     ref={ref}
     role="link"
@@ -67,7 +60,7 @@ const BreadcrumbPage = ({
     className={cn(twStyles.page, className)}
     {...props}
   />
-);
+));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
 const BreadcrumbSeparator = ({
