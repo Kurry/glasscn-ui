@@ -135,69 +135,57 @@ type PartialPresetConfig = Partial<Omit<PresetConfig, "colors">> & {
   colors?: Partial<PresetConfigColors>;
 };
 
-const defaultConfig: PresetConfig = {
-  baseRadius: "0.5em",
-  colors: {
-    primary: "blue",
-    secondary: "fuchsia",
-    accent: "fuchsia",
-    gray: "neutral",
-    danger: "red",
-    warn: "yellow",
-    background: {
-      light: "#ffffff",
-      dark: safeTwColors.gray[950],
-    },
-    backgroundMuted: {
-      light: safeTwColors.gray[100],
-      dark: safeTwColors.gray[900],
-    },
-    foreground: {
-      light: safeTwColors.gray[950],
-      dark: "#ffffff",
-    },
-    foregroundMuted: {
-      light: safeTwColors.gray[500],
-      dark: safeTwColors.gray[400],
-    },
-    border: {
-      light: safeTwColors.gray[300],
-      dark: safeTwColors.gray[700],
-    },
-    borderMuted: {
-      light: safeTwColors.gray[200],
-      dark: safeTwColors.gray[800],
-    },
-  },
-};
-
 function resolveColor(color: TailwindColor | CustomColor): CustomColor {
-  if (typeof color === "string") {
-    return safeTwColors[color] as CustomColor;
+  const resolved =
+    typeof color === "string" ? (safeTwColors[color] as CustomColor) : color;
+
+  if (!resolved.DEFAULT) {
+    resolved.DEFAULT = resolved[600];
   }
-  return color;
+
+  return resolved;
 }
 
 function resolveConfig(config: PartialPresetConfig): PresetConfig {
-  const resolvedConfig: PresetConfig = {
-    ...defaultConfig,
-    ...config,
+  const grayColor = resolveColor(config.colors?.gray ?? "neutral");
+
+  const finalConfig: PresetConfig = {
+    baseRadius: config.baseRadius ?? "0.5em",
     colors: {
-      ...defaultConfig.colors,
-      ...config.colors,
+      gray: grayColor,
+      primary: resolveColor(config.colors?.primary ?? "blue"),
+      secondary: resolveColor(config.colors?.secondary ?? "fuchsia"),
+      accent: resolveColor(config.colors?.accent ?? "fuchsia"),
+      danger: resolveColor(config.colors?.danger ?? "red"),
+      warn: resolveColor(config.colors?.warn ?? "yellow"),
+      background: config.colors?.background ?? {
+        light: "#ffffff",
+        dark: grayColor[950],
+      },
+      backgroundMuted: config.colors?.backgroundMuted ?? {
+        light: grayColor[100],
+        dark: grayColor[900],
+      },
+      foreground: config.colors?.foreground ?? {
+        light: grayColor[950],
+        dark: "#ffffff",
+      },
+      foregroundMuted: config.colors?.foregroundMuted ?? {
+        light: grayColor[500],
+        dark: grayColor[400],
+      },
+      border: config.colors?.border ?? {
+        light: grayColor[300],
+        dark: grayColor[700],
+      },
+      borderMuted: config.colors?.borderMuted ?? {
+        light: grayColor[200],
+        dark: grayColor[800],
+      },
     },
-  } as Required<PresetConfig>;
+  }
 
-  const colors = resolvedConfig.colors;
-
-  resolvedConfig.colors.primary = resolveColor(colors.primary);
-  resolvedConfig.colors.secondary = resolveColor(colors.secondary);
-  resolvedConfig.colors.accent = resolveColor(colors.accent);
-  resolvedConfig.colors.gray = resolveColor(colors.gray);
-  resolvedConfig.colors.danger = resolveColor(colors.danger);
-  resolvedConfig.colors.warn = resolveColor(colors.warn);
-
-  return resolvedConfig;
+  return finalConfig;
 }
 
 function getColorMix(color: string) {
