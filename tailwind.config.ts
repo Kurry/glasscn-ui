@@ -3,7 +3,9 @@ import { createTailwindPreset } from "./src/lib/create-preset";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,md,mdx}", "./stories/**/*.{ts,tsx,md,mdx}"],
-  presets: [createTailwindPreset({ colors: { gray: "neutral" } })],
+  presets: [
+    createTailwindPreset({ colors: { gray: "neutral", accent: "emerald" } }),
+  ],
 };
 
 export default config;

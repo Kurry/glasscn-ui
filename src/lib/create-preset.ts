@@ -69,7 +69,7 @@ type PresetConfigColors = {
   secondary: TailwindColor | CustomColor;
   /**
    * Accent color name or custom color palette object
-   * @default 'cyan'
+   * @default 'blue' (same as primary)
    */
   accent: TailwindColor | CustomColor;
   /**
@@ -155,7 +155,7 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
       gray: grayColor,
       primary: resolveColor(config.colors?.primary ?? "blue"),
       secondary: resolveColor(config.colors?.secondary ?? "fuchsia"),
-      accent: resolveColor(config.colors?.accent ?? "cyan"),
+      accent: resolveColor(config.colors?.accent ?? "blue"),
       danger: resolveColor(config.colors?.danger ?? "red"),
       warning: resolveColor(config.colors?.warning ?? "yellow"),
       background: config.colors?.background ?? {
