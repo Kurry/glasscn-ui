@@ -1,8 +1,17 @@
 name: Release new stable version (main)
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        required: true
+        description: "Version part to release"
+        default: "patch"
+        options:
+          - patch
+          - minor
+          - major
 
 concurrency: release-new-version
 
@@ -39,7 +48,7 @@ jobs:
           git branch -u origin/main main
 
       - name: "Increase build versions"
-        run: pnpm release --tag-prefix --commit-all
+        run: pnpm release --tag-prefix --commit-all --release-as ${{ inputs.bump }}
 
       # Uncomment when we have a package to publish
       - name: "Publish package"
