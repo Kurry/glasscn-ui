@@ -16,6 +16,8 @@ shadcn/ui components with glassmorphism variants, with many extras to make your 
 - ComboBox (basically is a combination of Command and Popover elements)
 - Dot Indicator (special badge with 1/1 ratio, e.g. for notification counters)
 - Heading Title (with gradient variants)
+
+### Upcoming
 - Submit Button (with loading indicator and using useFormStatus under the hood)
 
 ### Component changes

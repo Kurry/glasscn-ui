@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof TheComponent> = {
   title: "UI (New)/Heading Title",
-  // id: "ui-submit-button",
   component: TheComponent,
   // tags: ['autodocs'],
   args: {

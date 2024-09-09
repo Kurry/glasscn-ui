@@ -51,7 +51,6 @@ export * from "./components/icons/spinner-icon";
 export * from "./components/ui-extras/combobox";
 export * from "./components/ui-extras/dot-indicator";
 export * from "./components/ui-extras/heading-title";
-export * from "./components/ui-extras/submit-button";
 
 // hooks
 export * from "./hooks/use-toast";

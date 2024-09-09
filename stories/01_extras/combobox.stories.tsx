@@ -6,7 +6,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof TheComponent> = {
   title: "UI (New)/ComboBox",
-  // id: "ui-submit-button",
   component: TheComponent,
   // tags: ['autodocs'],
   argTypes: {
