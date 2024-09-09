@@ -6,7 +6,7 @@ import { cva } from "class-variance-authority";
 const glassSurfaceStyles = {
   solidBg: ["bg-white dark:bg-gray-950"],
   solidBorder: ["border border-gray-300 dark:border-gray-500/70"],
-  glassBg: ["bg-white/60 dark:bg-gray-950/50"],
+  glassBg: ["bg-white/70 dark:bg-gray-950/50"],
   glassBorder: ["border border-gray-200/60 dark:border-gray-500/70"],
   // glassInnerShadow: ["shadow-inset-white", "dark:shadow-inset-gray"], // this overrides the outset shadow.
 };
