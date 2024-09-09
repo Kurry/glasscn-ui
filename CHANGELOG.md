@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.4.4 (2024-09-09)
+
+
+### Features
+
+* add support for fallback, accent and bg muted colors ([e312f14](https://github.com/itsjavi/glasscn-ui/commit/e312f149489a7bddeac018dfb6bf5413e4114100))
+
 ### 0.4.3 (2024-09-08)
 
 ### 0.4.2 (2024-09-05)
