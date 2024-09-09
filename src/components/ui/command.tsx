@@ -7,6 +7,8 @@ import * as React from "react";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { glassCvaConfig } from "@/recipes/glass-cva";
+import { type VariantProps, cva } from "class-variance-authority";
 
 const twStyles = {
   command: [
@@ -23,7 +25,7 @@ const twStyles = {
     "[&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
     "dark:[&_[cmdk-group-heading]]:text-neutral-400",
   ],
-  inputWrapper: "flex items-center border-b px-3",
+  inputWrapper: "flex items-center border-b px-3 border-gray-500/30",
   input: [
     "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none",
     "placeholder:text-neutral-500 disabled:cursor-not-allowed",
@@ -37,12 +39,12 @@ const twStyles = {
     "[&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-neutral-500",
     "dark:text-neutral-50 dark:[&_[cmdk-group-heading]]:text-neutral-400",
   ],
-  separator: "-mx-1 h-px bg-gray-200 dark:bg-gray-800",
+  // separator: "-mx-1 h-px bg-gray-200 dark:bg-gray-800",
+  separator: "mx-1 my-1 h-px bg-gray-500/30",
   item: [
     "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm",
     "outline-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
-    "aria-selected:bg-gray-100 aria-selected:text-neutral-900",
-    "dark:aria-selected:bg-gray-800 dark:aria-selected:text-neutral-50",
+    "aria-selected:bg-accent-600 aria-selected:text-accent-50",
   ],
   shortcut: [
     "ml-auto text-xs tracking-widest text-neutral-500 dark:text-neutral-400",
@@ -50,13 +52,18 @@ const twStyles = {
   searchIcon: "mr-2 h-4 w-4 shrink-0 opacity-50",
 };
 
+const commandVariants = cva(cn(twStyles.command), glassCvaConfig);
+interface CommandProps
+  extends React.ComponentPropsWithoutRef<typeof CommandPrimitive>,
+    VariantProps<typeof commandVariants> {}
+
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive>
->(({ className, ...props }, ref) => (
+  CommandProps
+>(({ className, variant, blur, ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
-    className={cn(twStyles.command, className)}
+    className={cn(commandVariants({ variant, blur }), className)}
     {...props}
   />
 ));
