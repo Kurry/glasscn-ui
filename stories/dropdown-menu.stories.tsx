@@ -12,31 +12,14 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { glassStorybookConfig } from "@/recipes/glass-cva";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof DropdownMenuContent> = {
   title: "UI/DropdownMenu",
   component: DropdownMenuContent,
   // tags: ['autodocs'],
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["solid", "glass"],
-    },
-    blur: {
-      control: "select",
-      options: ["none", "sm", "md", "lg", "xl", "2xl", "3xl"],
-    },
-    sideOffset: {
-      table: {
-        disable: true,
-      },
-    },
-  },
-  args: {
-    variant: "glass",
-    blur: "lg",
-  },
+  ...glassStorybookConfig,
 };
 
 export default meta;

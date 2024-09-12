@@ -7,7 +7,7 @@ import type { PluginCreator } from "tailwindcss/types/config";
 // | "lime" | "green" | "emerald" | "teal" | "cyan" | "sky" | "blue" | "indigo" | "violet"
 // | "purple" | "fuchsia" | "pink" | "rose"
 
-export type TailwindColor = Exclude<
+export type TailwindColorName = Exclude<
   keyof typeof twColors,
   | "inherit"
   | "current"
@@ -32,13 +32,12 @@ const twColorKeys = Object.keys(twColors).filter(
   (key) => !deprecatedColors.includes(key),
 );
 const safeTwColors = Object.fromEntries(
-  twColorKeys.map((key) => [key, twColors[key as TailwindColor]]),
+  twColorKeys.map((key) => [key, twColors[key as TailwindColorName]]),
 );
 
 type PluginAPI = Parameters<PluginCreator>[0];
 
-type CustomColorLevel =
-  | "DEFAULT"
+type TailwindColorLevel =
   | 50
   | 100
   | 200
@@ -50,6 +49,10 @@ type CustomColorLevel =
   | 800
   | 900
   | 950;
+
+type CustomColorLevel = "DEFAULT" | "foreground" | TailwindColorLevel;
+
+type TailwindColor = Record<TailwindColorLevel, string>;
 type CustomColor = Record<CustomColorLevel, string>;
 type DarkLightColor = {
   light: string;
@@ -61,67 +64,82 @@ type PresetConfigColors = {
    * Primary color name or custom color palette object
    * @default 'blue'
    */
-  primary: TailwindColor | CustomColor;
+  primary: TailwindColorName | CustomColor;
   /**
    * Secondary color name or custom color palette object
    * @default 'fuchsia'
    */
-  secondary: TailwindColor | CustomColor;
+  secondary: TailwindColorName | CustomColor;
   /**
    * Accent color name or custom color palette object
    * @default 'blue' (same as primary)
    */
-  accent: TailwindColor | CustomColor;
+  accent: TailwindColorName | CustomColor;
   /**
    * Gray color name or custom color palette object
    * @default 'neutral'
    */
-  gray: TailwindColor | CustomColor;
+  gray: TailwindColorName | CustomColor;
   /**
    * Danger color name or custom color palette object
    * @default 'red'
    */
-  danger: TailwindColor | CustomColor;
+  danger: TailwindColorName | CustomColor;
   /**
    * Warn color name or custom color palette object
    * @default 'yellow'
    */
-  warning: TailwindColor | CustomColor;
+  warning: TailwindColorName | CustomColor;
+  /**
+   * Success color name or custom color palette object
+   * @default 'emerald'
+   */
+  success: TailwindColorName | CustomColor;
   /**
    * Default background color in light and dark modes
-   * @default 'bg-white' and 'bg-gray-950'
+   * @default 'white' and 'gray-950'
    */
   background: DarkLightColor;
   /**
    * Default muted background color in light and dark modes
-   * @default 'bg-gray-100' and 'bg-gray-900'
+   * @default 'gray-100' and 'gray-900'
    */
   backgroundMuted: DarkLightColor;
   /**
    * Default foreground color in light and dark modes
-   * @default 'text-gray-950' and 'text-white'
+   * @default 'gray-950' and 'white'
    */
   foreground: DarkLightColor;
   /**
    * Default muted foreground color in light and dark modes
-   * @default 'text-gray-500' and 'text-gray-400'
+   * @default 'gray-500' and 'gray-400'
    */
   foregroundMuted: DarkLightColor;
   /**
    * Default border color in light and dark modes
-   * @default 'border-gray-300' and 'border-gray-700'
+   * @default 'gray-300' and 'gray-700'
    */
   border: DarkLightColor;
   /**
    * Default muted border color in light and dark modes
-   * @default 'border-gray-200' and 'border-gray-800'
+   * @default 'gray-200' and 'gray-800'
    */
   borderMuted: DarkLightColor;
+  /**
+   * Default focus ring color in light and dark modes, plus width and opacity
+   * @default 'gray-800' and 'gray-200'
+   */
+  ring: DarkLightColor;
+  /**
+   * Default focus ring offset color in light and dark modes, plus width
+   * @default 'white' and 'gray-950'
+   */
+  ringOffset: DarkLightColor;
 };
 
 type PresetConfig = {
   /**
-   * Base border radous
+   * Base border radius
    * @default '0.5em'
    */
   baseRadius: string;
@@ -135,29 +153,34 @@ type PartialPresetConfig = Partial<Omit<PresetConfig, "colors">> & {
   colors?: Partial<PresetConfigColors>;
 };
 
-function resolveColor(color: TailwindColor | CustomColor): CustomColor {
-  const resolved =
-    typeof color === "string" ? (safeTwColors[color] as CustomColor) : color;
+function resolveColor(color: TailwindColorName | CustomColor): CustomColor {
+  const resolved: Partial<CustomColor> & TailwindColor =
+    typeof color === "string" ? safeTwColors[color] : color;
 
-  if (!resolved.DEFAULT) {
-    resolved.DEFAULT = resolved[600];
-  }
+  const customColor: CustomColor = {
+    ...resolved,
+    DEFAULT: resolved.DEFAULT ?? resolved[600],
+    foreground: resolved.foreground ?? "#ffffff",
+  };
 
-  return resolved;
+  return customColor;
 }
 
 function resolveConfig(config: PartialPresetConfig): PresetConfig {
   const grayColor = resolveColor(config.colors?.gray ?? "neutral");
+  const primaryColor = resolveColor(config.colors?.primary ?? "blue");
+  const accentColor = resolveColor(config.colors?.accent ?? primaryColor);
 
   const finalConfig: PresetConfig = {
     baseRadius: config.baseRadius ?? "0.5em",
     colors: {
       gray: grayColor,
-      primary: resolveColor(config.colors?.primary ?? "blue"),
+      primary: primaryColor,
       secondary: resolveColor(config.colors?.secondary ?? "fuchsia"),
-      accent: resolveColor(config.colors?.accent ?? "blue"),
+      accent: accentColor,
       danger: resolveColor(config.colors?.danger ?? "red"),
       warning: resolveColor(config.colors?.warning ?? "yellow"),
+      success: resolveColor(config.colors?.success ?? "emerald"),
       background: config.colors?.background ?? {
         light: "#ffffff",
         dark: grayColor[950],
@@ -181,6 +204,16 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
       borderMuted: config.colors?.borderMuted ?? {
         light: grayColor[200],
         dark: grayColor[800],
+      },
+      ring: config.colors?.ring ?? {
+        // light: accentColor[600],
+        // dark: accentColor[600],
+        light: grayColor[800],
+        dark: grayColor[200],
+      },
+      ringOffset: config.colors?.ringOffset ?? {
+        light: "#ffffff",
+        dark: grayColor[950],
       },
     },
   };
@@ -233,16 +266,26 @@ export function createTailwindPreset(
               dark: resolvedConfig.colors.borderMuted.dark,
             },
           },
+          ring: {
+            DEFAULT: getColorMix("var(--ring)"),
+            light: resolvedConfig.colors.ring.light,
+            dark: resolvedConfig.colors.ring.dark,
+            offset: {
+              DEFAULT: getColorMix("var(--ring-offset)"),
+              light: resolvedConfig.colors.ringOffset.light,
+              dark: resolvedConfig.colors.ringOffset.dark,
+            },
+          },
           primary: resolvedConfig.colors.primary,
           secondary: resolvedConfig.colors.secondary,
           accent: resolvedConfig.colors.accent,
           gray: resolvedConfig.colors.gray,
           danger: resolvedConfig.colors.danger,
           warning: resolvedConfig.colors.warning,
+          success: resolvedConfig.colors.success,
 
           // Just kept for original shadcn/ui compatibility, but not used by the glasscn components:
           input: getColorMix("var(--border)"),
-          ring: "currentColor",
           destructive: {
             DEFAULT: resolvedConfig.colors.danger[500],
             foreground: getColorMix("var(--foreground)"),

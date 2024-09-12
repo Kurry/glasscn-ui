@@ -10,6 +10,8 @@
     --foreground-muted: theme('colors.foreground.muted.light');
     --border: theme('colors.border.light');
     --border-muted: theme('colors.border.muted.light');
+    --ring: theme('colors.ring.light');
+    --ring-offset: theme('colors.ring.offset.light');
   }
 
   .dark {
@@ -19,6 +21,8 @@
     --foreground-muted: theme('colors.foreground.muted.dark');
     --border: theme('colors.border.dark');
     --border-muted: theme('colors.border.muted.dark');
+    --ring: theme('colors.ring.dark');
+    --ring-offset: theme('colors.ring.offset.dark');
   }
 
   *,
