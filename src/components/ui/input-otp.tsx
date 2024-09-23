@@ -89,13 +89,7 @@ const InputOTPSeparator = React.forwardRef<
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <div
-      ref={ref}
-      // biome-ignore lint/a11y/useAriaPropsForRole: is not focusable
-      role="separator"
-      className={cn(twStyles.separator)}
-      {...props}
-    >
+    <div ref={ref} className={cn(twStyles.separator)} {...props}>
       <Dot />
     </div>
   );
