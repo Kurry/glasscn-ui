@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/itsjavi/glasscn-ui/compare/v0.5.3...v0.5.4) (2024-09-23)
+
+
+### Features
+
+* add support for ring and success colors. improve input rings ([1e7c0ed](https://github.com/itsjavi/glasscn-ui/commit/1e7c0ed0a83797dbd955fa6171d24f0743e89ab3))
+* **hover-card:** add glass variant support ([90919c4](https://github.com/itsjavi/glasscn-ui/commit/90919c497ad3b8ffcb5dc192ff3767b0901c2849))
+
+
+### Bug Fixes
+
+* remove react as peer dependency since it causes issues with pnpm 9 ([6dfbfb2](https://github.com/itsjavi/glasscn-ui/commit/6dfbfb26c11a3340a6839265a9ec1622ba9e40c8))
+
+
+### Other
+
+* upgrade dependencies ([a225e87](https://github.com/itsjavi/glasscn-ui/commit/a225e8774d8dae8d04f241e6305ff5fc9547dba3))
+* upgrade dependencies ([d7aba20](https://github.com/itsjavi/glasscn-ui/commit/d7aba2010c7575839cd7d12ba9cd322c67365f3b))
+
 ### [0.5.3](https://github.com/itsjavi/glasscn-ui/compare/v0.5.2...v0.5.3) (2024-09-09)
 
 
