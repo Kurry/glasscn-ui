@@ -31,7 +31,6 @@ export default defineConfig({
         "react/jsx-runtime",
         "react/jsx-dev-runtime",
         ...Object.keys(pkg.dependencies),
-        ...Object.keys(pkg.peerDependencies),
         ...Object.keys(pkg.devDependencies),
         "/node_modules/",
       ],
