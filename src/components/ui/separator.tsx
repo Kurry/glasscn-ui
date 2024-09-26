@@ -1,7 +1,7 @@
 "use client";
 
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -11,24 +11,30 @@ const twStyles = {
   vertical: "h-full w-[1px]",
 };
 
-const Separator = ({
-  ref,
-  className,
-  orientation = "horizontal",
-  decorative = true,
-  ...props
-}: React.ComponentPropsWithRef<typeof SeparatorPrimitive.Root>) => (
-  <SeparatorPrimitive.Root
-    ref={ref}
-    decorative={decorative}
-    orientation={orientation}
-    className={cn(
-      twStyles.separator,
-      orientation === "horizontal" ? twStyles.horizontal : twStyles.vertical,
-      className,
-    )}
-    {...props}
-  />
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(
+  (
+    { className, orientation = "horizontal", decorative = true, ...props },
+    ref,
+  ) => {
+    return (
+      <SeparatorPrimitive.Root
+        ref={ref}
+        decorative={decorative}
+        orientation={orientation}
+        className={cn(
+          twStyles.separator,
+          orientation === "horizontal"
+            ? twStyles.horizontal
+            : twStyles.vertical,
+          className,
+        )}
+        {...props}
+      />
+    );
+  },
 );
 Separator.displayName = SeparatorPrimitive.Root.displayName;
 

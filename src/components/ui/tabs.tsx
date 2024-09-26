@@ -1,7 +1,7 @@
 "use client";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -29,43 +29,46 @@ const twStyles = {
 
 const Tabs = TabsPrimitive.Root;
 
-const TabsList = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof TabsPrimitive.List>) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(twStyles.list, className)}
-    {...props}
-  />
-);
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => {
+  return (
+    <TabsPrimitive.List
+      ref={ref}
+      className={cn(twStyles.list, className)}
+      {...props}
+    />
+  );
+});
 TabsList.displayName = TabsPrimitive.List.displayName;
 
-const TabsTrigger = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof TabsPrimitive.Trigger>) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(twStyles.trigger, className)}
-    {...props}
-  />
-);
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => {
+  return (
+    <TabsPrimitive.Trigger
+      ref={ref}
+      className={cn(twStyles.trigger, className)}
+      {...props}
+    />
+  );
+});
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 
-const TabsContent = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof TabsPrimitive.Content>) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(twStyles.content, className)}
-    {...props}
-  />
-);
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => {
+  return (
+    <TabsPrimitive.Content
+      ref={ref}
+      className={cn(twStyles.content, className)}
+      {...props}
+    />
+  );
+});
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
 export { Tabs, TabsContent, TabsList, TabsTrigger };

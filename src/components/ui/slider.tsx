@@ -1,7 +1,7 @@
 "use client";
 
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -19,22 +19,23 @@ const twStyles = {
   ],
 };
 
-const Slider = ({
-  ref,
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof SliderPrimitive.Root>) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn(twStyles.root, className)}
-    {...props}
-  >
-    <SliderPrimitive.Track className={twStyles.track}>
-      <SliderPrimitive.Range className={twStyles.range} />
-    </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className={cn(twStyles.thumb)} />
-  </SliderPrimitive.Root>
-);
+const Slider = React.forwardRef<
+  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, ...props }, ref) => {
+  return (
+    <SliderPrimitive.Root
+      ref={ref}
+      className={cn(twStyles.root, className)}
+      {...props}
+    >
+      <SliderPrimitive.Track className={twStyles.track}>
+        <SliderPrimitive.Range className={twStyles.range} />
+      </SliderPrimitive.Track>
+      <SliderPrimitive.Thumb className={cn(twStyles.thumb)} />
+    </SliderPrimitive.Root>
+  );
+});
 Slider.displayName = SliderPrimitive.Root.displayName;
 
 export { Slider };
