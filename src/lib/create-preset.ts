@@ -331,6 +331,14 @@ export function createTailwindPreset(
           fulldw: "100dvw",
         },
         keyframes: {
+          "circular-stroke": {
+            from: {
+              strokeDashoffset: String(2 * Math.PI * 45),
+            },
+            to: {
+              strokeDashoffset: "var(--circular-progress-dash-offset)",
+            },
+          },
           "accordion-down": {
             from: {
               height: "0",
@@ -351,6 +359,7 @@ export function createTailwindPreset(
         animation: {
           "accordion-down": "accordion-down 0.2s ease-out",
           "accordion-up": "accordion-up 0.2s ease-out",
+          "circular-stroke": "circular-stroke 0.5s ease-out",
         },
       },
     },

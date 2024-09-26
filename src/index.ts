@@ -48,6 +48,7 @@ export * from "./components/ui/tooltip";
 export * from "./components/icons/spinner-icon";
 
 // extra components
+export * from "./components/ui-extras/circular-progress";
 export * from "./components/ui-extras/combobox";
 export * from "./components/ui-extras/dot-indicator";
 export * from "./components/ui-extras/heading-title";
