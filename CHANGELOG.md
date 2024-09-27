@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/itsjavi/glasscn-ui/compare/v0.5.4...v0.6.0) (2024-09-27)
+
+
+### Features
+
+* add circular progress component ([f34becc](https://github.com/itsjavi/glasscn-ui/commit/f34becc58d6bddbfb1536e22efcb2674c5d23838))
+
+
+### Bug Fixes
+
+* precommit hook needs internet connection to work ([828eaa2](https://github.com/itsjavi/glasscn-ui/commit/828eaa26d366634dc50cf4844e0a230e68aff079))
+
+
+### Other
+
+* upgrade deps, downgrade pnpm ([a282712](https://github.com/itsjavi/glasscn-ui/commit/a282712fc6db94b334978c57939c1947d29c2c97))
+
+
+### Refactorings
+
+* move back to React 18 forwardRef for the rest of the components ([0513eb8](https://github.com/itsjavi/glasscn-ui/commit/0513eb86d8a86276859762a0340421449d9dfa37))
+
 ### [0.5.4](https://github.com/itsjavi/glasscn-ui/compare/v0.5.3...v0.5.4) (2024-09-23)
 
 
