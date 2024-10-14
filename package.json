@@ -70,7 +70,7 @@
     "react-resizable-panels": "^2.1.4",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^1.0.0"
+    "vaul": "^1.1.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
@@ -88,16 +88,16 @@
     "@storybook/react-vite": "^8.3.5",
     "@storybook/test": "^8.3.5",
     "@storybook/theming": "^8.3.5",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.7.1",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "commitlint": "^19.5.0",
-    "globals": "^15.10.0",
+    "globals": "^15.11.0",
     "husky": "^9.1.6",
-    "lucide-react": "^0.447.0",
+    "lucide-react": "^0.452.0",
     "postcss": "^8.4.47",
     "publint": "^0.2.11",
     "react": "^18.3.1",
@@ -107,9 +107,9 @@
     "standard-version": "^9.5.0",
     "storybook": "^8.3.5",
     "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "vite": "^5.4.8",
-    "vite-plugin-dts": "^4.2.3"
+    "vite-plugin-dts": "^4.2.4"
   },
   "packageManager": "pnpm@8.15.9",
   "publishConfig": {
