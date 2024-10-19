@@ -3,7 +3,7 @@ description: "Sets up project with dependencies and credentials"
 
 env:
   NODE_VERSION: 22
-  PNPM_VERSION: 8.15.9
+  PNPM_VERSION: 9.12.2
 
 runs:
   using: "composite"
@@ -18,7 +18,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
-        registry-url: https://npm.pkg.github.com
+        # registry-url: https://npm.pkg.github.com
         cache: "pnpm"
         cache-dependency-path: "./pnpm-lock.yaml"
 
