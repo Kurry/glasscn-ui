@@ -1,15 +1,15 @@
-import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '@/components/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Popover> = {
   title: 'UI/Popover',
   component: Popover,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Popover>;
+export default meta
+type Story = StoryObj<typeof Popover>
 
 export const Default: Story = {
   render: () => (
@@ -25,4 +25,4 @@ export const Default: Story = {
       </PopoverContent>
     </Popover>
   ),
-};
+}

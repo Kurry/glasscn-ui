@@ -1,14 +1,14 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Table> = {
   title: 'UI/Table',
   component: Table,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Table>;
+export default meta
+type Story = StoryObj<typeof Table>
 
 export const Default: Story = {
   render: () => (
@@ -32,4 +32,4 @@ export const Default: Story = {
       </TableBody>
     </Table>
   ),
-};
+}

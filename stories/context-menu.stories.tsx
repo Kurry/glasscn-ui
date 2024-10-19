@@ -1,16 +1,27 @@
-import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuItem, ContextMenuPortal, ContextMenuSeparator, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from '@/components/ui/context-menu';
-import { glassStorybookConfig } from '@/recipes/glass-cva';
-import type { Meta, StoryObj } from '@storybook/react';
+import {
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuPortal,
+  ContextMenuSeparator,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+} from '@/components/ui/context-menu'
+import { glassStorybookConfig } from '@/recipes/glass-cva'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ContextMenuContent> = {
   title: 'UI/ContextMenu',
   component: ContextMenu,
   // tags: ['autodocs'],
-  ...glassStorybookConfig
-};
+  ...glassStorybookConfig,
+}
 
-export default meta;
-type Story = StoryObj<typeof ContextMenu>;
+export default meta
+type Story = StoryObj<typeof ContextMenu>
 
 export const Default: Story = {
   render: (args) => (
@@ -23,9 +34,7 @@ export const Default: Story = {
         <ContextMenuItem>Billing</ContextMenuItem>
         <ContextMenuItem>Team</ContextMenuItem>
         <ContextMenuItem>Subscription</ContextMenuItem>
-        <ContextMenuCheckboxItem checked={true}>
-          Activity Bar
-        </ContextMenuCheckboxItem>
+        <ContextMenuCheckboxItem checked={true}>Activity Bar</ContextMenuCheckboxItem>
         <ContextMenuSub>
           <ContextMenuSubTrigger>
             <span>Invite users</span>
@@ -49,4 +58,4 @@ export const Default: Story = {
       </ContextMenuContent>
     </ContextMenu>
   ),
-};
+}

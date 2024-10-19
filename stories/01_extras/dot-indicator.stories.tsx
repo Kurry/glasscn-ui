@@ -1,8 +1,8 @@
-import { DotIndicator } from "@/components/ui-extras/dot-indicator";
-import type { Meta, StoryObj } from "@storybook/react";
+import { DotIndicator } from '@/components/ui-extras/dot-indicator'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DotIndicator> = {
-  title: "UI (New)/Dot Indicator",
+  title: 'UI (New)/Dot Indicator',
   component: DotIndicator,
   // tags: ['autodocs'],
   decorators: [
@@ -12,14 +12,14 @@ const meta: Meta<typeof DotIndicator> = {
       </div>
     ),
   ],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof DotIndicator>;
+export default meta
+type Story = StoryObj<typeof DotIndicator>
 
 export const Default: Story = {
   render: () => <DotIndicator>6</DotIndicator>,
-};
+}
 
 export const Absolute: Story = {
   render: () => (
@@ -30,4 +30,4 @@ export const Absolute: Story = {
       </DotIndicator>
     </>
   ),
-};
+}

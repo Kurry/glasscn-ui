@@ -1,27 +1,24 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.@(mdx)",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ['../stories/**/*.@(mdx)', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-themes",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-themes',
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
   staticDirs: [
-    "../public",
+    '../public',
     // { from: "../public", to: "assets" }
   ],
   viteFinal: (config) => {
-    config.base = "/glasscn-ui/";
-    return config;
+    config.base = '/glasscn-ui/'
+    return config
   },
-};
-export default config;
+}
+export default config

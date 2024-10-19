@@ -1,26 +1,28 @@
 :root {
-  --font-sans: -apple-system, ".SFNSText-Regular", "San Francisco", "system-ui", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-heading: -apple-system, ".SFNSText-Regular", "San Francisco", "system-ui", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-comic: "Comic Sans MS", "Comic Sans", cursive;
-  --font-mono: "Monaco", "Fira Code", monospace;
+  --font-sans: -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  --font-heading: -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+  --font-comic: 'Comic Sans MS', 'Comic Sans', cursive;
+  --font-mono: 'Monaco', 'Fira Code', monospace;
   --font-serif: Times, serif;
 }
 
 @keyframes bg-rotator {
   0% {
-    background-image: url("/glasscn-ui/bgs/retro-future-01.png");
+    background-image: url('/glasscn-ui/bgs/retro-future-01.png');
   }
 
   33% {
-    background-image: url("/glasscn-ui/bgs/retro-future-04.png");
+    background-image: url('/glasscn-ui/bgs/retro-future-04.png');
   }
 
   66% {
-    background-image: url("/glasscn-ui/bgs/retro-future-03.png");
+    background-image: url('/glasscn-ui/bgs/retro-future-03.png');
   }
 
   100% {
-    background-image: url("/glasscn-ui/bgs/retro-future-02.png");
+    background-image: url('/glasscn-ui/bgs/retro-future-02.png');
   }
 }
 
@@ -28,7 +30,7 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: url("/glasscn-ui/bgs/retro-future-01.png") no-repeat center center fixed;
+  background: url('/glasscn-ui/bgs/retro-future-01.png') no-repeat center center fixed;
   background-size: cover;
   animation: bg-rotator 40s linear alternate infinite;
   /* 10s per image */

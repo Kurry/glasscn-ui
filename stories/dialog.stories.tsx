@@ -1,17 +1,24 @@
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { glassStorybookConfig } from '@/recipes/glass-cva';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { glassStorybookConfig } from '@/recipes/glass-cva'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DialogContent> = {
   title: 'UI/Dialog',
   component: Dialog,
   // tags: ['autodocs'],
-  ...glassStorybookConfig
-};
+  ...glassStorybookConfig,
+}
 
-export default meta;
-type Story = StoryObj<typeof Dialog>;
+export default meta
+type Story = StoryObj<typeof Dialog>
 
 export const Default: Story = {
   render: (args) => (
@@ -23,11 +30,11 @@ export const Default: Story = {
         <DialogHeader>
           <DialogTitle>Are you sure absolutely sure?</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your account
-            and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your account and remove your data from our
+            servers.
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>
   ),
-};
+}

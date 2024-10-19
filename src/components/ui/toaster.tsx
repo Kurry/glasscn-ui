@@ -1,22 +1,15 @@
-"use client";
+'use client'
 
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/toast";
-import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
+import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@/components/ui/toast'
+import { useToast } from '@/hooks/use-toast'
+import { cn } from '@/lib/utils'
 
 const twStyles = {
-  toastWrapper: "grid gap-1",
-};
+  toastWrapper: 'grid gap-1',
+}
 
 export function Toaster() {
-  const { toasts } = useToast();
+  const { toasts } = useToast()
 
   return (
     <ToastProvider>
@@ -32,5 +25,5 @@ export function Toaster() {
       ))}
       <ToastViewport />
     </ToastProvider>
-  );
+  )
 }

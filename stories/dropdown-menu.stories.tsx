@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -11,19 +11,19 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { glassStorybookConfig } from "@/recipes/glass-cva";
-import type { Meta, StoryObj } from "@storybook/react";
+} from '@/components/ui/dropdown-menu'
+import { glassStorybookConfig } from '@/recipes/glass-cva'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DropdownMenuContent> = {
-  title: "UI/DropdownMenu",
+  title: 'UI/DropdownMenu',
   component: DropdownMenuContent,
   // tags: ['autodocs'],
   ...glassStorybookConfig,
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof DropdownMenu>;
+export default meta
+type Story = StoryObj<typeof DropdownMenu>
 
 export const Default: Story = {
   render: (args) => (
@@ -40,9 +40,7 @@ export const Default: Story = {
           <DropdownMenuItem>Billing</DropdownMenuItem>
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuItem>Subscription</DropdownMenuItem>
-          <DropdownMenuCheckboxItem checked={true}>
-            Activity Bar
-          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem checked={true}>Activity Bar</DropdownMenuCheckboxItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <span>Invite users</span>
@@ -67,4 +65,4 @@ export const Default: Story = {
       </DropdownMenu>
     </div>
   ),
-};
+}

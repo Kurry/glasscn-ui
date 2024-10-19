@@ -1,23 +1,14 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const LoginCard = () => (
   <Card className="w-[350px]">
     <CardHeader>
       <CardTitle>Login</CardTitle>
-      <CardDescription>
-        Enter your credentials to access your account.
-      </CardDescription>
+      <CardDescription>Enter your credentials to access your account.</CardDescription>
     </CardHeader>
     <CardContent>
       <form>
@@ -51,18 +42,18 @@ const LoginCard = () => (
       <Button className="w-full">Sign In</Button>
     </CardFooter>
   </Card>
-);
+)
 
 const meta: Meta<typeof LoginCard> = {
-  title: "Blocks/LoginCard",
+  title: 'Blocks/LoginCard',
   component: LoginCard,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof LoginCard>;
+type Story = StoryObj<typeof LoginCard>
 
-export const Default: Story = {};
+export const Default: Story = {}

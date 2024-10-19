@@ -1,14 +1,14 @@
-import { Separator } from '@/components/ui/separator';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Separator } from '@/components/ui/separator'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Separator> = {
   title: 'UI/Separator',
   component: Separator,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Separator>;
+export default meta
+type Story = StoryObj<typeof Separator>
 
 export const Default: Story = {
   render: () => (
@@ -27,4 +27,4 @@ export const Default: Story = {
       </div>
     </div>
   ),
-};
+}

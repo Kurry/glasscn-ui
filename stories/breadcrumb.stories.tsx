@@ -6,24 +6,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { Meta, StoryObj } from "@storybook/react";
+} from '@/components/ui/breadcrumb'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Breadcrumb> = {
-  title: "UI/Breadcrumb",
+  title: 'UI/Breadcrumb',
   component: Breadcrumb,
   // tags: ["autodocs"],
   decorators: [],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Breadcrumb>;
+export default meta
+type Story = StoryObj<typeof Breadcrumb>
 
 export const Default: Story = {
   render: () => (
@@ -57,4 +52,4 @@ export const Default: Story = {
       </BreadcrumbList>
     </Breadcrumb>
   ),
-};
+}

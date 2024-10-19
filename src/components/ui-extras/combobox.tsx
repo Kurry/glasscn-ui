@@ -1,42 +1,31 @@
-"use client";
+'use client'
 
-import { ChevronsUpDown } from "lucide-react";
-import * as React from "react";
+import { ChevronsUpDown } from 'lucide-react'
+import * as React from 'react'
 
-import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button'
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
 
 export type ComboBoxOption = {
-  value: string;
-  label: React.ReactNode;
-  keywords: string;
-};
+  value: string
+  label: React.ReactNode
+  keywords: string
+}
 
 export type ComboBoxProps = {
-  className?: string;
-  triggerClassName?: string;
-  onSelect?: (value: string | undefined) => void;
-  options: ComboBoxOption[];
-  placeholder?: string;
-  defaultValue?: string;
-  deselectable?: boolean;
-  disabled?: boolean;
-  children?: never;
-  emptyText?: React.ReactNode;
-};
+  className?: string
+  triggerClassName?: string
+  onSelect?: (value: string | undefined) => void
+  options: ComboBoxOption[]
+  placeholder?: string
+  defaultValue?: string
+  deselectable?: boolean
+  disabled?: boolean
+  children?: never
+  emptyText?: React.ReactNode
+}
 
 export function ComboBox({
   className,
@@ -46,23 +35,21 @@ export function ComboBox({
   deselectable,
   defaultValue,
   disabled,
-  emptyText = "No results found.",
-  placeholder = "Select an option",
+  emptyText = 'No results found.',
+  placeholder = 'Select an option',
 }: ComboBoxProps) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState<string | undefined>(defaultValue);
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState<string | undefined>(defaultValue)
 
   React.useEffect(() => {
     if (defaultValue) {
-      setValue(defaultValue);
+      setValue(defaultValue)
     }
-  }, [defaultValue]);
+  }, [defaultValue])
 
-  const selectedOption = value
-    ? options.find((opt) => opt.value === value)
-    : undefined;
-  const label = selectedOption?.label ?? placeholder;
-  const labelText = selectedOption?.keywords ?? placeholder;
+  const selectedOption = value ? options.find((opt) => opt.value === value) : undefined
+  const label = selectedOption?.label ?? placeholder
+  const labelText = selectedOption?.keywords ?? placeholder
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -72,36 +59,30 @@ export function ComboBox({
           role="combobox"
           disabled={disabled}
           aria-expanded={open}
-          className={cn("min-w-[200px] justify-between", triggerClassName)}
+          className={cn('min-w-[200px] justify-between', triggerClassName)}
         >
-          <span
-            title={labelText}
-            className="block max-w-full overflow-hidden break-words"
-          >
+          <span title={labelText} className="block max-w-full overflow-hidden break-words">
             {label}
           </span>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className={cn("min-w-[200px] p-0", className)}>
+      <PopoverContent className={cn('min-w-[200px] p-0', className)}>
         <Command
           vimBindings={false}
           // disablePointerSelection
           filter={(value, search, keywords) => {
-            const extendValue = `${value} ${(keywords ?? []).join(" ")}`
-              .toLowerCase()
-              .replace(/[\s]/g, "");
-            if (extendValue.includes(search.toLowerCase().replace(/[\s]/g, "")))
-              return 1;
-            return 0;
+            const extendValue = `${value} ${(keywords ?? []).join(' ')}`.toLowerCase().replace(/[\s]/g, '')
+            if (extendValue.includes(search.toLowerCase().replace(/[\s]/g, ''))) return 1
+            return 0
           }}
           onValueChange={(newValue) => {
-            const deselectableValue = newValue === value ? undefined : newValue;
-            const actualValue = deselectable ? deselectableValue : newValue;
+            const deselectableValue = newValue === value ? undefined : newValue
+            const actualValue = deselectable ? deselectableValue : newValue
 
-            setValue(actualValue);
-            setOpen(false);
-            onSelect?.(actualValue);
+            setValue(actualValue)
+            setOpen(false)
+            onSelect?.(actualValue)
           }}
           defaultValue={defaultValue}
         >
@@ -113,24 +94,20 @@ export function ComboBox({
                 <CommandItem
                   key={opt.value}
                   value={opt.value}
-                  keywords={opt.keywords.split(" ")}
+                  keywords={opt.keywords.split(' ')}
                   className={cn(
                     {
-                      "!bg-primary-600 hover:!bg-primary-500 !text-white":
-                        opt.value === value,
+                      '!bg-primary-600 hover:!bg-primary-500 !text-white': opt.value === value,
                     },
-                    "mx-2 mb-2",
+                    'mx-2 mb-2',
                   )}
                   onSelect={(currentValue) => {
-                    const deselectableValue =
-                      currentValue === value ? undefined : currentValue;
-                    const actualValue = deselectable
-                      ? deselectableValue
-                      : currentValue;
+                    const deselectableValue = currentValue === value ? undefined : currentValue
+                    const actualValue = deselectable ? deselectableValue : currentValue
 
-                    setValue(actualValue);
-                    setOpen(false);
-                    onSelect?.(actualValue);
+                    setValue(actualValue)
+                    setOpen(false)
+                    onSelect?.(actualValue)
                   }}
                 >
                   {opt.label}
@@ -141,5 +118,5 @@ export function ComboBox({
         </Command>
       </PopoverContent>
     </Popover>
-  );
+  )
 }

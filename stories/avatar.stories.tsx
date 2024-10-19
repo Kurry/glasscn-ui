@@ -1,14 +1,14 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Avatar',
   component: Avatar,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Avatar>;
+export default meta
+type Story = StoryObj<typeof Avatar>
 
 export const Default: Story = {
   render: () => (
@@ -17,4 +17,4 @@ export const Default: Story = {
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   ),
-};
+}

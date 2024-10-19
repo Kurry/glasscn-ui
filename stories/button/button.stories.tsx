@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import type { Meta, StoryObj } from "@storybook/react";
-import { expect, fn, within } from "@storybook/test";
+import { Button } from '@/components/ui/button'
+import type { Meta, StoryObj } from '@storybook/react'
+import { expect, fn, within } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "UI/Button",
+  title: 'UI/Button',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -16,8 +16,8 @@ const meta = {
   argTypes: {
     // bg: { control: 'color' },
     variant: {
-      control: "select",
-      options: ["default", "subtle", "outline", "ghost", "link"],
+      control: 'select',
+      options: ['default', 'subtle', 'outline', 'ghost', 'link'],
       table: {
         disable: true,
       },
@@ -33,29 +33,29 @@ const meta = {
       },
     },
     color: {
-      control: "select",
-      options: ["default", "primary", "secondary", "accent", "danger", "warning"],
+      control: 'select',
+      options: ['default', 'primary', 'secondary', 'accent', 'danger', 'warning'],
     },
-    loading: { control: "boolean" },
-    disabled: { control: "boolean" },
-    size: { control: "select", options: ["default", "sm", "lg", "xl", "icon"] },
+    loading: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    size: { control: 'select', options: ['default', 'sm', 'lg', 'xl', 'icon'] },
     radius: {
-      control: "select",
-      options: ["default", "none", "sm", "lg", "xl", "2xl", "3xl", "full"],
+      control: 'select',
+      options: ['default', 'none', 'sm', 'lg', 'xl', '2xl', '3xl', 'full'],
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByTestId("btn-default")).toBeInTheDocument();
+    const canvas = within(canvasElement)
+    await expect(canvas.getByTestId('btn-default')).toBeInTheDocument()
   },
   render: (args) => (
     <div className="flex gap-4">
@@ -76,7 +76,7 @@ export const Default: Story = {
       </Button>
     </div>
   ),
-};
+}
 
 export const Primary: Story = {
   argTypes: {
@@ -105,7 +105,7 @@ export const Primary: Story = {
       </Button>
     </div>
   ),
-};
+}
 
 export const Secondary: Story = {
   render: (args) => (
@@ -127,7 +127,7 @@ export const Secondary: Story = {
       </Button>
     </div>
   ),
-};
+}
 
 export const Accent: Story = {
   render: (args) => (
@@ -149,8 +149,7 @@ export const Accent: Story = {
       </Button>
     </div>
   ),
-};
-
+}
 
 export const Danger: Story = {
   render: (args) => (
@@ -172,7 +171,7 @@ export const Danger: Story = {
       </Button>
     </div>
   ),
-};
+}
 
 export const Warning: Story = {
   render: (args) => (
@@ -194,4 +193,4 @@ export const Warning: Story = {
       </Button>
     </div>
   ),
-};
+}

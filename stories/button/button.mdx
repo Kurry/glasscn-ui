@@ -10,17 +10,18 @@ Extends the shadcn/ui button component, with many additional styles for existing
 `color`, `radius` and `loading` variants. Example usage:
 
 ```tsx
-import { Button } from "@itsjavi/glasscn-ui";
-
-<Button color="primary" radius="xl" loading>Submitting...</Button>
+import { Button } from '@itsjavi/glasscn-ui'
+;<Button color="primary" radius="xl" loading>
+  Submitting...
+</Button>
 ```
 
 The following changes have been made, compared to the shadcn/ui component:
 
-- `secondary` *variant* is renamed to `subtle`
-- `destructive` variant is now moved to the `danger` *color*
+- `secondary` _variant_ is renamed to `subtle`
+- `destructive` variant is now moved to the `danger` _color_
 - the `link` variant has now a dotted underline.
 - Some padding adjustments to make the buttons similar to Vercel's component library ones.
- 
+
 <Canvas of={Stories.Default} />
 <Controls of={Stories.Default} />

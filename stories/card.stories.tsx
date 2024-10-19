@@ -1,13 +1,13 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { glassStorybookConfig } from '@/recipes/glass-cva';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { glassStorybookConfig } from '@/recipes/glass-cva'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Card> = {
   title: 'UI/Card',
   component: Card,
   // tags: ['autodocs'],
   args: {
-    color: "default",
+    color: 'default',
     ...glassStorybookConfig.args,
   },
   argTypes: {
@@ -17,10 +17,10 @@ const meta: Meta<typeof Card> = {
     },
     ...glassStorybookConfig.argTypes,
   },
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Card>;
+export default meta
+type Story = StoryObj<typeof Card>
 
 export const Default: Story = {
   render: (args) => (
@@ -37,4 +37,4 @@ export const Default: Story = {
       </CardFooter>
     </Card>
   ),
-};
+}

@@ -1,18 +1,18 @@
-import { Checkbox } from '@/components/ui/checkbox';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Checkbox } from '@/components/ui/checkbox'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Checkbox> = {
   title: 'UI/Checkbox',
   component: Checkbox,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Checkbox>;
+export default meta
+type Story = StoryObj<typeof Checkbox>
 
 export const Default: Story = {
   render: () => <Checkbox />,
-};
+}
 
 export const WithLabel: Story = {
   render: () => (
@@ -26,4 +26,4 @@ export const WithLabel: Story = {
       </label>
     </div>
   ),
-};
+}

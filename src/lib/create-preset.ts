@@ -1,7 +1,7 @@
-import type { Config } from "tailwindcss";
-import animatePlugin from "tailwindcss-animate";
-import twColors from "tailwindcss/colors";
-import type { PluginCreator } from "tailwindcss/types/config";
+import type { Config } from 'tailwindcss'
+import animatePlugin from 'tailwindcss-animate'
+import twColors from 'tailwindcss/colors'
+import type { PluginCreator } from 'tailwindcss/types/config'
 
 // "slate" | "gray" | "zinc" | "neutral" | "stone" | "red" | "orange" | "amber" | "yellow"
 // | "lime" | "green" | "emerald" | "teal" | "cyan" | "sky" | "blue" | "indigo" | "violet"
@@ -9,180 +9,158 @@ import type { PluginCreator } from "tailwindcss/types/config";
 
 export type TailwindColorName = Exclude<
   keyof typeof twColors,
-  | "inherit"
-  | "current"
-  | "transparent"
-  | "black"
-  | "white"
-  | "lightBlue"
-  | "warmGray"
-  | "trueGray"
-  | "coolGray"
-  | "blueGray"
->;
+  | 'inherit'
+  | 'current'
+  | 'transparent'
+  | 'black'
+  | 'white'
+  | 'lightBlue'
+  | 'warmGray'
+  | 'trueGray'
+  | 'coolGray'
+  | 'blueGray'
+>
 
-const deprecatedColors = [
-  "lightBlue",
-  "warmGray",
-  "trueGray",
-  "coolGray",
-  "blueGray",
-];
-const twColorKeys = Object.keys(twColors).filter(
-  (key) => !deprecatedColors.includes(key),
-);
-const safeTwColors = Object.fromEntries(
-  twColorKeys.map((key) => [key, twColors[key as TailwindColorName]]),
-);
+const deprecatedColors = ['lightBlue', 'warmGray', 'trueGray', 'coolGray', 'blueGray']
+const twColorKeys = Object.keys(twColors).filter((key) => !deprecatedColors.includes(key))
+const safeTwColors = Object.fromEntries(twColorKeys.map((key) => [key, twColors[key as TailwindColorName]]))
 
-type PluginAPI = Parameters<PluginCreator>[0];
+type PluginAPI = Parameters<PluginCreator>[0]
 
-type TailwindColorLevel =
-  | 50
-  | 100
-  | 200
-  | 300
-  | 400
-  | 500
-  | 600
-  | 700
-  | 800
-  | 900
-  | 950;
+type TailwindColorLevel = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950
 
-type CustomColorLevel = "DEFAULT" | "foreground" | TailwindColorLevel;
+type CustomColorLevel = 'DEFAULT' | 'foreground' | TailwindColorLevel
 
-type TailwindColor = Record<TailwindColorLevel, string>;
-type CustomColor = Record<CustomColorLevel, string>;
+type TailwindColor = Record<TailwindColorLevel, string>
+type CustomColor = Record<CustomColorLevel, string>
 type DarkLightColor = {
-  light: string;
-  dark: string;
-};
+  light: string
+  dark: string
+}
 
 type PresetConfigColors = {
   /**
    * Primary color name or custom color palette object
    * @default 'blue'
    */
-  primary: TailwindColorName | CustomColor;
+  primary: TailwindColorName | CustomColor
   /**
    * Secondary color name or custom color palette object
    * @default 'fuchsia'
    */
-  secondary: TailwindColorName | CustomColor;
+  secondary: TailwindColorName | CustomColor
   /**
    * Accent color name or custom color palette object
    * @default 'blue' (same as primary)
    */
-  accent: TailwindColorName | CustomColor;
+  accent: TailwindColorName | CustomColor
   /**
    * Gray color name or custom color palette object
    * @default 'neutral'
    */
-  gray: TailwindColorName | CustomColor;
+  gray: TailwindColorName | CustomColor
   /**
    * Danger color name or custom color palette object
    * @default 'red'
    */
-  danger: TailwindColorName | CustomColor;
+  danger: TailwindColorName | CustomColor
   /**
    * Warn color name or custom color palette object
    * @default 'yellow'
    */
-  warning: TailwindColorName | CustomColor;
+  warning: TailwindColorName | CustomColor
   /**
    * Success color name or custom color palette object
    * @default 'emerald'
    */
-  success: TailwindColorName | CustomColor;
+  success: TailwindColorName | CustomColor
   /**
    * Default background color in light and dark modes
    * @default 'white' and 'gray-950'
    */
-  background: DarkLightColor;
+  background: DarkLightColor
   /**
    * Default muted background color in light and dark modes
    * @default 'gray-100' and 'gray-900'
    */
-  backgroundMuted: DarkLightColor;
+  backgroundMuted: DarkLightColor
   /**
    * Default foreground color in light and dark modes
    * @default 'gray-950' and 'white'
    */
-  foreground: DarkLightColor;
+  foreground: DarkLightColor
   /**
    * Default muted foreground color in light and dark modes
    * @default 'gray-500' and 'gray-400'
    */
-  foregroundMuted: DarkLightColor;
+  foregroundMuted: DarkLightColor
   /**
    * Default border color in light and dark modes
    * @default 'gray-300' and 'gray-700'
    */
-  border: DarkLightColor;
+  border: DarkLightColor
   /**
    * Default muted border color in light and dark modes
    * @default 'gray-200' and 'gray-800'
    */
-  borderMuted: DarkLightColor;
+  borderMuted: DarkLightColor
   /**
    * Default focus ring color in light and dark modes, plus width and opacity
    * @default 'gray-800' and 'gray-200'
    */
-  ring: DarkLightColor;
+  ring: DarkLightColor
   /**
    * Default focus ring offset color in light and dark modes, plus width
    * @default 'white' and 'gray-950'
    */
-  ringOffset: DarkLightColor;
-};
+  ringOffset: DarkLightColor
+}
 
 type PresetConfig = {
   /**
    * Base border radius
    * @default '0.5em'
    */
-  baseRadius: string;
+  baseRadius: string
   /**
    * Theme colors
    */
-  colors: PresetConfigColors;
-};
+  colors: PresetConfigColors
+}
 
-type PartialPresetConfig = Partial<Omit<PresetConfig, "colors">> & {
-  colors?: Partial<PresetConfigColors>;
-};
+type PartialPresetConfig = Partial<Omit<PresetConfig, 'colors'>> & {
+  colors?: Partial<PresetConfigColors>
+}
 
 function resolveColor(color: TailwindColorName | CustomColor): CustomColor {
-  const resolved: Partial<CustomColor> & TailwindColor =
-    typeof color === "string" ? safeTwColors[color] : color;
+  const resolved: Partial<CustomColor> & TailwindColor = typeof color === 'string' ? safeTwColors[color] : color
 
   const customColor: CustomColor = {
     ...resolved,
     DEFAULT: resolved.DEFAULT ?? resolved[600],
-    foreground: resolved.foreground ?? "#ffffff",
-  };
+    foreground: resolved.foreground ?? '#ffffff',
+  }
 
-  return customColor;
+  return customColor
 }
 
 function resolveConfig(config: PartialPresetConfig): PresetConfig {
-  const grayColor = resolveColor(config.colors?.gray ?? "neutral");
-  const primaryColor = resolveColor(config.colors?.primary ?? "blue");
-  const accentColor = resolveColor(config.colors?.accent ?? primaryColor);
+  const grayColor = resolveColor(config.colors?.gray ?? 'neutral')
+  const primaryColor = resolveColor(config.colors?.primary ?? 'blue')
+  const accentColor = resolveColor(config.colors?.accent ?? primaryColor)
 
   const finalConfig: PresetConfig = {
-    baseRadius: config.baseRadius ?? "0.5em",
+    baseRadius: config.baseRadius ?? '0.5em',
     colors: {
       gray: grayColor,
       primary: primaryColor,
-      secondary: resolveColor(config.colors?.secondary ?? "fuchsia"),
+      secondary: resolveColor(config.colors?.secondary ?? 'fuchsia'),
       accent: accentColor,
-      danger: resolveColor(config.colors?.danger ?? "red"),
-      warning: resolveColor(config.colors?.warning ?? "yellow"),
-      success: resolveColor(config.colors?.success ?? "emerald"),
+      danger: resolveColor(config.colors?.danger ?? 'red'),
+      warning: resolveColor(config.colors?.warning ?? 'yellow'),
+      success: resolveColor(config.colors?.success ?? 'emerald'),
       background: config.colors?.background ?? {
-        light: "#ffffff",
+        light: '#ffffff',
         dark: grayColor[950],
       },
       backgroundMuted: config.colors?.backgroundMuted ?? {
@@ -191,7 +169,7 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
       },
       foreground: config.colors?.foreground ?? {
         light: grayColor[950],
-        dark: "#ffffff",
+        dark: '#ffffff',
       },
       foregroundMuted: config.colors?.foregroundMuted ?? {
         light: grayColor[500],
@@ -212,66 +190,64 @@ function resolveConfig(config: PartialPresetConfig): PresetConfig {
         dark: grayColor[200],
       },
       ringOffset: config.colors?.ringOffset ?? {
-        light: "#ffffff",
+        light: '#ffffff',
         dark: grayColor[950],
       },
     },
-  };
+  }
 
-  return finalConfig;
+  return finalConfig
 }
 
 function getColorMix(color: string) {
-  return `color-mix(in srgb, ${color}, transparent calc(100% - <alpha-value> * 100%))`;
+  return `color-mix(in srgb, ${color}, transparent calc(100% - <alpha-value> * 100%))`
 }
 
-export function createTailwindPreset(
-  config: PartialPresetConfig = {},
-): Partial<Config> {
-  const resolvedConfig = resolveConfig(config);
+export function createTailwindPreset(config: PartialPresetConfig = {}): Partial<Config> {
+  const resolvedConfig = resolveConfig(config)
 
   const preset: Partial<Config> = {
-    darkMode: ["class"],
-    safelist: ["dark"],
+    darkMode: ['class'],
+    safelist: ['dark'],
     theme: {
       extend: {
         colors: {
           background: {
-            DEFAULT: getColorMix("var(--background)"),
+            DEFAULT: getColorMix('var(--background)'),
             light: resolvedConfig.colors.background.light,
             dark: resolvedConfig.colors.background.dark,
             muted: {
-              DEFAULT: getColorMix("var(--background-muted)"),
+              DEFAULT: getColorMix('var(--background-muted)'),
               light: resolvedConfig.colors.backgroundMuted.light,
               dark: resolvedConfig.colors.backgroundMuted.dark,
             },
           },
           foreground: {
-            DEFAULT: getColorMix("var(--foreground)"),
+            DEFAULT: getColorMix('var(--foreground)'),
             light: resolvedConfig.colors.foreground.light,
             dark: resolvedConfig.colors.foreground.dark,
             muted: {
-              DEFAULT: getColorMix("var(--foreground-muted)"),
+              DEFAULT: getColorMix('var(--foreground-muted)'),
               light: resolvedConfig.colors.foregroundMuted.light,
               dark: resolvedConfig.colors.foregroundMuted.dark,
             },
           },
           border: {
-            DEFAULT: getColorMix("var(--border)"),
+            DEFAULT: getColorMix('var(--border)'),
             light: resolvedConfig.colors.border.light,
             dark: resolvedConfig.colors.border.dark,
             muted: {
-              DEFAULT: getColorMix("var(--border-muted)"),
+              DEFAULT: getColorMix('var(--border-muted)'),
               light: resolvedConfig.colors.borderMuted.light,
               dark: resolvedConfig.colors.borderMuted.dark,
             },
           },
           ring: {
-            DEFAULT: getColorMix("var(--ring)"),
+            DEFAULT: getColorMix('var(--ring)'),
             light: resolvedConfig.colors.ring.light,
             dark: resolvedConfig.colors.ring.dark,
             offset: {
-              DEFAULT: getColorMix("var(--ring-offset)"),
+              DEFAULT: getColorMix('var(--ring-offset)'),
               light: resolvedConfig.colors.ringOffset.light,
               dark: resolvedConfig.colors.ringOffset.dark,
             },
@@ -285,31 +261,31 @@ export function createTailwindPreset(
           success: resolvedConfig.colors.success,
 
           // Just kept for original shadcn/ui compatibility, but not used by the glasscn components:
-          input: getColorMix("var(--border)"),
+          input: getColorMix('var(--border)'),
           destructive: {
             DEFAULT: resolvedConfig.colors.danger[500],
-            foreground: getColorMix("var(--foreground)"),
+            foreground: getColorMix('var(--foreground)'),
           },
           muted: {
-            DEFAULT: getColorMix("var(--background-muted)"),
-            foreground: getColorMix("var(--foreground-muted)"),
+            DEFAULT: getColorMix('var(--background-muted)'),
+            foreground: getColorMix('var(--foreground-muted)'),
           },
           popover: {
-            DEFAULT: getColorMix("var(--background-muted)"),
-            foreground: getColorMix("var(--foreground-muted)"),
+            DEFAULT: getColorMix('var(--background-muted)'),
+            foreground: getColorMix('var(--foreground-muted)'),
           },
           card: {
-            DEFAULT: getColorMix("var(--background-muted)"),
-            foreground: getColorMix("var(--foreground-muted)"),
+            DEFAULT: getColorMix('var(--background-muted)'),
+            foreground: getColorMix('var(--foreground-muted)'),
           },
         },
         fontWeight: {
-          base: "400",
-          heading: "800",
+          base: '400',
+          heading: '800',
         },
         borderWidth: {
-          DEFAULT: "1px",
-          3: "3px",
+          DEFAULT: '1px',
+          3: '3px',
         },
         borderRadius: {
           lg: `${resolvedConfig.baseRadius}`,
@@ -317,71 +293,71 @@ export function createTailwindPreset(
           sm: `calc(${resolvedConfig.baseRadius} - 4px)`,
         },
         boxShadow: {
-          "inset-white": "inset 0 0 12px rgba(255,255,255,0.80)",
-          "inset-gray": "inset 0 0 12px rgba(127,127,127,0.08)",
-          "inset-black": "inset 0 0 12px rgba(0,0,0,0.80)",
+          'inset-white': 'inset 0 0 12px rgba(255,255,255,0.80)',
+          'inset-gray': 'inset 0 0 12px rgba(127,127,127,0.08)',
+          'inset-black': 'inset 0 0 12px rgba(0,0,0,0.80)',
         },
         textShadow: {
-          sm: "2px 2px var(--tw-shadow-color, black)",
-          DEFAULT: "0 2px 4px var(--tw-shadow-color, black)",
-          lg: "0 8px 16px var(--tw-shadow-color, black)",
+          sm: '2px 2px var(--tw-shadow-color, black)',
+          DEFAULT: '0 2px 4px var(--tw-shadow-color, black)',
+          lg: '0 8px 16px var(--tw-shadow-color, black)',
         },
         spacing: {
-          fulldh: "100dvh",
-          fulldw: "100dvw",
+          fulldh: '100dvh',
+          fulldw: '100dvw',
         },
         keyframes: {
-          "circular-stroke": {
+          'circular-stroke': {
             from: {
               strokeDashoffset: String(2 * Math.PI * 45),
             },
             to: {
-              strokeDashoffset: "var(--circular-progress-dash-offset)",
+              strokeDashoffset: 'var(--circular-progress-dash-offset)',
             },
           },
-          "accordion-down": {
+          'accordion-down': {
             from: {
-              height: "0",
+              height: '0',
             },
             to: {
-              height: "var(--radix-accordion-content-height)",
+              height: 'var(--radix-accordion-content-height)',
             },
           },
-          "accordion-up": {
+          'accordion-up': {
             from: {
-              height: "var(--radix-accordion-content-height)",
+              height: 'var(--radix-accordion-content-height)',
             },
             to: {
-              height: "0",
+              height: '0',
             },
           },
         },
         animation: {
-          "accordion-down": "accordion-down 0.2s ease-out",
-          "accordion-up": "accordion-up 0.2s ease-out",
-          "circular-stroke": "circular-stroke 0.5s ease-out",
+          'accordion-down': 'accordion-down 0.2s ease-out',
+          'accordion-up': 'accordion-up 0.2s ease-out',
+          'circular-stroke': 'circular-stroke 0.5s ease-out',
         },
       },
     },
     plugins: [
       animatePlugin,
       ({ addVariant }: PluginAPI) => {
-        addVariant("starting", "@starting-style");
-        addVariant("ios", "@supports (-webkit-touch-callout: none)");
-        addVariant("standalone", "@media (display-mode: standalone)");
+        addVariant('starting', '@starting-style')
+        addVariant('ios', '@supports (-webkit-touch-callout: none)')
+        addVariant('standalone', '@media (display-mode: standalone)')
       },
       ({ matchUtilities, theme }: PluginAPI) => {
         matchUtilities(
           {
-            "text-shadow": (value) => ({
+            'text-shadow': (value) => ({
               textShadow: value,
             }),
           },
-          { values: theme("textShadow") },
-        );
+          { values: theme('textShadow') },
+        )
       },
     ],
-  };
+  }
 
-  return preset;
+  return preset
 }

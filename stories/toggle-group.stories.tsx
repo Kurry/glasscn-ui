@@ -1,14 +1,14 @@
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { Meta, StoryObj } from '@storybook/react';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ToggleGroup> = {
   title: 'UI/ToggleGroup',
   component: ToggleGroup,
   // tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof ToggleGroup>;
+export default meta
+type Story = StoryObj<typeof ToggleGroup>
 
 export const Default: Story = {
   render: () => (
@@ -18,4 +18,4 @@ export const Default: Story = {
       <ToggleGroupItem value="c">C</ToggleGroupItem>
     </ToggleGroup>
   ),
-};
+}
