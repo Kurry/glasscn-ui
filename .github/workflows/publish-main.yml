@@ -6,8 +6,8 @@ on:
       bump:
         type: choice
         required: true
-        description: "Version part to release"
-        default: "patch"
+        description: 'Version part to release'
+        default: 'patch'
         options:
           - patch
           - minor
@@ -25,60 +25,40 @@ permissions:
 
 jobs:
   releaseNewVersion:
-    name: "Release new version"
+    name: 'Release new version'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # required to get tags
 
-      - name: "Setup Project"
+      - name: 'Setup Project'
         uses: ./.github/actions/setup-project
 
-      - name: "Check code quality"
+      - name: 'Check code quality'
         uses: ./.github/actions/check-code-quality
 
       # - name: "Authenticate with GitHub package registry (publish)"
       #   run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
-      - name: "Prepare git"
+      - name: 'Prepare git'
         run: |
           git config --global user.email "noreply@github.com"
           git config --global user.name "github-actions"
           git branch -u origin/main main
 
-      - name: "Increase build versions"
+      - name: 'Increase build versions'
         run: pnpm release --tag-prefix --commit-all --release-as ${{ inputs.bump }}
 
       # Uncomment when we have a package to publish
-      - name: "Publish package"
+      - name: 'Publish package'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           # NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --no-git-checks
 
-      - name: "Push new version to git"
+      - name: 'Push new version to git'
         run: |
           git add .
           git push --follow-tags
-
-  publishStorybook:
-    name: "Publish Storybook to GitHub Pages"
-    runs-on: ubuntu-latest
-    needs: [releaseNewVersion]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: "Setup Project"
-        uses: ./.github/actions/setup-project
-
-      - name: "Build storybook"
-        run: pnpm build:storybook
-
-      - uses: ./.github/actions/deploy-storybook
-        with:
-          install_command: pnpm install # default: npm ci
-          build_command: pnpm build:storybook # default: npm run build-storybook
-          path: storybook-static # default: dist/storybook
-          checkout: false # default: true

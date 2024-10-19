@@ -1,0 +1,34 @@
+name: Publish website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  packages: write
+  actions: write
+  pull-requests: write
+
+jobs:
+  publishStorybook:
+    name: 'Publish Storybook to GitHub Pages'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Setup Project'
+        uses: ./.github/actions/setup-project
+
+      - name: 'Build storybook'
+        run: pnpm build:storybook
+
+      - uses: ./.github/actions/deploy-storybook
+        with:
+          install_command: pnpm install # default: npm ci
+          build_command: pnpm build:storybook # default: npm run build-storybook
+          path: storybook-static # default: dist/storybook
+          checkout: false # default: true
