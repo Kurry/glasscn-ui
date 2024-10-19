@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.1](https://github.com/itsjavi/glasscn-ui/compare/v0.7.0...v0.7.1) (2024-10-19)
+
+
+### Bug Fixes
+
+* make publish workflows work with npm ([2ecae6b](https://github.com/itsjavi/glasscn-ui/commit/2ecae6bf5d3886650ff7552f3a95fa24b30df9bb))
+* npm publish ([b9c2115](https://github.com/itsjavi/glasscn-ui/commit/b9c2115c95b6af8f96ebcf552d809d9595921666))
+* pnpm version ([8369d45](https://github.com/itsjavi/glasscn-ui/commit/8369d45ef024c301f833357b87ee11e7108fb5ec))
+
+
+### Documentation
+
+* add meta ([f7faaf9](https://github.com/itsjavi/glasscn-ui/commit/f7faaf9459ebb49c5020b8299226cbbf499c1863))
+* show readme as storybook home ([5db739c](https://github.com/itsjavi/glasscn-ui/commit/5db739c1e1ba318e0affa69a8d6913d01520e220))
+
 ## [0.7.0](https://github.com/itsjavi/glasscn-ui/compare/v0.6.0...v0.7.0) (2024-10-19)
 
 
