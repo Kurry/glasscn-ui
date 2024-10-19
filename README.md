@@ -1,8 +1,8 @@
 # glasscn-ui
 
-![GitHub](https://img.shields.io/github/stars/itsjavi/glasscn-ui?style=flat-square&label=GitHub&logo=github)
-![NPM](https://img.shields.io/npm/v/glasscn-ui)
-![License](https://img.shields.io/github/license/itsjavi/glasscn-ui?label=License)
+[![GitHub](https://img.shields.io/github/stars/itsjavi/glasscn-ui?style=flat-square&label=GitHub&logo=github)](https://github.com/itsjavi/glasscn-ui)
+[![NPM](https://img.shields.io/npm/v/glasscn-ui)](https://www.npmjs.com/package/glasscn-ui)
+[![License](https://img.shields.io/github/license/itsjavi/glasscn-ui?label=License)](https://github.com/itsjavi/glasscn-ui/blob/main/LICENSE)
 
 Themable shadcn/ui component library with glassmorphism variants, and extra components like the Circular Progress.
 
