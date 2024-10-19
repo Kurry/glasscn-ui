@@ -114,6 +114,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.5.0
         version: 19.5.0
+      '@storybook/addon-docs':
+        specifier: ^8.3.6
+        version: 8.3.6(storybook@8.3.6)
       '@storybook/addon-essentials':
         specifier: ^8.3.6
         version: 8.3.6(storybook@8.3.6)
