@@ -2,32 +2,32 @@ name: Upgrade dependencies
 
 on:
   schedule:
-    - cron: "0 5 * * 1"
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 jobs:
   upgradeDependencies:
-    name: "Upgrade dependencies"
+    name: 'Upgrade dependencies'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup Project"
+      - name: 'Setup Project'
         uses: ./.github/actions/setup-project
 
-      - name: "Upgrade dependencies"
+      - name: 'Upgrade dependencies'
         run: pnpm run upgrade-deps
 
-      - name: "Check and fix code style"
+      - name: 'Check and fix code style'
         run: pnpm lint:fix
 
-      - name: "Check code quality"
+      - name: 'Check code quality'
         uses: ./.github/actions/check-code-quality
 
-      - name: "Prepare artifact"
+      - name: 'Prepare artifact'
         run: tar -czf /tmp/package.tar.gz package.json pnpm-lock.yaml node_modules
 
-      - name: "Upload artifact"
+      - name: 'Upload artifact'
         uses: actions/upload-artifact@v4
         with:
           name: workspace
@@ -35,37 +35,37 @@ jobs:
           retention-days: 1
 
   pushUpgrade:
-    name: "Push upgrade to git"
+    name: 'Push upgrade to git'
     needs: [upgradeDependencies]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Download artifact"
+      - name: 'Download artifact'
         uses: actions/download-artifact@v4
         with:
           name: workspace
           path: /tmp
 
-      - name: "Extract artifact"
+      - name: 'Extract artifact'
         run: tar -xf /tmp/package.tar.gz -C .
 
-      - name: "Setup Project"
+      - name: 'Setup Project'
         uses: ./.github/actions/setup-project
 
-      - name: "Check and fix code style"
+      - name: 'Check and fix code style'
         run: pnpm lint:fix
 
-      - name: "Check code quality"
+      - name: 'Check code quality'
         uses: ./.github/actions/check-code-quality
 
-      - name: "Prepare git"
+      - name: 'Prepare git'
         run: |
           git config --global user.email "noreply@github.com"
           git config --global user.name "github-actions"
           git branch -u origin/main main
 
-      - name: "Push to git"
+      - name: 'Push to git'
         run: |
           git add .
           if ! git diff-index --quiet HEAD; then

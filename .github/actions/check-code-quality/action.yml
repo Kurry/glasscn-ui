@@ -1,24 +1,24 @@
-name: "Check code quality"
+name: 'Check code quality'
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-      - name: "Check code style"
-        shell: bash
-        run: pnpm lint
+    - name: 'Check code style'
+      shell: bash
+      run: pnpm lint
 
-      - name: "Run tests"
-        shell: bash
-        run: pnpm test:ci
+    - name: 'Run tests'
+      shell: bash
+      run: pnpm test:ci
 
-      - name: "Build project"
-        shell: bash
-        run: pnpm build
+    - name: 'Build project'
+      shell: bash
+      run: pnpm build
 
-      - name: "Check publish config"
-        shell: bash
-        run: pnpm publint
+    - name: 'Check publish config'
+      shell: bash
+      run: pnpm publint
 
-      # - name: 'Build storybook'
-      #   shell: bash
-      #   run: pnpm build:storybook
+    # - name: 'Build storybook'
+    #   shell: bash
+    #   run: pnpm build:storybook

@@ -1,4 +1,4 @@
-name: "Check code quality"
+name: 'Check code quality'
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ concurrency:
 
 jobs:
   checkCodeQuality:
-    name: "Check code quality"
+    name: 'Check code quality'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Setup Project"
+      - name: 'Setup Project'
         uses: ./.github/actions/setup-project
 
-      - name: "Check code quality"
+      - name: 'Check code quality'
         uses: ./.github/actions/check-code-quality
