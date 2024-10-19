@@ -1,5 +1,7 @@
 # glasscn-ui
 
+![NPM](https://img.shields.io/npm/v/glasscn-ui)
+
 Themable shadcn/ui component library with glassmorphism variants, and extra components like the Circular Progress.
 
 ## Comparison with shadcn/ui

@@ -1,6 +1,11 @@
 {
   "name": "glasscn-ui",
   "version": "0.7.0",
+  "homepage": "https://itsjavi.com/glasscn-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsjavi/glasscn-ui.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
