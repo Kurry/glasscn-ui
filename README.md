@@ -1,13 +1,25 @@
-# glasscn UI
+# glasscn-ui
 
-shadcn/ui components with glassmorphism variants, with many extras to make your life easier.
+Themable shadcn/ui component library with glassmorphism variants, and extra components like the Circular Progress.
 
-## What's new?
+## Comparison with shadcn/ui
 
-### QoL improvements
+### Key Differences from shadcn/ui
 
-- Component classes are defined at the top of each file, and chopped down into shorter lines
-  to make them more readable and maintainable.
+Apart from all components being now part of a component library, these are the main differences:
+
+1. Glassmorphic variants for components with solid surfaces
+2. Improved color options and management: Additional color aliases and easier color switching. More consistent color
+   usage, specially with gray and primary/accent colors.
+3. New components like CircularProgress, ComboBox, DotIndicator, and HeadingTitle.
+4. Customizable blur effects for glassmorphic component variants.
+5. Improved button styles and variants.
+6. Enhanced toast notifications.
+
+### Better readability and maintainability
+
+- Component classes are defined at the top of each file, and chopped down into shorter lines to make them more readable
+  and maintainable.
 - Color aliases for primary, secondary, gray, danger and warning colors. Easy to identify and refactor.
 - `createTailwindPreset()`: Switch your theme colors quickly, without having to rewrite CSS vars or classes.
 
@@ -18,8 +30,9 @@ shadcn/ui components with glassmorphism variants, with many extras to make your 
 - Heading Title (with gradient variants)
 - Circular Progress
 
-### Upcoming
-- Submit Button (with loading indicator and using useFormStatus under the hood)
+### Upcoming components
+
+- Submit Button, with loading indicator and using useFormStatus under the hood (will need React 19).
 
 ### Component changes
 
@@ -31,15 +44,16 @@ Many components having a solid color (for example buttons), will now have a `col
 
 ### Opt-in Glassmorphic Style
 
-All components that have a solid surface / background color will now have these new props to transform them into
-a glassmorphic style:
+All components that are containers, dialogs or popovers, and have a solid surface / background color will now have these
+new props to transform them into a glassmorphic style:
 
 - `variant`: `default` or `glass`.
 - `blur`: Allows to customize the blur radius, e.g. `xl`. Same values as `backdrop-blur-*` classes.
 
 ## Installation
 
-This is a Tailwind CSS component library, so you need to install the package, adjust your `tailwind.config.js|ts` configuration and some global styles.
+This is a Tailwind CSS component library, so you need to install the package, adjust your `tailwind.config.js|ts`
+configuration and some global styles.
 
 ```bash
 npm install glasscn-ui
@@ -48,60 +62,60 @@ npm install glasscn-ui
 ### Tailwind CSS configuration
 
 ```js
-import { createTailwindPreset } from "@itsjavi/glasscn-ui";
+import { createTailwindPreset } from 'glasscn-ui'
 
 // Example preset configuration (config object is optional)
 const glasscnPreset = createTailwindPreset({
-  baseRadius: "0.5em",
+  baseRadius: '0.5em',
   colors: {
     // For primary, secondary, gray, danger and warning colors,
     // you can use any Tailwind color name, or a custom color palette.
-    primary: "blue",
-    secondary: "yellow",
+    primary: 'blue',
+    secondary: 'yellow',
     gray: {
-      50: "#f9fafb",
-      100: "#f3f4f6",
-      200: "#e5e7eb",
-      300: "#d1d5db",
-      400: "#9ca3af",
-      500: "#6b7280",
-      600: "#4b5563",
-      700: "#374151",
-      800: "#1f2937",
-      900: "#111827",
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827',
     },
-    danger: "red",
-    warning: "yellow",
+    danger: 'red',
+    warning: 'yellow',
     background: {
-      light: "#ffffff",
-      dark: "#000000",
+      light: '#ffffff',
+      dark: '#000000',
     },
     foreground: {
-      light: "#000000",
-      dark: "#ffffff",
+      light: '#000000',
+      dark: '#ffffff',
     },
     foregroundMuted: {
-      light: "#9ca3af",
-      dark: "#6b7280",
+      light: '#9ca3af',
+      dark: '#6b7280',
     },
     border: {
-      light: "#d1d5db",
-      dark: "#374151",
+      light: '#d1d5db',
+      dark: '#374151',
     },
     borderMuted: {
-      light: "#e5e7eb",
-      dark: "#4b5563",
+      light: '#e5e7eb',
+      dark: '#4b5563',
     },
   },
-});
+})
 
 export default {
   content: [
     // ...
-    "./node_modules/glasscn-ui/dist/index.js", // tell Tailwind's JIT to also include glasscn-ui's classes.
+    './node_modules/glasscn-ui/dist/index.js', // tell Tailwind's JIT to also include glasscn-ui's classes.
   ],
   presets: [glasscnPreset],
-};
+}
 ```
 
 ### Global styles
@@ -175,5 +189,37 @@ If you need these components, install them from the original shadcn/ui.
 
 ## Customization
 
-You can customize the preset, but if you want to customize the components default styles or behavior, you will need to
-copy-paste their code into your own project.
+Component libraries are easier to install and to get updates from, with the downside that they are harder to customize.
+
+You have many customization options via the `createTailwindPreset()` function, but if you need to modify the components,
+you will need to copy-paste their code into your own project instead of importing them from the library.
+
+## Roadmap
+
+### Support for glassmorphic variants
+
+Containers and popovers:
+
+- [x] Alert
+- [x] AlertDialog
+- [x] Card
+- [ ] Combobox
+- [x] Command
+- [x] ContextMenu
+- [x] Dialog
+- [x] Drawer
+- [x] DropdownMenu
+- [x] HoverCard
+- [ ] MenuBar
+- [ ] NavigationMenu
+- [ ] Popover
+- [ ] Select
+- [ ] Sheet
+- [ ] Toast
+- [ ] Tooltip
+
+Button-like:
+
+- [ ] Tabs
+- [ ] Toggle
+- [ ] ToggleGroup
