@@ -114,8 +114,7 @@
   },
   "packageManager": "pnpm@8.15.9",
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "overrides": {
     "@types/react": "^18",
