@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/itsjavi/glasscn-ui/compare/v0.6.0...v0.7.0) (2024-10-19)
+
+
+### Other
+
+* upgrade dependencies ([65848c1](https://github.com/itsjavi/glasscn-ui/commit/65848c1785461fcf58aeec5d6753972211ab8639))
+* upgrade dependencies ([e4ed5c7](https://github.com/itsjavi/glasscn-ui/commit/e4ed5c756f0bf0d76186cc6830545aa6d41dcf2f))
+* upgrade dependencies ([d84a75d](https://github.com/itsjavi/glasscn-ui/commit/d84a75d51906597fac8cd0e97dc9f70d9ffd402e))
+* upgrade dependencies ([0c9422b](https://github.com/itsjavi/glasscn-ui/commit/0c9422b9e4e331fdf3fcacc53abbe80d3e488d66))
+
+
+### Refactorings
+
+* make package public ([75b652c](https://github.com/itsjavi/glasscn-ui/commit/75b652c9af8c2ac06caf01a8c4936c27b0c08239))
+* replace biome with prettier ([5d082b0](https://github.com/itsjavi/glasscn-ui/commit/5d082b09a876b455fa8786f5fe090906ad8e2928))
+* update readme and library name ([e8852cb](https://github.com/itsjavi/glasscn-ui/commit/e8852cb0ec302b939742c05ab5ced21c030e58cd))
+
 ## [0.6.0](https://github.com/itsjavi/glasscn-ui/compare/v0.5.4...v0.6.0) (2024-09-27)
 
 
