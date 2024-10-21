@@ -3716,8 +3716,8 @@ packages:
     peerDependencies:
       typescript: '>= 4.3.x'
 
-  react-docgen@7.0.3:
-    resolution: {integrity: sha512-i8aF1nyKInZnANZ4uZrH49qn1paRgBZ7wZiCNBMnenlPzEv0mRl+ShpTVEI6wZNl8sSc79xZkivtgLKQArcanQ==}
+  react-docgen@7.1.0:
+    resolution: {integrity: sha512-APPU8HB2uZnpl6Vt/+0AFoVYgSRtfiP6FLrZgPPTDmqSb2R4qZRbgd0A3VzIFxDt5e+Fozjx79WjLWnF69DK8g==}
     engines: {node: '>=16.14.0'}
 
   react-dom@18.3.1:
@@ -6023,7 +6023,7 @@ snapshots:
       find-up: 5.0.0
       magic-string: 0.30.12
       react: 18.3.1
-      react-docgen: 7.0.3
+      react-docgen: 7.1.0
       react-dom: 18.3.1(react@18.3.1)
       resolve: 1.22.8
       storybook: 8.3.6
@@ -7971,7 +7971,7 @@ snapshots:
     dependencies:
       typescript: 5.6.3
 
-  react-docgen@7.0.3:
+  react-docgen@7.1.0:
     dependencies:
       '@babel/core': 7.25.8
       '@babel/traverse': 7.25.7
