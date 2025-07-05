@@ -4,23 +4,23 @@ import { cn } from '@/lib/utils'
 
 const twStyles = {
   input: [
-    'flex h-10 w-full rounded-md border px-3 py-2 text-sm',
+    'flex h-10 w-full rounded-md border px-3 py-2 text-sm font-medium',
     'file:border-0 file:bg-transparent file:text-sm file:font-medium',
     'disabled:cursor-not-allowed',
-    // ----- colors -----
+    'transition-all duration-200 ease-smooth',
+    'transform-gpu backface-visibility-hidden',
+    // Enhanced colors with better contrast
     'disabled:opacity-50',
-    // border:
     'border-border',
-    // bg:
-    'bg-white dark:bg-gray-950',
-    // placeholder:
-    'placeholder:text-gray-500 dark:placeholder:text-gray-400',
-    // ring size:
+    'bg-background/60 backdrop-blur-sm',
+    'supports-[backdrop-filter]:bg-background/40',
+    'placeholder:text-foreground-muted',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-    // ring color:
-    'focus-visible:ring-ring/90',
-    // ring offset color:
-    'ring-offset-white dark:ring-offset-gray-950',
+    'focus-visible:ring-ring focus-visible:border-ring',
+    'ring-offset-background',
+    'hover:border-border-focus/50',
+    'focus:border-ring focus:bg-background/80',
+    'shadow-elevation-1 focus:shadow-elevation-2',
   ],
 }
 
