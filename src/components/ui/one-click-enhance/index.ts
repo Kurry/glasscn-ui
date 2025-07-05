@@ -109,8 +109,7 @@ export function OneClickEnhanceDemo() {
               variant="outline"
               size="lg"
               fullWidth
-              buttonText={<span>Optimize Resume with AI</span>}
-              }
+              buttonText={<span>🚀 Supercharge My Resume</span>}
               onEnhanceComplete={setEnhancedResumeId}
             />
           </CardContent>
