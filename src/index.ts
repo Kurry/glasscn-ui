@@ -53,6 +53,15 @@ export * from './components/ui-extras/combobox'
 export * from './components/ui-extras/dot-indicator'
 export * from './components/ui-extras/heading-title'
 
+// onboarding components
+export * from './components/onboarding/landing-page'
+export * from './components/onboarding/sign-up-form'
+export * from './components/onboarding/context-survey'
+export * from './components/onboarding/resume-creation-choice'
+export * from './components/onboarding/template-selection'
+export * from './components/onboarding/guided-input'
+export * from './components/onboarding/welcome-survey'
+
 // hooks
 export * from './hooks/use-toast'
 
