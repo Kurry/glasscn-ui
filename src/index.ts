@@ -53,6 +53,21 @@ export * from './components/ui-extras/combobox'
 export * from './components/ui-extras/dot-indicator'
 export * from './components/ui-extras/heading-title'
 
+// new UI components for onboarding
+export * from './components/ui/survey-step'
+export * from './components/ui/empty-state'
+export * from './components/ui/file-upload'
+export * from './components/ui/progress-indicator'
+export * from './components/ui/score-card'
+export * from './components/ui/form-builder'
+export * from './components/ui/comparison-card'
+export * from './components/ui/automation-pitch'
+export * from './components/ui/job-preferences'
+export * from './components/ui/dashboard-stats'
+export * from './components/ui/creation-path-selector'
+export * from './components/ui/step-flow'
+export * from './components/ui/success-celebration'
+
 // onboarding components
 export * from './components/onboarding/landing-page'
 export * from './components/onboarding/sign-up-form'
