@@ -7,7 +7,7 @@ import { Progress } from '@/components/ui/progress'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
-import { TrendingUp, BarChart3, ArrowUp, LineChart, Microscope, Check, Flask } from 'lucide-react'
+import { TrendingUp, BarChart3, ArrowUp, LineChart, Microscope, Check, FlaskRound as Flask } from 'lucide-react'
 import { useState } from 'react'
 
 interface ResumePerformanceData {
