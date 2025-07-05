@@ -8,6 +8,12 @@
   consistent rules about light, depth, and material.
 */
 
+/* 
+  Architectural Glass Design System - Digital Materiality
+  A rigorous design system treating UI as a simulated physical space with 
+  consistent rules about light, depth, and material.
+*/
+
 @layer base {
   :root {
     --background: theme('colors.background.light');
@@ -18,6 +24,27 @@
     --border-muted: theme('colors.border.muted.light');
     --ring: theme('colors.ring.light');
     --ring-offset: theme('colors.ring.offset.light');
+    
+    /* Z-Index Spatial Hierarchy */
+    --z-canvas: 0;     /* The root background layer */
+    --z-surface: 10;   /* Opaque UI cards and primary content */
+    --z-glass: 20;     /* Glass panels (navbars, sidebars) */
+    --z-popover: 30;   /* Tooltips and menus */
+    --z-modal: 40;     /* Dialogs and critical overlays */
+    
+    /* Standard Border Radius */
+    --radius: 0.5rem;  /* 8px base radius */
+    
+    /* Elevation System (Shadows) */
+    --shadow-edge: 0 0 0 1px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    
+    /* Glass Material Properties */
+    --glass-opacity: 0.75;  /* 75% opacity for glass surfaces */
+    --glass-blur: 16px;     /* Standard blur amount */
     
     /* Z-Index Spatial Hierarchy */
     --z-canvas: 0;     /* The root background layer */
@@ -53,6 +80,9 @@
     
     /* Dark Mode Glass Edge */
     --shadow-edge: 0 0 0 1px rgba(255, 255, 255, 0.05);
+    
+    /* Dark Mode Glass Edge */
+    --shadow-edge: 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
   *,
@@ -64,6 +94,17 @@
   * {
     box-sizing: border-box;
     position: relative;
+  }
+  
+  /* Enhance typography */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+  
+  p {
+    text-wrap: pretty;
   }
   
   /* Enhance typography */
@@ -93,6 +134,85 @@
   [inert] {
     pointer-events: none;
     user-select: none;
+  }
+}
+
+/* Material Definitions */
+@layer components {
+  /* Opaque UI Card - The workhorse surface material */
+  .ui-card {
+    @apply bg-white dark:bg-gray-950 rounded-lg;
+    box-shadow: var(--shadow-edge), var(--shadow-sm);
+    z-index: var(--z-surface);
+  }
+  
+  /* Glass Panel - For floating UI chrome */
+  .ui-glass-panel {
+    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
+    box-shadow: var(--shadow-edge);
+    backdrop-filter: blur(var(--glass-blur));
+    z-index: var(--z-glass);
+  }
+  
+  /* Elevated Glass Panel - For floating UI chrome (scrolled navbar) */
+  .ui-glass-panel-elevated {
+    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
+    box-shadow: var(--shadow-edge), var(--shadow-lg);
+    backdrop-filter: blur(var(--glass-blur));
+    z-index: var(--z-glass);
+  }
+  
+  /* Standard Interactive Button */
+  .ui-button {
+    @apply bg-black text-white rounded-md font-medium;
+    @apply transition-all duration-150 ease-in-out;
+    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600;
+  }
+  
+  /* Button Interaction Physics */
+  .ui-button:hover {
+    @apply bg-black/90;
+    transform: translateY(-2px);
+  }
+  
+  .ui-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Z-Index Structure for Proper Depth Perception */
+@layer utilities {
+  .z-canvas {
+    z-index: var(--z-canvas);
+  }
+  
+  .z-surface {
+    z-index: var(--z-surface);
+  }
+  
+  .z-glass {
+    z-index: var(--z-glass);
+  }
+  
+  .z-popover {
+    z-index: var(--z-popover);
+  }
+  
+  .z-modal {
+    z-index: var(--z-modal);
+  }
+  
+  /* Animation utilities */
+  .transition-standard {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .transition-panel {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
   }
 }
 

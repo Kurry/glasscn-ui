@@ -22,7 +22,7 @@ import { cva } from "class-variance-authority"
 export const materialSurface = cva(
   // Base styles for all surfaces
   [
-    "rounded-lg", 
+    "rounded-lg",
     "transition-all",
   ],
   {
@@ -31,23 +31,23 @@ export const materialSurface = cva(
       material: {
         // Solid, opaque surfaces for content containers
         solid: [
-          "bg-white dark:bg-gray-950",
-          "z-surface",
+          "bg-white dark:bg-gray-950", 
+          "z-[var(--z-surface)]",
         ],
         // Translucent glass panels for UI chrome
         glass: [
-          "bg-white/75 dark:bg-gray-950/50",
+          "bg-white/[var(--glass-opacity)] dark:bg-gray-950/50",
           "backdrop-blur-lg",
-          "z-glass",
+          "z-[var(--z-glass)]",
         ],
       },
       // Elevation level
       elevation: {
         none: "",
-        low: "shadow-sm", // Default subtle lift
-        medium: "shadow-md", // Hover state elevation
-        high: "shadow-lg", // Floating UI chrome
-        highest: "shadow-xl", // Modals & critical pop-ups
+        low: "", // Default subtle lift
+        medium: "", // Hover state elevation
+        high: "", // Floating UI chrome
+        highest: "", // Modals & critical pop-ups
       },
       // Edge treatment
       edge: {
@@ -170,10 +170,10 @@ export const blurEffect = cva(
     },
     compoundVariants: [
       // Backdrop blur (for UI glass - preserves content clarity)
-      { type: "backdrop", strength: "sm", className: "backdrop-blur-sm" },
-      { type: "backdrop", strength: "md", className: "backdrop-blur-md" },
-      { type: "backdrop", strength: "lg", className: "backdrop-blur-lg" },
-      { type: "backdrop", strength: "xl", className: "backdrop-blur-xl" },
+      { type: "backdrop", strength: "sm", className: "backdrop-blur-sm" },  
+      { type: "backdrop", strength: "md", className: "backdrop-blur-md" },  
+      { type: "backdrop", strength: "lg", className: "backdrop-blur-[var(--glass-blur)]" },
+      { type: "backdrop", strength: "xl", className: "backdrop-blur-xl" },  
       
       // Direct blur (for decorative elements ONLY)
       { type: "direct", strength: "sm", className: "blur-[1px]" },

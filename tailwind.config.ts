@@ -39,19 +39,19 @@ const config: Config = {
     extend: {
       // The Elevation System (Shadows)
       boxShadow: {
-        'xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)', // Level 1 - subtle lift
-        'edge': '0 0 0 1px rgba(0, 0, 0, 0.05)', // Precision hairline edge
-        'glass-edge': '0 0 0 1px rgba(255, 255, 255, 0.05)', // Precision edge (dark)
+        'xs': 'var(--shadow-sm)', // Level 1 - subtle lift
+        'edge': 'var(--shadow-edge)', // Precision hairline edge
+        'glass-edge': 'var(--shadow-edge)', // Precision edge (dark mode handled by CSS variable)
         'glow': '0 0 40px rgba(173, 216, 255, 0.5)', // Decorative blue glow
         'inset-glow': 'inset 0 0 30px rgba(255, 255, 255, 0.4)', // Interior light source
       },
       // Z-Axis Spatial Hierarchy
       zIndex: {
-        'canvas': '0',    // The background layer
-        'surface': '10',  // Opaque UI cards and content
-        'glass': '20',    // Glass panels (navbars, sidebars)
-        'popover': '30',  // Tooltips and menus
-        'modal': '40',    // Dialogs and critical overlays
+        'canvas': 'var(--z-canvas)',    // The background layer
+        'surface': 'var(--z-surface)',  // Opaque UI cards and content
+        'glass': 'var(--z-glass)',      // Glass panels (navbars, sidebars)
+        'popover': 'var(--z-popover)',  // Tooltips and menus
+        'modal': 'var(--z-modal)',      // Dialogs and critical overlays
       },
       // Interaction System (Transforms & Transitions)
       translate: {
@@ -72,9 +72,9 @@ const config: Config = {
       // Glass Material System
       backdropBlur: {
         'xs': '4px',      // Light glass effect
-        'sm': '8px',      // Medium glass effect
+        'sm': '8px',      // Medium glass effect 
         'md': '12px',     // Standard glass effect
-        'lg': '16px',     // Strong glass effect (standard for glass panels)
+        'lg': 'var(--glass-blur)',  // Strong glass effect (standard for glass panels)
         'xl': '24px',     // Very strong glass effect
       },
     },

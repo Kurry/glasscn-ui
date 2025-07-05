@@ -196,3 +196,92 @@ export const GlassRing = ({
     />
   )
 }
+
+/**
+ * Hero Background - Creates a decorative background with concentric glass rings
+ */
+export function HeroBackground() {
+  return (
+    <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-100/20 to-transparent" />
+      
+      {/* Concentric Rings */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 contain-paint">
+        <GlassRing size={40} blur={4} className="opacity-30" />
+        <GlassRing size={30} blur={3} className="absolute inset-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40" />
+        <GlassRing size={20} blur={2} glow className="absolute inset-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60" />
+        <GlassRing size={10} blur={1} glow innerGlow className="absolute inset-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" />
+      </div>
+      
+      {/* Aurora Blob */}
+      <div 
+        className="absolute -left-[20%] top-1/2 w-1/2 h-1/2 bg-gradient-to-r from-blue-200/30 to-sky-300/30 rounded-full blur-3xl"
+        style={{transform: 'translateY(-60%)'}}
+      />
+      <div 
+        className="absolute -right-[20%] top-[40%] w-1/2 h-1/2 bg-gradient-to-l from-blue-200/30 to-sky-300/30 rounded-full blur-3xl"
+        style={{transform: 'translateY(-60%)'}}
+      />
+    </div>
+  )
+}
+
+/**
+ * Navbar with Glass Effect - Example of glass panel usage for UI chrome
+ */
+interface GlassNavbarProps extends React.HTMLAttributes<HTMLDivElement> {
+  scrolled?: boolean
+  children: React.ReactNode
+}
+
+export function GlassNavbar({
+  scrolled = false,
+  className,
+  children,
+  ...props
+}: GlassNavbarProps) {
+  return (
+    <GlassPanel
+      elevated={scrolled}
+      className={cn(
+        "sticky top-0 w-full transition-all duration-300",
+        scrolled ? "py-2" : "py-4",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </GlassPanel>
+  )
+}
+
+/**
+ * Card with proper Material properties
+ */
+interface MaterialCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'solid' | 'glass'
+  elevated?: boolean
+  children: React.ReactNode
+}
+
+export function MaterialCard({
+  variant = 'solid',
+  elevated = false,
+  className,
+  children,
+  ...props
+}: MaterialCardProps) {
+  return (
+    <Surface
+      variant={variant}
+      elevated={elevated}
+      className={cn(
+        "p-6",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </Surface>
+  )
+}
