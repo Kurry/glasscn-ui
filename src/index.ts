@@ -67,6 +67,11 @@ export * from './components/ui/dashboard-stats'
 export * from './components/ui/creation-path-selector'
 export * from './components/ui/step-flow'
 export * from './components/ui/success-celebration'
+export * from './components/ui/notification-card'
+export * from './components/ui/email-summary'
+export * from './components/ui/upsell-card'
+export * from './components/ui/milestone-card'
+export * from './components/ui/re-engagement'
 
 // onboarding components
 export * from './components/onboarding/landing-page'
