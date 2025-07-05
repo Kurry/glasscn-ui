@@ -73,6 +73,9 @@ export * from './components/ui/upsell-card'
 export * from './components/ui/milestone-card'
 export * from './components/ui/re-engagement'
 
+// agent progress viewer components
+export * from './components/ui/agent-progress-viewer'
+
 // onboarding components
 export * from './components/onboarding/landing-page'
 export * from './components/onboarding/sign-up-form'
