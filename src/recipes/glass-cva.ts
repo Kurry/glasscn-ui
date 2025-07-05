@@ -1,45 +1,25 @@
 import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
+// import type { cva } from "class-variance-authority";
+// type CvaOptionsWithoutUndefined<T> = Exclude<Parameters<typeof cva<T>>[1], undefined>;
 
 const glassSurfaceStyles = {
-  solidBg: ['bg-background'],
-  solidBorder: ['border border-border'],
-  glassBg: [
-    'bg-background/80 dark:bg-background/50',
-    'backdrop-saturate-150',
-    'supports-[backdrop-filter]:bg-background/60',
-  ],
-  glassBorder: ['border border-border/70 dark:border-border/50'],
-  glassEffects: [
-    'backdrop-blur-md',
-    'backdrop-saturate-150',
-    'before:absolute before:inset-0 before:rounded-[inherit]',
-    'before:bg-gradient-to-br before:from-white/10 before:to-transparent before:opacity-50',
-    'before:pointer-events-none',
-    'shadow-elevation-2 dark:shadow-elevation-3',
-    'transition-all duration-200 ease-smooth',
-  ],
-  glassHover: [
-    'hover:shadow-elevation-3 dark:hover:shadow-elevation-4',
-    'hover:backdrop-blur-lg',
-    'hover:before:opacity-60',
-    'hover:bg-background/90 dark:hover:bg-background/60',
-  ],
+  solidBg: ['bg-white dark:bg-gray-950'],
+  solidBorder: ['border border-gray-300 dark:border-gray-500/70'],
+  glassBg: ['bg-white/70 dark:bg-gray-950/50'],
+  // glassBorder: ["border border-gray-200/60 dark:border-gray-500/70"],
+  glassBorder: ['border border-border'],
+  // glassInnerShadow: ["shadow-inset-white", "dark:shadow-inset-gray"], // this overrides the outset shadow.
 }
 
 export const glassCvaConfig = {
   variants: {
     variant: {
       solid: cn(...glassSurfaceStyles.solidBg, ...glassSurfaceStyles.solidBorder),
-      glass: cn(
-        ...glassSurfaceStyles.glassBorder,
-        ...glassSurfaceStyles.glassBg,
-        ...glassSurfaceStyles.glassEffects,
-      ),
+      glass: cn(...glassSurfaceStyles.glassBorder, ...glassSurfaceStyles.glassBg),
     },
     blur: {
-      none: 'backdrop-blur-none',
-      xs: 'backdrop-blur-xs',
+      none: '',
       sm: 'backdrop-blur-sm',
       md: 'backdrop-blur-md',
       lg: 'backdrop-blur-lg',
@@ -47,15 +27,15 @@ export const glassCvaConfig = {
       '2xl': 'backdrop-blur-2xl',
       '3xl': 'backdrop-blur-3xl',
     },
-    interactive: {
-      true: cn(...glassSurfaceStyles.glassHover),
-      false: '',
-    },
+    // innerGlow: {
+    //   true: cn(glassSurfaceStyles.glassInnerShadow),
+    //   false: "",
+    // },
   },
   defaultVariants: {
     variant: 'glass',
     blur: 'md',
-    interactive: false,
+    // innerGlow: false,
   },
 } as const
 
@@ -69,14 +49,10 @@ export const glassStorybookConfig = {
       control: 'select',
       options: Object.keys(glassCvaConfig.variants.blur),
     },
-    interactive: {
-      control: 'boolean',
-    },
   },
   args: {
     variant: glassCvaConfig.defaultVariants.variant,
     blur: glassCvaConfig.defaultVariants.blur,
-    interactive: glassCvaConfig.defaultVariants.interactive,
   },
 } as const
 

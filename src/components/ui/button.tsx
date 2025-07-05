@@ -9,41 +9,30 @@ import { SpinnerIcon } from '../icons/spinner-icon'
 const twStyles = {
   base: [
     'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ',
-    'transition-all duration-200 ease-smooth focus-visible:outline-none focus-visible:ring-2',
+    'transition-colors focus-visible:outline-none focus-visible:ring-2',
     'focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-    'ring-offset-background focus-visible:ring-ring',
-    'font-medium tracking-wide',
-    'relative overflow-hidden',
-    'before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:to-transparent',
-    'before:opacity-0 before:transition-opacity before:duration-200',
-    'hover:before:opacity-100',
-    'transform-gpu backface-visibility-hidden',
+    'ring-offset-white focus-visible:ring-gray-950',
+    'dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300',
   ],
   variant: {
     default: [
-      'bg-foreground text-background hover:bg-foreground/90',
-      'shadow-elevation-1 hover:shadow-elevation-2',
-      'border border-transparent',
+      'bg-gray-900 text-gray-50 hover:bg-gray-900/90',
+      'dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90',
     ],
     subtle: [
-      'bg-background-muted text-foreground hover:bg-background-subtle',
-      'border border-border/50',
-      'shadow-elevation-1 hover:shadow-elevation-2',
+      'bg-gray-100 text-gray-900 hover:bg-gray-100/80',
+      'dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-800/80',
     ],
     outline: [
-      'border border-border bg-background/60 hover:bg-background-muted text-foreground',
-      'backdrop-blur-sm backdrop-saturate-150',
-      'shadow-elevation-1 hover:shadow-elevation-2',
-      'supports-[backdrop-filter]:bg-background/40',
+      'border border-gray-300 bg-white hover:bg-gray-100 text-gray-900 hover:text-gray-900',
+      'dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800',
+      'dark:text-gray-50 dark:hover:text-gray-50 bg-opacity-30 dark:bg-opacity-30',
+      'backdrop-blur-sm',
     ],
-    ghost: [
-      'hover:bg-background-muted hover:text-foreground',
-      'transition-colors duration-200 ease-smooth',
-    ],
+    ghost: ['hover:bg-gray-100 hover:text-gray-900', 'dark:hover:bg-gray-800 dark:hover:text-gray-50'],
     link: [
-      'text-foreground underline decoration-foreground-muted decoration-dotted underline-offset-4',
-      'hover:decoration-solid hover:decoration-foreground',
-      'transition-all duration-200 ease-smooth',
+      'text-gray-900 underline decoration-gray-700 decoration-dotted underline-offset-4 hover:decoration-solid',
+      'dark:text-gray-50 dark:decoration-gray-100',
     ],
   },
   colors: {
@@ -71,47 +60,37 @@ const twStyles = {
   colorVariants: {
     primary: {
       default: [
-        'bg-primary-600 text-white hover:bg-primary-700',
-        'shadow-glow-primary/50 hover:shadow-glow-primary',
-        'border border-primary-500/20',
+        'bg-primary-600 text-white hover:bg-primary-600/90',
+        'dark:bg-primary-600 dark:text-white dark:hover:bg-primary-600/90',
       ],
       subtle: [
-        'bg-primary-50 text-primary-900 hover:bg-primary-100',
-        'dark:bg-primary-900/30 dark:text-primary-100 dark:hover:bg-primary-900/50',
-        'border border-primary-200 dark:border-primary-800',
+        'bg-primary-100 text-primary-900 hover:bg-primary-100/80',
+        'dark:bg-primary-800 dark:text-primary-50 dark:hover:bg-primary-800/80',
       ],
       outline: [
-        'border border-primary-300 bg-background/60 hover:bg-primary-50 text-primary-700',
-        'dark:border-primary-700 dark:hover:bg-primary-900/30 dark:text-primary-200',
-        'backdrop-blur-sm backdrop-saturate-150',
-        'shadow-glow-primary/30 hover:shadow-glow-primary/50',
+        'border border-primary-300 bg-white hover:bg-primary-100 text-primary-900 hover:text-primary-900',
+        'dark:border-primary-800 dark:bg-primary-950 dark:hover:bg-primary-800',
+        'dark:text-primary-50 dark:hover:text-primary-50',
       ],
-      ghost: [
-        'hover:bg-primary-50 hover:text-primary-900', 
-        'dark:hover:bg-primary-900/20 dark:hover:text-primary-100',
-      ],
+      ghost: ['hover:bg-primary-100 hover:text-primary-900', 'dark:hover:bg-primary-800 dark:hover:text-primary-50'],
       link: [
-        'text-primary-600 underline decoration-primary-400 decoration-dotted underline-offset-4',
-        'hover:decoration-solid hover:decoration-primary-600',
-        'dark:text-primary-400 dark:decoration-primary-600 dark:hover:decoration-primary-400',
+        'text-primary-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid',
+        'dark:text-primary-500 dark:decoration-current',
       ],
     },
     secondary: {
       default: [
-        'bg-secondary-600 text-white hover:bg-secondary-700',
-        'shadow-glow-secondary/50 hover:shadow-glow-secondary',
-        'border border-secondary-500/20',
+        'bg-secondary-600 text-white hover:bg-secondary-600/90',
+        'dark:bg-secondary-600 dark:text-white dark:hover:bg-secondary-600/90',
       ],
       subtle: [
-        'bg-secondary-50 text-secondary-900 hover:bg-secondary-100',
-        'dark:bg-secondary-900/30 dark:text-secondary-100 dark:hover:bg-secondary-900/50',
-        'border border-secondary-200 dark:border-secondary-800',
+        'bg-secondary-100 text-secondary-900 hover:bg-secondary-100/80',
+        'dark:bg-secondary-800 dark:text-secondary-50 dark:hover:bg-secondary-800/80',
       ],
       outline: [
-        'border border-secondary-300 bg-background/60 hover:bg-secondary-50 text-secondary-700',
-        'dark:border-secondary-700 dark:hover:bg-secondary-900/30 dark:text-secondary-200',
-        'backdrop-blur-sm backdrop-saturate-150',
-        'shadow-glow-secondary/30 hover:shadow-glow-secondary/50',
+        'border border-secondary-300 bg-white hover:bg-secondary-100 text-secondary-900 hover:text-secondary-900',
+        'dark:border-secondary-800 dark:bg-secondary-950 dark:hover:bg-secondary-800',
+        'dark:text-secondary-50 dark:hover:text-secondary-50',
       ],
       ghost: [
         'hover:bg-secondary-100 hover:text-secondary-900',
@@ -213,10 +192,10 @@ const buttonVariants = cva(cn(twStyles.base), {
       full: 'rounded-full',
     },
     size: {
-      sm: 'h-8 px-3 text-xs',
-      default: 'h-10 px-4 py-2 text-sm',
-      lg: 'h-12 px-6 text-sm',
-      xl: 'h-14 px-8 text-base',
+      sm: 'h-8 px-3',
+      default: 'h-10 px-4 py-2',
+      lg: 'h-12 px-5 text-md',
+      xl: 'h-14 px-7 text-md',
       icon: 'h-10 w-10',
     },
   },
@@ -375,8 +354,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, radius, color, className }), {
-          'cursor-not-allowed opacity-60': props.disabled,
-          'animate-pulse': loading,
+          'cursor-not-allowed': props.disabled,
         })}
         ref={ref}
         {...props}

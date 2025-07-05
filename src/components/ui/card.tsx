@@ -5,39 +5,19 @@ import { glassCvaConfig } from '@/recipes/glass-cva'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const twStyles = {
-  card: [
-    'rounded-lg overflow-hidden',
-    'transition-all duration-200 ease-smooth',
-    'transform-gpu backface-visibility-hidden',
-  ],
+  card: ['rounded-lg shadow-sm'],
   colors: {
-    primary: [
-      'bg-primary-50 text-primary-900 border-primary-200',
-      'dark:bg-primary-900/20 dark:text-primary-100 dark:border-primary-700',
-    ],
-    secondary: [
-      'bg-secondary-50 text-secondary-900 border-secondary-200',
-      'dark:bg-secondary-900/20 dark:text-secondary-100 dark:border-secondary-700',
-    ],
-    accent: [
-      'bg-accent-50 text-accent-900 border-accent-200',
-      'dark:bg-accent-900/20 dark:text-accent-100 dark:border-accent-700',
-    ],
-    warning: [
-      'bg-warning-50 text-warning-900 border-warning-200',
-      'dark:bg-warning-900/20 dark:text-warning-100 dark:border-warning-700',
-    ],
-    danger: [
-      'bg-danger-50 text-danger-900 border-danger-200',
-      'dark:bg-danger-900/20 dark:text-danger-100 dark:border-danger-700',
-    ],
+    primary: 'text-foreground-dark bg-primary dark:bg-primary border-primary dark:border-primary',
+    secondary: 'text-foreground-dark bg-secondary dark:bg-secondary border-secondary dark:border-secondary',
+    accent: 'text-foreground-dark bg-accent dark:bg-accent border-accent dark:border-accent',
+    warning: 'text-foreground-dark bg-warning dark:bg-warning border-warning dark:border-warning',
+    danger: 'text-foreground-dark bg-danger dark:bg-danger border-danger dark:border-danger',
+    // success: "bg-success",
+    // info: "bg-info",
   },
-  header: [
-    'flex flex-col space-y-1.5 p-6',
-    'border-b border-border/50',
-  ],
+  header: 'flex flex-col space-y-1.5 p-6',
   title: 'text-2xl font-semibold leading-none tracking-tight',
-  description: 'text-sm text-foreground-muted',
+  description: 'text-sm text-neutral-500 dark:text-neutral-400',
   content: 'p-6 pt-0',
   footer: 'flex items-center p-6 pt-0',
 }
@@ -53,27 +33,16 @@ const cardVariants = cva(cn(twStyles.card), {
       warning: cn(twStyles.colors.warning),
       danger: cn(twStyles.colors.danger),
     },
-    hover: {
-      true: [
-        'hover:shadow-elevation-3',
-        'hover:-translate-y-0.5',
-        'cursor-pointer',
-      ],
-      false: 'shadow-elevation-1',
-    },
   },
   defaultVariants: {
     ...glassCvaConfig.defaultVariants,
     color: 'default',
-    hover: false,
   },
 })
-interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>, VariantProps<typeof cardVariants> {
-  interactive?: boolean
-}
+interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>, VariantProps<typeof cardVariants> {}
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, variant, blur, color, hover, interactive, ...props }, ref) => (
-  <div ref={ref} className={cn(cardVariants({ variant, blur, color, hover: hover || interactive }), className)} {...props} />
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, variant, blur, color, ...props }, ref) => (
+  <div ref={ref} className={cn(cardVariants({ variant, blur, color }), className)} {...props} />
 ))
 Card.displayName = 'Card'
 
