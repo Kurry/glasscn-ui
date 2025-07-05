@@ -19,6 +19,7 @@ interface SurfaceProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'solid' | 'glass'
   elevated?: boolean
   hasBorder?: boolean
+  innerGlow?: boolean
   children?: React.ReactNode
 }
 
@@ -30,6 +31,7 @@ export const Surface = React.forwardRef<
   variant = 'solid',
   elevated = false,
   hasBorder = false,
+  innerGlow = false,
   children, 
   ...props 
 }, ref) => {
@@ -37,7 +39,7 @@ export const Surface = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        createSurface(variant, elevated, hasBorder),
+        createSurface(variant, elevated, hasBorder, innerGlow),
         className
       )}
       {...props}
@@ -56,6 +58,7 @@ Surface.displayName = 'Surface'
  */
 interface GlassPanelProps extends React.HTMLAttributes<HTMLDivElement> {
   elevated?: boolean
+  innerGlow?: boolean
   children?: React.ReactNode
 }
 
@@ -65,6 +68,7 @@ export const GlassPanel = React.forwardRef<
 >(({
   className,
   elevated = false,
+  innerGlow = false,
   children,
   ...props
 }, ref) => {
@@ -73,6 +77,7 @@ export const GlassPanel = React.forwardRef<
       ref={ref}
       variant="glass"
       elevated={elevated}
+      innerGlow={innerGlow}
       className={cn(
         "p-4",
         className

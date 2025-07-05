@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Architectural Glass Design System - Digital Materiality
-  A rigorous design system treating UI as a simulated physical space with 
-  consistent rules about light, depth, and material.
-*/
-
-/* 
-  Architectural Glass Design System - Digital Materiality
-  A rigorous design system treating UI as a simulated physical space with 
-  consistent rules about light, depth, and material.
-*/
+/**
+ * ========================================================================
+ * Architectural Glass Design System - Digital Materiality
+ * 
+ * A rigorous design system treating UI as a simulated physical space with 
+ * consistent rules about light, depth, and material properties.
+ * ========================================================================
+ */
 
 @layer base {
   :root {
@@ -24,30 +21,11 @@
     --border-muted: theme('colors.border.muted.light');
     --ring: theme('colors.ring.light');
     --ring-offset: theme('colors.ring.offset.light');
+    --ring: theme('colors.ring.light');
+    --ring-offset: theme('colors.ring.offset.light');
     
     /* Z-Index Spatial Hierarchy */
-    --z-canvas: 0;     /* The root background layer */
-    --z-surface: 10;   /* Opaque UI cards and primary content */
-    --z-glass: 20;     /* Glass panels (navbars, sidebars) */
-    --z-popover: 30;   /* Tooltips and menus */
-    --z-modal: 40;     /* Dialogs and critical overlays */
-    
-    /* Standard Border Radius */
-    --radius: 0.5rem;  /* 8px base radius */
-    
-    /* Elevation System (Shadows) */
-    --shadow-edge: 0 0 0 1px rgba(0, 0, 0, 0.05);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    
-    /* Glass Material Properties */
-    --glass-opacity: 0.75;  /* 75% opacity for glass surfaces */
-    --glass-blur: 16px;     /* Standard blur amount */
-    
-    /* Z-Index Spatial Hierarchy */
-    --z-canvas: 0;     /* The root background layer */
+    --z-canvas: 0;     /* The canvas background layer */
     --z-surface: 10;   /* Opaque UI cards and primary content */
     --z-glass: 20;     /* Glass panels (navbars, sidebars) */
     --z-popover: 30;   /* Tooltips and menus */
@@ -77,9 +55,8 @@
     --border-muted: theme('colors.border.muted.dark');
     --ring: theme('colors.ring.dark');
     --ring-offset: theme('colors.ring.offset.dark');
-    
-    /* Dark Mode Glass Edge */
-    --shadow-edge: 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --ring: theme('colors.ring.dark');
+    --ring-offset: theme('colors.ring.offset.dark');
     
     /* Dark Mode Glass Edge */
     --shadow-edge: 0 0 0 1px rgba(255, 255, 255, 0.05);
@@ -100,31 +77,44 @@
   h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
     color: var(--foreground);
-    font-weight: 500;
+    font-weight: 600;
   }
   
   p {
     text-wrap: pretty;
+    margin-bottom: 1.25rem;
+    color: var(--foreground-muted);
   }
   
-  /* Enhance typography */
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
-    color: var(--foreground);
-    font-weight: 500;
+  a {
+    color: var(--ring);
+    text-decoration-thickness: 1px;
+    text-decoration-line: underline;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 0.25em;
+    transition: all 0.15s ease-in-out;
   }
   
-  p {
-    text-wrap: pretty;
+  a:hover {
+    color: color-mix(in oklab, var(--ring), black 15%);
   }
 
-  html {
+  ::selection {
+    background-color: color-mix(in oklab, var(--ring) 30%, transparent);
+    color: var(--foreground);
+  }
+
+  html, body {
     font-size: 16px;
+    min-height: 100%;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-feature-settings: "liga", "calt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   [hidden] {
@@ -135,20 +125,26 @@
     pointer-events: none;
     user-select: none;
   }
+  
+  /* Focus states for accessibility */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px var(--ring);
+  }
 }
 
 /* Material Definitions */
 @layer components {
   /* Opaque UI Card - The workhorse surface material */
   .ui-card {
-    @apply bg-white dark:bg-gray-950 rounded-lg;
+    @apply bg-white dark:bg-gray-950 rounded-lg p-6;
     box-shadow: var(--shadow-edge), var(--shadow-sm);
     z-index: var(--z-surface);
   }
   
   /* Glass Panel - For floating UI chrome */
   .ui-glass-panel {
-    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
+    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg p-4;
     box-shadow: var(--shadow-edge);
     backdrop-filter: blur(var(--glass-blur));
     z-index: var(--z-glass);
@@ -156,7 +152,7 @@
   
   /* Elevated Glass Panel - For floating UI chrome (scrolled navbar) */
   .ui-glass-panel-elevated {
-    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
+    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg p-4;
     box-shadow: var(--shadow-edge), var(--shadow-lg);
     backdrop-filter: blur(var(--glass-blur));
     z-index: var(--z-glass);
@@ -164,9 +160,10 @@
   
   /* Standard Interactive Button */
   .ui-button {
-    @apply bg-black text-white rounded-md font-medium;
+    @apply bg-black text-white rounded-md px-4 py-2 font-medium;
+    @apply inline-flex items-center justify-center;
     @apply transition-all duration-150 ease-in-out;
-    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600;
   }
   
   /* Button Interaction Physics */
@@ -175,8 +172,41 @@
     transform: translateY(-2px);
   }
   
-  .ui-button:active {
-    transform: scale(0.98);
+  .ui-button:active, .ui-button:focus:active {
+    transform: scale(0.98) translateY(0);
+  }
+  
+  /* Subtle Button */
+  .ui-button-subtle {
+    @apply bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50;
+  }
+  
+  /* Outline Button */
+  .ui-button-outline {
+    @apply bg-white border border-gray-300 text-gray-900 dark:bg-gray-950 dark:border-gray-700 dark:text-gray-50 backdrop-blur-sm;
+  }
+  
+  /* Ghost Button */
+  .ui-button-ghost {
+    @apply bg-transparent text-gray-900 dark:text-gray-50;
+    @apply hover:bg-gray-100 hover:dark:bg-gray-800;
+  }
+  
+  /* Icon Button */
+  .ui-button-icon {
+    @apply p-2 rounded-full;
+  }
+
+  /* Form Control Styles */
+  .ui-input {
+    @apply bg-white dark:bg-gray-950 border border-gray-300 dark:border-gray-700;
+    @apply rounded-md px-3 py-2 text-sm w-full;
+    @apply transition duration-150;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:border-blue-600;
+  }
+  
+  .ui-label {
+    @apply block text-sm font-medium text-gray-900 dark:text-gray-50 mb-1;
   }
 }
 
@@ -214,83 +244,35 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
-}
-
-/* Material Definitions */
-@layer components {
-  /* Opaque UI Card - The workhorse surface material */
-  .ui-card {
-    @apply bg-white dark:bg-gray-950 rounded-lg;
-    box-shadow: var(--shadow-edge), var(--shadow-sm);
-    z-index: var(--z-surface);
-  }
   
-  /* Glass Panel - For floating UI chrome */
-  .ui-glass-panel {
-    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
-    box-shadow: var(--shadow-edge);
-    backdrop-filter: blur(var(--glass-blur));
-    z-index: var(--z-glass);
-  }
-  
-  /* Elevated Glass Panel - For floating UI chrome (scrolled navbar) */
-  .ui-glass-panel-elevated {
-    @apply bg-white/75 dark:bg-gray-950/50 rounded-lg;
-    box-shadow: var(--shadow-edge), var(--shadow-lg);
-    backdrop-filter: blur(var(--glass-blur));
-    z-index: var(--z-glass);
-  }
-  
-  /* Standard Interactive Button */
-  .ui-button {
-    @apply bg-black text-white rounded-md font-medium;
-    @apply transition-all duration-150 ease-in-out;
-    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-600;
-  }
-  
-  /* Button Interaction Physics */
-  .ui-button:hover {
-    @apply bg-black/90;
-    transform: translateY(-2px);
-  }
-  
-  .ui-button:active {
+  /* Scale transform values */
+  .scale-98 {
     transform: scale(0.98);
   }
-}
-
-/* Z-Index Structure for Proper Depth Perception */
-@layer utilities {
-  .z-canvas {
-    z-index: var(--z-canvas);
+  
+  /* Translate values */
+  .-translate-y-0\.5 {
+    transform: translateY(-0.125rem);
   }
   
-  .z-surface {
-    z-index: var(--z-surface);
+  /* Decorative Effects (FOR NON-UI ELEMENTS ONLY) */
+  .decorative-blur-sm {
+    filter: blur(1px);
   }
   
-  .z-glass {
-    z-index: var(--z-glass);
+  .decorative-blur-md {
+    filter: blur(2px);
   }
   
-  .z-popover {
-    z-index: var(--z-popover);
+  .decorative-blur-lg {
+    filter: blur(3px);
   }
   
-  .z-modal {
-    z-index: var(--z-modal);
+  .decorative-glow-blue {
+    box-shadow: 0 0 40px rgba(173, 216, 255, 0.5);
   }
   
-  /* Animation utilities */
-  .transition-standard {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-  
-  .transition-panel {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+  .decorative-inset-glow {
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.4);
   }
 }
