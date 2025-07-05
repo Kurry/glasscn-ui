@@ -16,7 +16,7 @@ export default [
     // Apply to JavaScript and TypeScript files
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
-      'better-tailwindcss': betterTailwindcssPlugin
+      'better-tailwindcss': betterTailwindcssPlugin.default
     },
     rules: {
       'better-tailwindcss/classnames-order': 'warn',
