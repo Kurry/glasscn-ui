@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { Upload, CheckCircle, GitBranch, Award, Download, ExternalLink, FileText } from 'lucide-react'
+import { Upload, CheckCircle, GitBranch, Award, Download, FileText } from 'lucide-react'
 import { useState } from 'react'
 
 interface ResumeDropZoneProps {
@@ -15,28 +15,33 @@ interface ResumeDropZoneProps {
 
 export function ResumeDropZone({ onUpload, className }: ResumeDropZoneProps) {
   const [isDragging, setIsDragging] = useState(false)
-  const fileInputRef = useState<HTMLInputElement | null>(null)[1]
-  
+  const [fileInputRef, setFileInputRef] = useState<HTMLInputElement | null>(null)
+
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault()
     setIsDragging(true)
   }
-  
+
   const handleDragLeave = () => {
     setIsDragging(false)
   }
-  
+
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
     setIsDragging(false)
-    
+
     if (e.dataTransfer.files.length > 0 && onUpload) {
       onUpload(e.dataTransfer.files[0])
     }
   }
-  
+
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-lg" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-6">
@@ -45,14 +50,14 @@ export function ResumeDropZone({ onUpload, className }: ResumeDropZoneProps) {
           <CardTitle className="text-2xl">Drop Your Resume</CardTitle>
           <CardDescription className="text-lg">AI will handle everything else</CardDescription>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
-          <div 
+          <div
             className={cn(
-              "border-3 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer",
-              isDragging 
-                ? "border-primary-500 bg-primary-50/50 dark:bg-primary-950/20" 
-                : "border-gray-300 dark:border-gray-700 hover:border-primary-400"
+              'border-3 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer',
+              isDragging
+                ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
+                : 'border-gray-300 dark:border-gray-700 hover:border-primary-400',
             )}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -60,17 +65,13 @@ export function ResumeDropZone({ onUpload, className }: ResumeDropZoneProps) {
             onClick={() => fileInputRef?.click()}
           >
             <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">
-              📄 Drop or Browse
-            </p>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">
-              PDF, DOCX, DOC, or TXT
-            </p>
+            <p className="text-xl font-medium text-gray-700 dark:text-gray-300 mb-2">📄 Drop or Browse</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">PDF, DOCX, DOC, or TXT</p>
             <Button variant="outline" size="lg">
               Select File
             </Button>
-            <input 
-              type="file" 
+            <input
+              type="file"
               className="hidden"
               accept=".pdf,.docx,.doc,.txt"
               onChange={(e) => {
@@ -78,13 +79,11 @@ export function ResumeDropZone({ onUpload, className }: ResumeDropZoneProps) {
                   onUpload(e.target.files[0])
                 }
               }}
-              ref={fileInputRef}
+              ref={(el) => setFileInputRef(el)}
             />
           </div>
-          
-          <p className="text-center text-gray-500">
-            AI will automatically extract, enhance, and optimize your resume
-          </p>
+
+          <p className="text-center text-gray-500">AI will automatically extract, enhance, and optimize your resume</p>
         </CardContent>
       </Card>
     </div>
@@ -99,28 +98,31 @@ interface ResumeAnalysisProgressProps {
   className?: string
 }
 
-export function ResumeAnalysisProgress({ 
-  progress, 
-  currentTask, 
+export function ResumeAnalysisProgress({
+  progress,
+  currentTask,
   completedTasks,
   onComplete,
-  className 
+  className,
 }: ResumeAnalysisProgressProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-lg" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <CardTitle className="text-xl">🔍 AI Analyzing Your Resume</CardTitle>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <Progress value={progress} className="h-2" />
-            <p className="text-center text-gray-500">
-              {progress}% Complete
-            </p>
+            <p className="text-center text-gray-500">{progress}% Complete</p>
           </div>
-          
+
           <div className="space-y-2">
             {completedTasks.map((task, index) => (
               <div key={index} className="flex items-center gap-2 text-green-600 dark:text-green-400">
@@ -128,7 +130,7 @@ export function ResumeAnalysisProgress({
                 <span>{task}</span>
               </div>
             ))}
-            
+
             {currentTask && (
               <div className="flex items-center gap-2 text-primary-600 dark:text-primary-400 animate-pulse">
                 <div className="w-5 h-5 border-2 border-primary-600 dark:border-primary-400 border-t-transparent rounded-full animate-spin" />
@@ -136,14 +138,9 @@ export function ResumeAnalysisProgress({
               </div>
             )}
           </div>
-          
+
           {progress >= 100 && onComplete && (
-            <Button 
-              onClick={onComplete} 
-              className="w-full mt-4"
-              size="lg"
-              color="primary"
-            >
+            <Button onClick={onComplete} className="w-full mt-4" size="lg" color="primary">
               View Enhanced Profile →
             </Button>
           )}
@@ -154,20 +151,20 @@ export function ResumeAnalysisProgress({
 }
 
 interface EnhancementDetail {
-  type: 'skills' | 'achievements' | 'projects' | 'keywords' | 'variants';
-  description: string;
-  count: number;
-  source?: string;
+  type: 'skills' | 'achievements' | 'projects' | 'keywords' | 'variants'
+  description: string
+  count: number
+  source?: string
 }
 
 interface EnhancedProfileProps {
-  originalScore: number;
-  newScore: number;
-  enhancements: EnhancementDetail[];
-  onAcceptAll?: () => void;
-  onReviewChanges?: () => void;
-  onExport?: () => void;
-  className?: string;
+  originalScore: number
+  newScore: number
+  enhancements: EnhancementDetail[]
+  onAcceptAll?: () => void
+  onReviewChanges?: () => void
+  onExport?: () => void
+  className?: string
 }
 
 export function EnhancedProfile({
@@ -177,10 +174,15 @@ export function EnhancedProfile({
   onAcceptAll,
   onReviewChanges,
   onExport,
-  className
+  className,
 }: EnhancedProfileProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
@@ -190,24 +192,25 @@ export function EnhancedProfile({
           </div>
           <CardTitle className="text-2xl">✨ Your Enhanced Profile</CardTitle>
           <CardDescription className="text-lg flex items-center justify-center gap-2 mt-2">
-            Original Score: {originalScore} 
-            <span className="text-xl">→</span> 
+            Original Score: {originalScore}
+            <span className="text-xl">→</span>
             <span className="text-green-600 font-semibold">New Score: {newScore}</span>
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <div className="space-y-4">
             <h3 className="font-semibold text-lg text-gray-900 dark:text-white flex items-center gap-2">
-              <span className="inline-block bg-primary-100 dark:bg-primary-900 p-1 rounded-md">
-                🤖
-              </span>
+              <span className="inline-block bg-primary-100 dark:bg-primary-900 p-1 rounded-md">🤖</span>
               What AI Did:
             </h3>
-            
+
             <div className="space-y-3">
               {enhancements.map((enhancement, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border">
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border"
+                >
                   <div className="mt-1 text-primary-600">
                     {enhancement.type === 'skills' && <GitBranch className="w-5 h-5" />}
                     {enhancement.type === 'achievements' && <Award className="w-5 h-5" />}
@@ -216,14 +219,8 @@ export function EnhancedProfile({
                     {enhancement.type === 'variants' && <GitBranch className="w-5 h-5" />}
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 dark:text-white">
-                      {enhancement.description}
-                    </div>
-                    {enhancement.source && (
-                      <div className="text-sm text-gray-500">
-                        Source: {enhancement.source}
-                      </div>
-                    )}
+                    <div className="font-medium text-gray-900 dark:text-white">{enhancement.description}</div>
+                    {enhancement.source && <div className="text-sm text-gray-500">Source: {enhancement.source}</div>}
                   </div>
                   <div className="ml-auto">
                     <Badge>+{enhancement.count}</Badge>
@@ -232,36 +229,22 @@ export function EnhancedProfile({
               ))}
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {onAcceptAll && (
-              <Button 
-                onClick={onAcceptAll}
-                className="sm:col-span-3"
-                size="lg"
-                color="primary"
-              >
+              <Button onClick={onAcceptAll} className="sm:col-span-3" size="lg" color="primary">
                 Accept All
               </Button>
             )}
-            
+
             {onReviewChanges && (
-              <Button 
-                onClick={onReviewChanges}
-                variant="outline"
-                size="lg"
-              >
+              <Button onClick={onReviewChanges} variant="outline" size="lg">
                 Review Changes
               </Button>
             )}
-            
+
             {onExport && (
-              <Button 
-                onClick={onExport}
-                variant="outline"
-                size="lg"
-                className="sm:col-span-2"
-              >
+              <Button onClick={onExport} variant="outline" size="lg" className="sm:col-span-2">
                 <Download className="w-4 h-4 mr-2" />
                 Export
               </Button>
@@ -276,12 +259,10 @@ export function EnhancedProfile({
 export function ResumeEnhancementDemo() {
   const [stage, setStage] = useState<'upload' | 'analyzing' | 'enhanced'>('upload')
   const [progress, setProgress] = useState(0)
-  const [file, setFile] = useState<File | null>(null)
-  
-  const handleUpload = (file: File) => {
-    setFile(file)
+
+  const handleUpload = (_file: File) => {
     setStage('analyzing')
-    
+
     // Simulate progress
     let currentProgress = 0
     const interval = setInterval(() => {
@@ -294,73 +275,78 @@ export function ResumeEnhancementDemo() {
       setProgress(Math.min(Math.round(currentProgress), 100))
     }, 800)
   }
-  
+
   const completedTasks = [
     ...(progress >= 20 ? ['Extracting content'] : []),
     ...(progress >= 40 ? ['Finding your LinkedIn'] : []),
     ...(progress >= 60 ? ['Scanning your GitHub'] : []),
     ...(progress >= 75 ? ['Analyzing portfolio site'] : []),
-    ...(progress >= 90 ? ['Identifying missing skills'] : [])
+    ...(progress >= 90 ? ['Identifying missing skills'] : []),
   ]
-  
-  const currentTask = 
-    progress < 20 ? 'Extracting content' :
-    progress < 40 ? 'Finding your LinkedIn' :
-    progress < 60 ? 'Scanning your GitHub' :
-    progress < 75 ? 'Analyzing portfolio site' :
-    progress < 90 ? 'Identifying missing skills' :
-    progress < 100 ? 'Calculating market position' : '';
-  
+
+  const currentTask =
+    progress < 20
+      ? 'Extracting content'
+      : progress < 40
+        ? 'Finding your LinkedIn'
+        : progress < 60
+          ? 'Scanning your GitHub'
+          : progress < 75
+            ? 'Analyzing portfolio site'
+            : progress < 90
+              ? 'Identifying missing skills'
+              : progress < 100
+                ? 'Calculating market position'
+                : ''
+
   const enhancementDetails: EnhancementDetail[] = [
-    { 
-      type: 'skills', 
-      description: 'Added missing skills from GitHub', 
+    {
+      type: 'skills',
+      description: 'Added missing skills from GitHub',
       count: 15,
-      source: 'GitHub repositories'
+      source: 'GitHub repositories',
     },
-    { 
-      type: 'achievements', 
-      description: 'Quantified achievements', 
+    {
+      type: 'achievements',
+      description: 'Quantified achievements',
       count: 8,
-      source: 'LinkedIn & resume context'
+      source: 'LinkedIn & resume context',
     },
-    { 
-      type: 'projects', 
-      description: 'Imported projects from portfolio', 
+    {
+      type: 'projects',
+      description: 'Imported projects from portfolio',
       count: 3,
-      source: 'Personal website'
+      source: 'Personal website',
     },
-    { 
-      type: 'keywords', 
-      description: 'Updated with current market keywords', 
+    {
+      type: 'keywords',
+      description: 'Updated with current market keywords',
       count: 25,
-      source: 'Job market analysis'
+      source: 'Job market analysis',
     },
-    { 
-      type: 'variants', 
-      description: 'Created resume variants', 
+    {
+      type: 'variants',
+      description: 'Created resume variants',
       count: 5,
-      source: 'Industry best practices'
+      source: 'Industry best practices',
     },
   ]
-  
+
   return (
     <div className="w-full">
-      {stage === 'upload' && (
-        <ResumeDropZone onUpload={handleUpload} />
-      )}
-      
+      {stage === 'upload' && <ResumeDropZone onUpload={handleUpload} />}
+
       {stage === 'analyzing' && (
-        <ResumeAnalysisProgress 
+        <ResumeAnalysisProgress
           progress={progress}
           currentTask={currentTask}
           completedTasks={completedTasks}
           onComplete={() => setStage('enhanced')}
         />
       )}
-      
+
       {stage === 'enhanced' && (
-        <EnhancedProfile 
+        <EnhancedProfile
           originalScore={68}
           newScore={94}
           enhancements={enhancementDetails}

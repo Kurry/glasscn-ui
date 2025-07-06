@@ -1,12 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 import { BarChart3, BriefcaseMedical, CheckCircle, Download, Eye, RefreshCw, Settings, Star, Users } from 'lucide-react'
-import { useState } from 'react'
 
 interface Agent {
   id: string
@@ -47,64 +46,60 @@ export function MultiAgentDashboard({
   onResumeAgent,
   onPauseAgent,
   onViewReports,
-  className
+  className,
 }: MultiAgentDashboardProps) {
   const getStatusColor = (status: Agent['status']) => {
     switch (status) {
-      case 'active': return 'text-green-600'
-      case 'paused': return 'text-amber-600'
-      case 'error': return 'text-red-600'
-      case 'waiting': return 'text-gray-600'
+      case 'active':
+        return 'text-green-600'
+      case 'paused':
+        return 'text-amber-600'
+      case 'error':
+        return 'text-red-600'
+      case 'waiting':
+        return 'text-gray-600'
     }
   }
-  
+
   const getStatusIcon = (status: Agent['status']) => {
     switch (status) {
-      case 'active': return <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-      case 'paused': return <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
-      case 'error': return <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-      case 'waiting': return <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+      case 'active':
+        return <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+      case 'paused':
+        return <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
+      case 'error':
+        return <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+      case 'waiting':
+        return <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
     }
   }
-  
+
   const getActionButton = (agent: Agent) => {
     if (agent.status === 'active' && onPauseAgent) {
       return (
-        <Button 
-          variant="outline" 
-          size="sm"
-          onClick={() => onPauseAgent(agent.id)}
-        >
+        <Button variant="outline" size="sm" onClick={() => onPauseAgent(agent.id)}>
           Pause
         </Button>
       )
     } else if ((agent.status === 'paused' || agent.status === 'error') && onResumeAgent) {
       return (
-        <Button 
-          variant="outline" 
-          size="sm"
-          onClick={() => onResumeAgent(agent.id)}
-        >
+        <Button variant="outline" size="sm" onClick={() => onResumeAgent(agent.id)}>
           Resume
         </Button>
       )
     }
     return null
   }
-  
+
   return (
-    <div className={cn("min-h-screen bg-gray-50 dark:bg-gray-900 p-6", className)}>
+    <div className={cn('min-h-screen bg-gray-50 dark:bg-gray-900 p-6', className)}>
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              AI Agent Dashboard
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              Multi-agent system working on your job search
-            </p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">AI Agent Dashboard</h1>
+            <p className="text-gray-600 dark:text-gray-400">Multi-agent system working on your job search</p>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
               <RefreshCw className="w-4 h-4 mr-2" />
@@ -116,7 +111,7 @@ export function MultiAgentDashboard({
             </Button>
           </div>
         </div>
-        
+
         {/* Metrics Overview */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {metrics.map((metric, index) => (
@@ -127,10 +122,12 @@ export function MultiAgentDashboard({
                     <p className="text-sm text-gray-500">{metric.label}</p>
                     <p className="text-2xl font-bold">{metric.value}</p>
                     {metric.change && (
-                      <p className={cn(
-                        "text-xs flex items-center gap-1",
-                        metric.change.isPositive ? "text-green-600" : "text-red-600"
-                      )}>
+                      <p
+                        className={cn(
+                          'text-xs flex items-center gap-1',
+                          metric.change.isPositive ? 'text-green-600' : 'text-red-600',
+                        )}
+                      >
                         {metric.change.isPositive ? '▲' : '▼'} {metric.change.value}
                       </p>
                     )}
@@ -145,7 +142,7 @@ export function MultiAgentDashboard({
             </Card>
           ))}
         </div>
-        
+
         {/* Agents */}
         <Card variant="glass" blur="sm">
           <CardHeader>
@@ -159,36 +156,30 @@ export function MultiAgentDashboard({
               )}
             </div>
           </CardHeader>
-          
+
           <CardContent className="space-y-5">
             {agents.map((agent) => (
               <Card key={agent.id} variant="solid" className="overflow-hidden">
                 <div className="flex items-start p-4">
                   <div className="flex-shrink-0 mr-4">
-                    <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
-                      {agent.icon}
-                    </div>
+                    <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">{agent.icon}</div>
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-gray-900 dark:text-white">
-                        {agent.name}
-                      </h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">{agent.name}</h3>
                       <Badge className="flex items-center gap-1">
                         {getStatusIcon(agent.status)}
-                        <span className={cn("ml-1", getStatusColor(agent.status))}>
+                        <span className={cn('ml-1', getStatusColor(agent.status))}>
                           {agent.status.charAt(0).toUpperCase() + agent.status.slice(1)}
                         </span>
                       </Badge>
                     </div>
-                    
+
                     {agent.currentTask && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        {agent.currentTask}
-                      </p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{agent.currentTask}</p>
                     )}
-                    
+
                     {agent.status === 'active' && (
                       <div className="mt-2 space-y-1">
                         <div className="flex items-center justify-between text-sm">
@@ -198,35 +189,25 @@ export function MultiAgentDashboard({
                         <Progress value={agent.progress} className="h-1.5" />
                       </div>
                     )}
-                    
+
                     {agent.lastActivity && (
-                      <p className="text-xs text-gray-500 mt-2">
-                        Last activity: {agent.lastActivity}
-                      </p>
+                      <p className="text-xs text-gray-500 mt-2">Last activity: {agent.lastActivity}</p>
                     )}
                   </div>
-                  
+
                   <div className="ml-4 flex flex-col gap-2">
                     {onAgentSettings && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => onAgentSettings(agent.id)}
-                      >
+                      <Button variant="ghost" size="sm" onClick={() => onAgentSettings(agent.id)}>
                         <Settings className="w-4 h-4" />
                       </Button>
                     )}
-                    
+
                     {onViewAgentDetails && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => onViewAgentDetails(agent.id)}
-                      >
+                      <Button variant="ghost" size="sm" onClick={() => onViewAgentDetails(agent.id)}>
                         <Eye className="w-4 h-4" />
                       </Button>
                     )}
-                    
+
                     {getActionButton(agent)}
                   </div>
                 </div>
@@ -248,7 +229,7 @@ export function MultiAgentDashboardDemo() {
       status: 'active',
       progress: 78,
       currentTask: 'Scanning LinkedIn for Senior ML Engineer roles',
-      lastActivity: '2 minutes ago'
+      lastActivity: '2 minutes ago',
     },
     {
       id: 'tailor',
@@ -257,7 +238,7 @@ export function MultiAgentDashboardDemo() {
       status: 'active',
       progress: 45,
       currentTask: 'Optimizing resume for OpenAI application',
-      lastActivity: '5 minutes ago'
+      lastActivity: '5 minutes ago',
     },
     {
       id: 'apply',
@@ -265,7 +246,7 @@ export function MultiAgentDashboardDemo() {
       icon: <CheckCircle className="w-5 h-5" />,
       status: 'paused',
       progress: 30,
-      lastActivity: '15 minutes ago'
+      lastActivity: '15 minutes ago',
     },
     {
       id: 'interview',
@@ -273,49 +254,49 @@ export function MultiAgentDashboardDemo() {
       icon: <Users className="w-5 h-5" />,
       status: 'waiting',
       progress: 0,
-      lastActivity: '1 hour ago'
-    }
+      lastActivity: '1 hour ago',
+    },
   ]
-  
+
   const metrics: Metric[] = [
     {
       label: 'Total Applications',
       value: 156,
       change: {
         value: '12% this week',
-        isPositive: true
+        isPositive: true,
       },
-      icon: <BarChart3 className="w-5 h-5" />
+      icon: <BarChart3 className="w-5 h-5" />,
     },
     {
       label: 'Response Rate',
       value: '9.3%',
       change: {
         value: '2.1% vs avg',
-        isPositive: true
+        isPositive: true,
       },
-      icon: <BriefcaseMedical className="w-5 h-5" />
+      icon: <BriefcaseMedical className="w-5 h-5" />,
     },
     {
       label: 'Interviews',
       value: 5,
       change: {
         value: '3 pending',
-        isPositive: true
+        isPositive: true,
       },
-      icon: <Users className="w-5 h-5" />
+      icon: <Users className="w-5 h-5" />,
     },
     {
       label: 'New Matches',
       value: 27,
       change: {
         value: 'Last 24h',
-        isPositive: true
+        isPositive: true,
       },
-      icon: <Star className="w-5 h-5" />
-    }
+      icon: <Star className="w-5 h-5" />,
+    },
   ]
-  
+
   return (
     <MultiAgentDashboard
       agents={agents}

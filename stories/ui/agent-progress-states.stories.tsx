@@ -1,11 +1,7 @@
-import { 
-  AgentProgressViewer,
-  MobileAgentProgress,
-  AgentInitializing
-} from '@/components/ui/agent-progress-viewer'
+import { AgentProgressViewer, MobileAgentProgress, AgentInitializing } from '@/components/ui/agent-progress-viewer'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
   title: 'UI/Agent Progress States',
@@ -37,7 +33,7 @@ export const State_Initializing = {
       </div>
       <AgentInitializing />
     </div>
-  )
+  ),
 }
 
 export const State_Active = {
@@ -66,7 +62,7 @@ export const State_Active = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 export const State_Paused = {
@@ -94,7 +90,7 @@ export const State_Paused = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 export const State_Error = {
@@ -114,17 +110,16 @@ export const State_Error = {
             currentStep: 4,
             totalSteps: 7,
             timeElapsed: 142,
-            error: 'Network connection lost while submitting form. Please check your internet connection and try again.',
+            error:
+              'Network connection lost while submitting form. Please check your internet connection and try again.',
           }}
-          taskSteps={baseTaskSteps.map(step => 
-            step.id === '4' ? { ...step, status: 'error' as const } : step
-          )}
+          taskSteps={baseTaskSteps.map((step) => (step.id === '4' ? { ...step, status: 'error' as const } : step))}
           livePreviewUrl="careers.google.com"
           isMinimized={false}
         />
       </div>
     </div>
-  )
+  ),
 }
 
 export const State_Intervention_Needed = {
@@ -152,7 +147,7 @@ export const State_Intervention_Needed = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 export const State_Completed = {
@@ -173,13 +168,13 @@ export const State_Completed = {
             totalSteps: 7,
             timeElapsed: 222,
           }}
-          taskSteps={baseTaskSteps.map(step => ({ ...step, status: 'completed' as const }))}
+          taskSteps={baseTaskSteps.map((step) => ({ ...step, status: 'completed' as const }))}
           livePreviewUrl="careers.google.com"
           isMinimized={false}
         />
       </div>
     </div>
-  )
+  ),
 }
 
 export const State_Minimized_Widget = {
@@ -190,7 +185,7 @@ export const State_Minimized_Widget = {
         <h2 className="text-2xl font-bold mb-2">Minimized Progress Widget</h2>
         <p className="text-gray-600">Compact corner widget for ongoing monitoring</p>
       </div>
-      
+
       <div className="max-w-4xl mx-auto">
         <Card>
           <CardHeader>
@@ -204,7 +199,7 @@ export const State_Minimized_Widget = {
           </CardContent>
         </Card>
       </div>
-      
+
       {/* Minimized widget positioned absolutely */}
       <AgentProgressViewer
         jobTitle="Software Engineer"
@@ -222,7 +217,7 @@ export const State_Minimized_Widget = {
         onToggleMinimize={() => console.log('Toggle minimize')}
       />
     </div>
-  )
+  ),
 }
 
 // Mobile states
@@ -234,7 +229,7 @@ export const Mobile_States = {
         <h2 className="text-2xl font-bold mb-2">Mobile Agent Progress</h2>
         <p className="text-gray-600">Optimized for mobile devices</p>
       </div>
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div>
           <h3 className="text-lg font-semibold mb-4">Active State</h3>
@@ -253,7 +248,7 @@ export const Mobile_States = {
             />
           </div>
         </div>
-        
+
         <div>
           <h3 className="text-lg font-semibold mb-4">Paused State</h3>
           <div className="max-w-sm mx-auto border rounded-lg overflow-hidden">
@@ -270,7 +265,7 @@ export const Mobile_States = {
             />
           </div>
         </div>
-        
+
         <div>
           <h3 className="text-lg font-semibold mb-4">Completed State</h3>
           <div className="max-w-sm mx-auto border rounded-lg overflow-hidden">
@@ -283,13 +278,13 @@ export const Mobile_States = {
                 totalSteps: 7,
                 timeElapsed: 222,
               }}
-              taskSteps={baseTaskSteps.map(step => ({ ...step, status: 'completed' as const }))}
+              taskSteps={baseTaskSteps.map((step) => ({ ...step, status: 'completed' as const }))}
             />
           </div>
         </div>
       </div>
     </div>
-  )
+  ),
 }
 
 // Comparison view
@@ -301,7 +296,7 @@ export const Desktop_vs_Mobile = {
         <h2 className="text-2xl font-bold mb-2">Desktop vs Mobile Views</h2>
         <p className="text-gray-600">Same agent progress shown on different devices</p>
       </div>
-      
+
       <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
         <div>
           <div className="flex items-center gap-2 mb-4">
@@ -326,7 +321,7 @@ export const Desktop_vs_Mobile = {
             />
           </div>
         </div>
-        
+
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Badge variant="outline">Mobile</Badge>
@@ -349,5 +344,5 @@ export const Desktop_vs_Mobile = {
         </div>
       </div>
     </div>
-  )
+  ),
 }

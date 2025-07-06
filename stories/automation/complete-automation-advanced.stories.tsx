@@ -1,4 +1,5 @@
-import { Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { MultiAgentDemo } from '@/components/ui/multi-agent-system'
 import { FailureRecoveryDemo } from '@/components/ui/failure-recovery'
 import { ResumeEvolutionDemo } from '@/components/ui/resume-evolution'
@@ -23,7 +24,7 @@ export const All_Advanced_Flows = {
   name: 'All Advanced Automation Flows',
   render: () => {
     const [currentDemo, setCurrentDemo] = useState<string | null>(null)
-    
+
     const demoOptions = [
       { id: 'multi-agent', name: 'Multi-Agent System', component: MultiAgentDemo },
       { id: 'failure', name: 'Intelligent Failure Recovery', component: FailureRecoveryDemo },
@@ -34,27 +35,23 @@ export const All_Advanced_Flows = {
       { id: 'opportunity', name: 'Opportunity Monitoring', component: OpportunityMonitoringDemo },
       { id: 'dashboard', name: 'Multi-Agent Dashboard', component: MultiAgentDashboardDemo },
     ]
-    
-    const ActiveComponent = currentDemo 
-      ? demoOptions.find(demo => demo.id === currentDemo)?.component
-      : null
-    
+
+    const ActiveComponent = currentDemo ? demoOptions.find((demo) => demo.id === currentDemo)?.component : null
+
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Advanced AI Automation Flows
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Advanced AI Automation Flows</h1>
             <p className="text-xl text-gray-600 dark:text-gray-400">
               Multi-agent systems and intelligent job search automation
             </p>
           </div>
-          
+
           {!currentDemo ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {demoOptions.map((demo) => (
-                <Card 
+                <Card
                   key={demo.id}
                   className="cursor-pointer hover:shadow-lg transition-all"
                   variant="glass"
@@ -72,27 +69,24 @@ export const All_Advanced_Flows = {
             </div>
           ) : (
             <div className="space-y-6">
-              <Button 
-                variant="outline"
-                onClick={() => setCurrentDemo(null)}
-              >
+              <Button variant="outline" onClick={() => setCurrentDemo(null)}>
                 ← Back to All Demos
               </Button>
-              
+
               <div className="mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                  {demoOptions.find(demo => demo.id === currentDemo)?.name}
+                  {demoOptions.find((demo) => demo.id === currentDemo)?.name}
                 </h2>
                 <div className="h-1 w-24 bg-primary-500 rounded-full"></div>
               </div>
-              
+
               {ActiveComponent && <ActiveComponent />}
             </div>
           )}
         </div>
       </div>
     )
-  }
+  },
 }
 
 export const Integrated_Automation_Platform = {
@@ -100,6 +94,6 @@ export const Integrated_Automation_Platform = {
   render: () => {
     // This would be a more complex integration showing all components working together
     // For now, we'll just show the multi-agent dashboard as an example
-    return <MultiAgentDashboardDemo />;
-  }
+    return <MultiAgentDashboardDemo />
+  },
 }

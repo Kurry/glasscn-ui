@@ -35,7 +35,12 @@ export function ComparisonCard({
   className,
 }: ComparisonCardProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
@@ -44,21 +49,19 @@ export function ComparisonCard({
           <CardTitle className="text-xl">{title}</CardTitle>
           {subtitle && <CardDescription>{subtitle}</CardDescription>}
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Before/After Comparison */}
           <Card variant="solid" className="bg-gray-50 dark:bg-gray-900">
             <CardContent className="p-6">
               <h3 className="font-medium text-center mb-4">Before → After Preview:</h3>
-              
+
               <div className="space-y-4">
                 {/* Before */}
                 <div className="p-4 border border-red-200 dark:border-red-800 rounded-lg bg-red-50 dark:bg-red-950/20">
                   <div className="flex items-start gap-2">
                     <X className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-red-700 dark:text-red-300">
-                      "{comparison.before}"
-                    </p>
+                    <p className="text-sm text-red-700 dark:text-red-300">"{comparison.before}"</p>
                   </div>
                 </div>
 
@@ -71,9 +74,7 @@ export function ComparisonCard({
                 <div className="p-4 border border-green-200 dark:border-green-800 rounded-lg bg-green-50 dark:bg-green-950/20">
                   <div className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-green-700 dark:text-green-300">
-                      "{comparison.after}"
-                    </p>
+                    <p className="text-sm text-green-700 dark:text-green-300">"{comparison.after}"</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +88,7 @@ export function ComparisonCard({
                 +{additionalImprovements} more improvements available
               </p>
             )}
-            
+
             {scoreIncrease && (
               <div className="flex items-center justify-center gap-2">
                 <span className="text-sm text-gray-600 dark:text-gray-400">Score increase:</span>
@@ -124,14 +125,10 @@ interface AIEnhancementPreviewProps {
   className?: string
 }
 
-export function AIEnhancementPreview({ 
-  onApplyChanges, 
-  onReviewEach, 
-  className 
-}: AIEnhancementPreviewProps) {
+export function AIEnhancementPreview({ onApplyChanges, onReviewEach, className }: AIEnhancementPreviewProps) {
   const sampleComparison: ComparisonItem = {
-    before: "Worked on backend systems",
-    after: "Architected microservices handling 2M+ daily requests, reducing latency by 40%"
+    before: 'Worked on backend systems',
+    after: 'Architected microservices handling 2M+ daily requests, reducing latency by 40%',
   }
 
   return (

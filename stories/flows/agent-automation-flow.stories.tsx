@@ -1,13 +1,9 @@
-import { 
-  AgentProgressViewer,
-  MobileAgentProgress,
-  AgentInitializing
-} from '@/components/ui/agent-progress-viewer'
+import { AgentProgressViewer, AgentInitializing } from '@/components/ui/agent-progress-viewer'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import type { Meta } from '@storybook/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 const meta: Meta = {
   title: 'Flows/Agent Automation Journey',
@@ -23,16 +19,16 @@ export const Complete_Automation_Flow = {
   name: 'Complete Agent Automation Flow',
   render: () => {
     const [currentState, setCurrentState] = useState('dashboard')
-    
+
     const states = {
       dashboard: 'Dashboard',
       initializing: 'Initializing Agent',
       active: 'Agent Working',
       paused: 'Agent Paused',
       intervention: 'Needs Help',
-      completed: 'Completed'
+      completed: 'Completed',
     }
-    
+
     const sampleSteps = [
       { id: '1', name: 'Navigate to job posting', status: 'completed' as const, duration: 15 },
       { id: '2', name: 'Click "Apply Now"', status: 'completed' as const, duration: 8 },
@@ -42,7 +38,7 @@ export const Complete_Automation_Flow = {
       { id: '6', name: 'Answer screening questions', status: 'pending' as const },
       { id: '7', name: 'Submit application', status: 'pending' as const },
     ]
-    
+
     return (
       <div className="min-h-screen bg-gray-100">
         {/* Navigation */}
@@ -54,7 +50,7 @@ export const Complete_Automation_Flow = {
                 <Button
                   key={key}
                   size="sm"
-                  variant={currentState === key ? "default" : "outline"}
+                  variant={currentState === key ? 'default' : 'outline'}
                   onClick={() => setCurrentState(key)}
                 >
                   {label}
@@ -63,7 +59,7 @@ export const Complete_Automation_Flow = {
             </div>
           </div>
         </div>
-        
+
         {/* Content */}
         <div className="p-6">
           {currentState === 'dashboard' && (
@@ -87,38 +83,29 @@ export const Complete_Automation_Flow = {
                       <div className="text-sm text-gray-600">Interviews</div>
                     </div>
                   </div>
-                  
+
                   <div className="text-center py-8">
-                    <Button 
-                      size="lg" 
-                      color="primary"
-                      onClick={() => setCurrentState('initializing')}
-                    >
+                    <Button size="lg" color="primary" onClick={() => setCurrentState('initializing')}>
                       🤖 Start AI Auto-Apply
                     </Button>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Apply to 50+ jobs automatically while you sleep
-                    </p>
+                    <p className="text-sm text-gray-500 mt-2">Apply to 50+ jobs automatically while you sleep</p>
                   </div>
                 </CardContent>
               </Card>
             </div>
           )}
-          
+
           {currentState === 'initializing' && (
             <div className="max-w-4xl mx-auto">
               <AgentInitializing />
               <div className="text-center mt-4">
-                <Button 
-                  variant="outline" 
-                  onClick={() => setCurrentState('active')}
-                >
+                <Button variant="outline" onClick={() => setCurrentState('active')}>
                   Simulate Complete Initialization
                 </Button>
               </div>
             </div>
           )}
-          
+
           {currentState === 'active' && (
             <div className="max-w-7xl mx-auto">
               <AgentProgressViewer
@@ -140,7 +127,7 @@ export const Complete_Automation_Flow = {
               />
             </div>
           )}
-          
+
           {currentState === 'paused' && (
             <div className="max-w-7xl mx-auto">
               <AgentProgressViewer
@@ -160,7 +147,7 @@ export const Complete_Automation_Flow = {
               />
             </div>
           )}
-          
+
           {currentState === 'intervention' && (
             <div className="max-w-7xl mx-auto">
               <AgentProgressViewer
@@ -179,7 +166,7 @@ export const Complete_Automation_Flow = {
               />
             </div>
           )}
-          
+
           {currentState === 'completed' && (
             <div className="max-w-7xl mx-auto">
               <AgentProgressViewer
@@ -191,7 +178,7 @@ export const Complete_Automation_Flow = {
                   totalSteps: 7,
                   timeElapsed: 222,
                 }}
-                taskSteps={sampleSteps.map(step => ({ ...step, status: 'completed' as const }))}
+                taskSteps={sampleSteps.map((step) => ({ ...step, status: 'completed' as const }))}
                 onBack={() => setCurrentState('dashboard')}
               />
             </div>
@@ -199,7 +186,7 @@ export const Complete_Automation_Flow = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 // Real-time live simulation
@@ -210,7 +197,7 @@ export const Live_Agent_Simulation = {
     const [currentStep, setCurrentStep] = useState(0)
     const [timeElapsed, setTimeElapsed] = useState(0)
     const [agentStatus, setAgentStatus] = useState<'initializing' | 'active' | 'completed'>('initializing')
-    
+
     const steps = [
       'Navigate to job posting',
       'Click "Apply Now"',
@@ -218,24 +205,24 @@ export const Live_Agent_Simulation = {
       'Fill application form',
       'Upload resume',
       'Answer screening questions',
-      'Submit application'
+      'Submit application',
     ]
-    
+
     React.useEffect(() => {
       if (!isRunning) return
-      
+
       const timer = setInterval(() => {
-        setTimeElapsed(prev => prev + 1)
-        
+        setTimeElapsed((prev) => prev + 1)
+
         // Simulate initialization
         if (agentStatus === 'initializing' && timeElapsed >= 3) {
           setAgentStatus('active')
           setCurrentStep(1)
         }
-        
+
         // Simulate step progression
         if (agentStatus === 'active' && timeElapsed > 5 && timeElapsed % 10 === 0 && currentStep < steps.length) {
-          setCurrentStep(prev => {
+          setCurrentStep((prev) => {
             const next = prev + 1
             if (next >= steps.length) {
               setAgentStatus('completed')
@@ -245,33 +232,36 @@ export const Live_Agent_Simulation = {
           })
         }
       }, 1000)
-      
+
       return () => clearInterval(timer)
     }, [isRunning, timeElapsed, currentStep, agentStatus, steps.length])
-    
+
     const taskSteps = steps.map((step, index) => ({
       id: String(index + 1),
       name: step,
-      status: index < currentStep ? 'completed' as const 
-             : index === currentStep ? 'active' as const 
-             : 'pending' as const,
-      duration: index < currentStep ? Math.floor(Math.random() * 30) + 10 : undefined
+      status:
+        index < currentStep
+          ? ('completed' as const)
+          : index === currentStep
+            ? ('active' as const)
+            : ('pending' as const),
+      duration: index < currentStep ? Math.floor(Math.random() * 30) + 10 : undefined,
     }))
-    
+
     const handleStart = () => {
       setIsRunning(true)
       setCurrentStep(0)
       setTimeElapsed(0)
       setAgentStatus('initializing')
     }
-    
+
     const handleReset = () => {
       setIsRunning(false)
       setCurrentStep(0)
       setTimeElapsed(0)
       setAgentStatus('initializing')
     }
-    
+
     return (
       <div className="min-h-screen bg-gray-100">
         <div className="bg-white border-b border-gray-200 p-4">
@@ -287,17 +277,18 @@ export const Live_Agent_Simulation = {
             </div>
           </div>
         </div>
-        
+
         <div className="p-6">
           {agentStatus === 'initializing' && <AgentInitializing />}
-          
+
           {agentStatus !== 'initializing' && (
             <AgentProgressViewer
               jobTitle="Software Engineer"
               company="Google"
               agentState={{
                 status: agentStatus,
-                currentAction: currentStep < steps.length ? `Working on: ${steps[currentStep]}` : 'Application completed!',
+                currentAction:
+                  currentStep < steps.length ? `Working on: ${steps[currentStep]}` : 'Application completed!',
                 currentStep: currentStep,
                 totalSteps: steps.length,
                 timeElapsed: timeElapsed,
@@ -313,7 +304,7 @@ export const Live_Agent_Simulation = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 // Multi-agent simulation
@@ -327,7 +318,7 @@ export const Multi_Agent_Dashboard = {
         jobTitle: 'Software Engineer',
         status: 'active' as const,
         progress: 65,
-        timeElapsed: 120
+        timeElapsed: 120,
       },
       {
         id: '2',
@@ -335,7 +326,7 @@ export const Multi_Agent_Dashboard = {
         jobTitle: 'Frontend Developer',
         status: 'completed' as const,
         progress: 100,
-        timeElapsed: 180
+        timeElapsed: 180,
       },
       {
         id: '3',
@@ -343,7 +334,7 @@ export const Multi_Agent_Dashboard = {
         jobTitle: 'iOS Engineer',
         status: 'paused' as const,
         progress: 45,
-        timeElapsed: 90
+        timeElapsed: 90,
       },
       {
         id: '4',
@@ -351,20 +342,25 @@ export const Multi_Agent_Dashboard = {
         jobTitle: 'Backend Engineer',
         status: 'error' as const,
         progress: 30,
-        timeElapsed: 60
-      }
+        timeElapsed: 60,
+      },
     ]
-    
+
     const getStatusColor = (status: string) => {
       switch (status) {
-        case 'active': return 'bg-green-100 text-green-700 border-green-300'
-        case 'completed': return 'bg-blue-100 text-blue-700 border-blue-300'
-        case 'paused': return 'bg-yellow-100 text-yellow-700 border-yellow-300'
-        case 'error': return 'bg-red-100 text-red-700 border-red-300'
-        default: return 'bg-gray-100 text-gray-700 border-gray-300'
+        case 'active':
+          return 'bg-green-100 text-green-700 border-green-300'
+        case 'completed':
+          return 'bg-blue-100 text-blue-700 border-blue-300'
+        case 'paused':
+          return 'bg-yellow-100 text-yellow-700 border-yellow-300'
+        case 'error':
+          return 'bg-red-100 text-red-700 border-red-300'
+        default:
+          return 'bg-gray-100 text-gray-700 border-gray-300'
       }
     }
-    
+
     return (
       <div className="min-h-screen bg-gray-100 p-6">
         <div className="max-w-7xl mx-auto">
@@ -372,7 +368,7 @@ export const Multi_Agent_Dashboard = {
             <h1 className="text-3xl font-bold text-gray-900 mb-2">AI Agent Dashboard</h1>
             <p className="text-gray-600">Monitor multiple job application agents</p>
           </div>
-          
+
           <div className="grid gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm border">
               <h2 className="text-xl font-semibold mb-4">Active Agents</h2>
@@ -381,9 +377,7 @@ export const Multi_Agent_Dashboard = {
                   <div key={agent.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                          🤖
-                        </div>
+                        <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">🤖</div>
                       </div>
                       <div>
                         <h3 className="font-medium text-gray-900">
@@ -394,22 +388,20 @@ export const Multi_Agent_Dashboard = {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <div className="text-sm font-medium text-gray-900">{agent.progress}%</div>
                         <div className="w-24 bg-gray-200 rounded-full h-2">
-                          <div 
+                          <div
                             className="bg-primary-600 h-2 rounded-full transition-all"
                             style={{ width: `${agent.progress}%` }}
                           />
                         </div>
                       </div>
-                      
-                      <Badge className={getStatusColor(agent.status)}>
-                        {agent.status}
-                      </Badge>
-                      
+
+                      <Badge className={getStatusColor(agent.status)}>{agent.status}</Badge>
+
                       <Button size="sm" variant="outline">
                         View
                       </Button>
@@ -418,7 +410,7 @@ export const Multi_Agent_Dashboard = {
                 ))}
               </div>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
@@ -445,7 +437,7 @@ export const Multi_Agent_Dashboard = {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>Success Rate</CardTitle>
@@ -457,7 +449,7 @@ export const Multi_Agent_Dashboard = {
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card>
                 <CardHeader>
                   <CardTitle>Average Time</CardTitle>
@@ -474,5 +466,5 @@ export const Multi_Agent_Dashboard = {
         </div>
       </div>
     )
-  }
+  },
 }

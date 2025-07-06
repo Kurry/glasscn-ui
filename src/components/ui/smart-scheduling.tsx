@@ -36,12 +36,17 @@ export function InterviewCoordination({
   calendar,
   onConfirmAll,
   onAdjust,
-  className
+  className,
 }: InterviewCoordinationProps) {
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
-  
+
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
@@ -50,55 +55,47 @@ export function InterviewCoordination({
             </div>
             <div>
               <CardTitle className="text-lg">AI Managing Your Interviews</CardTitle>
-              <CardDescription>
-                Optimal scheduling based on your availability
-              </CardDescription>
+              <CardDescription>Optimal scheduling based on your availability</CardDescription>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <div className="space-y-4">
             <h3 className="font-medium">Companies want to schedule calls:</h3>
-            
+
             {slots.map((slot) => (
-              <Card 
+              <Card
                 key={slot.id}
                 className={cn(
-                  "border",
-                  slot.isConfirmed 
-                    ? "border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20" 
-                    : "border-gray-200 bg-white/80 dark:border-gray-800 dark:bg-gray-900/80"
+                  'border',
+                  slot.isConfirmed
+                    ? 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20'
+                    : 'border-gray-200 bg-white/80 dark:border-gray-800 dark:bg-gray-900/80',
                 )}
                 variant="solid"
               >
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">
-                        {slot.company}
-                      </h4>
-                      
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">{slot.company}</h4>
+
                       <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
                         <div className="flex items-center gap-1">
                           <Clock className="w-3.5 h-3.5" />
                           <span>{slot.constraints}</span>
                         </div>
                       </div>
-                      
+
                       <div className="flex flex-wrap gap-2">
                         {slot.timeOptions.map((time, i) => (
-                          <Badge 
-                            key={i} 
-                            variant="outline"
-                            className="bg-gray-50 dark:bg-gray-800"
-                          >
+                          <Badge key={i} variant="outline" className="bg-gray-50 dark:bg-gray-800">
                             {time}
                           </Badge>
                         ))}
                       </div>
                     </div>
-                    
+
                     {slot.scheduled && (
                       <div className="flex items-center">
                         {slot.isConfirmed ? (
@@ -107,9 +104,7 @@ export function InterviewCoordination({
                             <span>{slot.scheduled}</span>
                           </Badge>
                         ) : (
-                          <Badge className="bg-blue-100 text-blue-800 border-blue-200">
-                            {slot.scheduled}
-                          </Badge>
+                          <Badge className="bg-blue-100 text-blue-800 border-blue-200">{slot.scheduled}</Badge>
                         )}
                       </div>
                     )}
@@ -118,27 +113,25 @@ export function InterviewCoordination({
               </Card>
             ))}
           </div>
-          
+
           {/* Calendar View */}
           <div className="space-y-3">
             <h3 className="font-medium">Your calendar:</h3>
             <div className="grid grid-cols-5 gap-1 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
               {daysOfWeek.map((day, dayIndex) => (
                 <div key={day} className="text-center">
-                  <div className="py-2 font-medium text-sm bg-gray-100 dark:bg-gray-800">
-                    {day}
-                  </div>
+                  <div className="py-2 font-medium text-sm bg-gray-100 dark:bg-gray-800">{day}</div>
                   <div>
                     {calendar[dayIndex].map((slot, slotIndex) => (
-                      <div 
+                      <div
                         key={`${dayIndex}-${slotIndex}`}
                         className={cn(
-                          "h-6 text-xs flex items-center justify-center",
-                          slot.isConflict 
-                            ? "bg-gray-200 dark:bg-gray-700" 
+                          'h-6 text-xs flex items-center justify-center',
+                          slot.isConflict
+                            ? 'bg-gray-200 dark:bg-gray-700'
                             : slot.isScheduled
-                              ? "bg-blue-100 dark:bg-blue-900/30"
-                              : "bg-green-100 dark:bg-green-900/30"
+                              ? 'bg-blue-100 dark:bg-blue-900/30'
+                              : 'bg-green-100 dark:bg-green-900/30',
                         )}
                       >
                         {slot.isConflict ? (
@@ -155,25 +148,17 @@ export function InterviewCoordination({
               ))}
             </div>
           </div>
-          
+
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3">
             {onConfirmAll && (
-              <Button
-                onClick={onConfirmAll}
-                className="sm:flex-1"
-                color="primary"
-              >
+              <Button onClick={onConfirmAll} className="sm:flex-1" color="primary">
                 Confirm All
               </Button>
             )}
-            
+
             {onAdjust && (
-              <Button
-                onClick={onAdjust}
-                variant="outline"
-                className="sm:flex-1"
-              >
+              <Button onClick={onAdjust} variant="outline" className="sm:flex-1">
                 Adjust
               </Button>
             )}
@@ -186,7 +171,7 @@ export function InterviewCoordination({
 
 export function SmartSchedulingDemo() {
   const [isConfirmed, setIsConfirmed] = useState(false)
-  
+
   const interviewSlots: InterviewSlot[] = [
     {
       id: '1',
@@ -194,7 +179,7 @@ export function SmartSchedulingDemo() {
       timeOptions: ['Tue 2pm', 'Thu 3pm'],
       constraints: 'Tue 2pm or Thu 3pm?',
       scheduled: 'Tue 2pm',
-      isConfirmed: isConfirmed
+      isConfirmed: isConfirmed,
     },
     {
       id: '2',
@@ -202,7 +187,7 @@ export function SmartSchedulingDemo() {
       timeOptions: ['Mon', 'Tue', 'Wed'],
       constraints: 'Mon-Wed, anytime',
       scheduled: 'Wed 10am',
-      isConfirmed: isConfirmed
+      isConfirmed: isConfirmed,
     },
     {
       id: '3',
@@ -210,10 +195,10 @@ export function SmartSchedulingDemo() {
       timeOptions: ['Fri morning'],
       constraints: 'Fri morning only',
       scheduled: 'Fri 9am',
-      isConfirmed: isConfirmed
-    }
+      isConfirmed: isConfirmed,
+    },
   ]
-  
+
   // [Mon, Tue, Wed, Thu, Fri] x [morning, afternoon]
   const calendarData: CalendarConflict[][] = [
     // Monday
@@ -242,14 +227,14 @@ export function SmartSchedulingDemo() {
       { dayIndex: 4, halfDay: 'afternoon', isConflict: true },
     ],
   ]
-  
+
   const handleConfirmAll = () => {
     setIsConfirmed(true)
   }
-  
+
   return (
     <div className="w-full">
-      <InterviewCoordination 
+      <InterviewCoordination
         slots={interviewSlots}
         calendar={calendarData}
         onConfirmAll={!isConfirmed ? handleConfirmAll : undefined}

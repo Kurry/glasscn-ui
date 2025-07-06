@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { DollarSign, TrendingUp, Target, AlertCircle, CheckCircle } from 'lucide-react'
+import { DollarSign, CheckCircle, Target } from 'lucide-react'
 import { useState } from 'react'
 
 interface SalaryCategory {
@@ -38,10 +38,15 @@ export function SalaryIntelligence({
   categories,
   bestOpportunity,
   onFocusHighValue,
-  className
+  className,
 }: SalaryIntelligenceProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
@@ -50,13 +55,11 @@ export function SalaryIntelligence({
             </div>
             <div>
               <CardTitle className="text-lg">Salary Intelligence Report</CardTitle>
-              <CardDescription>
-                AI-powered compensation analysis
-              </CardDescription>
+              <CardDescription>AI-powered compensation analysis</CardDescription>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <Card variant="solid" className="bg-gray-50 dark:bg-gray-900 overflow-hidden">
             <CardHeader className="pb-2">
@@ -65,11 +68,9 @@ export function SalaryIntelligence({
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <p className="text-sm text-gray-500">Based on {profileCount} similar profiles</p>
-                <Badge className="bg-green-100 text-green-800 border-green-200 font-normal">
-                  {marketValue}
-                </Badge>
+                <Badge className="bg-green-100 text-green-800 border-green-200 font-normal">{marketValue}</Badge>
               </div>
-              
+
               <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full relative">
                 <div className="absolute top-0 left-1/4 bottom-0 w-1/2 bg-green-500 rounded-full"></div>
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
@@ -84,37 +85,35 @@ export function SalaryIntelligence({
               </div>
             </CardContent>
           </Card>
-          
+
           <div className="space-y-3">
             <h3 className="font-medium">Your applications by salary:</h3>
-            
+
             <div className="space-y-3">
               {categories.map((category) => (
                 <div key={category.id} className="flex items-center gap-4">
                   <div className="w-28 text-sm">{category.label}:</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <Progress 
-                        value={category.count} 
+                      <Progress
+                        value={category.count}
                         className={cn(
-                          "h-2.5",
-                          category.color === 'red' && "bg-red-100 [&>div]:bg-red-500",
-                          category.color === 'green' && "bg-green-100 [&>div]:bg-green-500",
-                          category.color === 'blue' && "bg-blue-100 [&>div]:bg-blue-500",
-                          category.color === 'amber' && "bg-amber-100 [&>div]:bg-amber-500",
-                        )} 
+                          'h-2.5',
+                          category.color === 'red' && 'bg-red-100 [&>div]:bg-red-500',
+                          category.color === 'green' && 'bg-green-100 [&>div]:bg-green-500',
+                          category.color === 'blue' && 'bg-blue-100 [&>div]:bg-blue-500',
+                          category.color === 'amber' && 'bg-amber-100 [&>div]:bg-amber-500',
+                        )}
                       />
                       <span className="text-sm font-medium min-w-[40px]">{category.count}</span>
                     </div>
                   </div>
-                  <div className="w-24 text-sm text-right">
-                    {category.status}
-                  </div>
+                  <div className="w-24 text-sm text-right">{category.status}</div>
                 </div>
               ))}
             </div>
           </div>
-          
+
           {/* Best opportunity */}
           <Card variant="solid" className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
             <CardContent className="p-4">
@@ -123,9 +122,7 @@ export function SalaryIntelligence({
                   <Target className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-medium text-blue-800 dark:text-blue-300">
-                    🎯 Best opportunity:
-                  </h4>
+                  <h4 className="font-medium text-blue-800 dark:text-blue-300">🎯 Best opportunity:</h4>
                   <div className="flex items-center justify-between">
                     <p className="text-blue-700 dark:text-blue-400">{bestOpportunity.company}</p>
                     <Badge className="bg-green-100 text-green-800 border-green-200">
@@ -134,22 +131,16 @@ export function SalaryIntelligence({
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-blue-700 dark:text-blue-400">Your match:</span>
-                    <Badge className="bg-blue-100 text-blue-800 border-blue-200">
-                      {bestOpportunity.match}%
-                    </Badge>
+                    <Badge className="bg-blue-100 text-blue-800 border-blue-200">{bestOpportunity.match}%</Badge>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
-          
+
           {/* Action */}
           {onFocusHighValue && (
-            <Button 
-              onClick={onFocusHighValue}
-              className="w-full"
-              color="primary"
-            >
+            <Button onClick={onFocusHighValue} className="w-full" color="primary">
               Focus on high-value roles
             </Button>
           )}
@@ -161,55 +152,55 @@ export function SalaryIntelligence({
 
 export function CompensationIntelligenceDemo() {
   const [focused, setFocused] = useState(false)
-  
-  const salaryCategories: SalaryCategory[] = !focused 
+
+  const salaryCategories: SalaryCategory[] = !focused
     ? [
-      {
-        id: 'under',
-        label: 'Under market',
-        count: 12,
-        status: 'Deprioritized',
-        color: 'red'
-      },
-      {
-        id: 'at',
-        label: 'At market',
-        count: 45,
-        status: 'Active',
-        color: 'blue'
-      },
-      {
-        id: 'above',
-        label: 'Above market',
-        count: 23,
-        status: 'Priority focus',
-        color: 'green'
-      }
-    ]
+        {
+          id: 'under',
+          label: 'Under market',
+          count: 12,
+          status: 'Deprioritized',
+          color: 'red',
+        },
+        {
+          id: 'at',
+          label: 'At market',
+          count: 45,
+          status: 'Active',
+          color: 'blue',
+        },
+        {
+          id: 'above',
+          label: 'Above market',
+          count: 23,
+          status: 'Priority focus',
+          color: 'green',
+        },
+      ]
     : [
-      {
-        id: 'under',
-        label: 'Under market',
-        count: 5,
-        status: 'Minimal',
-        color: 'amber'
-      },
-      {
-        id: 'at',
-        label: 'At market',
-        count: 25,
-        status: 'Secondary',
-        color: 'blue'
-      },
-      {
-        id: 'above',
-        label: 'Above market',
-        count: 50,
-        status: 'Prioritized ✓',
-        color: 'green'
-      }
-    ];
-  
+        {
+          id: 'under',
+          label: 'Under market',
+          count: 5,
+          status: 'Minimal',
+          color: 'amber',
+        },
+        {
+          id: 'at',
+          label: 'At market',
+          count: 25,
+          status: 'Secondary',
+          color: 'blue',
+        },
+        {
+          id: 'above',
+          label: 'Above market',
+          count: 50,
+          status: 'Prioritized ✓',
+          color: 'green',
+        },
+      ]
+
   return (
     <div className="w-full">
       {!focused ? (
@@ -221,7 +212,7 @@ export function CompensationIntelligenceDemo() {
             company: 'Datadog',
             salary: '$175k',
             equity: 'equity',
-            match: 94
+            match: 94,
           }}
           onFocusHighValue={() => setFocused(true)}
         />
@@ -243,7 +234,9 @@ export function CompensationIntelligenceDemo() {
                 <p>• Enhanced resume to emphasize high-value skills</p>
               </div>
             </div>
-            <Button onClick={() => setFocused(false)} color="primary">View Updated Strategy</Button>
+            <Button onClick={() => setFocused(false)} color="primary">
+              View Updated Strategy
+            </Button>
           </CardContent>
         </Card>
       )}

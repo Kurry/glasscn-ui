@@ -20,14 +20,7 @@ interface JobPreferencesProps {
   className?: string
 }
 
-export function JobPreferences({
-  title,
-  subtitle,
-  step,
-  totalSteps,
-  onContinue,
-  className,
-}: JobPreferencesProps) {
+export function JobPreferences({ title, subtitle, step, totalSteps, onContinue, className }: JobPreferencesProps) {
   const [jobTitles, setJobTitles] = useState<string[]>(['Software Engineer'])
   const [newTitle, setNewTitle] = useState('')
   const [location, setLocation] = useState('')
@@ -43,7 +36,7 @@ export function JobPreferences({
   }
 
   const removeJobTitle = (title: string) => {
-    setJobTitles(jobTitles.filter(t => t !== title))
+    setJobTitles(jobTitles.filter((t) => t !== title))
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -54,7 +47,12 @@ export function JobPreferences({
   }
 
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader>
           <CardTitle className="text-xl">
@@ -62,7 +60,7 @@ export function JobPreferences({
           </CardTitle>
           {subtitle && <CardDescription>{subtitle}</CardDescription>}
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Job Titles */}
           <div className="space-y-3">
@@ -70,16 +68,13 @@ export function JobPreferences({
               <Briefcase className="w-4 h-4" />
               Target Job Titles:
             </Label>
-            
+
             {/* Current titles */}
             <div className="flex flex-wrap gap-2">
               {jobTitles.map((title) => (
                 <Badge key={title} variant="outline" className="flex items-center gap-1">
                   {title}
-                  <button 
-                    onClick={() => removeJobTitle(title)}
-                    className="ml-1 hover:text-red-500"
-                  >
+                  <button onClick={() => removeJobTitle(title)} className="ml-1 hover:text-red-500">
                     <X className="w-3 h-3" />
                   </button>
                 </Badge>
@@ -117,8 +112,8 @@ export function JobPreferences({
 
           {/* Remote Work */}
           <div className="flex items-center space-x-2">
-            <Checkbox 
-              id="remote" 
+            <Checkbox
+              id="remote"
               checked={remoteWork}
               onCheckedChange={(checked) => setRemoteWork(checked as boolean)}
             />

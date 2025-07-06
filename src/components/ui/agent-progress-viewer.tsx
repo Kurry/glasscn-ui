@@ -1,24 +1,24 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { 
-  ArrowLeft, 
-  Play, 
-  Pause, 
-  Eye, 
-  EyeOff, 
-  Save, 
+import {
+  ArrowLeft,
+  Play,
+  Pause,
+  Eye,
+  EyeOff,
+  Save,
   SkipForward,
   AlertTriangle,
   CheckCircle,
   X,
   Settings,
   Maximize2,
-  Minimize2
+  Minimize2,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -79,41 +79,50 @@ export function AgentProgressViewer({
   const [showDetails, setShowDetails] = useState(true)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
-  const progress = agentState.currentStep && agentState.totalSteps 
-    ? (agentState.currentStep / agentState.totalSteps) * 100 
-    : 0
+  const progress =
+    agentState.currentStep && agentState.totalSteps ? (agentState.currentStep / agentState.totalSteps) * 100 : 0
 
   const getStatusColor = () => {
     switch (agentState.status) {
-      case 'active': return 'text-green-500'
-      case 'paused': return 'text-yellow-500'
-      case 'error': return 'text-red-500'
-      case 'completed': return 'text-green-500'
-      case 'intervention-needed': return 'text-orange-500'
-      default: return 'text-blue-500'
+      case 'active':
+        return 'text-green-500'
+      case 'paused':
+        return 'text-yellow-500'
+      case 'error':
+        return 'text-red-500'
+      case 'completed':
+        return 'text-green-500'
+      case 'intervention-needed':
+        return 'text-orange-500'
+      default:
+        return 'text-blue-500'
     }
   }
 
   const getStatusIcon = () => {
     switch (agentState.status) {
-      case 'active': return <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-      case 'paused': return <Pause className="w-4 h-4 text-yellow-500" />
-      case 'error': return <X className="w-4 h-4 text-red-500" />
-      case 'completed': return <CheckCircle className="w-4 h-4 text-green-500" />
-      case 'intervention-needed': return <AlertTriangle className="w-4 h-4 text-orange-500" />
-      default: return <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+      case 'active':
+        return <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+      case 'paused':
+        return <Pause className="w-4 h-4 text-yellow-500" />
+      case 'error':
+        return <X className="w-4 h-4 text-red-500" />
+      case 'completed':
+        return <CheckCircle className="w-4 h-4 text-green-500" />
+      case 'intervention-needed':
+        return <AlertTriangle className="w-4 h-4 text-orange-500" />
+      default:
+        return <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
     }
   }
 
   if (isMinimized) {
     return (
-      <Card className={cn("fixed bottom-4 right-4 w-80 z-50", className)} variant="glass" blur="lg">
+      <Card className={cn('fixed bottom-4 right-4 w-80 z-50', className)} variant="glass" blur="lg">
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <div className={getStatusColor()}>
-                {getStatusIcon()}
-              </div>
+              <div className={getStatusColor()}>{getStatusIcon()}</div>
               <span className="font-medium text-sm">🤖 Applying to {company}</span>
             </div>
             <Button size="sm" variant="ghost" onClick={onToggleMinimize}>
@@ -135,7 +144,7 @@ export function AgentProgressViewer({
   }
 
   return (
-    <div className={cn("min-h-screen bg-gray-50 dark:bg-gray-900", className)}>
+    <div className={cn('min-h-screen bg-gray-50 dark:bg-gray-900', className)}>
       {/* Header */}
       <div className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-700 p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -174,7 +183,7 @@ export function AgentProgressViewer({
         </div>
 
         {/* Live View */}
-        <AgentLiveView 
+        <AgentLiveView
           url={livePreviewUrl}
           status={agentState.status}
           isFullscreen={isFullscreen}
@@ -187,7 +196,7 @@ export function AgentProgressViewer({
         <AgentCurrentAction action={agentState.currentAction} />
 
         {/* Task Progress */}
-        <AgentTaskProgress 
+        <AgentTaskProgress
           steps={taskSteps}
           currentStep={agentState.currentStep}
           showDetails={showDetails}
@@ -209,15 +218,11 @@ export function AgentProgressViewer({
 
         {/* Error/Intervention States */}
         {agentState.status === 'error' && agentState.error && (
-          <AgentErrorState 
-            error={agentState.error}
-            onRetry={onResume}
-            onStop={onStop}
-          />
+          <AgentErrorState error={agentState.error} onRetry={onResume} onStop={onStop} />
         )}
 
         {agentState.status === 'intervention-needed' && agentState.interventionMessage && (
-          <AgentInterventionState 
+          <AgentInterventionState
             message={agentState.interventionMessage}
             onTakeControl={onTakeControl}
             onSkip={onSkipStep}
@@ -225,7 +230,7 @@ export function AgentProgressViewer({
         )}
 
         {agentState.status === 'completed' && (
-          <AgentCompletedState 
+          <AgentCompletedState
             jobTitle={jobTitle}
             company={company}
             timeElapsed={agentState.timeElapsed || 0}
@@ -247,14 +252,7 @@ interface AgentLiveViewProps {
   timeRemaining: number
 }
 
-function AgentLiveView({ 
-  url, 
-  status, 
-  isFullscreen, 
-  onToggleFullscreen,
-  timeElapsed,
-  timeRemaining 
-}: AgentLiveViewProps) {
+function AgentLiveView({ url, isFullscreen, onToggleFullscreen, timeElapsed, timeRemaining }: AgentLiveViewProps) {
   return (
     <Card variant="glass" blur="sm">
       <CardHeader>
@@ -276,15 +274,12 @@ function AgentLiveView({
                 </div>
               </div>
             </div>
-            
-            <div className={cn(
-              "bg-white dark:bg-gray-900 p-6",
-              isFullscreen ? "h-96" : "h-64"
-            )}>
+
+            <div className={cn('bg-white dark:bg-gray-900 p-6', isFullscreen ? 'h-96' : 'h-64')}>
               <div className="space-y-4">
                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">Google Careers</h2>
                 <h3 className="text-lg text-gray-700 dark:text-gray-300">Software Engineer - Mountain View</h3>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Name:</label>
@@ -304,7 +299,7 @@ function AgentLiveView({
                       <span className="text-sm text-gray-500">(555) 123-4567</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-2 pt-2">
                     <span className="text-sm text-green-600">📎</span>
                     <span className="text-sm text-green-600">Resume: software_engineer_v3.pdf ✓</span>
@@ -327,14 +322,15 @@ function AgentLiveView({
                 <SkipForward className="w-4 h-4" />
               </Button>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Progress value={70} className="w-32 h-1" />
               <span className="text-sm text-gray-600 dark:text-gray-400">
-                {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')} / {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
+                {Math.floor(timeElapsed / 60)}:{(timeElapsed % 60).toString().padStart(2, '0')} /{' '}
+                {Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}
               </span>
             </div>
-            
+
             <div className="flex items-center gap-2">
               <Badge variant="outline" className="bg-red-100 text-red-700 border-red-300">
                 🔴 Live
@@ -384,13 +380,8 @@ interface AgentTaskProgressProps {
   onToggleDetails: () => void
 }
 
-function AgentTaskProgress({ 
-  steps, 
-  currentStep, 
-  showDetails, 
-  onToggleDetails 
-}: AgentTaskProgressProps) {
-  const completedSteps = steps.filter(step => step.status === 'completed').length
+function AgentTaskProgress({ steps, showDetails, onToggleDetails }: AgentTaskProgressProps) {
+  const completedSteps = steps.filter((step) => step.status === 'completed').length
 
   return (
     <Card variant="glass" blur="sm">
@@ -407,37 +398,38 @@ function AgentTaskProgress({
       <CardContent>
         {showDetails ? (
           <div className="space-y-3">
-            {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            {steps.map((step) => (
+              <div
+                key={step.id}
+                className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              >
                 <div className="flex items-center gap-3">
                   <div className="flex-shrink-0">
-                    {step.status === 'completed' && (
-                      <CheckCircle className="w-5 h-5 text-green-500" />
-                    )}
+                    {step.status === 'completed' && <CheckCircle className="w-5 h-5 text-green-500" />}
                     {step.status === 'active' && (
                       <div className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
                     )}
-                    {step.status === 'error' && (
-                      <X className="w-5 h-5 text-red-500" />
-                    )}
-                    {step.status === 'pending' && (
-                      <div className="w-5 h-5 border-2 border-gray-300 rounded-full" />
-                    )}
+                    {step.status === 'error' && <X className="w-5 h-5 text-red-500" />}
+                    {step.status === 'pending' && <div className="w-5 h-5 border-2 border-gray-300 rounded-full" />}
                   </div>
                   <div>
-                    <p className={cn(
-                      "font-medium",
-                      step.status === 'completed' && "text-green-700 dark:text-green-400",
-                      step.status === 'active' && "text-blue-700 dark:text-blue-400",
-                      step.status === 'error' && "text-red-700 dark:text-red-400",
-                      step.status === 'pending' && "text-gray-500"
-                    )}>
+                    <p
+                      className={cn(
+                        'font-medium',
+                        step.status === 'completed' && 'text-green-700 dark:text-green-400',
+                        step.status === 'active' && 'text-blue-700 dark:text-blue-400',
+                        step.status === 'error' && 'text-red-700 dark:text-red-400',
+                        step.status === 'pending' && 'text-gray-500',
+                      )}
+                    >
                       {step.name}
                     </p>
                   </div>
                 </div>
                 <div className="text-sm text-gray-500">
-                  {step.duration ? `${Math.floor(step.duration / 60)}:${(step.duration % 60).toString().padStart(2, '0')}` : '--'}
+                  {step.duration
+                    ? `${Math.floor(step.duration / 60)}:${(step.duration % 60).toString().padStart(2, '0')}`
+                    : '--'}
                 </div>
               </div>
             ))}
@@ -531,9 +523,7 @@ function AgentErrorState({ error, onRetry, onStop }: AgentErrorStateProps) {
         <div className="flex items-start gap-4">
           <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
           <div className="flex-1">
-            <h3 className="font-semibold text-red-900 dark:text-red-200 mb-2">
-              ⚠️ Agent Error
-            </h3>
+            <h3 className="font-semibold text-red-900 dark:text-red-200 mb-2">⚠️ Agent Error</h3>
             <p className="text-red-700 dark:text-red-300 mb-4">{error}</p>
             <div className="flex gap-3">
               {onRetry && (
@@ -568,9 +558,7 @@ function AgentInterventionState({ message, onTakeControl, onSkip }: AgentInterve
         <div className="flex items-start gap-4">
           <AlertTriangle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
           <div className="flex-1">
-            <h3 className="font-semibold text-orange-900 dark:text-orange-200 mb-2">
-              ⚠️ Agent Needs Help
-            </h3>
+            <h3 className="font-semibold text-orange-900 dark:text-orange-200 mb-2">⚠️ Agent Needs Help</h3>
             <p className="text-orange-700 dark:text-orange-300 mb-4">{message}</p>
             <div className="flex gap-3">
               {onTakeControl && (
@@ -599,13 +587,7 @@ interface AgentCompletedStateProps {
   onBack?: () => void
 }
 
-function AgentCompletedState({ 
-  jobTitle, 
-  company, 
-  timeElapsed, 
-  onSaveRecording, 
-  onBack 
-}: AgentCompletedStateProps) {
+function AgentCompletedState({ jobTitle, company, timeElapsed, onSaveRecording, onBack }: AgentCompletedStateProps) {
   return (
     <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20" variant="solid">
       <CardContent className="p-6 text-center">
@@ -615,12 +597,18 @@ function AgentCompletedState({
             ✅ Application Submitted Successfully
           </h3>
           <div className="space-y-1 text-green-700 dark:text-green-300">
-            <p>Applied to: {company} - {jobTitle}</p>
-            <p>Time taken: {Math.floor(timeElapsed / 60)} min {timeElapsed % 60} sec</p>
-            <p>Reference #: {company.slice(0, 3).toUpperCase()}-2024-{Math.floor(Math.random() * 9999)}</p>
+            <p>
+              Applied to: {company} - {jobTitle}
+            </p>
+            <p>
+              Time taken: {Math.floor(timeElapsed / 60)} min {timeElapsed % 60} sec
+            </p>
+            <p>
+              Reference #: {company.slice(0, 3).toUpperCase()}-2024-{Math.floor(Math.random() * 9999)}
+            </p>
           </div>
         </div>
-        
+
         <div className="flex justify-center gap-3">
           {onSaveRecording && (
             <Button onClick={onSaveRecording} variant="outline">
@@ -662,13 +650,12 @@ export function MobileAgentProgress({
   className,
 }: MobileAgentProgressProps) {
   const [showTaskList, setShowTaskList] = useState(false)
-  
-  const progress = agentState.currentStep && agentState.totalSteps 
-    ? (agentState.currentStep / agentState.totalSteps) * 100 
-    : 0
+
+  const progress =
+    agentState.currentStep && agentState.totalSteps ? (agentState.currentStep / agentState.totalSteps) * 100 : 0
 
   return (
-    <div className={cn("min-h-screen bg-gray-50 dark:bg-gray-900 p-4", className)}>
+    <div className={cn('min-h-screen bg-gray-50 dark:bg-gray-900 p-4', className)}>
       {/* Header */}
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
@@ -678,10 +665,12 @@ export function MobileAgentProgress({
           </Button>
           <div className="text-xs text-gray-500">🔋 █ █ █</div>
         </div>
-        
+
         <div className="text-center">
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">🤖 Applying to Jobs</h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{company} - {jobTitle}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {company} - {jobTitle}
+          </p>
         </div>
       </div>
 
@@ -698,7 +687,7 @@ export function MobileAgentProgress({
               </div>
             </div>
           </div>
-          
+
           <div className="flex items-center justify-between text-xs">
             <div className="flex gap-1">
               <Button size="sm" variant="ghost" className="p-1">
@@ -733,13 +722,10 @@ export function MobileAgentProgress({
       <Card className="mb-4" variant="glass" blur="sm">
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium">Progress: {agentState.currentStep} of {agentState.totalSteps}</span>
-            <Button 
-              size="sm" 
-              variant="ghost" 
-              onClick={() => setShowTaskList(!showTaskList)}
-              className="text-xs"
-            >
+            <span className="text-sm font-medium">
+              Progress: {agentState.currentStep} of {agentState.totalSteps}
+            </span>
+            <Button size="sm" variant="ghost" onClick={() => setShowTaskList(!showTaskList)} className="text-xs">
               {showTaskList ? '▲' : '▼'}
             </Button>
           </div>
@@ -750,11 +736,7 @@ export function MobileAgentProgress({
 
       {/* Controls */}
       <div className="grid grid-cols-3 gap-2 mb-4">
-        <Button 
-          size="sm" 
-          variant="outline"
-          onClick={agentState.status === 'active' ? onPause : onResume}
-        >
+        <Button size="sm" variant="outline" onClick={agentState.status === 'active' ? onPause : onResume}>
           {agentState.status === 'active' ? 'Pause' : 'Resume'}
         </Button>
         <Button size="sm" variant="outline" onClick={onSaveRecording}>
@@ -777,16 +759,20 @@ export function MobileAgentProgress({
             </div>
           </CardHeader>
           <CardContent className="space-y-3">
-            {taskSteps.map((step, index) => (
+            {taskSteps.map((step) => (
               <div key={step.id} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   {step.status === 'completed' && <CheckCircle className="w-4 h-4 text-green-500" />}
-                  {step.status === 'active' && <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />}
+                  {step.status === 'active' && (
+                    <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                  )}
                   {step.status === 'pending' && <div className="w-4 h-4 border-2 border-gray-300 rounded-full" />}
                   <div>
                     <div className="text-sm font-medium">{step.name}</div>
                     {step.duration ? (
-                      <div className="text-xs text-gray-500">{Math.floor(step.duration / 60)}:{(step.duration % 60).toString().padStart(2, '0')}</div>
+                      <div className="text-xs text-gray-500">
+                        {Math.floor(step.duration / 60)}:{(step.duration % 60).toString().padStart(2, '0')}
+                      </div>
                     ) : (
                       <div className="text-xs text-gray-500">Pending</div>
                     )}
@@ -810,13 +796,9 @@ export function AgentInitializing() {
           <div className="mb-6">
             <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto" />
           </div>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            🤖 Preparing AI Agent...
-          </h2>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">🤖 Preparing AI Agent...</h2>
           <Progress value={25} className="h-2 mb-4" />
-          <p className="text-gray-600 dark:text-gray-400">
-            Setting up browser environment...
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">Setting up browser environment...</p>
         </CardContent>
       </Card>
     </div>

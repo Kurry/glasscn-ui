@@ -6,9 +6,8 @@ import {
   JobMatchesInterface,
   LiveApplicationView,
   CompleteDashboard,
-  GenerativeDashboardDemo
+  GenerativeDashboardDemo,
 } from '@/components/ui/generative-dashboard'
-import { Check, AlertTriangle } from 'lucide-react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -23,11 +22,8 @@ export default meta
 export const Initial_Loading = {
   name: 'Initial Dashboard Loading',
   render: () => (
-    <InitialDashboardGeneration
-      userName="John Smith"
-      onProfileAnalyzed={() => console.log('Profile analyzed')}
-    />
-  )
+    <InitialDashboardGeneration userName="John Smith" onProfileAnalyzed={() => console.log('Profile analyzed')} />
+  ),
 }
 
 export const Empty_State = {
@@ -39,7 +35,7 @@ export const Empty_State = {
       onResumeUpload={(file) => console.log(`Uploaded: ${file.name}`)}
       onStartFresh={() => console.log('Starting fresh')}
     />
-  )
+  ),
 }
 
 export const Resume_Analysis = {
@@ -50,28 +46,28 @@ export const Resume_Analysis = {
         {
           label: 'Found: 5 years experience at Google',
           isPositive: true,
-          text: 'Senior position detected'
+          text: 'Senior position detected',
         },
         {
           label: 'Strong Python background',
           isPositive: true,
-          text: 'Multiple projects identified'
+          text: 'Multiple projects identified',
         },
         {
           label: 'Leadership experience',
           isPositive: true,
-          text: 'Team management highlighted'
+          text: 'Team management highlighted',
         },
         {
           label: 'Missing quantified achievements',
           isPositive: false,
-          text: 'No metrics or percentages found'
-        }
+          text: 'No metrics or percentages found',
+        },
       ]}
       progress={70}
       onAnalysisComplete={() => console.log('Analysis complete')}
     />
-  )
+  ),
 }
 
 export const Resume_Ready = {
@@ -83,7 +79,7 @@ export const Resume_Ready = {
       resumeData={{
         title: 'Software Engineer',
         experience: '5 years @ Google',
-        lastUpdated: 'Just now'
+        lastUpdated: 'Just now',
       }}
       missingSkills={['AWS', 'Kubernetes']}
       weakAreas={['Quantified results', 'Action verbs']}
@@ -94,7 +90,7 @@ export const Resume_Ready = {
       onFindJobs={(url) => console.log(`Finding jobs with URL: ${url}`)}
       onAutoFindJobs={() => console.log('Auto-finding jobs')}
     />
-  )
+  ),
 }
 
 export const Job_Matches = {
@@ -111,7 +107,7 @@ export const Job_Matches = {
           salary: '$180k-220k',
           location: 'Mountain View',
           isResumeReady: true,
-          isCoverLetterReady: true
+          isCoverLetterReady: true,
         },
         {
           id: '2',
@@ -121,8 +117,8 @@ export const Job_Matches = {
           salary: '$170k-200k',
           location: 'Remote',
           isResumeReady: true,
-          isCoverLetterReady: true
-        }
+          isCoverLetterReady: true,
+        },
       ]}
       onApply={(id) => console.log(`Applying to job: ${id}`)}
       onPreview={(id) => console.log(`Previewing job: ${id}`)}
@@ -130,7 +126,7 @@ export const Job_Matches = {
       onLoadMore={() => console.log('Loading more jobs')}
       onAutoApplyTop={(count) => console.log(`Auto-applying to top ${count} jobs`)}
     />
-  )
+  ),
 }
 
 export const Live_Applications = {
@@ -149,32 +145,34 @@ export const Live_Applications = {
             { step: 'Tailored resume to job', duration: '12s', isCompleted: true },
             { step: 'Generated cover letter', duration: '8s', isCompleted: true },
             { step: 'Navigated to application', duration: '3s', isCompleted: true },
-            { step: 'Filling application form...', duration: '', isActive: true },
+            { step: 'Filling application form...', duration: '', isActive: true, isCompleted: false },
             { step: 'Upload documents', duration: '', isCompleted: false },
-            { step: 'Submit application', duration: '', isCompleted: false }
-          ]
-        }
+            { step: 'Submit application', duration: '', isCompleted: false },
+          ],
+        },
       ]}
       completedApplications={[
         {
           id: '2',
           company: 'Meta',
-          position: 'Applied 2 min ago',
-          completedAt: '2 min ago'
+          position: 'Software Engineer',
+          completedAt: '2 min ago',
+          status: 'applied',
         },
         {
           id: '3',
           company: 'Airbnb',
           position: 'Full Stack Developer',
-          completedAt: '5 min ago'
-        }
+          completedAt: '5 min ago',
+          status: 'applied',
+        },
       ]}
       onPause={(id) => console.log(`Pausing application: ${id}`)}
       onWatch={(id) => console.log(`Watching application: ${id}`)}
       onSkip={(id) => console.log(`Skipping application: ${id}`)}
       onViewRecording={(id) => console.log(`Viewing recording: ${id}`)}
     />
-  )
+  ),
 }
 
 export const Complete_Dashboard = {
@@ -186,13 +184,13 @@ export const Complete_Dashboard = {
         { label: 'Applied', value: 127, change: '↑ 23 today' },
         { label: 'Responses', value: 18, change: '14% rate' },
         { label: 'Interviews', value: 5, change: 'This week' },
-        { label: 'Offers', value: 1, change: 'Pending' }
+        { label: 'Offers', value: 1, change: 'Pending' },
       ]}
       resumeVariants={[
         { id: 'master', name: 'Master', score: 89, isDefault: true },
         { id: 'bigtech', name: 'Big Tech', score: 92, responseRate: '12% resp' },
         { id: 'startup', name: 'Startup', score: 87, responseRate: '18% resp' },
-        { id: 'remote', name: 'Remote', score: 90, responseRate: '15% resp' }
+        { id: 'remote', name: 'Remote', score: 90, responseRate: '15% resp' },
       ]}
       activeApplications={[
         {
@@ -200,43 +198,53 @@ export const Complete_Dashboard = {
           company: 'Google',
           position: 'Senior SWE',
           progress: 67,
-          currentStep: 'Uploading resume'
-        }
+          currentStep: 'Uploading resume',
+          timeline: [
+            { step: 'Tailored resume to job', duration: '12s', isCompleted: true },
+            { step: 'Generated cover letter', duration: '8s', isCompleted: true },
+            { step: 'Navigated to application', duration: '3s', isCompleted: true },
+            { step: 'Uploading resume...', duration: '', isActive: true, isCompleted: false },
+            { step: 'Submit application', duration: '', isCompleted: false },
+          ],
+        },
       ]}
       recentSuccess={{
         company: 'Stripe',
         position: 'Senior Developer',
         result: 'Interview scheduled',
-        date: 'Monday 2pm'
+        date: 'Monday 2pm',
       }}
       completedApplications={[
         {
           id: '1',
           company: 'Stripe',
           position: 'Senior Developer',
+          completedAt: '1 day ago',
           status: 'interview',
-          nextStep: 'Technical round Monday'
+          nextStep: 'Technical round Monday',
         },
         {
           id: '2',
           company: 'Netflix',
           position: 'Frontend Developer',
+          completedAt: '2 days ago',
           status: 'applied',
-          nextStep: 'Awaiting review'
+          nextStep: 'Awaiting review',
         },
         {
           id: '3',
           company: 'Facebook',
           position: 'Software Engineer',
-          status: 'rejected'
-        }
+          completedAt: '3 days ago',
+          status: 'rejected',
+        },
       ]}
       onViewDetails={() => console.log('Viewing details')}
     />
-  )
+  ),
 }
 
 export const Interactive_Demo = {
   name: 'Interactive Dashboard Demo',
-  render: () => <GenerativeDashboardDemo />
+  render: () => <GenerativeDashboardDemo />,
 }

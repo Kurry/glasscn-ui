@@ -1,29 +1,21 @@
-import { 
+import {
   SurveyStep,
   EmptyState,
   WelcomeDashboard,
   FileUpload,
   AnalyzingResume,
-  ProgressIndicator,
-  ScoreCard,
   ResumeAnalysisResults,
-  FormBuilder,
   ResumeBuilder,
   ExperienceBuilder,
-  ComparisonCard,
   AIEnhancementPreview,
-  AutomationPitch,
   ResumeComplete,
-  JobPreferences,
   QuickJobPreferences,
-  DashboardStats,
   ActiveDashboard,
   CreationPathSelector,
   StepFlow,
-  SuccessCelebration,
-  ResumeCompleteSuccess
+  ResumeCompleteSuccess,
 } from '@/index'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
   title: 'UI/Complete Onboarding Flow',
@@ -51,7 +43,7 @@ export const SurveyStepStory = {
       onValueChange={(value) => console.log('Selected:', value)}
       onContinue={() => console.log('Continue')}
     />
-  )
+  ),
 }
 
 // Empty States
@@ -63,20 +55,16 @@ export const EmptyStateStory = {
       title="No resumes yet"
       description="Let's create your first resume to unlock all features"
       primaryAction={{
-        label: "Create Resume",
+        label: 'Create Resume',
         onClick: () => console.log('Create resume'),
       }}
       secondaryAction={{
-        label: "Import Existing",
+        label: 'Import Existing',
         onClick: () => console.log('Import resume'),
       }}
-      lockedFeatures={[
-        "AI Job Applications",
-        "Voice Agent", 
-        "Recruiter Auto-Reply"
-      ]}
+      lockedFeatures={['AI Job Applications', 'Voice Agent', 'Recruiter Auto-Reply']}
     />
-  )
+  ),
 }
 
 export const WelcomeDashboardStory = {
@@ -87,7 +75,7 @@ export const WelcomeDashboardStory = {
       onCreateResume={() => console.log('Create resume')}
       onImportResume={() => console.log('Import resume')}
     />
-  )
+  ),
 }
 
 // File Upload Flow
@@ -98,12 +86,12 @@ export const FileUploadStory = {
       onFileSelect={(file) => console.log('File selected:', file.name)}
       onStartFromScratch={() => console.log('Start from scratch')}
     />
-  )
+  ),
 }
 
 export const AnalyzingResumeStory = {
   name: 'Analyzing Resume',
-  render: () => <AnalyzingResume />
+  render: () => <AnalyzingResume />,
 }
 
 export const ResumeAnalysisResultsStory = {
@@ -113,15 +101,13 @@ export const ResumeAnalysisResultsStory = {
       onFixWithAI={() => console.log('Fix with AI')}
       onViewDetails={() => console.log('View details')}
     />
-  )
+  ),
 }
 
 // Form Builders
 export const ResumeBuilderStory = {
   name: 'Resume Builder - Basic Info',
-  render: () => (
-    <ResumeBuilder onContinue={() => console.log('Continue to experience')} />
-  )
+  render: () => <ResumeBuilder onContinue={() => console.log('Continue to experience')} />,
 }
 
 export const ExperienceBuilderStory = {
@@ -131,7 +117,7 @@ export const ExperienceBuilderStory = {
       onContinue={() => console.log('Continue to next step')}
       onAddAnother={() => console.log('Add another experience')}
     />
-  )
+  ),
 }
 
 // AI Enhancement
@@ -142,7 +128,7 @@ export const AIEnhancementPreviewStory = {
       onApplyChanges={() => console.log('Apply all changes')}
       onReviewEach={() => console.log('Review each change')}
     />
-  )
+  ),
 }
 
 // Success & Automation
@@ -153,7 +139,7 @@ export const ResumeCompleteStory = {
       onSetupAutomation={() => console.log('Setup automation')}
       onMaybeLater={() => console.log('Maybe later')}
     />
-  )
+  ),
 }
 
 export const ResumeCompleteSuccessStory = {
@@ -163,36 +149,25 @@ export const ResumeCompleteSuccessStory = {
       onSetupAutomation={() => console.log('Setup automation')}
       onDownloadResume={() => console.log('Download resume')}
     />
-  )
+  ),
 }
 
 // Job Preferences
 export const JobPreferencesStory = {
   name: 'Job Preferences Setup',
-  render: () => (
-    <QuickJobPreferences onContinue={() => console.log('Continue with automation')} />
-  )
+  render: () => <QuickJobPreferences onContinue={() => console.log('Continue with automation')} />,
 }
 
 // Dashboard
 export const ActiveDashboardStory = {
   name: 'Active Dashboard',
-  render: () => (
-    <ActiveDashboard
-      userName="John Smith"
-      onViewAll={() => console.log('View all applications')}
-    />
-  )
+  render: () => <ActiveDashboard userName="John Smith" onViewAll={() => console.log('View all applications')} />,
 }
 
 // Path Selection
 export const CreationPathSelectorStory = {
   name: 'Creation Path Selector',
-  render: () => (
-    <CreationPathSelector
-      onPathSelect={(pathId) => console.log('Path selected:', pathId)}
-    />
-  )
+  render: () => <CreationPathSelector onPathSelect={(pathId) => console.log('Path selected:', pathId)} />,
 }
 
 // Step Flow Example
@@ -216,7 +191,7 @@ export const StepFlowStory = {
             onValueChange={() => {}}
             onContinue={() => {}}
           />
-        )
+        ),
       },
       {
         id: 'resume',
@@ -227,8 +202,8 @@ export const StepFlowStory = {
             <h2 className="text-xl font-bold mb-4">Resume Creation Step</h2>
             <p>This would contain the resume creation flow</p>
           </div>
-        )
-      }
+        ),
+      },
     ]
 
     return (
@@ -240,5 +215,5 @@ export const StepFlowStory = {
         allowSkip={true}
       />
     )
-  }
+  },
 }

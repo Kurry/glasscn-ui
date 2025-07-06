@@ -1,8 +1,10 @@
 :root {
-  --font-sans: -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue', Helvetica,
-    Arial, sans-serif;
-  --font-heading: -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue',
-    Helvetica, Arial, sans-serif;
+  --font-sans:
+    -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  --font-heading:
+    -apple-system, '.SFNSText-Regular', 'San Francisco', 'system-ui', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
   --font-comic: 'Comic Sans MS', 'Comic Sans', cursive;
   --font-mono: 'Monaco', 'Fira Code', monospace;
   --font-serif: Times, serif;

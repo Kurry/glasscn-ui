@@ -1,7 +1,4 @@
-import {
-  AutoLearningSystem,
-  SkillsGapDemo
-} from '@/components/ui/skills-gap-automation'
+import { AutoLearningSystem, SkillsGapDemo } from '@/components/ui/skills-gap-automation'
 import { BookOpen, FileText, Link } from 'lucide-react'
 import type { Meta } from '@storybook/react'
 
@@ -28,7 +25,7 @@ export const Auto_Learning_System = {
           description: 'Covers basics',
           duration: '3 hours',
           type: 'course',
-          icon: <BookOpen className="w-5 h-5" />
+          icon: <BookOpen className="w-5 h-5" />,
         },
         {
           id: '2',
@@ -36,7 +33,7 @@ export const Auto_Learning_System = {
           description: 'Perfect for your background',
           duration: '45 min',
           type: 'guide',
-          icon: <FileText className="w-5 h-5" />
+          icon: <FileText className="w-5 h-5" />,
         },
         {
           id: '3',
@@ -44,33 +41,33 @@ export const Auto_Learning_System = {
           description: 'Hands-on exercises',
           duration: 'Self-paced',
           type: 'lab',
-          icon: <Link className="w-5 h-5" />
-        }
+          icon: <Link className="w-5 h-5" />,
+        },
       ]}
       aiActions={[
         {
           id: '1',
           description: 'Adding "K8s (learning)" to resume',
-          completed: false
+          completed: false,
         },
         {
           id: '2',
           description: 'Emphasizing container experience',
-          completed: true
+          completed: true,
         },
         {
           id: '3',
           description: 'Targeting Docker-to-K8s transition roles (found 12)',
-          completed: true
-        }
+          completed: true,
+        },
       ]}
       onStartLearning={() => console.log('Starting learning')}
       onSkip={() => console.log('Skipping for now')}
     />
-  )
+  ),
 }
 
 export const Skills_Gap_Demo = {
   name: 'Skills Gap Demo',
-  render: () => <SkillsGapDemo />
+  render: () => <SkillsGapDemo />,
 }

@@ -1,7 +1,4 @@
-import {
-  ApplicationQualityControl,
-  FailurePreventionDemo
-} from '@/components/ui/failure-prevention'
+import { ApplicationQualityControl, FailurePreventionDemo } from '@/components/ui/failure-prevention'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -23,25 +20,25 @@ export const Quality_Control = {
           id: '1',
           severity: 'high',
           issue: 'Resume has "Googler" in bio',
-          solution: 'AI removed competitive reference'
+          solution: 'AI removed competitive reference',
         },
         {
           id: '2',
           severity: 'medium',
           issue: 'GitHub has Android projects',
-          solution: 'AI emphasizing iOS work instead'
+          solution: 'AI emphasizing iOS work instead',
         },
         {
           id: '3',
           severity: 'low',
           issue: 'Cover letter mentions Windows',
-          solution: 'AI rewrote for Apple ecosystem'
-        }
+          solution: 'AI rewrote for Apple ecosystem',
+        },
       ]}
       isPassed={false}
       onReviewChanges={() => console.log('Reviewing changes')}
     />
-  )
+  ),
 }
 
 export const Quality_Check_Passed = {
@@ -54,10 +51,10 @@ export const Quality_Check_Passed = {
       onSubmitApplication={() => console.log('Submitting application')}
       onReviewChanges={() => console.log('Reviewing changes')}
     />
-  )
+  ),
 }
 
 export const Failure_Prevention_Demo = {
   name: 'Failure Prevention Demo',
-  render: () => <FailurePreventionDemo />
+  render: () => <FailurePreventionDemo />,
 }

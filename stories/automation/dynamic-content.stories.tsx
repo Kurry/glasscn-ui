@@ -1,8 +1,4 @@
-import {
-  TechStackCloud,
-  RevenueTimeline,
-  DynamicContentDemo
-} from '@/components/ui/dynamic-content-displays'
+import { TechStackCloud, RevenueTimeline, DynamicContentDemo } from '@/components/ui/dynamic-content-displays'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -34,7 +30,7 @@ export const Tech_Stack_Cloud = {
       missingSkills={['Go', 'Rust', 'GraphQL', 'TypeScript']}
       onAddSkill={(skill) => console.log(`Adding skill: ${skill}`)}
     />
-  )
+  ),
 }
 
 export const Revenue_Timeline = {
@@ -48,11 +44,11 @@ export const Revenue_Timeline = {
       ]}
       source="LinkedIn posts and email signatures"
     />
-  )
+  ),
 }
 
 // Complete Demo
 export const Complete_Demo = {
   name: 'Combined Dynamic Content Demo',
-  render: () => <DynamicContentDemo />
+  render: () => <DynamicContentDemo />,
 }

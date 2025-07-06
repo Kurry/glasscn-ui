@@ -1,4 +1,4 @@
-import { 
+import {
   NotificationCard,
   VoiceAgentPrompt,
   SecurityAlert,
@@ -10,9 +10,9 @@ import {
   JobOffer,
   InactiveUser,
   FeatureReminder,
-  ReEngagementEmail
+  ReEngagementEmail,
 } from '@/index'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
   title: 'UI/Engagement Components',
@@ -34,12 +34,12 @@ export const NotificationCardStory = {
         message="Voice agent is now available to handle your recruiter calls automatically."
         actions={{
           primary: { label: 'Try It Now', onClick: () => console.log('Try now') },
-          secondary: { label: 'Learn More', onClick: () => console.log('Learn more') }
+          secondary: { label: 'Learn More', onClick: () => console.log('Learn more') },
         }}
         onDismiss={() => console.log('Dismissed')}
       />
     </div>
-  )
+  ),
 }
 
 export const VoiceAgentPromptStory = {
@@ -52,7 +52,7 @@ export const VoiceAgentPromptStory = {
         onLater={() => console.log('Later')}
       />
     </div>
-  )
+  ),
 }
 
 export const SecurityAlertStory = {
@@ -62,16 +62,12 @@ export const SecurityAlertStory = {
       <SecurityAlert
         senderEmail="jobs@quick-hire.tk"
         subject="Immediate hire, $200k, no interview"
-        redFlags={[
-          'Suspicious domain',
-          'Too good to be true',
-          'Asking for bank info'
-        ]}
+        redFlags={['Suspicious domain', 'Too good to be true', 'Asking for bank info']}
         onViewAnalysis={() => console.log('View analysis')}
         onBlockSender={() => console.log('Block sender')}
       />
     </div>
-  )
+  ),
 }
 
 // Email Components
@@ -81,7 +77,7 @@ export const DailySummaryStory = {
     <div className="p-8 bg-gray-100 min-h-screen">
       <DailySummary onOpenDashboard={() => console.log('Open dashboard')} />
     </div>
-  )
+  ),
 }
 
 export const WeeklyReportStory = {
@@ -96,12 +92,12 @@ export const WeeklyReportStory = {
         topResume="Software Engineer v3"
         suggestions={[
           { text: 'Add Python to skills', impact: '+15% match rate' },
-          { text: 'Target startups', impact: '+22% response rate' }
+          { text: 'Target startups', impact: '+22% response rate' },
         ]}
         onImplementSuggestions={() => console.log('Implement suggestions')}
       />
     </div>
-  )
+  ),
 }
 
 // Upsell Components
@@ -109,12 +105,9 @@ export const OptimizeStrategyStory = {
   name: 'Optimize Strategy Upsell',
   render: () => (
     <div className="p-8 bg-gray-100 min-h-screen">
-      <OptimizeStrategy
-        onTryPremium={() => console.log('Try premium')}
-        onDismiss={() => console.log('Dismiss')}
-      />
+      <OptimizeStrategy onTryPremium={() => console.log('Try premium')} onDismiss={() => console.log('Dismiss')} />
     </div>
-  )
+  ),
 }
 
 export const VoiceAgentSuccessStory = {
@@ -123,7 +116,7 @@ export const VoiceAgentSuccessStory = {
     <div className="p-8 bg-gray-100 min-h-screen">
       <VoiceAgentSuccess onUpgradeAgent={() => console.log('Upgrade agent')} />
     </div>
-  )
+  ),
 }
 
 // Milestone Components
@@ -137,7 +130,7 @@ export const FirstInterviewStory = {
       time="2:00 PM PST"
       onViewPrep={() => console.log('View prep')}
     />
-  )
+  ),
 }
 
 export const JobOfferStory = {
@@ -151,7 +144,7 @@ export const JobOfferStory = {
         onContinue={() => console.log('Continue')}
       />
     </div>
-  )
+  ),
 }
 
 // Re-engagement Components
@@ -167,29 +160,18 @@ export const InactiveUserStory = {
         onUnsubscribe={() => console.log('Unsubscribe')}
       />
     </div>
-  )
+  ),
 }
 
 export const FeatureReminderStory = {
   name: 'Feature Reminder',
   render: () => (
     <div className="p-8 bg-gray-100 min-h-screen">
-      <ReEngagementEmail
-        subject="You're missing out on interviews"
-        recipientName="John"
-      >
-        <FeatureReminder
-          featureName="voice agent"
-          benefits={[
-            'Got 3x more interviews',
-            'Saved 10+ hours on calls',
-            'Never missed opportunities'
-          ]}
-          onSetupFeature={() => console.log('Setup feature')}
-        />
+      <ReEngagementEmail subject="You're missing out on interviews" recipientName="John">
+        <FeatureReminder featureName="voice agent" onSetupFeature={() => console.log('Setup feature')} />
       </ReEngagementEmail>
     </div>
-  )
+  ),
 }
 
 // Complete Flow Stories
@@ -202,7 +184,7 @@ export const CompleteNotificationFlow = {
         onSetupNow={() => console.log('Setup now')}
         onLater={() => console.log('Later')}
       />
-      
+
       <SecurityAlert
         senderEmail="jobs@scam-site.com"
         subject="Easy $300k job, start tomorrow!"
@@ -210,11 +192,8 @@ export const CompleteNotificationFlow = {
         onViewAnalysis={() => console.log('View analysis')}
         onBlockSender={() => console.log('Block sender')}
       />
-      
-      <OptimizeStrategy
-        onTryPremium={() => console.log('Try premium')}
-        onDismiss={() => console.log('Dismiss')}
-      />
+
+      <OptimizeStrategy onTryPremium={() => console.log('Try premium')} onDismiss={() => console.log('Dismiss')} />
     </div>
-  )
+  ),
 }

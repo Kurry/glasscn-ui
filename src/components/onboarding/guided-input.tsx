@@ -1,14 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowRight, Lightbulb, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { useState } from 'react'
 
 interface GuidedInputProps {
@@ -31,14 +30,16 @@ export function GuidedInput({ step, totalSteps, onContinue, className }: GuidedI
   const progress = (step / totalSteps) * 100
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+    setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
-    <div className={cn(
-      "min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4",
-      className
-    )}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader>
           <CardTitle className="text-xl">
@@ -46,7 +47,7 @@ export function GuidedInput({ step, totalSteps, onContinue, className }: GuidedI
           </CardTitle>
           <Progress value={progress} className="h-2" />
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Basic Info Section */}
           <div className="space-y-4">
@@ -128,9 +129,7 @@ export function GuidedInput({ step, totalSteps, onContinue, className }: GuidedI
               <div className="flex items-start gap-3">
                 <Sparkles className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-1">
-                    AI Tip
-                  </p>
+                  <p className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-1">AI Tip</p>
                   <p className="text-sm text-blue-600 dark:text-blue-400">
                     Don't worry about perfection - our AI will enhance everything in the next step!
                   </p>
@@ -150,8 +149,8 @@ export function GuidedInput({ step, totalSteps, onContinue, className }: GuidedI
               <div
                 key={i}
                 className={cn(
-                  "w-2 h-2 rounded-full transition-colors",
-                  i < step ? "bg-primary-600" : "bg-gray-300 dark:bg-gray-600"
+                  'w-2 h-2 rounded-full transition-colors',
+                  i < step ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600',
                 )}
               />
             ))}

@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { Calendar, Download, FileText, PartyPopper, Briefcase, ArrowRight } from 'lucide-react'
 
@@ -42,42 +41,51 @@ export function MilestoneCard({
 }: MilestoneCardProps) {
   const getTypeIcon = () => {
     switch (type) {
-      case 'interview': return <Calendar className="w-8 h-8" />
-      case 'offer': return <PartyPopper className="w-8 h-8" />
-      case 'completion': return <Briefcase className="w-8 h-8" />
+      case 'interview':
+        return <Calendar className="w-8 h-8" />
+      case 'offer':
+        return <PartyPopper className="w-8 h-8" />
+      case 'completion':
+        return <Briefcase className="w-8 h-8" />
     }
   }
 
   const getTypeColors = () => {
     switch (type) {
-      case 'interview': return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
-      case 'offer': return 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20'
-      case 'completion': return 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20'
+      case 'interview':
+        return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
+      case 'offer':
+        return 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20'
+      case 'completion':
+        return 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20'
     }
   }
 
   const getIconColors = () => {
     switch (type) {
-      case 'interview': return 'text-blue-600'
-      case 'offer': return 'text-green-600'
-      case 'completion': return 'text-purple-600'
+      case 'interview':
+        return 'text-blue-600'
+      case 'offer':
+        return 'text-green-600'
+      case 'completion':
+        return 'text-purple-600'
     }
   }
 
   return (
-    <div className={cn(
-      "min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4",
-      className
-    )}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center pb-4">
-          <div className={cn("mb-4 flex justify-center", getIconColors())}>
-            {getTypeIcon()}
-          </div>
+          <div className={cn('mb-4 flex justify-center', getIconColors())}>{getTypeIcon()}</div>
           <CardTitle className="text-2xl">{title}</CardTitle>
           {subtitle && <CardDescription className="text-lg">{subtitle}</CardDescription>}
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Details */}
           {details && (
@@ -100,9 +108,7 @@ export function MilestoneCard({
               <div className="space-y-3">
                 {preparations.map((prep, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                    <div className="text-primary-600 mt-0.5">
-                      {prep.icon || <FileText className="w-4 h-4" />}
-                    </div>
+                    <div className="text-primary-600 mt-0.5">{prep.icon || <FileText className="w-4 h-4" />}</div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">{prep.name}</p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{prep.description}</p>
@@ -117,23 +123,13 @@ export function MilestoneCard({
           {actions && (
             <div className="space-y-3">
               {actions.primary && (
-                <Button 
-                  onClick={actions.primary.onClick}
-                  size="lg" 
-                  color="primary" 
-                  className="w-full"
-                >
+                <Button onClick={actions.primary.onClick} size="lg" color="primary" className="w-full">
                   {actions.primary.icon && actions.primary.icon}
                   {actions.primary.label}
                 </Button>
               )}
               {actions.secondary && (
-                <Button 
-                  onClick={actions.secondary.onClick}
-                  variant="outline" 
-                  size="lg" 
-                  className="w-full"
-                >
+                <Button onClick={actions.secondary.onClick} variant="outline" size="lg" className="w-full">
                   {actions.secondary.icon && actions.secondary.icon}
                   {actions.secondary.label}
                 </Button>
@@ -145,9 +141,7 @@ export function MilestoneCard({
           {tip && (
             <Card variant="solid" className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
               <CardContent className="p-4 text-center">
-                <p className="text-blue-700 dark:text-blue-300 text-sm">
-                  💡 {tip}
-                </p>
+                <p className="text-blue-700 dark:text-blue-300 text-sm">💡 {tip}</p>
               </CardContent>
             </Card>
           )}
@@ -166,29 +160,22 @@ interface FirstInterviewProps {
   className?: string
 }
 
-export function FirstInterview({ 
-  company, 
-  position, 
-  date, 
-  time, 
-  onViewPrep, 
-  className 
-}: FirstInterviewProps) {
+export function FirstInterview({ company, position, date, time, onViewPrep, className }: FirstInterviewProps) {
   const preparations = [
     {
       name: 'Company research doc',
       description: 'Key insights about the company and role',
-      icon: <FileText className="w-4 h-4" />
+      icon: <FileText className="w-4 h-4" />,
     },
     {
       name: 'Likely questions',
       description: 'Common questions for this position',
-      icon: <FileText className="w-4 h-4" />
+      icon: <FileText className="w-4 h-4" />,
     },
     {
       name: 'Your talking points',
       description: 'Personalized responses based on your experience',
-      icon: <FileText className="w-4 h-4" />
+      icon: <FileText className="w-4 h-4" />,
     },
   ]
 
@@ -199,15 +186,15 @@ export function FirstInterview({
       details={{
         company: `${company} - ${position}`,
         date: date,
-        time: time
+        time: time,
       }}
       preparations={preparations}
       actions={{
         primary: {
           label: 'View Interview Prep →',
           onClick: onViewPrep,
-          icon: <ArrowRight className="w-4 h-4 ml-2" />
-        }
+          icon: <ArrowRight className="w-4 h-4 ml-2" />,
+        },
       }}
       tip="Users who use our prep are 2x more likely to advance"
       className={className}
@@ -223,25 +210,17 @@ interface JobOfferProps {
   className?: string
 }
 
-export function JobOffer({ 
-  onDownloadAll, 
-  onExportNotes, 
-  onSaveRecordings, 
-  onContinue, 
-  className 
-}: JobOfferProps) {
+export function JobOffer({ onDownloadAll, onExportNotes, onSaveRecordings, onContinue, className }: JobOfferProps) {
   return (
-    <Card className={cn("w-full max-w-2xl mx-auto", className)} variant="glass" blur="lg">
+    <Card className={cn('w-full max-w-2xl mx-auto', className)} variant="glass" blur="lg">
       <CardHeader className="text-center pb-4">
         <div className="mb-4 text-6xl">🎊</div>
-        <CardTitle className="text-3xl text-green-700 dark:text-green-300">
-          Congratulations!
-        </CardTitle>
+        <CardTitle className="text-3xl text-green-700 dark:text-green-300">Congratulations!</CardTitle>
         <CardDescription className="text-lg">
           You got an offer! We're thrilled to be part of your journey.
         </CardDescription>
       </CardHeader>
-      
+
       <CardContent className="space-y-6">
         <div>
           <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Before you go:</h3>

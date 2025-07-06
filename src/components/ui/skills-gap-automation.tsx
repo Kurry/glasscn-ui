@@ -41,10 +41,15 @@ export function AutoLearningSystem({
   aiActions,
   onStartLearning,
   onSkip,
-  className
+  className,
 }: AutoLearningSystemProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
@@ -53,13 +58,11 @@ export function AutoLearningSystem({
             </div>
             <div>
               <CardTitle className="text-xl">AI Learning Assistant</CardTitle>
-              <CardDescription>
-                Helping you close skill gaps in your job search
-              </CardDescription>
+              <CardDescription>Helping you close skill gaps in your job search</CardDescription>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <Card variant="solid" className="bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
             <CardContent className="p-4">
@@ -71,39 +74,40 @@ export function AutoLearningSystem({
                   <p className="font-medium text-amber-900 dark:text-amber-200 mb-1">
                     Gap detected: {gapPercentage}% of matches need {skillGap}
                   </p>
-                  <p className="text-amber-700 dark:text-amber-300">
-                    You have: {existingSkill} experience
-                  </p>
+                  <p className="text-amber-700 dark:text-amber-300">You have: {existingSkill} experience</p>
                 </div>
               </div>
             </CardContent>
           </Card>
-          
+
           <div className="space-y-3">
             <h3 className="font-medium">AI found free resources:</h3>
             <div className="space-y-3">
               {resources.map((resource) => (
-                <Card key={resource.id} variant="solid" className="border-gray-200 bg-white/80 dark:border-gray-700 dark:bg-gray-800/80">
+                <Card
+                  key={resource.id}
+                  variant="solid"
+                  className="border-gray-200 bg-white/80 dark:border-gray-700 dark:bg-gray-800/80"
+                >
                   <CardContent className="p-4">
                     <div className="flex items-center gap-3">
                       <div className="text-primary-600 flex-shrink-0">
-                        {resource.icon || (
-                          resource.type === 'course' ? <BookOpen className="w-5 h-5" /> :
-                          resource.type === 'guide' ? <FileText className="w-5 h-5" /> :
-                          <Link className="w-5 h-5" />
-                        )}
+                        {resource.icon ||
+                          (resource.type === 'course' ? (
+                            <BookOpen className="w-5 h-5" />
+                          ) : resource.type === 'guide' ? (
+                            <FileText className="w-5 h-5" />
+                          ) : (
+                            <Link className="w-5 h-5" />
+                          ))}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900 dark:text-white">
-                          {resource.title}
-                        </div>
+                        <div className="font-medium text-gray-900 dark:text-white">{resource.title}</div>
                         <div className="flex items-center gap-2">
                           <Badge variant="outline" className="text-xs font-normal">
                             {resource.duration}
                           </Badge>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {resource.description}
-                          </p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">{resource.description}</p>
                         </div>
                       </div>
                     </div>
@@ -112,7 +116,7 @@ export function AutoLearningSystem({
               ))}
             </div>
           </div>
-          
+
           <div className="space-y-3">
             <h3 className="font-medium">Meanwhile, AI is:</h3>
             <div className="space-y-2">
@@ -123,31 +127,21 @@ export function AutoLearningSystem({
                   ) : (
                     <Zap className="w-4 h-4 mt-0.5 text-primary-600" />
                   )}
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {action.description}
-                  </p>
+                  <p className="text-gray-700 dark:text-gray-300">{action.description}</p>
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-3">
             {onStartLearning && (
-              <Button
-                onClick={onStartLearning}
-                className="flex-1"
-                color="primary"
-              >
+              <Button onClick={onStartLearning} className="flex-1" color="primary">
                 Start Learning
               </Button>
             )}
-            
+
             {onSkip && (
-              <Button
-                onClick={onSkip}
-                variant="outline"
-                className="flex-1"
-              >
+              <Button onClick={onSkip} variant="outline" className="flex-1">
                 Skip for Now
               </Button>
             )}
@@ -160,7 +154,7 @@ export function AutoLearningSystem({
 
 export function SkillsGapDemo() {
   const [started, setStarted] = useState(false)
-  
+
   const learningResources: LearningResource[] = [
     {
       id: '1',
@@ -168,7 +162,7 @@ export function SkillsGapDemo() {
       description: 'Covers basics',
       duration: '3 hours',
       type: 'course',
-      icon: <BookOpen className="w-5 h-5" />
+      icon: <BookOpen className="w-5 h-5" />,
     },
     {
       id: '2',
@@ -176,7 +170,7 @@ export function SkillsGapDemo() {
       description: 'Perfect for your background',
       duration: '45 min',
       type: 'guide',
-      icon: <FileText className="w-5 h-5" />
+      icon: <FileText className="w-5 h-5" />,
     },
     {
       id: '3',
@@ -184,28 +178,28 @@ export function SkillsGapDemo() {
       description: 'Hands-on exercises',
       duration: 'Self-paced',
       type: 'lab',
-      icon: <Link className="w-5 h-5" />
-    }
+      icon: <Link className="w-5 h-5" />,
+    },
   ]
-  
+
   const aiActions: SkillGapAction[] = [
     {
       id: '1',
       description: 'Adding "K8s (learning)" to resume',
-      completed: started
+      completed: started,
     },
     {
       id: '2',
       description: 'Emphasizing container experience',
-      completed: true
+      completed: true,
     },
     {
       id: '3',
       description: 'Targeting Docker-to-K8s transition roles (found 12)',
-      completed: true
-    }
+      completed: true,
+    },
   ]
-  
+
   return (
     <div className="w-full">
       {!started ? (
@@ -226,11 +220,13 @@ export function SkillsGapDemo() {
             </div>
             <h2 className="text-xl font-semibold mb-2">Learning Started!</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              We've enrolled you in the K8s learning path and updated your resume to show you're learning this in-demand skill.
+              We've enrolled you in the K8s learning path and updated your resume to show you're learning this in-demand
+              skill.
             </p>
             <div className="text-left bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800 mb-6">
               <p className="text-sm text-blue-800 dark:text-blue-300 mb-2">
-                <span className="font-medium">Pro Tip:</span> Even mentioning you're learning a skill can make you 40% more likely to be considered for roles requiring it.
+                <span className="font-medium">Pro Tip:</span> Even mentioning you're learning a skill can make you 40%
+                more likely to be considered for roles requiring it.
               </p>
             </div>
             <Button onClick={() => setStarted(false)}>Back to Dashboard</Button>

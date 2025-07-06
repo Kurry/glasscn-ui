@@ -1,7 +1,7 @@
 import {
   OfferProbabilityCalculator,
   NegotiationPreparation,
-  PredictiveOfferDemo
+  PredictiveOfferDemo,
 } from '@/components/ui/predictive-offer'
 import { AlertTriangle, Briefcase, DollarSign, Building } from 'lucide-react'
 import type { Meta } from '@storybook/react'
@@ -23,32 +23,23 @@ export const Offer_Probability = {
         {
           company: 'Stripe',
           probability: 87,
-          strengths: [
-            'Strong technical round',
-            'Culture fit confirmed',
-            'Similar candidates: 9/10 got offers'
-          ]
+          strengths: ['Strong technical round', 'Culture fit confirmed', 'Similar candidates: 9/10 got offers'],
         },
         {
           company: 'Airbnb',
           probability: 65,
-          strengths: [
-            'Good system design',
-            'Competing with 3 others'
-          ]
+          strengths: ['Good system design', 'Competing with 3 others'],
         },
         {
           company: 'Meta',
           probability: 34,
-          strengths: [
-            'Tough feedback on coding'
-          ],
-          statusNote: 'Consider other opportunities'
-        }
+          strengths: ['Tough feedback on coding'],
+          statusNote: 'Consider other opportunities',
+        },
       ]}
       onPrepareNegotiations={() => console.log('Preparing negotiations')}
     />
-  )
+  ),
 }
 
 export const Negotiation_Assistant = {
@@ -61,34 +52,29 @@ export const Negotiation_Assistant = {
       leveragePoints={[
         {
           icon: <Briefcase className="w-4 h-4" />,
-          text: '2 other final rounds pending'
+          text: '2 other final rounds pending',
         },
         {
           icon: <DollarSign className="w-4 h-4" />,
-          text: 'Market rate: $155k-180k'
+          text: 'Market rate: $155k-180k',
         },
         {
           icon: <AlertTriangle className="w-4 h-4" />,
-          text: 'Their urgency: High (Q4 hiring)'
+          text: 'Their urgency: High (Q4 hiring)',
         },
         {
           icon: <Building className="w-4 h-4" />,
-          text: 'Your unique value: Payment exp'
-        }
+          text: 'Your unique value: Payment exp',
+        },
       ]}
       successProbability={73}
-      preparedScripts={[
-        "If they say yes",
-        "If they counter",
-        "If they say no",
-        "If they stall"
-      ]}
+      preparedScripts={['If they say yes', 'If they counter', 'If they say no', 'If they stall']}
       onViewScripts={(scriptType) => console.log(`Viewing script: ${scriptType}`)}
     />
-  )
+  ),
 }
 
 export const Predictive_Offer_Demo = {
   name: 'Complete Predictive Offer Flow',
-  render: () => <PredictiveOfferDemo />
+  render: () => <PredictiveOfferDemo />,
 }

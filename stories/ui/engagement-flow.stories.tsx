@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { 
+import type { Meta } from '@storybook/react'
+import {
   DailySummary,
   WeeklyReport,
   InactiveUser,
@@ -8,7 +8,7 @@ import {
   VoiceAgentSuccess,
   OptimizeStrategy,
   FirstInterview,
-  JobOffer
+  JobOffer,
 } from '@/index'
 
 const meta: Meta = {
@@ -29,7 +29,7 @@ export const EmailEngagementFlow = {
         <h2 className="text-2xl font-bold mb-4 text-center">Daily Summary Email</h2>
         <DailySummary onOpenDashboard={() => console.log('Open dashboard')} />
       </div>
-      
+
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Weekly Progress Report</h2>
         <WeeklyReport
@@ -40,12 +40,12 @@ export const EmailEngagementFlow = {
           topResume="Software Engineer v3"
           suggestions={[
             { text: 'Add Python to skills', impact: '+15% match rate' },
-            { text: 'Target startups', impact: '+22% response rate' }
+            { text: 'Target startups', impact: '+22% response rate' },
           ]}
           onImplementSuggestions={() => console.log('Implement suggestions')}
         />
       </div>
-      
+
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Re-engagement Email</h2>
         <InactiveUser
@@ -57,7 +57,7 @@ export const EmailEngagementFlow = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 // Upsell Flow
@@ -67,18 +67,15 @@ export const UpsellFlow = {
     <div className="space-y-8 p-8 bg-gray-100 min-h-screen">
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Strategy Optimization (After 50 Applications)</h2>
-        <OptimizeStrategy
-          onTryPremium={() => console.log('Try premium')}
-          onDismiss={() => console.log('Dismiss')}
-        />
+        <OptimizeStrategy onTryPremium={() => console.log('Try premium')} onDismiss={() => console.log('Dismiss')} />
       </div>
-      
+
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Voice Agent Success Upsell</h2>
         <VoiceAgentSuccess onUpgradeAgent={() => console.log('Upgrade agent')} />
       </div>
     </div>
-  )
+  ),
 }
 
 // Milestone Flow
@@ -96,7 +93,7 @@ export const MilestoneFlow = {
           onViewPrep={() => console.log('View prep')}
         />
       </div>
-      
+
       <div className="p-8 bg-gray-100">
         <h2 className="text-2xl font-bold mb-4 text-center">Job Offer Received</h2>
         <JobOffer
@@ -107,7 +104,7 @@ export const MilestoneFlow = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 // Re-engagement Flow
@@ -117,22 +114,11 @@ export const ReEngagementFlow = {
     <div className="space-y-8 p-8 bg-gray-100 min-h-screen">
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Feature Reminder (Day 3 Inactive)</h2>
-        <ReEngagementEmail
-          subject="You're missing out on interviews"
-          recipientName="John"
-        >
-          <FeatureReminder
-            featureName="voice agent"
-            benefits={[
-              'Got 3x more interviews',
-              'Saved 10+ hours on calls', 
-              'Never missed opportunities'
-            ]}
-            onSetupFeature={() => console.log('Setup feature')}
-          />
+        <ReEngagementEmail subject="You're missing out on interviews" recipientName="John">
+          <FeatureReminder featureName="voice agent" onSetupFeature={() => console.log('Setup feature')} />
         </ReEngagementEmail>
       </div>
-      
+
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Inactive User Email (Day 7)</h2>
         <InactiveUser
@@ -144,7 +130,7 @@ export const ReEngagementFlow = {
         />
       </div>
     </div>
-  )
+  ),
 }
 
 // Complete User Journey
@@ -156,12 +142,12 @@ export const CompleteUserJourney = {
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Complete User Journey</h1>
         <p className="text-xl text-gray-600">From onboarding to job offer</p>
       </div>
-      
+
       {/* Timeline */}
       <div className="relative">
         {/* Timeline Line */}
         <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200"></div>
-        
+
         {/* Timeline Items */}
         <div className="space-y-12">
           <div className="flex gap-6">
@@ -175,7 +161,7 @@ export const CompleteUserJourney = {
               </div>
             </div>
           </div>
-          
+
           <div className="flex gap-6">
             <div className="flex-shrink-0 w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
               Week 1
@@ -189,15 +175,13 @@ export const CompleteUserJourney = {
                   responseRate={7.1}
                   interviews={3}
                   topResume="Software Engineer v3"
-                  suggestions={[
-                    { text: 'Add Python to skills', impact: '+15% match rate' }
-                  ]}
+                  suggestions={[{ text: 'Add Python to skills', impact: '+15% match rate' }]}
                   onImplementSuggestions={() => console.log('Implement suggestions')}
                 />
               </div>
             </div>
           </div>
-          
+
           <div className="flex gap-6">
             <div className="flex-shrink-0 w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold">
               50+
@@ -212,7 +196,7 @@ export const CompleteUserJourney = {
               </div>
             </div>
           </div>
-          
+
           <div className="flex gap-6">
             <div className="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
               🎉
@@ -235,5 +219,5 @@ export const CompleteUserJourney = {
         </div>
       </div>
     </div>
-  )
+  ),
 }

@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CircularProgress } from '@/components/ui-extras/circular-progress'
 import { cn } from '@/lib/utils'
@@ -27,30 +27,28 @@ function getScoreLevel(score: number, maxScore: number = 100) {
   return { label: '😟 Below Average', color: 'danger' }
 }
 
-export function ScoreCard({
-  score,
-  maxScore = 100,
-  issues,
-  onFixWithAI,
-  onViewDetails,
-  className,
-}: ScoreCardProps) {
+export function ScoreCard({ score, maxScore = 100, issues, onFixWithAI, onViewDetails, className }: ScoreCardProps) {
   const scoreLevel = getScoreLevel(score, maxScore)
   const percentage = (score / maxScore) * 100
 
-  const errorIssues = issues.filter(issue => issue.type === 'error')
-  const warningIssues = issues.filter(issue => issue.type === 'warning')
-  const successItems = issues.filter(issue => issue.type === 'success')
+  const errorIssues = issues.filter((issue) => issue.type === 'error')
+  const warningIssues = issues.filter((issue) => issue.type === 'warning')
+  const successItems = issues.filter((issue) => issue.type === 'success')
 
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-lg" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <CardTitle className="text-xl flex items-center justify-center gap-2">
             Your Resume Score: {score}/{maxScore} 📊
           </CardTitle>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Score Circle */}
           <div className="flex justify-center">
@@ -62,14 +60,14 @@ export function ScoreCard({
 
           {/* Score Level */}
           <div className="text-center">
-            <Badge 
-              variant="outline" 
+            <Badge
+              variant="outline"
               className={cn(
-                "text-lg px-4 py-2",
-                scoreLevel.color === 'success' && "border-green-500 text-green-700",
-                scoreLevel.color === 'primary' && "border-primary-500 text-primary-700",
-                scoreLevel.color === 'warning' && "border-yellow-500 text-yellow-700",
-                scoreLevel.color === 'danger' && "border-red-500 text-red-700"
+                'text-lg px-4 py-2',
+                scoreLevel.color === 'success' && 'border-green-500 text-green-700',
+                scoreLevel.color === 'primary' && 'border-primary-500 text-primary-700',
+                scoreLevel.color === 'warning' && 'border-yellow-500 text-yellow-700',
+                scoreLevel.color === 'danger' && 'border-red-500 text-red-700',
               )}
             >
               {scoreLevel.label}
@@ -152,11 +150,7 @@ interface ResumeAnalysisResultsProps {
   className?: string
 }
 
-export function ResumeAnalysisResults({ 
-  onFixWithAI, 
-  onViewDetails,
-  className 
-}: ResumeAnalysisResultsProps) {
+export function ResumeAnalysisResults({ onFixWithAI, onViewDetails, className }: ResumeAnalysisResultsProps) {
   const sampleIssues: ScoreIssue[] = [
     { type: 'error', message: 'Missing keywords (12)' },
     { type: 'error', message: 'Weak action verbs' },

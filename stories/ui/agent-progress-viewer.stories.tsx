@@ -1,8 +1,5 @@
-import { 
-  AgentProgressViewer,
-  MobileAgentProgress,
-  AgentInitializing
-} from '@/components/ui/agent-progress-viewer'
+import { AgentProgressViewer, MobileAgentProgress, AgentInitializing } from '@/components/ui/agent-progress-viewer'
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof AgentProgressViewer> = {
@@ -48,7 +45,7 @@ export const Desktop_Active: Story = {
     onSkipStep: () => console.log('Skip step'),
     onSaveRecording: () => console.log('Save recording'),
     onBack: () => console.log('Back to dashboard'),
-  }
+  },
 }
 
 export const Desktop_Paused: Story = {
@@ -62,7 +59,7 @@ export const Desktop_Paused: Story = {
       totalSteps: 7,
       timeElapsed: 142,
     },
-  }
+  },
 }
 
 export const Desktop_Error: Story = {
@@ -76,7 +73,7 @@ export const Desktop_Error: Story = {
       timeElapsed: 142,
       error: 'Network connection lost while submitting form. Please check your internet connection and try again.',
     },
-  }
+  },
 }
 
 export const Desktop_Intervention: Story = {
@@ -90,7 +87,7 @@ export const Desktop_Intervention: Story = {
       timeElapsed: 142,
       interventionMessage: 'CAPTCHA detected - please solve to continue with the application',
     },
-  }
+  },
 }
 
 export const Desktop_Completed: Story = {
@@ -103,8 +100,8 @@ export const Desktop_Completed: Story = {
       totalSteps: 7,
       timeElapsed: 222,
     },
-    taskSteps: sampleTaskSteps.map(step => ({ ...step, status: 'completed' as const })),
-  }
+    taskSteps: sampleTaskSteps.map((step) => ({ ...step, status: 'completed' as const })),
+  },
 }
 
 export const Desktop_Minimized: Story = {
@@ -112,7 +109,7 @@ export const Desktop_Minimized: Story = {
   args: {
     ...Desktop_Active.args,
     isMinimized: true,
-  }
+  },
 }
 
 export const Mobile_Active: Story = {
@@ -134,37 +131,25 @@ export const Mobile_Active: Story = {
       onResume={() => console.log('Resumed')}
       onSaveRecording={() => console.log('Save recording')}
     />
-  )
+  ),
 }
 
 export const Initializing_State: Story = {
   name: 'Initializing State',
-  render: () => <AgentInitializing />
+  render: () => <AgentInitializing />,
 }
 
 // Complete flow demonstration
 export const Complete_Agent_Flow: Story = {
   name: 'Complete Agent Flow',
   render: () => {
-    const states = [
-      'initializing',
-      'active', 
-      'paused',
-      'intervention-needed',
-      'completed'
-    ]
-    
     return (
       <div className="space-y-8 p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            AI Agent Progress Viewer
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            Complete flow demonstration showing all states
-          </p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">AI Agent Progress Viewer</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400">Complete flow demonstration showing all states</p>
         </div>
-        
+
         <div className="grid gap-8">
           <div>
             <h2 className="text-xl font-semibold mb-4">1. Initializing State</h2>
@@ -172,7 +157,7 @@ export const Complete_Agent_Flow: Story = {
               <AgentInitializing />
             </div>
           </div>
-          
+
           <div>
             <h2 className="text-xl font-semibold mb-4">2. Active State (Desktop)</h2>
             <div className="border rounded-lg overflow-hidden h-96">
@@ -199,7 +184,7 @@ export const Complete_Agent_Flow: Story = {
               />
             </div>
           </div>
-          
+
           <div>
             <h2 className="text-xl font-semibold mb-4">3. Mobile Active State</h2>
             <div className="max-w-sm border rounded-lg overflow-hidden">
@@ -224,7 +209,7 @@ export const Complete_Agent_Flow: Story = {
         </div>
       </div>
     )
-  }
+  },
 }
 
 // Real-time simulation
@@ -233,34 +218,38 @@ export const Live_Simulation: Story = {
   render: () => {
     const [currentStep, setCurrentStep] = React.useState(1)
     const [timeElapsed, setTimeElapsed] = React.useState(0)
-    
+
     React.useEffect(() => {
       const timer = setInterval(() => {
-        setTimeElapsed(prev => prev + 1)
-        
+        setTimeElapsed((prev) => prev + 1)
+
         // Simulate step progression
         if (timeElapsed > 0 && timeElapsed % 30 === 0 && currentStep < 7) {
-          setCurrentStep(prev => prev + 1)
+          setCurrentStep((prev) => prev + 1)
         }
       }, 1000)
-      
+
       return () => clearInterval(timer)
     }, [timeElapsed, currentStep])
-    
+
     const dynamicSteps = sampleTaskSteps.map((step, index) => ({
       ...step,
-      status: index < currentStep ? 'completed' as const 
-             : index === currentStep ? 'active' as const 
-             : 'pending' as const
+      status:
+        index < currentStep
+          ? ('completed' as const)
+          : index === currentStep
+            ? ('active' as const)
+            : ('pending' as const),
     }))
-    
+
     return (
       <AgentProgressViewer
         jobTitle="Software Engineer"
         company="Google"
         agentState={{
           status: currentStep >= 7 ? 'completed' : 'active',
-          currentAction: currentStep < 7 ? `Working on ${sampleTaskSteps[currentStep]?.name}...` : 'Application completed!',
+          currentAction:
+            currentStep < 7 ? `Working on ${sampleTaskSteps[currentStep]?.name}...` : 'Application completed!',
           currentStep: currentStep,
           totalSteps: 7,
           timeElapsed: timeElapsed,
@@ -277,5 +266,5 @@ export const Live_Simulation: Story = {
         onBack={() => console.log('Back to dashboard')}
       />
     )
-  }
+  },
 }

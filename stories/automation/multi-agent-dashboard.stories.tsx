@@ -1,7 +1,4 @@
-import {
-  MultiAgentDashboard,
-  MultiAgentDashboardDemo
-} from '@/components/ui/multi-agent-dashboard'
+import { MultiAgentDashboard, MultiAgentDashboardDemo } from '@/components/ui/multi-agent-dashboard'
 import { BarChart3, Star, CheckCircle, Users, Download } from 'lucide-react'
 import type { Meta } from '@storybook/react'
 
@@ -26,7 +23,7 @@ export const Dashboard_Overview = {
           status: 'active',
           progress: 78,
           currentTask: 'Scanning LinkedIn for Senior ML Engineer roles',
-          lastActivity: '2 minutes ago'
+          lastActivity: '2 minutes ago',
         },
         {
           id: 'tailor',
@@ -35,7 +32,7 @@ export const Dashboard_Overview = {
           status: 'active',
           progress: 45,
           currentTask: 'Optimizing resume for OpenAI application',
-          lastActivity: '5 minutes ago'
+          lastActivity: '5 minutes ago',
         },
         {
           id: 'apply',
@@ -43,7 +40,7 @@ export const Dashboard_Overview = {
           icon: <CheckCircle className="w-5 h-5" />,
           status: 'paused',
           progress: 30,
-          lastActivity: '15 minutes ago'
+          lastActivity: '15 minutes ago',
         },
         {
           id: 'interview',
@@ -51,8 +48,8 @@ export const Dashboard_Overview = {
           icon: <Users className="w-5 h-5" />,
           status: 'waiting',
           progress: 0,
-          lastActivity: '1 hour ago'
-        }
+          lastActivity: '1 hour ago',
+        },
       ]}
       metrics={[
         {
@@ -60,37 +57,37 @@ export const Dashboard_Overview = {
           value: 156,
           change: {
             value: '12% this week',
-            isPositive: true
+            isPositive: true,
           },
-          icon: <BarChart3 className="w-5 h-5" />
+          icon: <BarChart3 className="w-5 h-5" />,
         },
         {
           label: 'Response Rate',
           value: '9.3%',
           change: {
             value: '2.1% vs avg',
-            isPositive: true
+            isPositive: true,
           },
-          icon: <Star className="w-5 h-5" />
+          icon: <Star className="w-5 h-5" />,
         },
         {
           label: 'Interviews',
           value: 5,
           change: {
             value: '3 pending',
-            isPositive: true
+            isPositive: true,
           },
-          icon: <Users className="w-5 h-5" />
+          icon: <Users className="w-5 h-5" />,
         },
         {
           label: 'New Matches',
           value: 27,
           change: {
             value: 'Last 24h',
-            isPositive: true
+            isPositive: true,
           },
-          icon: <CheckCircle className="w-5 h-5" />
-        }
+          icon: <CheckCircle className="w-5 h-5" />,
+        },
       ]}
       onAgentSettings={(id) => console.log(`Settings for agent: ${id}`)}
       onViewAgentDetails={(id) => console.log(`View details for agent: ${id}`)}
@@ -98,10 +95,10 @@ export const Dashboard_Overview = {
       onPauseAgent={(id) => console.log(`Pause agent: ${id}`)}
       onViewReports={() => console.log('View reports')}
     />
-  )
+  ),
 }
 
 export const Dashboard_Demo = {
   name: 'Dashboard Demo',
-  render: () => <MultiAgentDashboardDemo />
+  render: () => <MultiAgentDashboardDemo />,
 }

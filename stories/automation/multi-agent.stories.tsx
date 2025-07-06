@@ -1,9 +1,5 @@
-import {
-  AgentTeamOverview,
-  LiveAgentCollaboration,
-  MultiAgentDemo
-} from '@/components/ui/multi-agent-system'
-import { Users, Settings, FileDown, Play, Pause } from 'lucide-react'
+import { AgentTeamOverview, LiveAgentCollaboration, MultiAgentDemo } from '@/components/ui/multi-agent-system'
+import { Settings, FileDown, Play, Pause } from 'lucide-react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -27,7 +23,7 @@ export const Agent_Team_Overview = {
           description: 'Finding new jobs across 15 sites',
           status: 'active',
           stats: 'Today: 247 jobs found, 89 match',
-          icon: <Settings className="w-5 h-5" />
+          icon: <Settings className="w-5 h-5" />,
         },
         {
           id: 'tailor',
@@ -36,7 +32,7 @@ export const Agent_Team_Overview = {
           description: 'Creating custom resumes',
           status: 'active',
           stats: 'Today: 89 resumes generated',
-          icon: <FileDown className="w-5 h-5" />
+          icon: <FileDown className="w-5 h-5" />,
         },
         {
           id: 'apply',
@@ -45,7 +41,7 @@ export const Agent_Team_Overview = {
           description: 'Submitting applications',
           status: 'active',
           stats: 'Today: 67 applied, 22 pending',
-          icon: <Play className="w-5 h-5" />
+          icon: <Play className="w-5 h-5" />,
         },
         {
           id: 'response',
@@ -53,60 +49,58 @@ export const Agent_Team_Overview = {
           role: 'Response Handler',
           description: 'Will activate when responses arrive',
           status: 'waiting',
-          icon: <Pause className="w-5 h-5" />
-        }
+          icon: <Pause className="w-5 h-5" />,
+        },
       ]}
       onViewLiveFeed={() => console.log('View live feed')}
       onAdjustStrategy={() => console.log('Adjust strategy')}
     />
-  )
+  ),
 }
 
 export const Live_Agent_Collaboration = {
   name: 'Live Agent Collaboration',
   render: () => (
     <LiveAgentCollaboration
-      activeJobTitle="Senior SWE"
-      activeCompany="Stripe"
       steps={[
         {
           id: '1',
           agent: 'Scout found',
           action: 'Stripe - Senior SWE',
           duration: '2 sec',
-          isCompleted: true
+          isCompleted: true,
         },
         {
           id: '2',
           agent: 'Tailor',
           action: 'Emphasizing payments experience',
           duration: '5 sec',
-          isCompleted: true
+          isCompleted: true,
         },
         {
           id: '3',
           agent: 'Apply',
           action: 'Filling Greenhouse form',
           duration: '45 sec',
-          isActive: true
+          isActive: true,
         },
         {
           id: '4',
           agent: 'Apply',
           action: 'Submit application',
-          duration: 'Pending'
-        }
+          duration: 'Pending',
+        },
       ]}
       stats={{
         speed: '52 seconds per application',
-        successRate: 94
+        successRate: 94,
       }}
       onPause={() => console.log('Paused')}
     />
-  )
+  ),
 }
 
 export const Multi_Agent_Demo = {
   name: 'Multi-Agent System Demo',
-  render: () => <MultiAgentDemo />
+  render: () => <MultiAgentDemo />,
 }

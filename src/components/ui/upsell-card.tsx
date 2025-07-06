@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { TrendingUp, Crown, Zap, Target, Star, ArrowRight, X } from 'lucide-react'
 
@@ -39,9 +38,12 @@ export function UpsellCard({
 }: UpsellCardProps) {
   const getUrgencyColors = () => {
     switch (urgency) {
-      case 'high': return 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20'
-      case 'medium': return 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950/20'
-      case 'low': return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
+      case 'high':
+        return 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20'
+      case 'medium':
+        return 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950/20'
+      case 'low':
+        return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
     }
   }
 
@@ -65,7 +67,7 @@ export function UpsellCard({
           )}
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         {/* Performance Comparison */}
         {currentPerformance && averagePerformance && (
@@ -109,9 +111,7 @@ export function UpsellCard({
             <Crown className="w-4 h-4 mr-2" />
             {ctaText}
           </Button>
-          {ctaSubtext && (
-            <p className="text-xs text-gray-500 text-center mt-2">{ctaSubtext}</p>
-          )}
+          {ctaSubtext && <p className="text-xs text-gray-500 text-center mt-2">{ctaSubtext}</p>}
         </div>
       </CardContent>
     </Card>
@@ -126,20 +126,20 @@ interface OptimizeStrategyProps {
 
 export function OptimizeStrategy({ onTryPremium, onDismiss, className }: OptimizeStrategyProps) {
   const features: UpsellFeature[] = [
-    { 
-      name: 'A/B test resumes', 
+    {
+      name: 'A/B test resumes',
       description: 'Test different versions to see what works best',
-      icon: <Target className="w-4 h-4" />
+      icon: <Target className="w-4 h-4" />,
     },
-    { 
-      name: 'Priority applications', 
+    {
+      name: 'Priority applications',
       description: 'Get your applications seen first',
-      icon: <Zap className="w-4 h-4" />
+      icon: <Zap className="w-4 h-4" />,
     },
-    { 
-      name: 'Direct recruiter outreach', 
+    {
+      name: 'Direct recruiter outreach',
       description: 'Connect directly with hiring managers',
-      icon: <Star className="w-4 h-4" />
+      icon: <Star className="w-4 h-4" />,
     },
   ]
 
@@ -173,25 +173,28 @@ export function VoiceAgentSuccess({ onUpgradeAgent, className }: VoiceAgentSucce
   ]
 
   const newFeatures: UpsellFeature[] = [
-    { 
-      name: 'LinkedIn voice messages', 
+    {
+      name: 'LinkedIn voice messages',
       description: 'Respond to recruiters instantly',
-      icon: <Zap className="w-4 h-4" />
+      icon: <Zap className="w-4 h-4" />,
     },
-    { 
-      name: 'Technical screenings', 
+    {
+      name: 'Technical screenings',
       description: 'Handle basic technical questions',
-      icon: <Target className="w-4 h-4" />
+      icon: <Target className="w-4 h-4" />,
     },
-    { 
-      name: 'Salary negotiations', 
+    {
+      name: 'Salary negotiations',
       description: 'Get the best offers automatically',
-      icon: <TrendingUp className="w-4 h-4" />
+      icon: <TrendingUp className="w-4 h-4" />,
     },
   ]
 
   return (
-    <Card className={cn("border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20", className)} variant="solid">
+    <Card
+      className={cn('border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20', className)}
+      variant="solid"
+    >
       <CardHeader>
         <div className="flex items-center gap-3">
           <div className="text-6xl">🎉</div>
@@ -202,7 +205,7 @@ export function VoiceAgentSuccess({ onUpgradeAgent, className }: VoiceAgentSucce
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         <div>
           <h4 className="font-medium text-green-800 dark:text-green-200 mb-3">This week:</h4>
@@ -231,7 +234,7 @@ export function VoiceAgentSuccess({ onUpgradeAgent, className }: VoiceAgentSucce
               </div>
             ))}
           </div>
-          
+
           <Button onClick={onUpgradeAgent} size="lg" color="primary" className="w-full">
             Upgrade Voice Agent <ArrowRight className="w-4 h-4 ml-2" />
           </Button>

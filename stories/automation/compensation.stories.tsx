@@ -1,7 +1,4 @@
-import {
-  SalaryIntelligence,
-  CompensationIntelligenceDemo
-} from '@/components/ui/compensation-intelligence'
+import { SalaryIntelligence, CompensationIntelligenceDemo } from '@/components/ui/compensation-intelligence'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -25,35 +22,35 @@ export const Salary_Intelligence = {
           label: 'Under market',
           count: 12,
           status: 'Deprioritized',
-          color: 'red'
+          color: 'red',
         },
         {
           id: 'at',
           label: 'At market',
           count: 45,
           status: 'Active',
-          color: 'blue'
+          color: 'blue',
         },
         {
           id: 'above',
           label: 'Above market',
           count: 23,
           status: 'Priority focus',
-          color: 'green'
-        }
+          color: 'green',
+        },
       ]}
       bestOpportunity={{
         company: 'Datadog',
         salary: '$175k',
         equity: 'equity',
-        match: 94
+        match: 94,
       }}
       onFocusHighValue={() => console.log('Focusing on high-value roles')}
     />
-  )
+  ),
 }
 
 export const Compensation_Demo = {
   name: 'Compensation Intelligence Demo',
-  render: () => <CompensationIntelligenceDemo />
+  render: () => <CompensationIntelligenceDemo />,
 }

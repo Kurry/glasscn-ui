@@ -37,10 +37,15 @@ export function CompanyResearch({
   cultureFit,
   applicationStrategy,
   onViewFullReport,
-  className
+  className,
 }: CompanyResearchProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
@@ -49,35 +54,30 @@ export function CompanyResearch({
             </div>
             <div>
               <CardTitle className="text-lg">Researching: {companyName}</CardTitle>
-              <CardDescription>
-                AI-powered company intelligence
-              </CardDescription>
+              <CardDescription>AI-powered company intelligence</CardDescription>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <div>
             <h3 className="font-medium mb-3">AI discovered:</h3>
             <div className="space-y-2">
               {insights.map((insight) => (
-                <div key={insight.id} className="flex items-start gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border">
-                  <div className="flex-shrink-0 mt-0.5 text-primary-600">
-                    {insight.icon}
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {insight.text}
-                  </p>
+                <div
+                  key={insight.id}
+                  className="flex items-start gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg border"
+                >
+                  <div className="flex-shrink-0 mt-0.5 text-primary-600">{insight.icon}</div>
+                  <p className="text-gray-700 dark:text-gray-300">{insight.text}</p>
                 </div>
               ))}
             </div>
           </div>
-          
+
           <Card variant="solid" className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
             <CardContent className="p-4">
-              <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-3">
-                Cultural fit:
-              </h3>
+              <h3 className="font-medium text-blue-800 dark:text-blue-300 mb-3">Cultural fit:</h3>
               <div className="space-y-2">
                 {cultureFit.map((item, index) => (
                   <div key={index} className="flex items-start gap-2">
@@ -90,45 +90,29 @@ export function CompanyResearch({
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <div className="text-blue-700 dark:text-blue-400 flex-shrink-0">
-                          {item.icon}
-                        </div>
-                        <p className="text-blue-800 dark:text-blue-300">
-                          {item.aspect}
-                        </p>
+                        <div className="text-blue-700 dark:text-blue-400 flex-shrink-0">{item.icon}</div>
+                        <p className="text-blue-800 dark:text-blue-300">{item.aspect}</p>
                         {item.matchesPreference && (
-                          <Badge className="text-xs bg-green-100 text-green-800 border-green-200">
-                            match ✓
-                          </Badge>
+                          <Badge className="text-xs bg-green-100 text-green-800 border-green-200">match ✓</Badge>
                         )}
                       </div>
-                      <p className="text-sm text-blue-700 dark:text-blue-400">
-                        {item.description}
-                      </p>
+                      <p className="text-sm text-blue-700 dark:text-blue-400">{item.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
-          
+
           {applicationStrategy && (
             <div className="p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-              <h3 className="font-medium text-green-800 dark:text-green-300 mb-1">
-                Application strategy adjusted:
-              </h3>
-              <p className="text-green-700 dark:text-green-400">
-                {applicationStrategy.emphasis}
-              </p>
+              <h3 className="font-medium text-green-800 dark:text-green-300 mb-1">Application strategy adjusted:</h3>
+              <p className="text-green-700 dark:text-green-400">{applicationStrategy.emphasis}</p>
             </div>
           )}
-          
+
           {onViewFullReport && (
-            <Button
-              onClick={onViewFullReport}
-              variant="outline"
-              className="w-full"
-            >
+            <Button onClick={onViewFullReport} variant="outline" className="w-full">
               View Full Company Report
             </Button>
           )}
@@ -140,60 +124,60 @@ export function CompanyResearch({
 
 export function CompanyResearchDemo() {
   const [loading, setLoading] = useState(false)
-  
+
   setTimeout(() => {
     if (loading) setLoading(false)
   }, 2000)
-  
+
   const insights: CompanyInsight[] = [
     {
       id: '1',
       text: 'Recent $8B valuation',
-      icon: <DollarSign className="w-4 h-4" />
+      icon: <DollarSign className="w-4 h-4" />,
     },
     {
       id: '2',
       text: 'Expanding ML monitoring team',
-      icon: <Building className="w-4 h-4" />
+      icon: <Building className="w-4 h-4" />,
     },
     {
       id: '3',
       text: 'CEO mentioned Python skills shortage',
-      icon: <Users className="w-4 h-4" />
+      icon: <Users className="w-4 h-4" />,
     },
     {
       id: '4',
       text: 'Your ex-colleague is VP there',
-      icon: <Briefcase className="w-4 h-4" />
+      icon: <Briefcase className="w-4 h-4" />,
     },
     {
       id: '5',
       text: 'They use your open-source tool',
-      icon: <Globe className="w-4 h-4" />
-    }
+      icon: <Globe className="w-4 h-4" />,
+    },
   ]
-  
+
   const cultureFit: CultureFitItem[] = [
     {
       aspect: 'Dog-friendly',
       matchesPreference: true,
       description: 'You have a dog',
-      icon: <Dog className="w-4 h-4" />
+      icon: <Dog className="w-4 h-4" />,
     },
     {
       aspect: 'Remote-first',
       matchesPreference: true,
       description: 'Matches your preference',
-      icon: <Globe className="w-4 h-4" />
+      icon: <Globe className="w-4 h-4" />,
     },
     {
       aspect: 'Focus on monitoring',
       matchesPreference: true,
       description: 'Your passion',
-      icon: <Building className="w-4 h-4" />
-    }
+      icon: <Building className="w-4 h-4" />,
+    },
   ]
-  
+
   return (
     <div className="w-full">
       {loading ? (
@@ -207,12 +191,12 @@ export function CompanyResearchDemo() {
           </CardContent>
         </Card>
       ) : (
-        <CompanyResearch 
+        <CompanyResearch
           companyName="Datadog"
           insights={insights}
           cultureFit={cultureFit}
           applicationStrategy={{
-            emphasis: 'Emphasizing Python + monitoring experience'
+            emphasis: 'Emphasizing Python + monitoring experience',
           }}
           onViewFullReport={() => setLoading(true)}
         />

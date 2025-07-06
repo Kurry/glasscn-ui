@@ -13,9 +13,5 @@ export default meta
 type Story = StoryObj<typeof ContextSurvey>
 
 export const Default: Story = {
-  render: () => (
-    <ContextSurvey 
-      onComplete={(responses) => console.log('Survey completed:', responses)}
-    />
-  )
+  render: () => <ContextSurvey onComplete={(responses) => console.log('Survey completed:', responses)} />,
 }

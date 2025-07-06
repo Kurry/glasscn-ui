@@ -1,7 +1,4 @@
-import {
-  InterviewCoordination,
-  SmartSchedulingDemo
-} from '@/components/ui/smart-scheduling'
+import { InterviewCoordination, SmartSchedulingDemo } from '@/components/ui/smart-scheduling'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -23,22 +20,22 @@ export const Interview_Coordination = {
           company: 'Google',
           timeOptions: ['Tue 2pm', 'Thu 3pm'],
           constraints: 'Tue 2pm or Thu 3pm?',
-          scheduled: 'Tue 2pm'
+          scheduled: 'Tue 2pm',
         },
         {
           id: '2',
           company: 'Meta',
           timeOptions: ['Mon', 'Tue', 'Wed'],
           constraints: 'Mon-Wed, anytime',
-          scheduled: 'Wed 10am'
+          scheduled: 'Wed 10am',
         },
         {
           id: '3',
           company: 'Stripe',
           timeOptions: ['Fri morning'],
           constraints: 'Fri morning only',
-          scheduled: 'Fri 9am'
-        }
+          scheduled: 'Fri 9am',
+        },
       ]}
       calendar={[
         // Monday
@@ -70,10 +67,10 @@ export const Interview_Coordination = {
       onConfirmAll={() => console.log('Confirm all')}
       onAdjust={() => console.log('Adjust')}
     />
-  )
+  ),
 }
 
 export const Scheduling_Demo = {
   name: 'Smart Scheduling Demo',
-  render: () => <SmartSchedulingDemo />
+  render: () => <SmartSchedulingDemo />,
 }

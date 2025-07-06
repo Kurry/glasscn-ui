@@ -1,8 +1,4 @@
-import {
-  RoadblockAlert,
-  SmartWorkaround,
-  FailureRecoveryDemo
-} from '@/components/ui/failure-recovery'
+import { RoadblockAlert, SmartWorkaround, FailureRecoveryDemo } from '@/components/ui/failure-recovery'
 import { Clock, CheckCircle, UserCheck } from 'lucide-react'
 import type { Meta } from '@storybook/react'
 
@@ -26,27 +22,27 @@ export const Agent_Roadblock = {
           id: 'skip',
           label: 'Skip this job',
           description: 'Resume in 5 sec',
-          icon: <Clock className="w-5 h-5" />
+          icon: <Clock className="w-5 h-5" />,
         },
         {
           id: 'template',
           label: 'Use template answer',
           description: '70% success',
           successRate: 70,
-          icon: <CheckCircle className="w-5 h-5" />
+          icon: <CheckCircle className="w-5 h-5" />,
         },
         {
           id: 'manual',
           label: 'Pause all',
           description: 'Handle manually',
           icon: <UserCheck className="w-5 h-5" />,
-          isPrimary: true
-        }
+          isPrimary: true,
+        },
       ]}
       activeJobCount={12}
       onSelectOption={(id) => console.log(`Selected option: ${id}`)}
     />
-  )
+  ),
 }
 
 export const Smart_Workaround = {
@@ -56,26 +52,26 @@ export const Smart_Workaround = {
       jobCompany="Netflix"
       issue="3 references"
       suggestedSolutions={[
-        { 
+        {
           name: 'John D.',
-          details: 'Former manager (connected)'
+          details: 'Former manager (connected)',
         },
         {
           name: 'Sarah M.',
-          details: 'Colleague at Google'
+          details: 'Colleague at Google',
         },
         {
           name: 'Mike R.',
-          details: 'Direct report'
-        }
+          details: 'Direct report',
+        },
       ]}
       onUseSolution={() => console.log('Using suggested solution')}
       onSkipJob={() => console.log('Skipping job')}
     />
-  )
+  ),
 }
 
 export const Complete_Recovery_Flow = {
   name: 'Complete Recovery Flow',
-  render: () => <FailureRecoveryDemo />
+  render: () => <FailureRecoveryDemo />,
 }

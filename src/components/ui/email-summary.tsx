@@ -1,8 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Mail, Target, TrendingUp, Calendar, ArrowRight, ExternalLink } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Mail, ArrowRight, Target, Calendar, TrendingUp } from 'lucide-react'
 
 interface EmailStat {
   label: string
@@ -37,14 +36,17 @@ export function EmailSummary({
 }: EmailSummaryProps) {
   const getUrgencyColor = (urgency: ActionItem['urgency']) => {
     switch (urgency) {
-      case 'high': return 'bg-red-100 text-red-700 border-red-200'
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200'
-      case 'low': return 'bg-green-100 text-green-700 border-green-200'
+      case 'high':
+        return 'bg-red-100 text-red-700 border-red-200'
+      case 'medium':
+        return 'bg-yellow-100 text-yellow-700 border-yellow-200'
+      case 'low':
+        return 'bg-green-100 text-green-700 border-green-200'
     }
   }
 
   return (
-    <div className={cn("max-w-2xl mx-auto bg-white", className)}>
+    <div className={cn('max-w-2xl mx-auto bg-white', className)}>
       {/* Email Header */}
       <div className="bg-primary-600 text-white p-6 rounded-t-lg">
         <div className="flex items-center gap-3 mb-4">
@@ -88,9 +90,7 @@ export function EmailSummary({
                   <p className="font-medium text-gray-900">• {item.company}</p>
                   <p className="text-sm text-gray-600">{item.action}</p>
                 </div>
-                <Badge className={getUrgencyColor(item.urgency)}>
-                  {item.urgency}
-                </Badge>
+                <Badge className={getUrgencyColor(item.urgency)}>{item.urgency}</Badge>
               </div>
             ))}
           </div>
@@ -98,12 +98,7 @@ export function EmailSummary({
 
         {/* CTA */}
         <div className="text-center py-4">
-          <Button 
-            onClick={onOpenDashboard}
-            size="lg" 
-            color="primary"
-            className="text-lg px-8"
-          >
+          <Button onClick={onOpenDashboard} size="lg" color="primary" className="text-lg px-8">
             Open Dashboard <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
@@ -168,7 +163,7 @@ export function WeeklyReport({
   className,
 }: WeeklyReportProps) {
   return (
-    <div className={cn("max-w-2xl mx-auto bg-white", className)}>
+    <div className={cn('max-w-2xl mx-auto bg-white', className)}>
       <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-6 rounded-t-lg">
         <div className="flex items-center gap-3 mb-4">
           <TrendingUp className="w-8 h-8" />
@@ -219,7 +214,7 @@ export function WeeklyReport({
               </div>
             ))}
           </div>
-          
+
           <Button onClick={onImplementSuggestions} color="primary" className="w-full">
             Implement Suggestions <ArrowRight className="w-4 h-4 ml-2" />
           </Button>

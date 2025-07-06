@@ -1,11 +1,12 @@
 import { WelcomeDashboard } from '@/components/ui/empty-state'
-import { FileUpload, AnalyzingResume } from '@/components/ui/file-upload'
+import { FileUpload } from '@/components/ui/file-upload'
+import { AnalyzingResume } from '@/components/ui/progress-indicator'
 import { ResumeAnalysisResults } from '@/components/ui/score-card'
 import { ResumeBuilder, ExperienceBuilder } from '@/components/ui/form-builder'
 import { AIEnhancementPreview } from '@/components/ui/comparison-card'
 import { ResumeComplete } from '@/components/ui/automation-pitch'
 import { QuickJobPreferences } from '@/components/ui/job-preferences'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
   title: 'Onboarding/Complete Flow',
@@ -24,7 +25,7 @@ export const WelcomeDashboardStory = {
       onCreateResume={() => console.log('Create resume')}
       onImportResume={() => console.log('Import resume')}
     />
-  )
+  ),
 }
 
 export const FileUploadStory = {
@@ -34,12 +35,12 @@ export const FileUploadStory = {
       onFileSelect={(file) => console.log('File selected:', file.name)}
       onStartFromScratch={() => console.log('Start from scratch')}
     />
-  )
+  ),
 }
 
 export const AnalyzingResumeStory = {
   name: 'Analyzing Resume',
-  render: () => <AnalyzingResume />
+  render: () => <AnalyzingResume />,
 }
 
 export const ResumeAnalysisStory = {
@@ -49,14 +50,12 @@ export const ResumeAnalysisStory = {
       onFixWithAI={() => console.log('Fix with AI')}
       onViewDetails={() => console.log('View details')}
     />
-  )
+  ),
 }
 
 export const ResumeBuilderStory = {
   name: 'Resume Builder - Basic Info',
-  render: () => (
-    <ResumeBuilder onContinue={() => console.log('Continue to experience')} />
-  )
+  render: () => <ResumeBuilder onContinue={() => console.log('Continue to experience')} />,
 }
 
 export const ExperienceBuilderStory = {
@@ -66,7 +65,7 @@ export const ExperienceBuilderStory = {
       onContinue={() => console.log('Continue to next step')}
       onAddAnother={() => console.log('Add another experience')}
     />
-  )
+  ),
 }
 
 export const AIEnhancementStory = {
@@ -76,7 +75,7 @@ export const AIEnhancementStory = {
       onApplyChanges={() => console.log('Apply all changes')}
       onReviewEach={() => console.log('Review each change')}
     />
-  )
+  ),
 }
 
 export const ResumeCompleteStory = {
@@ -86,12 +85,10 @@ export const ResumeCompleteStory = {
       onSetupAutomation={() => console.log('Setup automation')}
       onMaybeLater={() => console.log('Maybe later')}
     />
-  )
+  ),
 }
 
 export const JobPreferencesStory = {
   name: 'Job Preferences Setup',
-  render: () => (
-    <QuickJobPreferences onContinue={() => console.log('Continue with automation')} />
-  )
+  render: () => <QuickJobPreferences onContinue={() => console.log('Continue with automation')} />,
 }

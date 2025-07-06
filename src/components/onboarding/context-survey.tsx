@@ -22,7 +22,7 @@ export function ContextSurvey({ onComplete, className }: ContextSurveyProps) {
         { value: 'employed-looking', label: 'Employed but looking', emoji: '🔍' },
         { value: 'graduate', label: 'Recent graduate', emoji: '🎓' },
         { value: 'career-change', label: 'Career changer', emoji: '🔄' },
-      ]
+      ],
     },
     {
       id: 'priority',
@@ -32,7 +32,7 @@ export function ContextSurvey({ onComplete, className }: ContextSurveyProps) {
         { value: 'apply-quickly', label: 'Apply to lots of jobs quickly', emoji: '⚡' },
         { value: 'stop-missing-calls', label: 'Stop missing recruiter calls', emoji: '📞' },
         { value: 'avoid-scams', label: 'Avoid job scams', emoji: '🛡️' },
-      ]
+      ],
     },
     {
       id: 'urgency',
@@ -41,14 +41,14 @@ export function ContextSurvey({ onComplete, className }: ContextSurveyProps) {
         { value: 'asap', label: 'ASAP - I need income', emoji: '🚨' },
         { value: 'selective', label: '1-2 months - Being selective', emoji: '🎯' },
         { value: 'exploring', label: 'Just exploring options', emoji: '🔍' },
-      ]
-    }
+      ],
+    },
   ]
 
   const currentStepData = steps[currentStep - 1]
 
   const handleValueChange = (value: string) => {
-    setResponses(prev => ({ ...prev, [currentStepData.id]: value }))
+    setResponses((prev) => ({ ...prev, [currentStepData.id]: value }))
   }
 
   const handleContinue = () => {

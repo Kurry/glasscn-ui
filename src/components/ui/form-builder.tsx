@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { ArrowRight, Mic, Lightbulb, Plus } from 'lucide-react'
 import { useState } from 'react'
@@ -59,7 +58,12 @@ export function FormBuilder({
   const progress = (step / totalSteps) * 100
 
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader>
           <CardTitle className="text-xl">
@@ -73,7 +77,7 @@ export function FormBuilder({
             </div>
           )}
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           {/* Form Fields */}
           <div className="space-y-4">
@@ -107,12 +111,7 @@ export function FormBuilder({
           {/* Voice Input Option */}
           {onVoiceInput && (
             <div className="flex justify-center">
-              <Button 
-                onClick={onVoiceInput} 
-                variant="outline" 
-                size="lg"
-                className="flex items-center gap-2"
-              >
+              <Button onClick={onVoiceInput} variant="outline" size="lg" className="flex items-center gap-2">
                 <Mic className="w-4 h-4" />
                 🎙️ Describe with Voice
               </Button>
@@ -121,13 +120,14 @@ export function FormBuilder({
 
           {/* AI Suggestions */}
           {aiSuggestions && aiSuggestions.length > 0 && (
-            <Card variant="solid" className="bg-primary-50 dark:bg-primary-950/20 border-primary-200 dark:border-primary-800">
+            <Card
+              variant="solid"
+              className="bg-primary-50 dark:bg-primary-950/20 border-primary-200 dark:border-primary-800"
+            >
               <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
-                    AI is suggesting:
-                  </span>
+                  <span className="text-sm font-medium text-primary-700 dark:text-primary-300">AI is suggesting:</span>
                 </div>
                 <div className="space-y-2 mb-4">
                   {aiSuggestions.map((suggestion, index) => (
@@ -137,12 +137,7 @@ export function FormBuilder({
                   ))}
                 </div>
                 {onUseSuggestions && (
-                  <Button 
-                    onClick={onUseSuggestions} 
-                    size="sm" 
-                    color="primary"
-                    className="w-full"
-                  >
+                  <Button onClick={onUseSuggestions} size="sm" color="primary" className="w-full">
                     Use these <ArrowRight className="w-3 h-3 ml-1" />
                   </Button>
                 )}
@@ -188,7 +183,7 @@ export function ResumeBuilder({ onContinue, className }: ResumeBuilderProps) {
   ]
 
   const handleFieldChange = (fieldId: string, value: string) => {
-    setFormData(prev => ({ ...prev, [fieldId]: value }))
+    setFormData((prev) => ({ ...prev, [fieldId]: value }))
   }
 
   return (
@@ -197,7 +192,7 @@ export function ResumeBuilder({ onContinue, className }: ResumeBuilderProps) {
       subtitle="Basic Information"
       step={1}
       totalSteps={5}
-      fields={basicInfoFields.map(field => ({ ...field, value: formData[field.id] }))}
+      fields={basicInfoFields.map((field) => ({ ...field, value: formData[field.id] }))}
       onFieldChange={handleFieldChange}
       onContinue={onContinue}
       className={className}
@@ -227,7 +222,7 @@ export function ExperienceBuilder({ onContinue, onAddAnother, className }: Exper
   ]
 
   const handleFieldChange = (fieldId: string, value: string) => {
-    setFormData(prev => ({ ...prev, [fieldId]: value }))
+    setFormData((prev) => ({ ...prev, [fieldId]: value }))
   }
 
   return (
@@ -236,7 +231,7 @@ export function ExperienceBuilder({ onContinue, onAddAnother, className }: Exper
       tip="💡 Tip: Start with your current/recent job"
       step={2}
       totalSteps={5}
-      fields={experienceFields.map(field => ({ ...field, value: formData[field.id] }))}
+      fields={experienceFields.map((field) => ({ ...field, value: formData[field.id] }))}
       aiSuggestions={aiSuggestions}
       onFieldChange={handleFieldChange}
       onVoiceInput={() => console.log('Voice input')}

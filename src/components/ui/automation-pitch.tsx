@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { PartyPopper, Clock, Target, TrendingUp, Rocket, Timer } from 'lucide-react'
 
@@ -35,7 +34,12 @@ export function AutomationPitch({
   className,
 }: AutomationPitchProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
@@ -44,7 +48,7 @@ export function AutomationPitch({
           <CardTitle className="text-2xl">{title}</CardTitle>
           {subtitle && <CardDescription className="text-lg">{subtitle}</CardDescription>}
         </CardHeader>
-        
+
         <CardContent className="space-y-8">
           {/* Comparison */}
           <div className="grid md:grid-cols-2 gap-6">
@@ -108,12 +112,8 @@ export function AutomationPitch({
           {testimonial && (
             <Card variant="solid" className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
               <CardContent className="p-4 text-center">
-                <p className="text-blue-700 dark:text-blue-300 italic">
-                  "{testimonial.text}"
-                </p>
-                <p className="text-sm text-blue-600 dark:text-blue-400 mt-2">
-                  - {testimonial.source}
-                </p>
+                <p className="text-blue-700 dark:text-blue-300 italic">"{testimonial.text}"</p>
+                <p className="text-sm text-blue-600 dark:text-blue-400 mt-2">- {testimonial.source}</p>
               </CardContent>
             </Card>
           )}
@@ -129,11 +129,7 @@ interface ResumeCompleteProps {
   className?: string
 }
 
-export function ResumeComplete({ 
-  onSetupAutomation, 
-  onMaybeLater, 
-  className 
-}: ResumeCompleteProps) {
+export function ResumeComplete({ onSetupAutomation, onMaybeLater, className }: ResumeCompleteProps) {
   const manualStats: StatItem[] = [
     { icon: <Clock className="w-5 h-5" />, label: '2-4 hours/day searching', value: '⏰' },
     { icon: <Target className="w-5 h-5" />, label: '10-20 applications/week', value: '📝' },
@@ -153,8 +149,8 @@ export function ResumeComplete({
       manualStats={manualStats}
       automatedStats={automatedStats}
       testimonial={{
-        text: "Users with automation get interviews 3x faster",
-        source: "Indeed Study"
+        text: 'Users with automation get interviews 3x faster',
+        source: 'Indeed Study',
       }}
       onSetupAutomation={onSetupAutomation}
       onMaybeLater={onMaybeLater}

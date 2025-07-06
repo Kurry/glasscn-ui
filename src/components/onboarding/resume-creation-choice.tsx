@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
@@ -45,25 +44,27 @@ export function ResumeCreationChoice({ onOptionSelect, className }: ResumeCreati
   ]
 
   return (
-    <div className={cn(
-      "min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4",
-      className
-    )}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-4xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">How would you like to start?</CardTitle>
         </CardHeader>
-        
+
         <CardContent>
           <div className="grid md:grid-cols-3 gap-6">
             {/* First two options in top row */}
             <div className="md:col-span-3 grid md:grid-cols-2 gap-6">
               {options.slice(0, 2).map((option) => (
-                <Card 
+                <Card
                   key={option.id}
                   className={cn(
-                    "cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1",
-                    option.recommended && "ring-2 ring-primary-500"
+                    'cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1',
+                    option.recommended && 'ring-2 ring-primary-500',
                   )}
                   variant="solid"
                   onClick={() => onOptionSelect?.(option.id)}
@@ -74,9 +75,7 @@ export function ResumeCreationChoice({ onOptionSelect, className }: ResumeCreati
                         Recommended
                       </Badge>
                     )}
-                    <div className="mb-3 flex justify-center text-primary-600">
-                      {option.icon}
-                    </div>
+                    <div className="mb-3 flex justify-center text-primary-600">{option.icon}</div>
                     <CardTitle className="text-lg">{option.title}</CardTitle>
                     <CardDescription>{option.description}</CardDescription>
                   </CardHeader>
@@ -88,19 +87,17 @@ export function ResumeCreationChoice({ onOptionSelect, className }: ResumeCreati
                 </Card>
               ))}
             </div>
-            
+
             {/* Voice option in bottom row, centered */}
             <div className="md:col-span-3 flex justify-center">
               <div className="w-full max-w-md">
-                <Card 
+                <Card
                   className="cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1"
                   variant="solid"
                   onClick={() => onOptionSelect?.(options[2].id)}
                 >
                   <CardHeader className="text-center pb-3">
-                    <div className="mb-3 flex justify-center text-primary-600">
-                      {options[2].icon}
-                    </div>
+                    <div className="mb-3 flex justify-center text-primary-600">{options[2].icon}</div>
                     <CardTitle className="text-lg">{options[2].title}</CardTitle>
                     <CardDescription>{options[2].description}</CardDescription>
                   </CardHeader>

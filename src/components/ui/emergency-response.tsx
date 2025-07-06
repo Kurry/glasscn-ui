@@ -1,11 +1,12 @@
 'use client'
 
+import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, CheckCircle, Clock, Rocket, Star, User, Users } from 'lucide-react'
+import { AlertTriangle, CheckCircle, Rocket, Star, User, Users } from 'lucide-react'
 import { useState } from 'react'
 
 interface EmergencyAction {
@@ -32,10 +33,15 @@ export function UrgentOpportunityHandling({
   actions,
   readyInSeconds,
   onLaunch,
-  className
+  className,
 }: UrgentOpportunityHandlingProps) {
   return (
-    <div className={cn("min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4", className)}>
+    <div
+      className={cn(
+        'min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-950 dark:to-gray-900 flex items-center justify-center p-4',
+        className,
+      )}
+    >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
@@ -43,25 +49,19 @@ export function UrgentOpportunityHandling({
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
-              <Badge className="mb-1 bg-red-100 text-red-800 border-red-200">
-                URGENT: Dream Job Alert
-              </Badge>
+              <Badge className="mb-1 bg-red-100 text-red-800 border-red-200">URGENT: Dream Job Alert</Badge>
               <CardTitle className="text-lg">
                 {company} - {position}
               </CardTitle>
-              <CardDescription>
-                Closes in: {timeLeft}
-              </CardDescription>
+              <CardDescription>Closes in: {timeLeft}</CardDescription>
             </div>
           </div>
         </CardHeader>
-        
+
         <CardContent className="space-y-6">
           <Card variant="solid" className="bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800">
             <CardContent className="p-4">
-              <h3 className="font-medium text-red-800 dark:text-red-300 mb-3">
-                AI Emergency Protocol:
-              </h3>
+              <h3 className="font-medium text-red-800 dark:text-red-300 mb-3">AI Emergency Protocol:</h3>
               <div className="space-y-2">
                 {actions.map((action) => (
                   <div key={action.id} className="flex items-start gap-3">
@@ -73,28 +73,22 @@ export function UrgentOpportunityHandling({
                       )}
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="text-red-700 dark:text-red-400">
-                        {action.icon}
-                      </div>
-                      <p className="text-red-800 dark:text-red-300">
-                        {action.description}
-                      </p>
+                      <div className="text-red-700 dark:text-red-400">{action.icon}</div>
+                      <p className="text-red-800 dark:text-red-300">{action.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
-          
+
           {readyInSeconds !== undefined && (
             <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-400 mb-2">
-                Ready to submit in {readyInSeconds} seconds
-              </p>
-              <Progress value={(45 - readyInSeconds) / 45 * 100} className="h-2" />
+              <p className="text-gray-600 dark:text-gray-400 mb-2">Ready to submit in {readyInSeconds} seconds</p>
+              <Progress value={((45 - readyInSeconds) / 45) * 100} className="h-2" />
             </div>
           )}
-          
+
           {onLaunch && (
             <Button
               onClick={onLaunch}
@@ -116,53 +110,53 @@ export function UrgentOpportunityHandling({
 export function EmergencyResponseDemo() {
   const [secondsLeft, setSecondsLeft] = useState(45)
   const [launched, setLaunched] = useState(false)
-  
+
   React.useEffect(() => {
     if (secondsLeft > 0 && !launched) {
       const timer = setTimeout(() => setSecondsLeft(secondsLeft - 1), 30)
       return () => clearTimeout(timer)
     }
   }, [secondsLeft, launched])
-  
+
   const actions: EmergencyAction[] = [
     {
       id: '1',
       description: 'Stopped all other applications',
       isCompleted: true,
-      icon: <CheckCircle className="w-4 h-4" />
+      icon: <CheckCircle className="w-4 h-4" />,
     },
     {
       id: '2',
       description: 'Created custom resume (98% match)',
       isCompleted: secondsLeft < 38,
-      icon: <Star className="w-4 h-4" />
+      icon: <Star className="w-4 h-4" />,
     },
     {
       id: '3',
       description: 'Found 3 SpaceX employees in network',
       isCompleted: secondsLeft < 30,
-      icon: <Users className="w-4 h-4" />
+      icon: <Users className="w-4 h-4" />,
     },
     {
       id: '4',
       description: 'Drafted referral requests',
       isCompleted: secondsLeft < 25,
-      icon: <User className="w-4 h-4" />
+      icon: <User className="w-4 h-4" />,
     },
     {
       id: '5',
       description: 'Prepared perfect cover letter',
       isCompleted: secondsLeft < 15,
-      icon: <CheckCircle className="w-4 h-4" />
+      icon: <CheckCircle className="w-4 h-4" />,
     },
     {
       id: '6',
       description: 'Found hiring manager on Twitter',
       isCompleted: secondsLeft < 5,
-      icon: <User className="w-4 h-4" />
-    }
+      icon: <User className="w-4 h-4" />,
+    },
   ]
-  
+
   if (launched) {
     return (
       <Card className="max-w-lg mx-auto" variant="glass" blur="lg">
@@ -195,7 +189,7 @@ export function EmergencyResponseDemo() {
       </Card>
     )
   }
-  
+
   return (
     <UrgentOpportunityHandling
       company="SpaceX"
