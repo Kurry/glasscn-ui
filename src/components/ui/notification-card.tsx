@@ -3,6 +3,38 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { X, Bell, Warning, CheckCircle, Info, ShieldCheck } from '@phosphor-icons/react'
+import { cva } from 'class-variance-authority'
+
+// CVA patterns for notification card type-based styling
+const notificationCardVariants = cva('border-2', {
+  variants: {
+    type: {
+      info: 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20',
+      warning: 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950/20',
+      success: 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20',
+      error: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20',
+      feature: 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20',
+    },
+  },
+  defaultVariants: {
+    type: 'info',
+  },
+})
+
+const notificationIconVariants = cva('flex-shrink-0 mt-0.5', {
+  variants: {
+    type: {
+      info: 'text-blue-600 dark:text-blue-400',
+      warning: 'text-yellow-600 dark:text-yellow-400',
+      success: 'text-green-600 dark:text-green-400',
+      error: 'text-red-600 dark:text-red-400',
+      feature: 'text-purple-600 dark:text-purple-400',
+    },
+  },
+  defaultVariants: {
+    type: 'info',
+  },
+})
 
 interface NotificationCardProps {
   type: 'info' | 'warning' | 'success' | 'error' | 'feature'
@@ -56,45 +88,11 @@ export function NotificationCard({
     }
   }
 
-  const getTypeColors = () => {
-    switch (type) {
-      case 'info':
-        return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
-      case 'warning':
-        return 'border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-950/20'
-      case 'success':
-        return 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20'
-      case 'error':
-        return 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20'
-      case 'feature':
-        return 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20'
-      default:
-        return 'border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-950/20'
-    }
-  }
-
-  const getIconColors = () => {
-    switch (type) {
-      case 'info':
-        return 'text-blue-600 dark:text-blue-400'
-      case 'warning':
-        return 'text-yellow-600 dark:text-yellow-400'
-      case 'success':
-        return 'text-green-600 dark:text-green-400'
-      case 'error':
-        return 'text-red-600 dark:text-red-400'
-      case 'feature':
-        return 'text-purple-600 dark:text-purple-400'
-      default:
-        return 'text-gray-600 dark:text-gray-400'
-    }
-  }
-
   return (
-    <Card className={cn(getTypeColors(), className)} variant="solid">
+    <Card className={cn(notificationCardVariants({ type }), className)} variant="solid">
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
-          <div className={cn('flex-shrink-0 mt-0.5', getIconColors())}>{getTypeIcon()}</div>
+          <div className={notificationIconVariants({ type })}>{getTypeIcon()}</div>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
@@ -179,10 +177,10 @@ export function SecurityAlert({
   className,
 }: SecurityAlertProps) {
   return (
-    <Card className={cn('border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20', className)} variant="solid">
+    <Card className={cn(notificationCardVariants({ type: 'error' }), className)} variant="solid">
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+          <ShieldCheck className={cn('w-5 h-5', notificationIconVariants({ type: 'error' }))} />
 
           <div className="flex-1">
             <h4 className="font-medium text-red-900 dark:text-red-200 mb-1">⚠️ Suspicious Job Email Detected</h4>

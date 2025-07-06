@@ -14,13 +14,72 @@ import {
   CurrencyDollar,
   ChatCircle,
 } from '@phosphor-icons/react'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
+import { cva } from 'class-variance-authority'
 
 interface OfferPrediction {
   company: string
   probability: number
   strengths: string[]
   statusNote?: string
+}
+
+// CVA patterns for probability-based styling
+const probabilityCard = cva('overflow-hidden', {
+  variants: {
+    probability: {
+      high: 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800',
+      medium: 'bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800',
+      low: 'bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800',
+    },
+  },
+})
+
+const probabilityBadge = cva('', {
+  variants: {
+    probability: {
+      high: 'bg-green-100 text-green-800 border-green-200',
+      medium: 'bg-blue-100 text-blue-800 border-blue-200',
+      low: 'bg-amber-100 text-amber-800 border-amber-200',
+    },
+  },
+})
+
+const probabilityProgress = cva('h-2.5', {
+  variants: {
+    probability: {
+      high: 'bg-green-100 [&>div]:bg-green-500',
+      medium: 'bg-blue-100 [&>div]:bg-blue-500',
+      low: 'bg-amber-100 [&>div]:bg-amber-500',
+    },
+  },
+})
+
+const probabilityIcon = cva('w-4 h-4', {
+  variants: {
+    probability: {
+      high: 'text-green-600',
+      medium: 'text-blue-600',
+      low: 'text-amber-600',
+    },
+  },
+})
+
+const probabilityText = cva('', {
+  variants: {
+    probability: {
+      high: 'text-green-700 dark:text-green-300',
+      medium: 'text-blue-700 dark:text-blue-300',
+      low: 'text-amber-700 dark:text-amber-300',
+    },
+  },
+})
+
+// Helper function to determine probability level
+const getProbabilityLevel = (probability: number): 'high' | 'medium' | 'low' => {
+  if (probability >= 80) return 'high'
+  if (probability >= 50) return 'medium'
+  return 'low'
 }
 
 interface OfferProbabilityCalculatorProps {
@@ -34,6 +93,16 @@ export function OfferProbabilityCalculator({
   onPrepareNegotiations,
   className,
 }: OfferProbabilityCalculatorProps) {
+  // Memoize probability level calculations to avoid repeated computations
+  const predictionLevels = useMemo(
+    () =>
+      predictions.map((prediction) => ({
+        ...prediction,
+        level: getProbabilityLevel(prediction.probability),
+      })),
+    [predictions],
+  )
+
   return (
     <div
       className={cn(
@@ -56,33 +125,18 @@ export function OfferProbabilityCalculator({
 
         <CardContent className="space-y-6">
           <div className="space-y-5">
-            {predictions.map((prediction) => (
+            {predictionLevels.map((prediction) => (
               <Card
                 key={prediction.company}
                 variant="solid"
-                className={cn(
-                  'overflow-hidden',
-                  prediction.probability >= 80
-                    ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800'
-                    : prediction.probability >= 50
-                      ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800'
-                      : 'bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800',
-                )}
+                className={probabilityCard({ probability: prediction.level })}
               >
                 <CardContent className="p-4">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <h3 className="font-medium">{prediction.company}:</h3>
-                        <Badge
-                          className={cn(
-                            prediction.probability >= 80
-                              ? 'bg-green-100 text-green-800 border-green-200'
-                              : prediction.probability >= 50
-                                ? 'bg-blue-100 text-blue-800 border-blue-200'
-                                : 'bg-amber-100 text-amber-800 border-amber-200',
-                          )}
-                        >
+                        <Badge className={probabilityBadge({ probability: prediction.level })}>
                           {prediction.probability}% likely
                         </Badge>
                       </div>
@@ -93,14 +147,7 @@ export function OfferProbabilityCalculator({
                     <div className="w-full sm:w-36">
                       <Progress
                         value={prediction.probability}
-                        className={cn(
-                          'h-2.5',
-                          prediction.probability >= 80
-                            ? 'bg-green-100 [&>div]:bg-green-500'
-                            : prediction.probability >= 50
-                              ? 'bg-blue-100 [&>div]:bg-blue-500'
-                              : 'bg-amber-100 [&>div]:bg-amber-500',
-                        )}
+                        className={probabilityProgress({ probability: prediction.level })}
                       />
                     </div>
                   </div>
@@ -109,28 +156,9 @@ export function OfferProbabilityCalculator({
                     {prediction.strengths.map((strength, index) => (
                       <div key={index} className="flex items-start gap-2 text-sm">
                         <div className="flex-shrink-0 mt-0.5">
-                          <CheckCircle
-                            className={cn(
-                              'w-4 h-4',
-                              prediction.probability >= 80
-                                ? 'text-green-600'
-                                : prediction.probability >= 50
-                                  ? 'text-blue-600'
-                                  : 'text-amber-600',
-                            )}
-                          />
+                          <CheckCircle className={probabilityIcon({ probability: prediction.level })} />
                         </div>
-                        <span
-                          className={cn(
-                            prediction.probability >= 80
-                              ? 'text-green-700 dark:text-green-300'
-                              : prediction.probability >= 50
-                                ? 'text-blue-700 dark:text-blue-300'
-                                : 'text-amber-700 dark:text-amber-300',
-                          )}
-                        >
-                          {strength}
-                        </span>
+                        <span className={probabilityText({ probability: prediction.level })}>{strength}</span>
                       </div>
                     ))}
                   </div>
@@ -255,43 +283,51 @@ export function NegotiationPreparation({
 export function PredictiveOfferDemo() {
   const [stage, setStage] = useState<'calculator' | 'negotiation'>('calculator')
 
-  const predictions: OfferPrediction[] = [
-    {
-      company: 'Stripe',
-      probability: 87,
-      strengths: ['Strong technical round', 'Culture fit confirmed', 'Similar candidates: 9/10 got offers'],
-    },
-    {
-      company: 'Airbnb',
-      probability: 65,
-      strengths: ['Good system design', 'Competing with 3 others'],
-    },
-    {
-      company: 'Meta',
-      probability: 34,
-      strengths: ['Tough feedback on coding'],
-      statusNote: 'Consider other opportunities',
-    },
-  ]
+  // Memoize static data to prevent unnecessary re-computations
 
-  const leveragePoints: NegotiationLeverage[] = [
-    {
-      icon: <Briefcase className="w-4 h-4" />,
-      text: '2 other final rounds pending',
-    },
-    {
-      icon: <CurrencyDollar className="w-4 h-4" />,
-      text: 'Market rate: $155k-180k',
-    },
-    {
-      icon: <Warning className="w-4 h-4" />,
-      text: 'Their urgency: High (Q4 hiring)',
-    },
-    {
-      icon: <Buildings className="w-4 h-4" />,
-      text: 'Your unique value: Payment exp',
-    },
-  ]
+  const predictions: OfferPrediction[] = useMemo(
+    () => [
+      {
+        company: 'Stripe',
+        probability: 87,
+        strengths: ['Strong technical round', 'Culture fit confirmed', 'Similar candidates: 9/10 got offers'],
+      },
+      {
+        company: 'Airbnb',
+        probability: 65,
+        strengths: ['Good system design', 'Competing with 3 others'],
+      },
+      {
+        company: 'Meta',
+        probability: 34,
+        strengths: ['Tough feedback on coding'],
+        statusNote: 'Consider other opportunities',
+      },
+    ],
+    [],
+  )
+
+  const leveragePoints: NegotiationLeverage[] = useMemo(
+    () => [
+      {
+        icon: <Briefcase className="w-4 h-4" />,
+        text: '2 other final rounds pending',
+      },
+      {
+        icon: <CurrencyDollar className="w-4 h-4" />,
+        text: 'Market rate: $155k-180k',
+      },
+      {
+        icon: <Warning className="w-4 h-4" />,
+        text: 'Their urgency: High (Q4 hiring)',
+      },
+      {
+        icon: <Buildings className="w-4 h-4" />,
+        text: 'Your unique value: Payment exp',
+      },
+    ],
+    [],
+  )
 
   return (
     <div className="w-full">

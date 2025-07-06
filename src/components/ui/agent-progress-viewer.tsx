@@ -21,6 +21,83 @@ import {
   ArrowsIn,
 } from '@phosphor-icons/react'
 import { useState } from 'react'
+import { cva } from 'class-variance-authority'
+
+// CVA patterns for status-based styling
+const statusIndicatorVariants = cva('w-3 h-3 rounded-full', {
+  variants: {
+    status: {
+      initializing: 'bg-blue-500 animate-pulse',
+      active: 'bg-green-500 animate-pulse',
+      paused: 'bg-yellow-500',
+      error: 'bg-red-500',
+      completed: 'bg-green-500',
+      'intervention-needed': 'bg-orange-500',
+    },
+  },
+  defaultVariants: {
+    status: 'initializing',
+  },
+})
+
+const statusTextVariants = cva('', {
+  variants: {
+    status: {
+      initializing: 'text-blue-500',
+      active: 'text-green-500',
+      paused: 'text-yellow-500',
+      error: 'text-red-500',
+      completed: 'text-green-500',
+      'intervention-needed': 'text-orange-500',
+    },
+  },
+  defaultVariants: {
+    status: 'initializing',
+  },
+})
+
+const statusIconVariants = cva('w-4 h-4', {
+  variants: {
+    status: {
+      initializing: 'text-blue-500',
+      active: 'text-green-500',
+      paused: 'text-yellow-500',
+      error: 'text-red-500',
+      completed: 'text-green-500',
+      'intervention-needed': 'text-orange-500',
+    },
+  },
+  defaultVariants: {
+    status: 'initializing',
+  },
+})
+
+const taskStepVariants = cva('font-medium', {
+  variants: {
+    status: {
+      pending: 'text-gray-500',
+      active: 'text-blue-700 dark:text-blue-400',
+      completed: 'text-green-700 dark:text-green-400',
+      error: 'text-red-700 dark:text-red-400',
+    },
+  },
+  defaultVariants: {
+    status: 'pending',
+  },
+})
+
+const alertCardVariants = cva('border-2', {
+  variants: {
+    type: {
+      error: 'border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20',
+      intervention: 'border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/20',
+      completed: 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20',
+    },
+  },
+  defaultVariants: {
+    type: 'error',
+  },
+})
 
 interface TaskStep {
   id: string
@@ -82,37 +159,20 @@ export function AgentProgressViewer({
   const progress =
     agentState.currentStep && agentState.totalSteps ? (agentState.currentStep / agentState.totalSteps) * 100 : 0
 
-  const getStatusColor = () => {
-    switch (agentState.status) {
-      case 'active':
-        return 'text-green-500'
-      case 'paused':
-        return 'text-yellow-500'
-      case 'error':
-        return 'text-red-500'
-      case 'completed':
-        return 'text-green-500'
-      case 'intervention-needed':
-        return 'text-orange-500'
-      default:
-        return 'text-blue-500'
-    }
-  }
-
   const getStatusIcon = () => {
     switch (agentState.status) {
       case 'active':
-        return <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+        return <div className={statusIndicatorVariants({ status: 'active' })} />
       case 'paused':
-        return <Pause className="w-4 h-4 text-yellow-500" />
+        return <Pause className={statusIconVariants({ status: 'paused' })} />
       case 'error':
-        return <X className="w-4 h-4 text-red-500" />
+        return <X className={statusIconVariants({ status: 'error' })} />
       case 'completed':
-        return <CheckCircle className="w-4 h-4 text-green-500" />
+        return <CheckCircle className={statusIconVariants({ status: 'completed' })} />
       case 'intervention-needed':
-        return <Warning className="w-4 h-4 text-orange-500" />
+        return <Warning className={statusIconVariants({ status: 'intervention-needed' })} />
       default:
-        return <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+        return <div className={statusIndicatorVariants({ status: 'initializing' })} />
     }
   }
 
@@ -122,7 +182,7 @@ export function AgentProgressViewer({
         <CardContent className="p-4">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <div className={getStatusColor()}>{getStatusIcon()}</div>
+              <div className={statusTextVariants({ status: agentState.status })}>{getStatusIcon()}</div>
               <span className="font-medium text-sm">🤖 Applying to {company}</span>
             </div>
             <Button size="sm" variant="ghost" onClick={onToggleMinimize}>
@@ -170,7 +230,7 @@ export function AgentProgressViewer({
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Agent Status */}
         <div className="flex items-center gap-3">
-          <div className={getStatusColor()}>{getStatusIcon()}</div>
+          <div className={statusTextVariants({ status: agentState.status })}>{getStatusIcon()}</div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               🤖 AI Agent: Applying to {jobTitle} @ {company}
@@ -413,17 +473,7 @@ function AgentTaskProgress({ steps, showDetails, onToggleDetails }: AgentTaskPro
                     {step.status === 'pending' && <div className="w-5 h-5 border-2 border-gray-300 rounded-full" />}
                   </div>
                   <div>
-                    <p
-                      className={cn(
-                        'font-medium',
-                        step.status === 'completed' && 'text-green-700 dark:text-green-400',
-                        step.status === 'active' && 'text-blue-700 dark:text-blue-400',
-                        step.status === 'error' && 'text-red-700 dark:text-red-400',
-                        step.status === 'pending' && 'text-gray-500',
-                      )}
-                    >
-                      {step.name}
-                    </p>
+                    <p className={taskStepVariants({ status: step.status })}>{step.name}</p>
                   </div>
                 </div>
                 <div className="text-sm text-gray-500">
@@ -518,7 +568,7 @@ interface AgentErrorStateProps {
 
 function AgentErrorState({ error, onRetry, onStop }: AgentErrorStateProps) {
   return (
-    <Card className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20" variant="solid">
+    <Card className={alertCardVariants({ type: 'error' })} variant="solid">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
           <Warning className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
@@ -553,7 +603,7 @@ interface AgentInterventionStateProps {
 
 function AgentInterventionState({ message, onTakeControl, onSkip }: AgentInterventionStateProps) {
   return (
-    <Card className="border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/20" variant="solid">
+    <Card className={alertCardVariants({ type: 'intervention' })} variant="solid">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
           <Warning className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
@@ -595,7 +645,7 @@ function AgentCompletedState({
   onBack,
 }: AgentCompletedStateProps) {
   return (
-    <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20" variant="solid">
+    <Card className={alertCardVariants({ type: 'completed' })} variant="solid">
       <CardContent className="p-6 text-center">
         <div className="mb-4">
           <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />

@@ -2,6 +2,34 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Calendar, Download, FileText, Confetti, Briefcase, ArrowRight } from '@phosphor-icons/react'
+import { cva } from 'class-variance-authority'
+
+// CVA patterns for milestone card type-based styling
+const milestoneCardVariants = cva('border-2', {
+  variants: {
+    type: {
+      interview: 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20',
+      offer: 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20',
+      completion: 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20',
+    },
+  },
+  defaultVariants: {
+    type: 'interview',
+  },
+})
+
+const milestoneIconVariants = cva('w-8 h-8', {
+  variants: {
+    type: {
+      interview: 'text-blue-600',
+      offer: 'text-green-600',
+      completion: 'text-purple-600',
+    },
+  },
+  defaultVariants: {
+    type: 'interview',
+  },
+})
 
 interface MilestoneCardProps {
   type: 'interview' | 'offer' | 'completion'
@@ -42,33 +70,11 @@ export function MilestoneCard({
   const getTypeIcon = () => {
     switch (type) {
       case 'interview':
-        return <Calendar className="w-8 h-8" />
+        return <Calendar className={milestoneIconVariants({ type })} />
       case 'offer':
-        return <Confetti className="w-8 h-8" />
+        return <Confetti className={milestoneIconVariants({ type })} />
       case 'completion':
-        return <Briefcase className="w-8 h-8" />
-    }
-  }
-
-  const getTypeColors = () => {
-    switch (type) {
-      case 'interview':
-        return 'border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20'
-      case 'offer':
-        return 'border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20'
-      case 'completion':
-        return 'border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20'
-    }
-  }
-
-  const getIconColors = () => {
-    switch (type) {
-      case 'interview':
-        return 'text-blue-600'
-      case 'offer':
-        return 'text-green-600'
-      case 'completion':
-        return 'text-purple-600'
+        return <Briefcase className={milestoneIconVariants({ type })} />
     }
   }
 
@@ -81,7 +87,7 @@ export function MilestoneCard({
     >
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center pb-4">
-          <div className={cn('mb-4 flex justify-center', getIconColors())}>{getTypeIcon()}</div>
+          <div className="mb-4 flex justify-center">{getTypeIcon()}</div>
           <CardTitle className="text-2xl">{title}</CardTitle>
           {subtitle && <CardDescription className="text-lg">{subtitle}</CardDescription>}
         </CardHeader>
@@ -89,7 +95,7 @@ export function MilestoneCard({
         <CardContent className="space-y-6">
           {/* Details */}
           {details && (
-            <Card variant="solid" className={getTypeColors()}>
+            <Card variant="solid" className={milestoneCardVariants({ type })}>
               <CardContent className="p-4">
                 {Object.entries(details).map(([key, value]) => (
                   <div key={key} className="flex justify-between items-center py-1">
