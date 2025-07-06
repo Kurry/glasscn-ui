@@ -1,6 +1,6 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import { Sparkles } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cva, type VariantProps } from 'class-variance-authority';
+import { Sparkles } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const enhanceButton = cva(
   'inline-flex items-center justify-center font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed',
@@ -18,32 +18,30 @@ const enhanceButton = cva(
       fullWidth: {
         true: 'w-full',
         false: 'w-auto',
-      },
+      }
     },
     defaultVariants: {
       variant: 'primary',
       size: 'md',
       fullWidth: false,
-    },
-  },
-)
+    }
+  }
+);
 
-export interface EnhanceButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof enhanceButton> {
-  credits?: number
+export interface EnhanceButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof enhanceButton> {
+  credits?: number;
 }
 
-export function EnhanceButton({
-  onClick,
-  credits = 1,
-  variant,
-  size,
-  fullWidth,
-  className,
-  disabled,
+export function EnhanceButton({ 
+  onClick, 
+  credits = 1, 
+  variant, 
+  size, 
+  fullWidth, 
+  className, 
+  disabled, 
   children,
-  ...props
+  ...props 
 }: EnhanceButtonProps) {
   return (
     <button
@@ -52,13 +50,13 @@ export function EnhanceButton({
       disabled={disabled}
       {...props}
     >
-      <Sparkles className={cn(size === 'sm' ? 'w-4 h-4' : size === 'lg' ? 'w-6 h-6' : 'w-5 h-5')} />
+      <Sparkles className={cn(
+        size === 'sm' ? 'w-4 h-4' : size === 'lg' ? 'w-6 h-6' : 'w-5 h-5'
+      )} />
       {children || <span>Enhance with AI</span>}
       {credits > 0 && (
-        <span className="text-xs opacity-75">
-          ({credits} credit{credits !== 1 ? 's' : ''})
-        </span>
+        <span className="text-xs opacity-75">({credits} credit{credits !== 1 ? 's' : ''})</span>
       )}
     </button>
-  )
+  );
 }

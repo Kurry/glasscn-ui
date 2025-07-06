@@ -6,6 +6,7 @@ import React from 'react'
 type RootProps = React.ComponentPropsWithoutRef<'div'> & {
   size?: 'sm' | 'md' | 'lg'
   children?: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Root = React.forwardRef<React.ElementRef<'div'>, RootProps>(
@@ -26,7 +27,7 @@ const Root = React.forwardRef<React.ElementRef<'div'>, RootProps>(
 
 const Label = React.forwardRef<
   React.ElementRef<'div'>,
-  React.ComponentPropsWithoutRef<'div'> & { value: number; suffix?: string }
+  React.ComponentPropsWithoutRef<'div'> & { value: number; suffix?: string; children?: React.ReactNode }
 >(({ className, children, value, suffix, ...props }, ref) => {
   return (
     <div ref={ref} className={cn('absolute inset-0 flex items-center justify-center', className)} {...props}>
@@ -40,7 +41,8 @@ const Label = React.forwardRef<
 
 const Vector = React.forwardRef<React.ElementRef<'svg'>, React.ComponentPropsWithoutRef<'svg'> & { value: number }>(
   ({ className, children, value, ...props }, ref) => {
-    const circumference = 2 * Math.PI * 45 // 45 is the radius of the circle
+    // 45 is the radius of the circle
+    const circumference = 2 * Math.PI * 45
     const strokeDashoffset = circumference - (value / 100) * circumference
 
     return (
@@ -73,6 +75,7 @@ const Vector = React.forwardRef<React.ElementRef<'svg'>, React.ComponentPropsWit
       </svg>
     )
   },
+
 )
 
 export const CircularProgress = {
