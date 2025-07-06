@@ -108,6 +108,7 @@ export function OneClickEnhanceDemo() {
               size="lg"
               fullWidth
               buttonText={<span>🚀 Supercharge My Resume</span>}
+              }
               onEnhanceComplete={setEnhancedResumeId}
             />
           </CardContent>
