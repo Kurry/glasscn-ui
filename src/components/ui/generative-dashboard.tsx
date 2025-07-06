@@ -6,7 +6,17 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
-import { FileText, Upload, Plus, Download, PencilSimple, ArrowsClockwise, Check, Warning, CheckCircle } from '@phosphor-icons/react'
+import {
+  FileText,
+  Upload,
+  Plus,
+  Download,
+  PencilSimple,
+  ArrowsClockwise,
+  Check,
+  Warning,
+  CheckCircle,
+} from '@phosphor-icons/react'
 import { useState, useEffect, useRef } from 'react'
 
 interface InitialDashboardProps {

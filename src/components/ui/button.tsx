@@ -29,10 +29,7 @@ const twStyles = {
       'text-gray-900 hover:bg-white hover:shadow-md',
       'dark:bg-gray-900/75 dark:ring-white/10 dark:text-white dark:hover:bg-gray-900',
     ],
-    ghost: [
-      'hover:bg-gray-100 hover:text-gray-900',
-      'dark:hover:bg-gray-800 dark:hover:text-white',
-    ],
+    ghost: ['hover:bg-gray-100 hover:text-gray-900', 'dark:hover:bg-gray-800 dark:hover:text-white'],
     link: [
       'text-gray-900 underline decoration-gray-400 decoration-dotted underline-offset-4 hover:decoration-solid',
       'dark:text-white dark:decoration-gray-600',
@@ -40,26 +37,11 @@ const twStyles = {
     ],
   },
   colors: {
-    primary: [
-      'focus-visible:ring-blue-600',
-      'dark:focus-visible:ring-blue-500',
-    ],
-    secondary: [
-      'focus-visible:ring-secondary-600',
-      'dark:focus-visible:ring-secondary-500',
-    ],
-    accent: [
-      'focus-visible:ring-accent-600',
-      'dark:focus-visible:ring-accent-500',
-    ],
-    danger: [
-      'focus-visible:ring-red-600',
-      'dark:focus-visible:ring-red-500',
-    ],
-    warning: [
-      'focus-visible:ring-amber-600',
-      'dark:focus-visible:ring-amber-500',
-    ],
+    primary: ['focus-visible:ring-blue-600', 'dark:focus-visible:ring-blue-500'],
+    secondary: ['focus-visible:ring-secondary-600', 'dark:focus-visible:ring-secondary-500'],
+    accent: ['focus-visible:ring-accent-600', 'dark:focus-visible:ring-accent-500'],
+    danger: ['focus-visible:ring-red-600', 'dark:focus-visible:ring-red-500'],
+    warning: ['focus-visible:ring-amber-600', 'dark:focus-visible:ring-amber-500'],
   },
   colorVariants: {
     primary: {
@@ -77,10 +59,7 @@ const twStyles = {
         'dark:bg-gray-900/75 dark:ring-blue-800 dark:text-blue-400',
         'dark:hover:bg-blue-950/50',
       ],
-      ghost: [
-        'hover:bg-blue-50 hover:text-blue-700',
-        'dark:hover:bg-blue-950/50 dark:hover:text-blue-400',
-      ],
+      ghost: ['hover:bg-blue-50 hover:text-blue-700', 'dark:hover:bg-blue-950/50 dark:hover:text-blue-400'],
       link: [
         'text-blue-600 underline decoration-blue-400 decoration-dotted underline-offset-4 hover:decoration-solid',
         'dark:text-blue-400 dark:decoration-blue-600',

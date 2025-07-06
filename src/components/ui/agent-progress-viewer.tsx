@@ -587,7 +587,13 @@ interface AgentCompletedStateProps {
   onBack?: () => void
 }
 
-function AgentCompletedState({ jobTitle, company, timeElapsed, onFloppyDiskRecording, onBack }: AgentCompletedStateProps) {
+function AgentCompletedState({
+  jobTitle,
+  company,
+  timeElapsed,
+  onFloppyDiskRecording,
+  onBack,
+}: AgentCompletedStateProps) {
   return (
     <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20" variant="solid">
       <CardContent className="p-6 text-center">

@@ -1,19 +1,12 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { glassCvaConfig } from '@/recipes/glass-cva'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const twStyles = {
   card: ['rounded-lg transition-all duration-300'],
-  solidCard: [
-    'bg-white ring-1 ring-black/5 shadow-sm',
-    'dark:bg-gray-900 dark:ring-white/10',
-  ],
-  glassCard: [
-    'bg-white/75 backdrop-blur-lg ring-1 ring-black/5 shadow-lg',
-    'dark:bg-gray-900/75 dark:ring-white/10',
-  ],
+  solidCard: ['bg-white ring-1 ring-black/5 shadow-sm', 'dark:bg-gray-900 dark:ring-white/10'],
+  glassCard: ['bg-white/75 backdrop-blur-lg ring-1 ring-black/5 shadow-lg', 'dark:bg-gray-900/75 dark:ring-white/10'],
   colors: {
     primary: 'ring-blue-200 dark:ring-blue-800',
     secondary: 'ring-secondary-200 dark:ring-secondary-800',

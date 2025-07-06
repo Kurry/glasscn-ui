@@ -84,7 +84,7 @@ export const Resume_Ready = {
       missingSkills={['AWS', 'Kubernetes']}
       weakAreas={['Quantified results', 'Action verbs']}
       onExportPdf={() => console.log('Exporting PDF')}
-      onEditResume={() => console.log('Editing resume')}
+      onPencilSimpleResume={() => console.log('Editing resume')}
       onRefreshResume={() => console.log('Refreshing resume')}
       onAddSkill={(skill) => console.log(`Adding skill: ${skill}`)}
       onFindJobs={(url) => console.log(`Finding jobs with URL: ${url}`)}

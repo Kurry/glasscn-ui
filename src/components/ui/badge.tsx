@@ -8,14 +8,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'bg-gray-900 text-white ring-1 ring-black/10 dark:bg-white dark:text-gray-900 dark:ring-white/20',
-        secondary:
-          'bg-gray-100 text-gray-900 ring-1 ring-black/5 dark:bg-gray-800 dark:text-white dark:ring-white/10',
-        destructive:
-          'bg-red-500 text-white ring-1 ring-red-600/20 dark:bg-red-600 dark:ring-red-500/20',
-        outline: 
-          'bg-white text-gray-900 ring-1 ring-black/10 dark:bg-gray-900 dark:text-white dark:ring-white/20',
+        default: 'bg-gray-900 text-white ring-1 ring-black/10 dark:bg-white dark:text-gray-900 dark:ring-white/20',
+        secondary: 'bg-gray-100 text-gray-900 ring-1 ring-black/5 dark:bg-gray-800 dark:text-white dark:ring-white/10',
+        destructive: 'bg-red-500 text-white ring-1 ring-red-600/20 dark:bg-red-600 dark:ring-red-500/20',
+        outline: 'bg-white text-gray-900 ring-1 ring-black/10 dark:bg-gray-900 dark:text-white dark:ring-white/20',
       },
     },
     defaultVariants: {

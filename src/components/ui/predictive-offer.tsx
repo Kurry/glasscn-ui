@@ -5,7 +5,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { Warning, Briefcase, Buildings, CheckCircle, Handshake, CurrencyDollar, ChatCircle } from '@phosphor-icons/react'
+import {
+  Warning,
+  Briefcase,
+  Buildings,
+  CheckCircle,
+  Handshake,
+  CurrencyDollar,
+  ChatCircle,
+} from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface OfferPrediction {

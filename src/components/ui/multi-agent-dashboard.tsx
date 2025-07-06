@@ -5,7 +5,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { ChartLine, FirstAidKit, CheckCircle, Download, Eye, ArrowsClockwise, Gear, Star, Users } from '@phosphor-icons/react'
+import {
+  ChartLine,
+  FirstAidKit,
+  CheckCircle,
+  Download,
+  Eye,
+  ArrowsClockwise,
+  Gear,
+  Star,
+  Users,
+} from '@phosphor-icons/react'
 
 interface Agent {
   id: string

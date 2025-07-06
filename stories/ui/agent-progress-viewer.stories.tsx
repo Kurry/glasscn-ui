@@ -43,7 +43,7 @@ export const Desktop_Active: Story = {
     onStop: () => console.log('Stopped'),
     onTakeControl: () => console.log('Take control'),
     onSkipStep: () => console.log('Skip step'),
-    onSaveRecording: () => console.log('Save recording'),
+    onFloppyDiskRecording: () => console.log('Save recording'),
     onBack: () => console.log('Back to dashboard'),
   },
 }
@@ -129,7 +129,7 @@ export const Mobile_Active: Story = {
       taskSteps={sampleTaskSteps}
       onPause={() => console.log('Paused')}
       onResume={() => console.log('Resumed')}
-      onSaveRecording={() => console.log('Save recording')}
+      onFloppyDiskRecording={() => console.log('Save recording')}
     />
   ),
 }
@@ -179,7 +179,7 @@ export const Complete_Agent_Flow: Story = {
                 onStop={() => console.log('Stopped')}
                 onTakeControl={() => console.log('Take control')}
                 onSkipStep={() => console.log('Skip step')}
-                onSaveRecording={() => console.log('Save recording')}
+                onFloppyDiskRecording={() => console.log('Save recording')}
                 onBack={() => console.log('Back to dashboard')}
               />
             </div>
@@ -202,7 +202,7 @@ export const Complete_Agent_Flow: Story = {
                 taskSteps={sampleTaskSteps}
                 onPause={() => console.log('Paused')}
                 onResume={() => console.log('Resumed')}
-                onSaveRecording={() => console.log('Save recording')}
+                onFloppyDiskRecording={() => console.log('Save recording')}
               />
             </div>
           </div>
@@ -262,7 +262,7 @@ export const Live_Simulation: Story = {
         onStop={() => console.log('Stopped')}
         onTakeControl={() => console.log('Take control')}
         onSkipStep={() => console.log('Skip step')}
-        onSaveRecording={() => console.log('Save recording')}
+        onFloppyDiskRecording={() => console.log('Save recording')}
         onBack={() => console.log('Back to dashboard')}
       />
     )

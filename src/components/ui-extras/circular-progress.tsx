@@ -6,7 +6,6 @@ import React from 'react'
 type RootProps = React.ComponentPropsWithoutRef<'div'> & {
   size?: 'sm' | 'md' | 'lg'
   children?: React.ReactNode
-  children?: React.ReactNode
 }
 
 const Root = React.forwardRef<React.ElementRef<'div'>, RootProps>(
@@ -75,7 +74,6 @@ const Vector = React.forwardRef<React.ElementRef<'svg'>, React.ComponentPropsWit
       </svg>
     )
   },
-
 )
 
 export const CircularProgress = {

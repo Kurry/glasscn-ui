@@ -4,7 +4,16 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { CheckCircle, Dog, Briefcase, Users, MagnifyingGlass, Buildings, CurrencyDollar, Globe } from '@phosphor-icons/react'
+import {
+  CheckCircle,
+  Dog,
+  Briefcase,
+  Users,
+  MagnifyingGlass,
+  Buildings,
+  CurrencyDollar,
+  Globe,
+} from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface CompanyInsight {

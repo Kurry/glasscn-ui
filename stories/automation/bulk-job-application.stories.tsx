@@ -67,7 +67,7 @@ export const Step2_Application_Dashboard = {
       ]}
       onPause={() => console.log('Paused')}
       onViewDetails={() => console.log('View details')}
-      onSettings={() => console.log('Settings')}
+      onGear={() => console.log('Settings')}
     />
   ),
 }

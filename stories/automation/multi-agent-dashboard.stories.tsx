@@ -89,10 +89,10 @@ export const Dashboard_Overview = {
           icon: <CheckCircle className="w-5 h-5" />,
         },
       ]}
-      onAgentSettings={(id) => console.log(`Settings for agent: ${id}`)}
-      onViewAgentDetails={(id) => console.log(`View details for agent: ${id}`)}
-      onResumeAgent={(id) => console.log(`Resume agent: ${id}`)}
-      onPauseAgent={(id) => console.log(`Pause agent: ${id}`)}
+      onAgentGear={(id: string) => console.log(`Settings for agent: ${id}`)}
+      onViewAgentDetails={(id: string) => console.log(`View details for agent: ${id}`)}
+      onResumeAgent={(id: string) => console.log(`Resume agent: ${id}`)}
+      onPauseAgent={(id: string) => console.log(`Pause agent: ${id}`)}
       onViewReports={() => console.log('View reports')}
     />
   ),

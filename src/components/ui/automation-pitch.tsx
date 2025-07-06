@@ -43,7 +43,7 @@ export function AutomationPitch({
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
-            <PartyPopper className="w-12 h-12 text-primary-600 mx-auto" />
+            <Confetti className="w-12 h-12 text-primary-600 mx-auto" />
           </div>
           <CardTitle className="text-2xl">{title}</CardTitle>
           {subtitle && <CardDescription className="text-lg">{subtitle}</CardDescription>}
@@ -133,13 +133,13 @@ export function ResumeComplete({ onSetupAutomation, onMaybeLater, className }: R
   const manualStats: StatItem[] = [
     { icon: <Clock className="w-5 h-5" />, label: '2-4 hours/day searching', value: '⏰' },
     { icon: <Target className="w-5 h-5" />, label: '10-20 applications/week', value: '📝' },
-    { icon: <TrendingUp className="w-5 h-5" />, label: 'Miss 67% of new postings', value: '😔' },
+    { icon: <TrendUp className="w-5 h-5" />, label: 'Miss 67% of new postings', value: '😔' },
   ]
 
   const automatedStats: StatItem[] = [
     { icon: <Timer className="w-5 h-5" />, label: 'Apply 24/7 while you sleep', value: '🌙' },
     { icon: <Target className="w-5 h-5" />, label: '200+ applications/week', value: '🚀' },
-    { icon: <TrendingUp className="w-5 h-5" />, label: 'Never miss matching jobs', value: '🎯' },
+    { icon: <TrendUp className="w-5 h-5" />, label: 'Never miss matching jobs', value: '🎯' },
   ]
 
   return (
