@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { Calendar, Download, FileText, PartyPopper, Briefcase, ArrowRight } from 'lucide-react'
+import { Calendar, Download, FileText, Confetti, Briefcase, ArrowRight } from '@phosphor-icons/react'
 
 interface MilestoneCardProps {
   type: 'interview' | 'offer' | 'completion'
@@ -44,7 +44,7 @@ export function MilestoneCard({
       case 'interview':
         return <Calendar className="w-8 h-8" />
       case 'offer':
-        return <PartyPopper className="w-8 h-8" />
+        return <Confetti className="w-8 h-8" />
       case 'completion':
         return <Briefcase className="w-8 h-8" />
     }

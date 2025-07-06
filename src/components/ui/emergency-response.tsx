@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, CheckCircle, Rocket, Star, User, Users } from 'lucide-react'
+import { Warning, CheckCircle, RocketLaunch, Star, User, Users } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface EmergencyAction {
@@ -46,7 +46,7 @@ export function UrgentOpportunityHandling({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-red-600 bg-red-100 dark:bg-red-900/30 p-2 rounded-lg">
-              <AlertTriangle className="w-5 h-5" />
+              <Warning className="w-5 h-5" />
             </div>
             <div>
               <Badge className="mb-1 bg-red-100 text-red-800 border-red-200">URGENT: Dream Job Alert</Badge>
@@ -97,7 +97,7 @@ export function UrgentOpportunityHandling({
               className="w-full"
               disabled={readyInSeconds !== undefined && readyInSeconds > 0}
             >
-              <Rocket className="w-5 h-5 mr-2" />
+              <RocketLaunch className="w-5 h-5 mr-2" />
               Launch Application
             </Button>
           )}
@@ -162,7 +162,7 @@ export function EmergencyResponseDemo() {
       <Card className="max-w-lg mx-auto" variant="glass" blur="lg">
         <CardContent className="p-8 text-center">
           <div className="mx-auto w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center text-green-600 mb-4">
-            <Rocket className="w-6 h-6" />
+            <RocketLaunch className="w-6 h-6" />
           </div>
           <h2 className="text-xl font-semibold mb-2">Application Launched!</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">

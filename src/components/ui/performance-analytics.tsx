@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { BarChart3, TrendingUp, ChevronUp, Calendar, CheckCircle } from 'lucide-react'
+import { ChartLine, TrendUp, CaretUp, Calendar, CheckCircle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface PerformanceStat {
@@ -59,7 +59,7 @@ export function WeeklyIntelligenceReport({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <BarChart3 className="w-5 h-5" />
+              <ChartLine className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Week {week} Performance Report</CardTitle>
@@ -103,7 +103,7 @@ export function WeeklyIntelligenceReport({
                   className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800"
                 >
                   <div className="text-green-600 dark:text-green-500 mt-0.5">
-                    {insight.icon || <TrendingUp className="w-4 h-4" />}
+                    {insight.icon || <TrendUp className="w-4 h-4" />}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
@@ -193,7 +193,7 @@ export function PerformanceAnalyticsDemo() {
       id: '2',
       description: 'Shorter resume',
       impact: '+3% response',
-      icon: <ChevronUp className="w-4 h-4" />,
+      icon: <CaretUp className="w-4 h-4" />,
     },
     {
       id: '3',

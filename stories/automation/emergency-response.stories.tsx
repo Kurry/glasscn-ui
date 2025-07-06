@@ -1,5 +1,5 @@
 import { UrgentOpportunityHandling, EmergencyResponseDemo } from '@/components/ui/emergency-response'
-import { CheckCircle, Star, Users, User } from 'lucide-react'
+import { CheckCircle, Star, Users, User } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {

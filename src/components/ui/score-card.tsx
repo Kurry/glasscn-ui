@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { CircularProgress } from '@/components/ui-extras/circular-progress'
 import { cn } from '@/lib/utils'
-import { X, Check, AlertTriangle, Rocket, Eye } from 'lucide-react'
+import { X, Check, Warning, RocketLaunch, Eye } from '@phosphor-icons/react'
 
 interface ScoreIssue {
   type: 'error' | 'warning' | 'success'
@@ -98,7 +98,7 @@ export function ScoreCard({ score, maxScore = 100, issues, onFixWithAI, onViewDe
                   <div className="space-y-1">
                     {warningIssues.map((issue, index) => (
                       <div key={index} className="flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400">
-                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                        <Warning className="w-4 h-4 flex-shrink-0" />
                         <span>{issue.message}</span>
                       </div>
                     ))}
@@ -127,7 +127,7 @@ export function ScoreCard({ score, maxScore = 100, issues, onFixWithAI, onViewDe
           <div className="space-y-3">
             {onFixWithAI && (
               <Button onClick={onFixWithAI} className="w-full" size="lg" color="primary">
-                <Rocket className="w-4 h-4 mr-2" />
+                <RocketLaunch className="w-4 h-4 mr-2" />
                 🚀 Fix with AI (2 min)
               </Button>
             )}

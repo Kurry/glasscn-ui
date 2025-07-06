@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { Upload, CheckCircle, GitBranch, Award, Download, FileText } from 'lucide-react'
+import { Upload, CheckCircle, GitBranch, Trophy, Download, FileText } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface ResumeDropZoneProps {
@@ -213,7 +213,7 @@ export function EnhancedProfile({
                 >
                   <div className="mt-1 text-primary-600">
                     {enhancement.type === 'skills' && <GitBranch className="w-5 h-5" />}
-                    {enhancement.type === 'achievements' && <Award className="w-5 h-5" />}
+                    {enhancement.type === 'achievements' && <Trophy className="w-5 h-5" />}
                     {enhancement.type === 'projects' && <FileText className="w-5 h-5" />}
                     {enhancement.type === 'keywords' && <CheckCircle className="w-5 h-5" />}
                     {enhancement.type === 'variants' && <GitBranch className="w-5 h-5" />}

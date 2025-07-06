@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Rocket, Pause, Settings, Clock, Eye, CheckCircle } from 'lucide-react'
+import { RocketLaunch, Pause, Gear, Clock, Eye, CheckCircle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface JobHuntPreferencesProps {
@@ -77,7 +77,7 @@ export function JobHuntActivation({
           </div>
 
           <Button onClick={onActivate} size="lg" color="primary" className="w-full py-6 text-lg">
-            <Rocket className="w-5 h-5 mr-2" />
+            <RocketLaunch className="w-5 h-5 mr-2" />
             Activate Agents
           </Button>
         </CardContent>
@@ -103,7 +103,7 @@ interface JobApplicationDashboardProps {
   applications: Application[]
   onPause?: () => void
   onViewDetails?: () => void
-  onSettings?: () => void
+  onGear?: () => void
   className?: string
 }
 
@@ -115,7 +115,7 @@ export function JobApplicationDashboard({
   applications,
   onPause,
   onViewDetails,
-  onSettings,
+  onGear,
   className,
 }: JobApplicationDashboardProps) {
   return (
@@ -146,9 +146,9 @@ export function JobApplicationDashboard({
                   Pause
                 </Button>
               )}
-              {onSettings && (
-                <Button variant="outline" size="sm" onClick={onSettings}>
-                  <Settings className="w-4 h-4" />
+              {onGear && (
+                <Button variant="outline" size="sm" onClick={onGear}>
+                  <Gear className="w-4 h-4" />
                 </Button>
               )}
             </div>
@@ -311,7 +311,7 @@ export function BulkApplicationDemo() {
           applications={sampleApplications}
           onPause={() => setStage('activation')}
           onViewDetails={() => console.log('View details')}
-          onSettings={() => console.log('Settings')}
+          onGear={() => console.log('Gear')}
         />
       )}
     </div>

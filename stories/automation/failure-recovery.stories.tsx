@@ -1,5 +1,5 @@
 import { RoadblockAlert, SmartWorkaround, FailureRecoveryDemo } from '@/components/ui/failure-recovery'
-import { Clock, CheckCircle, UserCheck } from 'lucide-react'
+import { Clock, CheckCircle, UserCheck } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {

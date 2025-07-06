@@ -21,36 +21,36 @@ import { cva } from 'class-variance-authority'
  */
 export const materialSurface = cva(
   // Base styles for all surfaces
-  ['rounded-lg', 'transition-all'],
+  ['rounded-lg', 'transition-all duration-300'],
   {
     variants: {
       // Material type
       material: {
         // Solid, opaque surfaces for content containers
-        solid: ['bg-white dark:bg-gray-950', 'z-[var(--z-surface)]'],
+        solid: ['bg-white dark:bg-gray-900'],
         // Translucent glass panels for UI chrome
-        glass: ['bg-white/[var(--glass-opacity)] dark:bg-gray-950/50', 'backdrop-blur-lg', 'z-[var(--z-glass)]'],
+        glass: ['bg-white/75 dark:bg-gray-900/75', 'backdrop-blur-lg'],
       },
       // Elevation level
       elevation: {
         none: '',
-        low: '', // Default subtle lift
-        medium: '', // Hover state elevation
-        high: '', // Floating UI chrome
-        highest: '', // Modals & critical pop-ups
+        low: 'shadow-sm', // Default subtle lift
+        medium: 'shadow-md', // Hover state elevation
+        high: 'shadow-lg', // Floating UI chrome
+        highest: 'shadow-xl', // Modals & critical pop-ups
       },
       // Edge treatment
       edge: {
         none: '',
-        hairline: 'ring-1 ring-black/5 dark:ring-white/5', // Non-layout breaking edge
+        hairline: 'ring-1 ring-black/5 dark:ring-white/10', // Precision edge
         border: 'border border-gray-200 dark:border-gray-800', // Traditional border
-        both: ['ring-1 ring-black/5 dark:ring-white/5', 'border border-gray-200 dark:border-gray-800'],
+        both: ['ring-1 ring-black/5 dark:ring-white/10', 'border border-gray-200 dark:border-gray-800'],
       },
       // Internal shadows for depth
       innerGlow: {
         none: '',
-        light: 'shadow-inset-white',
-        dark: 'dark:shadow-inset-gray',
+        light: 'shadow-[inset_0_0_30px_rgba(255,255,255,0.4)]',
+        dark: 'dark:shadow-[inset_0_0_30px_rgba(255,255,255,0.1)]',
       },
     },
     // Default configuration
@@ -61,10 +61,16 @@ export const materialSurface = cva(
       innerGlow: 'none',
     },
     compoundVariants: [
+      // Glass panels always have higher elevation
+      {
+        material: 'glass',
+        elevation: 'low',
+        className: 'shadow-lg',
+      },
       {
         material: 'glass',
         elevation: 'high',
-        className: 'bg-white/85 dark:bg-gray-950/60',
+        className: 'shadow-xl',
       },
     ],
   },
@@ -85,6 +91,7 @@ export const interactiveElement = cva(
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
     'focus-visible:ring-blue-600',
+    'dark:focus-visible:ring-blue-500',
     'disabled:pointer-events-none',
     'disabled:opacity-50',
   ],

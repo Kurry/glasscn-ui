@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Mail, ArrowRight, Target, Calendar, TrendingUp } from 'lucide-react'
+import { Envelope, ArrowRight, Target, Calendar, TrendUp } from '@phosphor-icons/react'
 
 interface EmailStat {
   label: string
@@ -50,7 +50,7 @@ export function EmailSummary({
       {/* Email Header */}
       <div className="bg-primary-600 text-white p-6 rounded-t-lg">
         <div className="flex items-center gap-3 mb-4">
-          <Mail className="w-8 h-8" />
+          <Envelope className="w-8 h-8" />
           <div>
             <h1 className="text-xl font-bold">📧 Your Daily Job Search Update</h1>
             <p className="text-primary-100">{period}</p>
@@ -120,7 +120,7 @@ interface DailySummaryProps {
 export function DailySummary({ onOpenDashboard, className }: DailySummaryProps) {
   const stats: EmailStat[] = [
     { label: 'applications sent', value: 24, icon: <Target className="w-4 h-4" /> },
-    { label: 'recruiter responses', value: 5, icon: <Mail className="w-4 h-4" /> },
+    { label: 'recruiter responses', value: 5, icon: <Envelope className="w-4 h-4" /> },
     { label: 'interview requests', value: 2, icon: <Calendar className="w-4 h-4" /> },
   ]
 
@@ -166,7 +166,7 @@ export function WeeklyReport({
     <div className={cn('max-w-2xl mx-auto bg-white', className)}>
       <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-6 rounded-t-lg">
         <div className="flex items-center gap-3 mb-4">
-          <TrendingUp className="w-8 h-8" />
+          <TrendUp className="w-8 h-8" />
           <div>
             <h1 className="text-xl font-bold">📊 Week {week} Progress Report</h1>
             <p className="text-primary-100">Your job search analytics</p>

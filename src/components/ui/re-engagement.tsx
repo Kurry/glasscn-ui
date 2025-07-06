@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { Pause, ArrowRight, Briefcase, TrendingUp } from 'lucide-react'
+import { Pause, ArrowRight, Briefcase, TrendUp } from '@phosphor-icons/react'
 
 interface ReEngagementProps {
   type: 'inactive' | 'feature-reminder' | 'new-jobs'
@@ -35,7 +35,7 @@ export function ReEngagement({
       case 'inactive':
         return <Pause className="w-6 h-6" />
       case 'feature-reminder':
-        return <TrendingUp className="w-6 h-6" />
+        return <TrendUp className="w-6 h-6" />
       case 'new-jobs':
         return <Briefcase className="w-6 h-6" />
     }

@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
-import { BarChart3, ArrowUp, Microscope, Check, FlaskRound as Flask } from 'lucide-react'
+import { ChartLine, ArrowUp, Microscope, Check, Flask } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface ResumePerformanceData {
@@ -45,7 +45,7 @@ export function ContinuousABTesting({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <BarChart3 className="w-5 h-5" />
+              <ChartLine className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Resume Performance Data</CardTitle>

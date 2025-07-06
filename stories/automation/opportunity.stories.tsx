@@ -1,5 +1,5 @@
 import { OpportunityAlert, BackgroundMonitor, OpportunityMonitoringDemo } from '@/components/ui/opportunity-monitoring'
-import { Star, BriefcaseMedical, MapPin, DollarSign, Clock } from 'lucide-react'
+import { Star, FirstAidKit, MapPin, CurrencyDollar, Clock } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -24,7 +24,7 @@ export const Perfect_Match_Alert = {
           text: 'Perfectly matches your experience with Python and ML',
         },
         {
-          icon: <BriefcaseMedical className="w-4 h-4" />,
+          icon: <FirstAidKit className="w-4 h-4" />,
           text: 'Healthcare industry (your preferred sector)',
         },
         {
@@ -32,7 +32,7 @@ export const Perfect_Match_Alert = {
           text: 'Remote position with flexible hours',
         },
         {
-          icon: <DollarSign className="w-4 h-4" />,
+          icon: <CurrencyDollar className="w-4 h-4" />,
           text: 'Salary range $150-180k (above your minimum)',
         },
         {
@@ -59,7 +59,7 @@ export const Auto_Applied = {
           text: 'Perfectly matches your experience with Python and ML',
         },
         {
-          icon: <BriefcaseMedical className="w-4 h-4" />,
+          icon: <FirstAidKit className="w-4 h-4" />,
           text: 'Healthcare industry (your preferred sector)',
         },
         {

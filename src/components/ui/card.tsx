@@ -5,26 +5,44 @@ import { glassCvaConfig } from '@/recipes/glass-cva'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const twStyles = {
-  card: ['rounded-lg shadow-sm'],
+  card: ['rounded-lg transition-all duration-300'],
+  solidCard: [
+    'bg-white ring-1 ring-black/5 shadow-sm',
+    'dark:bg-gray-900 dark:ring-white/10',
+  ],
+  glassCard: [
+    'bg-white/75 backdrop-blur-lg ring-1 ring-black/5 shadow-lg',
+    'dark:bg-gray-900/75 dark:ring-white/10',
+  ],
   colors: {
-    primary: 'text-foreground-dark bg-primary dark:bg-primary border-primary dark:border-primary',
-    secondary: 'text-foreground-dark bg-secondary dark:bg-secondary border-secondary dark:border-secondary',
-    accent: 'text-foreground-dark bg-accent dark:bg-accent border-accent dark:border-accent',
-    warning: 'text-foreground-dark bg-warning dark:bg-warning border-warning dark:border-warning',
-    danger: 'text-foreground-dark bg-danger dark:bg-danger border-danger dark:border-danger',
-    // success: "bg-success",
-    // info: "bg-info",
+    primary: 'ring-blue-200 dark:ring-blue-800',
+    secondary: 'ring-secondary-200 dark:ring-secondary-800',
+    accent: 'ring-accent-200 dark:ring-accent-800',
+    warning: 'ring-amber-200 dark:ring-amber-800',
+    danger: 'ring-red-200 dark:ring-red-800',
   },
   header: 'flex flex-col space-y-1.5 p-6',
-  title: 'text-2xl font-semibold leading-none tracking-tight',
-  description: 'text-sm text-neutral-500 dark:text-neutral-400',
+  title: 'text-xl font-semibold leading-none tracking-tight text-gray-900 dark:text-white',
+  description: 'text-sm text-gray-600 dark:text-gray-400',
   content: 'p-6 pt-0',
   footer: 'flex items-center p-6 pt-0',
 }
 
 const cardVariants = cva(cn(twStyles.card), {
   variants: {
-    ...glassCvaConfig.variants,
+    variant: {
+      solid: cn(twStyles.solidCard),
+      glass: cn(twStyles.glassCard),
+    },
+    blur: {
+      none: '',
+      sm: 'backdrop-blur-sm',
+      md: 'backdrop-blur-md',
+      lg: 'backdrop-blur-lg',
+      xl: 'backdrop-blur-xl',
+      '2xl': 'backdrop-blur-2xl',
+      '3xl': 'backdrop-blur-3xl',
+    },
     color: {
       default: '',
       primary: cn(twStyles.colors.primary),
@@ -35,7 +53,8 @@ const cardVariants = cva(cn(twStyles.card), {
     },
   },
   defaultVariants: {
-    ...glassCvaConfig.defaultVariants,
+    variant: 'solid',
+    blur: 'lg',
     color: 'default',
   },
 })

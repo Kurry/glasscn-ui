@@ -4,23 +4,22 @@ import { cn } from '@/lib/utils'
 
 const twStyles = {
   input: [
-    'flex h-10 w-full rounded-md border px-3 py-2 text-sm',
+    'flex h-10 w-full rounded-lg px-3 py-2 text-sm transition-all duration-150',
     'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-    'disabled:cursor-not-allowed',
-    // ----- colors -----
-    'disabled:opacity-50',
-    // border:
-    'border-border',
-    // bg:
-    'bg-white dark:bg-gray-950',
+    'disabled:cursor-not-allowed disabled:opacity-50',
+    // Architectural Glass design
+    'bg-white ring-1 ring-black/5 shadow-sm',
+    'dark:bg-gray-900 dark:ring-white/10',
     // placeholder:
     'placeholder:text-gray-500 dark:placeholder:text-gray-400',
-    // ring size:
+    // focus state:
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-    // ring color:
-    'focus-visible:ring-ring/90',
+    'focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500',
+    'focus-visible:shadow-md',
     // ring offset color:
     'ring-offset-white dark:ring-offset-gray-950',
+    // hover state:
+    'hover:ring-black/10 dark:hover:ring-white/20',
   ],
 }
 

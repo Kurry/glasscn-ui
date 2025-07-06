@@ -1,7 +1,7 @@
 'use client'
 
 import * as SelectPrimitive from '@radix-ui/react-select'
-import { Check, ChevronDown, ChevronUp } from 'lucide-react'
+import { Check, CaretDown, CaretUp } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -55,7 +55,7 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger ref={ref} className={cn(twStyles.trigger, className)} {...props}>
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className={twStyles.triggerIcon} />
+        <CaretDown className={twStyles.triggerIcon} />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -68,7 +68,7 @@ const SelectScrollUpButton = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <SelectPrimitive.ScrollUpButton ref={ref} className={cn(twStyles.scrollUpButton, className)} {...props}>
-      <ChevronUp className={cn(twStyles.chevrons)} />
+      <CaretUp className={cn(twStyles.chevrons)} />
     </SelectPrimitive.ScrollUpButton>
   )
 })
@@ -80,7 +80,7 @@ const SelectScrollDownButton = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <SelectPrimitive.ScrollDownButton ref={ref} className={cn(twStyles.scrollDownButton, className)} {...props}>
-      <ChevronDown className={cn(twStyles.chevrons)} />
+      <CaretDown className={cn(twStyles.chevrons)} />
     </SelectPrimitive.ScrollDownButton>
   )
 })

@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowDown, ArrowRight, Check, X, Sparkles, Eye } from 'lucide-react'
+import { ArrowDown, ArrowRight, Check, X, Sparkle, Eye } from '@phosphor-icons/react'
 
 interface ComparisonItem {
   before: string
@@ -44,7 +44,7 @@ export function ComparisonCard({
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
-            <Sparkles className="w-12 h-12 text-primary-600 mx-auto" />
+            <Sparkle className="w-12 h-12 text-primary-600 mx-auto" />
           </div>
           <CardTitle className="text-xl">{title}</CardTitle>
           {subtitle && <CardDescription>{subtitle}</CardDescription>}

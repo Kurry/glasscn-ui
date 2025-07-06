@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Bell, ArrowRight, Star, BriefcaseMedical, MapPin, DollarSign, Clock, CheckCircle } from 'lucide-react'
+import { Bell, ArrowRight, Star, FirstAidKit, MapPin, CurrencyDollar, Clock, CheckCircle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface MatchReason {
@@ -247,7 +247,7 @@ export function OpportunityMonitoringDemo() {
       text: 'Perfectly matches your experience with Python and ML',
     },
     {
-      icon: <BriefcaseMedical className="w-4 h-4" />,
+      icon: <FirstAidKit className="w-4 h-4" />,
       text: 'Healthcare industry (your preferred sector)',
     },
     {
@@ -255,7 +255,7 @@ export function OpportunityMonitoringDemo() {
       text: 'Remote position with flexible hours',
     },
     {
-      icon: <DollarSign className="w-4 h-4" />,
+      icon: <CurrencyDollar className="w-4 h-4" />,
       text: 'Salary range $150-180k (above your minimum)',
     },
     {

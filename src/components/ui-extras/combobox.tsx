@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronsUpDown } from 'lucide-react'
+import { CaretUpDown } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -64,7 +64,7 @@ export function ComboBox({
           <span title={labelText} className="block max-w-full overflow-hidden break-words">
             {label}
           </span>
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <CaretUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className={cn('min-w-[200px] p-0', className)}>

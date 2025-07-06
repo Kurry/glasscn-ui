@@ -1,5 +1,5 @@
 import { WeeklyIntelligenceReport, PerformanceAnalyticsDemo } from '@/components/ui/performance-analytics'
-import { Calendar, ChevronUp, CheckCircle } from 'lucide-react'
+import { Calendar, CaretUp, CheckCircle } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -52,7 +52,7 @@ export const Weekly_Intelligence_Report = {
           id: '2',
           description: 'Shorter resume',
           impact: '+3% response',
-          icon: <ChevronUp className="w-4 h-4" />,
+          icon: <CaretUp className="w-4 h-4" />,
         },
         {
           id: '3',

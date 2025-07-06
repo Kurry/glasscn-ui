@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
-import { FileText, Upload, Plus, Download, Edit, RefreshCw, Check, AlertTriangle, CheckCircle } from 'lucide-react'
+import { FileText, Upload, Plus, Download, PencilSimple, ArrowsClockwise, Check, Warning, CheckCircle } from '@phosphor-icons/react'
 import { useState, useEffect, useRef } from 'react'
 
 interface InitialDashboardProps {
@@ -254,7 +254,7 @@ export function DynamicResumeAnalysis({ findings, progress, onAnalysisComplete, 
                       {finding.isPositive ? (
                         <Check className="w-5 h-5 text-green-500 mt-0.5" />
                       ) : (
-                        <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5" />
+                        <Warning className="w-5 h-5 text-amber-500 mt-0.5" />
                       )}
                       <div>
                         <p className="font-medium">{finding.label}</p>
@@ -288,7 +288,7 @@ interface ResumeHubProps {
   missingSkills: string[]
   weakAreas: string[]
   onExportPdf?: () => void
-  onEditResume?: () => void
+  onPencilSimpleResume?: () => void
   onRefreshResume?: () => void
   onAddSkill?: (skill: string) => void
   onFindJobs?: (url?: string) => void
@@ -303,7 +303,7 @@ export function ResumeHub({
   missingSkills,
   weakAreas,
   onExportPdf,
-  onEditResume,
+  onPencilSimpleResume,
   onRefreshResume,
   onAddSkill,
   onFindJobs,
@@ -357,7 +357,7 @@ export function ResumeHub({
 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-500" />
+                    <Warning className="w-4 h-4 text-amber-500" />
                     <p className="font-medium text-amber-600 dark:text-amber-400">Missing: </p>
                     <div className="flex flex-wrap gap-2">
                       {missingSkills.map((skill, i) => (
@@ -374,7 +374,7 @@ export function ResumeHub({
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-500" />
+                    <Warning className="w-4 h-4 text-amber-500" />
                     <p className="font-medium text-amber-600 dark:text-amber-400">Weak: </p>
                     <div className="flex flex-wrap gap-1">
                       {weakAreas.map((area, i) => (
@@ -395,12 +395,12 @@ export function ResumeHub({
                     <Download className="w-4 h-4 mr-2" />
                     Export PDF
                   </Button>
-                  <Button variant="outline" className="w-full justify-start" onClick={onEditResume}>
-                    <Edit className="w-4 h-4 mr-2" />
-                    Edit
+                  <Button variant="outline" className="w-full justify-start" onClick={onPencilSimpleResume}>
+                    <PencilSimple className="w-4 h-4 mr-2" />
+                    PencilSimple
                   </Button>
                   <Button variant="outline" className="w-full justify-start" onClick={onRefreshResume}>
-                    <RefreshCw className="w-4 h-4 mr-2" />
+                    <ArrowsClockwise className="w-4 h-4 mr-2" />
                     Refresh
                   </Button>
                 </div>

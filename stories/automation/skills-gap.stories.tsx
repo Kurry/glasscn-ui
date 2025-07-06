@@ -1,5 +1,5 @@
 import { AutoLearningSystem, SkillsGapDemo } from '@/components/ui/skills-gap-automation'
-import { BookOpen, FileText, Link } from 'lucide-react'
+import { BookOpen, FileText, Link } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {

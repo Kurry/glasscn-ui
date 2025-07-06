@@ -4,17 +4,18 @@ import type * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full border border-gray-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:border-gray-800 dark:focus:ring-gray-300',
+  'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:focus:ring-blue-500',
   {
     variants: {
       variant: {
         default:
-          'border-transparent bg-gray-900 text-neutral-50 hover:bg-gray-900/80 dark:bg-gray-50 dark:text-neutral-900 dark:hover:bg-gray-50/80',
+          'bg-gray-900 text-white ring-1 ring-black/10 dark:bg-white dark:text-gray-900 dark:ring-white/20',
         secondary:
-          'border-transparent bg-gray-100 text-neutral-900 hover:bg-gray-100/80 dark:bg-gray-800 dark:text-neutral-50 dark:hover:bg-gray-800/80',
+          'bg-gray-100 text-gray-900 ring-1 ring-black/5 dark:bg-gray-800 dark:text-white dark:ring-white/10',
         destructive:
-          'border-transparent bg-danger-500 text-neutral-50 hover:bg-danger-500/80 dark:bg-danger-900 dark:text-neutral-50 dark:hover:bg-danger-900/80',
-        outline: 'text-neutral-950 dark:text-neutral-50',
+          'bg-red-500 text-white ring-1 ring-red-600/20 dark:bg-red-600 dark:ring-red-500/20',
+        outline: 
+          'bg-white text-gray-900 ring-1 ring-black/10 dark:bg-gray-900 dark:text-white dark:ring-white/20',
       },
     },
     defaultVariants: {

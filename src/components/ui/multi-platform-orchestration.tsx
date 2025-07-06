@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Check, Globe, Plus, Settings, X } from 'lucide-react'
+import { Check, Globe, Plus, Gear, X } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface Platform {
@@ -154,7 +154,7 @@ export function CrossPlatformStatus({
 
             {onPauseLowPerformers && (
               <Button onClick={onPauseLowPerformers} variant="outline" className="flex-1 gap-2">
-                <Settings className="w-4 h-4" />
+                <Gear className="w-4 h-4" />
                 Pause Low Performers
               </Button>
             )}

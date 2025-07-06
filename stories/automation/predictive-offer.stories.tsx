@@ -3,7 +3,7 @@ import {
   NegotiationPreparation,
   PredictiveOfferDemo,
 } from '@/components/ui/predictive-offer'
-import { AlertTriangle, Briefcase, DollarSign, Building } from 'lucide-react'
+import { Warning, Briefcase, CurrencyDollar, Buildings } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -55,15 +55,15 @@ export const Negotiation_Assistant = {
           text: '2 other final rounds pending',
         },
         {
-          icon: <DollarSign className="w-4 h-4" />,
+          icon: <CurrencyDollar className="w-4 h-4" />,
           text: 'Market rate: $155k-180k',
         },
         {
-          icon: <AlertTriangle className="w-4 h-4" />,
+          icon: <Warning className="w-4 h-4" />,
           text: 'Their urgency: High (Q4 hiring)',
         },
         {
-          icon: <Building className="w-4 h-4" />,
+          icon: <Buildings className="w-4 h-4" />,
           text: 'Your unique value: Payment exp',
         },
       ]}

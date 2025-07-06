@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface GuidedInputProps {
@@ -127,7 +127,7 @@ export function GuidedInput({ step, totalSteps, onContinue, className }: GuidedI
           <Card variant="solid" className="bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800">
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
-                <Sparkles className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <Sparkle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-medium text-blue-700 dark:text-blue-300 mb-1">AI Tip</p>
                   <p className="text-sm text-blue-600 dark:text-blue-400">

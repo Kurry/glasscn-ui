@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, Briefcase, Building, CheckCircle, Handshake, DollarSign, MessageSquare } from 'lucide-react'
+import { Warning, Briefcase, Buildings, CheckCircle, Handshake, CurrencyDollar, ChatCircle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface OfferPrediction {
@@ -37,7 +37,7 @@ export function OfferProbabilityCalculator({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <Building className="w-5 h-5" />
+              <Buildings className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Offer Predictions This Week</CardTitle>
@@ -232,7 +232,7 @@ export function NegotiationPreparation({
             <div className="grid grid-cols-2 gap-2">
               {preparedScripts.map((script, index) => (
                 <Button key={index} variant="outline" onClick={() => onViewScripts?.(script)} className="justify-start">
-                  <MessageSquare className="w-4 h-4 mr-2" />
+                  <ChatCircle className="w-4 h-4 mr-2" />
                   {script}
                 </Button>
               ))}
@@ -272,15 +272,15 @@ export function PredictiveOfferDemo() {
       text: '2 other final rounds pending',
     },
     {
-      icon: <DollarSign className="w-4 h-4" />,
+      icon: <CurrencyDollar className="w-4 h-4" />,
       text: 'Market rate: $155k-180k',
     },
     {
-      icon: <AlertTriangle className="w-4 h-4" />,
+      icon: <Warning className="w-4 h-4" />,
       text: 'Their urgency: High (Q4 hiring)',
     },
     {
-      icon: <Building className="w-4 h-4" />,
+      icon: <Buildings className="w-4 h-4" />,
       text: 'Your unique value: Payment exp',
     },
   ]

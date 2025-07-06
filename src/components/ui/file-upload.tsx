@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { FileText, ArrowRight } from 'lucide-react'
+import { FileText, ArrowRight } from '@phosphor-icons/react'
 import { useState, useRef } from 'react'
 
 interface FileUploadProps {

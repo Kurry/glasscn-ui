@@ -1,4 +1,4 @@
-import { CheckCircle, Circle, Loader2 } from 'lucide-react';
+import { CheckCircle, Circle, CircleNotch } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
@@ -61,7 +61,7 @@ export function TaskList({
               {task.status === 'completed' ? (
                 <CheckCircle className="w-5 h-5 text-green-600" />
               ) : task.status === 'active' ? (
-                <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+                <CircleNotch className="w-5 h-5 text-blue-600 animate-spin" />
               ) : task.status === 'error' ? (
                 <div className="w-5 h-5 text-red-600">❌</div>
               ) : (

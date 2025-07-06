@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { X, Bell, AlertTriangle, CheckCircle, Info, Shield } from 'lucide-react'
+import { X, Bell, Warning, CheckCircle, Info, ShieldCheck } from '@phosphor-icons/react'
 
 interface NotificationCardProps {
   type: 'info' | 'warning' | 'success' | 'error' | 'feature'
@@ -44,7 +44,7 @@ export function NotificationCard({
       case 'info':
         return <Info className="w-5 h-5" />
       case 'warning':
-        return <AlertTriangle className="w-5 h-5" />
+        return <Warning className="w-5 h-5" />
       case 'success':
         return <CheckCircle className="w-5 h-5" />
       case 'error':
@@ -182,7 +182,7 @@ export function SecurityAlert({
     <Card className={cn('border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20', className)} variant="solid">
       <CardContent className="p-4">
         <div className="flex items-start gap-3">
-          <Shield className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+          <ShieldCheck className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
 
           <div className="flex-1">
             <h4 className="font-medium text-red-900 dark:text-red-200 mb-1">⚠️ Suspicious Job Email Detected</h4>

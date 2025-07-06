@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { ArrowRight, Mic, Lightbulb, Plus } from 'lucide-react'
+import { ArrowRight, Microphone, Lightbulb, Plus } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface FormField {
@@ -112,7 +112,7 @@ export function FormBuilder({
           {onVoiceInput && (
             <div className="flex justify-center">
               <Button onClick={onVoiceInput} variant="outline" size="lg" className="flex items-center gap-2">
-                <Mic className="w-4 h-4" />
+                <Microphone className="w-4 h-4" />
                 🎙️ Describe with Voice
               </Button>
             </div>

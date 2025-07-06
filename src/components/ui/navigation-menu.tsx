@@ -2,7 +2,7 @@
 
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { cva } from 'class-variance-authority'
-import { ChevronDown } from 'lucide-react'
+import { CaretDown } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -81,7 +81,7 @@ const NavigationMenuTrigger = React.forwardRef<
       className={cn(navigationMenuTriggerStyle(), 'group', className)}
       {...props}
     >
-      {children} <ChevronDown className={twStyles.chevronIcon} aria-hidden="true" />
+      {children} <CaretDown className={twStyles.chevronIcon} aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 })

@@ -1,5 +1,5 @@
 import { IntelligentResumeVariants, ResumeVariantsDemo } from '@/components/ui/resume-variants'
-import { Briefcase, ChevronUp, Globe, Users } from 'lucide-react'
+import { Briefcase, CaretUp, Globe, Users } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -30,7 +30,7 @@ export const Strategic_Variants = {
           description: 'Highlights adaptability & ownership',
           emphasis:
             'Perfect for startups and growth-stage companies. Focuses on your versatility, ownership mentality, and ability to work across the stack with limited resources.',
-          icon: <ChevronUp className="w-5 h-5" />,
+          icon: <CaretUp className="w-5 h-5" />,
         },
         {
           id: 'remote',

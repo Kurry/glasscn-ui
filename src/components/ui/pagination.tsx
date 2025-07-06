@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
+import { CaretLeft, CaretRight, DotsThree } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { type ButtonProps, buttonVariants } from '@/components/ui/button'
@@ -70,7 +70,7 @@ const PaginationPrevious = ({ className, ...props }: React.ComponentProps<typeof
     className={cn(twStyles.paginationPrevious, className)}
     {...props}
   >
-    <ChevronLeft className={twStyles.chevronIcon} />
+    <CaretLeft className={twStyles.chevronIcon} />
     <span>Previous</span>
   </PaginationLink>
 )
@@ -84,14 +84,14 @@ const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof Pag
     {...props}
   >
     <span>Next</span>
-    <ChevronRight className={twStyles.chevronIcon} />
+    <CaretRight className={twStyles.chevronIcon} />
   </PaginationLink>
 )
 PaginationNext.displayName = 'PaginationNext'
 
 const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
   <span aria-hidden className={cn(twStyles.paginationEllipsis, className)} {...props}>
-    <MoreHorizontal className={twStyles.ellipsisIcon} />
+    <DotsThree className={twStyles.ellipsisIcon} />
     <span className="sr-only">More pages</span>
   </span>
 )

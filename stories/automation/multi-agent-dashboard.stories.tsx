@@ -1,5 +1,5 @@
 import { MultiAgentDashboard, MultiAgentDashboardDemo } from '@/components/ui/multi-agent-dashboard'
-import { BarChart3, Star, CheckCircle, Users, Download } from 'lucide-react'
+import { ChartLine, Star, CheckCircle, Users, Download } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -59,7 +59,7 @@ export const Dashboard_Overview = {
             value: '12% this week',
             isPositive: true,
           },
-          icon: <BarChart3 className="w-5 h-5" />,
+          icon: <ChartLine className="w-5 h-5" />,
         },
         {
           label: 'Response Rate',

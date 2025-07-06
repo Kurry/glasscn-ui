@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { Download, Briefcase, Users, Globe, ChevronUp } from 'lucide-react'
+import { Download, Briefcase, Users, Globe, CaretUp } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface ResumeVariant {
@@ -61,7 +61,7 @@ export function IntelligentResumeVariants({
                       <p className="text-sm text-gray-600 dark:text-gray-400">{variant.description}</p>
                     </div>
                   </div>
-                  <ChevronUp
+                  <CaretUp
                     className={cn(
                       'w-5 h-5 text-gray-400 transition-transform',
                       expandedVariant !== variant.id && 'rotate-180',
@@ -117,7 +117,7 @@ export function ResumeVariantsDemo() {
       description: 'Highlights adaptability & ownership',
       emphasis:
         'Perfect for startups and growth-stage companies. Focuses on your versatility, ownership mentality, and ability to work across the stack with limited resources.',
-      icon: <ChevronUp className="w-5 h-5" />,
+      icon: <CaretUp className="w-5 h-5" />,
     },
     {
       id: 'remote',

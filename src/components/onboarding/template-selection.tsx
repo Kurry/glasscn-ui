@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { FileText, Sparkles, Code } from 'lucide-react'
+import { FileText, Sparkle, Code } from '@phosphor-icons/react'
 
 interface Template {
   id: string
@@ -30,7 +30,7 @@ export function TemplateSelection({ onTemplateSelect, className }: TemplateSelec
       id: 'modern-design',
       name: 'Modern Design',
       description: 'Contemporary with visual appeal',
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: <Sparkle className="w-8 h-8" />,
       preview: 'Eye-catching design with modern typography',
     },
     {

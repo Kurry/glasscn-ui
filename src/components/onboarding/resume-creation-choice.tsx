@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Upload, Plus, Mic } from 'lucide-react'
+import { Upload, Plus, Microphone } from '@phosphor-icons/react'
 
 interface CreationOption {
   id: string
@@ -39,7 +39,7 @@ export function ResumeCreationChoice({ onOptionSelect, className }: ResumeCreati
       title: '🎙️ Voice Interview',
       description: 'Answer questions to build resume',
       duration: '15 minutes',
-      icon: <Mic className="w-8 h-8" />,
+      icon: <Microphone className="w-8 h-8" />,
     },
   ]
 

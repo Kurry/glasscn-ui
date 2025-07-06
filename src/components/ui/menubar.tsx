@@ -1,7 +1,7 @@
 'use client'
 
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
-import { Check, ChevronRight, Circle } from 'lucide-react'
+import { Check, CaretRight, Circle } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -104,7 +104,7 @@ const MenubarSubTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronRight className={twStyles.menubarSubTriggerChevron} />
+      <CaretRight className={twStyles.menubarSubTriggerChevron} />
     </MenubarPrimitive.SubTrigger>
   )
 })

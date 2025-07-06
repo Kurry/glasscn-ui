@@ -6,8 +6,16 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const twStyles = {
-  root: ['relative h-4 w-full overflow-hidden rounded-full bg-gray-100', 'dark:bg-gray-800'],
-  indicator: ['h-full w-full flex-1 bg-gray-900 transition-all', 'dark:bg-gray-50'],
+  root: [
+    'relative h-2 w-full overflow-hidden rounded-full',
+    'bg-gray-200 dark:bg-gray-700',
+    'ring-1 ring-black/5 dark:ring-white/10',
+  ],
+  indicator: [
+    'h-full w-full flex-1 transition-all duration-300',
+    'bg-gradient-to-r from-blue-500 to-blue-600',
+    'dark:from-blue-600 dark:to-blue-700',
+  ],
 }
 
 const Progress = React.forwardRef<

@@ -1,5 +1,5 @@
 import { CompanyResearch, CompanyResearchDemo } from '@/components/ui/company-research'
-import { Dog, Briefcase, Building, DollarSign, Users, Globe } from 'lucide-react'
+import { Dog, Briefcase, Buildings, CurrencyDollar, Users, Globe } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -20,12 +20,12 @@ export const Company_Research_Engine = {
         {
           id: '1',
           text: 'Recent $8B valuation',
-          icon: <DollarSign className="w-4 h-4" />,
+          icon: <CurrencyDollar className="w-4 h-4" />,
         },
         {
           id: '2',
           text: 'Expanding ML monitoring team',
-          icon: <Building className="w-4 h-4" />,
+          icon: <Buildings className="w-4 h-4" />,
         },
         {
           id: '3',
@@ -60,7 +60,7 @@ export const Company_Research_Engine = {
           aspect: 'Focus on monitoring',
           matchesPreference: true,
           description: 'Your passion',
-          icon: <Building className="w-4 h-4" />,
+          icon: <Buildings className="w-4 h-4" />,
         },
       ]}
       applicationStrategy={{

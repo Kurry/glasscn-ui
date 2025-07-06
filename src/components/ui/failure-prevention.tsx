@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, Check, CheckCircle, Shield, Sparkles } from 'lucide-react'
+import { Warning, Check, CheckCircle, ShieldCheck, Sparkle } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface PotentialIssue {
@@ -64,7 +64,7 @@ export function ApplicationQualityControl({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <Shield className="w-5 h-5" />
+              <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">AI Caught Potential Issues</CardTitle>
@@ -84,7 +84,7 @@ export function ApplicationQualityControl({
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     <div className={cn('mt-0.5', getSeverityColor(issue.severity))}>
-                      <AlertTriangle className="w-5 h-5" />
+                      <Warning className="w-5 h-5" />
                     </div>
                     <div className="space-y-2 flex-1">
                       <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ export function ApplicationQualityControl({
                       </div>
                       <div className="flex items-start gap-2">
                         <div className="text-green-600 mt-0.5">
-                          <Sparkles className="w-4 h-4" />
+                          <Sparkle className="w-4 h-4" />
                         </div>
                         <p className="text-sm text-green-700 dark:text-green-400">{issue.solution}</p>
                       </div>
@@ -130,7 +130,7 @@ export function ApplicationQualityControl({
                   </Badge>
                 ) : (
                   <Badge className="bg-amber-100 text-amber-800 border-amber-200">
-                    <AlertTriangle className="w-3 h-3 mr-1" />
+                    <Warning className="w-3 h-3 mr-1" />
                     Issues found
                   </Badge>
                 )}

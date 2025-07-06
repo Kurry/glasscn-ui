@@ -4,12 +4,10 @@ import { cva } from 'class-variance-authority'
 // type CvaOptionsWithoutUndefined<T> = Exclude<Parameters<typeof cva<T>>[1], undefined>;
 
 const glassSurfaceStyles = {
-  solidBg: ['bg-white dark:bg-gray-950'],
-  solidBorder: ['border border-gray-300 dark:border-gray-500/70'],
-  glassBg: ['bg-white/70 dark:bg-gray-950/50'],
-  // glassBorder: ["border border-gray-200/60 dark:border-gray-500/70"],
-  glassBorder: ['border border-border'],
-  // glassInnerShadow: ["shadow-inset-white", "dark:shadow-inset-gray"], // this overrides the outset shadow.
+  solidBg: ['bg-white dark:bg-gray-900'],
+  solidBorder: ['ring-1 ring-black/5 shadow-sm dark:ring-white/10'],
+  glassBg: ['bg-white/75 dark:bg-gray-900/75'],
+  glassBorder: ['ring-1 ring-black/5 shadow-lg dark:ring-white/10'],
 }
 
 export const glassCvaConfig = {

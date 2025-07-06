@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { PartyPopper, Clock, Target, TrendingUp, Rocket, Timer } from 'lucide-react'
+import { Confetti, Clock, Target, TrendUp, RocketLaunch, Timer } from '@phosphor-icons/react'
 
 interface StatItem {
   icon: React.ReactNode
@@ -97,7 +97,7 @@ export function AutomationPitch({
           <div className="space-y-3">
             {onSetupAutomation && (
               <Button onClick={onSetupAutomation} className="w-full" size="lg" color="primary">
-                <Rocket className="w-4 h-4 mr-2" />
+                <RocketLaunch className="w-4 h-4 mr-2" />
                 🚀 Setup Auto-Apply (2 min)
               </Button>
             )}

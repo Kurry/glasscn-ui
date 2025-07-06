@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, TrendingUp, Check } from 'lucide-react'
+import { Warning, TrendUp, Check } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface MarketTrendAlertProps {
@@ -33,7 +33,7 @@ export function MarketTrendAlert({
         <CardHeader className="pb-3">
           <div className="flex items-center gap-3">
             <div className="bg-blue-100 dark:bg-blue-900/50 p-2 rounded-full text-blue-600">
-              <TrendingUp className="w-5 h-5" />
+              <TrendUp className="w-5 h-5" />
             </div>
             <CardTitle className="text-lg">Market Intelligence Alert</CardTitle>
           </div>
@@ -41,7 +41,7 @@ export function MarketTrendAlert({
 
         <CardContent className="space-y-4">
           <Alert className="bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
-            <AlertTriangle className="w-4 h-4 text-amber-600" />
+            <Warning className="w-4 h-4 text-amber-600" />
             <AlertTitle className="text-amber-800 dark:text-amber-300 mb-1">New trend detected</AlertTitle>
             <AlertDescription className="text-amber-700 dark:text-amber-400">
               <strong>{percentage}%</strong> of {trend} jobs now require <strong>Kubernetes</strong> experience

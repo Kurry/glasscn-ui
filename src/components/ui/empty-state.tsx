@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { Lock, Plus, Upload } from 'lucide-react'
+import { Lock, Plus, Upload } from '@phosphor-icons/react'
 
 interface EmptyStateProps {
   icon?: React.ReactNode

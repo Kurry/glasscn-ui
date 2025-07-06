@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { BarChart3, BriefcaseMedical, CheckCircle, Download, Eye, RefreshCw, Settings, Star, Users } from 'lucide-react'
+import { ChartLine, FirstAidKit, CheckCircle, Download, Eye, ArrowsClockwise, Gear, Star, Users } from '@phosphor-icons/react'
 
 interface Agent {
   id: string
@@ -30,7 +30,7 @@ interface Metric {
 interface MultiAgentDashboardProps {
   agents: Agent[]
   metrics: Metric[]
-  onAgentSettings?: (agentId: string) => void
+  onAgentGear?: (agentId: string) => void
   onViewAgentDetails?: (agentId: string) => void
   onResumeAgent?: (agentId: string) => void
   onPauseAgent?: (agentId: string) => void
@@ -41,7 +41,7 @@ interface MultiAgentDashboardProps {
 export function MultiAgentDashboard({
   agents,
   metrics,
-  onAgentSettings,
+  onAgentGear,
   onViewAgentDetails,
   onResumeAgent,
   onPauseAgent,
@@ -102,12 +102,12 @@ export function MultiAgentDashboard({
 
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
-              <RefreshCw className="w-4 h-4 mr-2" />
+              <ArrowsClockwise className="w-4 h-4 mr-2" />
               Refresh
             </Button>
             <Button variant="outline" size="sm">
-              <Settings className="w-4 h-4 mr-2" />
-              Settings
+              <Gear className="w-4 h-4 mr-2" />
+              Gear
             </Button>
           </div>
         </div>
@@ -196,9 +196,9 @@ export function MultiAgentDashboard({
                   </div>
 
                   <div className="ml-4 flex flex-col gap-2">
-                    {onAgentSettings && (
-                      <Button variant="ghost" size="sm" onClick={() => onAgentSettings(agent.id)}>
-                        <Settings className="w-4 h-4" />
+                    {onAgentGear && (
+                      <Button variant="ghost" size="sm" onClick={() => onAgentGear(agent.id)}>
+                        <Gear className="w-4 h-4" />
                       </Button>
                     )}
 
@@ -266,7 +266,7 @@ export function MultiAgentDashboardDemo() {
         value: '12% this week',
         isPositive: true,
       },
-      icon: <BarChart3 className="w-5 h-5" />,
+      icon: <ChartLine className="w-5 h-5" />,
     },
     {
       label: 'Response Rate',
@@ -275,7 +275,7 @@ export function MultiAgentDashboardDemo() {
         value: '2.1% vs avg',
         isPositive: true,
       },
-      icon: <BriefcaseMedical className="w-5 h-5" />,
+      icon: <FirstAidKit className="w-5 h-5" />,
     },
     {
       label: 'Interviews',
@@ -301,7 +301,7 @@ export function MultiAgentDashboardDemo() {
     <MultiAgentDashboard
       agents={agents}
       metrics={metrics}
-      onAgentSettings={(id) => console.log(`Settings for agent: ${id}`)}
+      onAgentGear={(id) => console.log(`Gear for agent: ${id}`)}
       onViewAgentDetails={(id) => console.log(`View details for agent: ${id}`)}
       onResumeAgent={(id) => console.log(`Resume agent: ${id}`)}
       onPauseAgent={(id) => console.log(`Pause agent: ${id}`)}

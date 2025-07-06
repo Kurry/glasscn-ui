@@ -1,6 +1,6 @@
 'use client'
 
-import { GripVertical } from 'lucide-react'
+import { DotsNine } from '@phosphor-icons/react'
 import * as ResizablePrimitive from 'react-resizable-panels'
 
 import { cn } from '@/lib/utils'
@@ -40,7 +40,7 @@ const ResizableHandle = ({
   <ResizablePrimitive.PanelResizeHandle className={cn(twStyles.resizeHandle, className)} {...props}>
     {withHandle && (
       <div className={cn(twStyles.resizeHandleInner)}>
-        <GripVertical className={cn(twStyles.grip)} />
+        <DotsNine className={cn(twStyles.grip)} />
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

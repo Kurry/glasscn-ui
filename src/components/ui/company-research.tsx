@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { CheckCircle, Dog, Briefcase, Users, Search, Building, DollarSign, Globe } from 'lucide-react'
+import { CheckCircle, Dog, Briefcase, Users, MagnifyingGlass, Buildings, CurrencyDollar, Globe } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface CompanyInsight {
@@ -50,7 +50,7 @@ export function CompanyResearch({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <Search className="w-5 h-5" />
+              <MagnifyingGlass className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Researching: {companyName}</CardTitle>
@@ -133,12 +133,12 @@ export function CompanyResearchDemo() {
     {
       id: '1',
       text: 'Recent $8B valuation',
-      icon: <DollarSign className="w-4 h-4" />,
+      icon: <CurrencyDollar className="w-4 h-4" />,
     },
     {
       id: '2',
       text: 'Expanding ML monitoring team',
-      icon: <Building className="w-4 h-4" />,
+      icon: <Buildings className="w-4 h-4" />,
     },
     {
       id: '3',
@@ -174,7 +174,7 @@ export function CompanyResearchDemo() {
       aspect: 'Focus on monitoring',
       matchesPreference: true,
       description: 'Your passion',
-      icon: <Building className="w-4 h-4" />,
+      icon: <Buildings className="w-4 h-4" />,
     },
   ]
 

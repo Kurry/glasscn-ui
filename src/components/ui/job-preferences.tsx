@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowRight, X, MapPin, DollarSign, Briefcase, Clock } from 'lucide-react'
+import { ArrowRight, X, MapPin, CurrencyDollar, Briefcase, Clock } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface JobPreferencesProps {
@@ -123,7 +123,7 @@ export function JobPreferences({ title, subtitle, step, totalSteps, onContinue, 
           {/* Salary */}
           <div className="space-y-2">
             <Label htmlFor="salary" className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4" />
+              <CurrencyDollar className="w-4 h-4" />
               Minimum Salary:
             </Label>
             <Input

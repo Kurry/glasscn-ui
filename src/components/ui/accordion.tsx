@@ -1,7 +1,7 @@
 'use client'
 
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
-import { ChevronDown } from 'lucide-react'
+import { CaretDown } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -38,7 +38,7 @@ const AccordionTrigger = React.forwardRef<
   <AccordionPrimitive.Header className={cn(twStyles.triggerHeader)}>
     <AccordionPrimitive.Trigger ref={ref} className={cn(twStyles.trigger, className)} {...props}>
       {children}
-      <ChevronDown className={cn(twStyles.chevron)} />
+      <CaretDown className={cn(twStyles.chevron)} />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

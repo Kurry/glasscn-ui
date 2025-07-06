@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Calendar, CheckCircle, Clock, X } from 'lucide-react'
+import { Calendar, CheckCircle, Clock, X } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface InterviewSlot {

@@ -1,7 +1,7 @@
 'use client'
 
 import { OTPInput, OTPInputContext } from 'input-otp'
-import { Dot } from 'lucide-react'
+import { DotOutline } from '@phosphor-icons/react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
@@ -73,7 +73,7 @@ const InputOTPSeparator = React.forwardRef<React.ElementRef<'div'>, React.Compon
   ({ className, ...props }, ref) => {
     return (
       <div ref={ref} className={cn(twStyles.separator)} {...props}>
-        <Dot />
+        <DotOutline />
       </div>
     )
   },

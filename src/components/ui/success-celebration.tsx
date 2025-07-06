@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { CircularProgress } from '@/components/ui-extras/circular-progress'
 import { cn } from '@/lib/utils'
-import { PartyPopper, Download, Rocket, Star, TrendingUp } from 'lucide-react'
+import { Confetti, Download, RocketLaunch, Star, TrendUp } from '@phosphor-icons/react'
 
 interface Achievement {
   icon: React.ReactNode
@@ -57,7 +57,7 @@ export function SuccessCelebration({
       <Card className="w-full max-w-2xl" variant="glass" blur="lg">
         <CardHeader className="text-center pb-4">
           <div className="mb-6">
-            <PartyPopper className="w-16 h-16 text-primary-600 mx-auto animate-bounce" />
+            <Confetti className="w-16 h-16 text-primary-600 mx-auto animate-bounce" />
           </div>
           <CardTitle className="text-3xl mb-2">{title}</CardTitle>
           {subtitle && <CardDescription className="text-lg">{subtitle}</CardDescription>}
@@ -163,12 +163,12 @@ export function ResumeCompleteSuccess({ onSetupAutomation, onDownloadResume, cla
       description: 'ATS-optimized and recruiter-approved',
     },
     {
-      icon: <TrendingUp className="w-5 h-5" />,
+      icon: <TrendUp className="w-5 h-5" />,
       label: 'Score improved by 23 points',
       description: 'From 68 to 91 out of 100',
     },
     {
-      icon: <Rocket className="w-5 h-5" />,
+      icon: <RocketLaunch className="w-5 h-5" />,
       label: 'Ready for job applications',
       description: 'AI-enhanced and keyword optimized',
     },
@@ -183,7 +183,7 @@ export function ResumeCompleteSuccess({ onSetupAutomation, onDownloadResume, cla
         primary: {
           label: '🚀 Setup Auto-Apply',
           onClick: onSetupAutomation,
-          icon: <Rocket className="w-4 h-4 mr-2" />,
+          icon: <RocketLaunch className="w-4 h-4 mr-2" />,
         },
         secondary: {
           label: '📥 Download Resume',

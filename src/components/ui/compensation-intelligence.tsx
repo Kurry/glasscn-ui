@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { DollarSign, CheckCircle, Target } from 'lucide-react'
+import { CurrencyDollar, CheckCircle, Target } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface SalaryCategory {
@@ -51,7 +51,7 @@ export function SalaryIntelligence({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-green-600 bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
-              <DollarSign className="w-5 h-5" />
+              <CurrencyDollar className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Salary Intelligence Report</CardTitle>

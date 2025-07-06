@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
-import { Check, Clock, Zap } from 'lucide-react'
+import { Check, Clock, Lightning } from '@phosphor-icons/react'
 import { useEffect, useState } from 'react'
 
 interface ProgressStep {
@@ -31,7 +31,7 @@ export function ProgressIndicator({ title, subtitle, steps, progress, className 
       <Card className="w-full max-w-lg" variant="glass" blur="lg">
         <CardHeader className="text-center">
           <div className="mb-4">
-            <Zap className="w-12 h-12 text-primary-600 mx-auto" />
+            <Lightning className="w-12 h-12 text-primary-600 mx-auto" />
           </div>
           <CardTitle className="text-xl">{title}</CardTitle>
           {subtitle && <p className="text-gray-600 dark:text-gray-400 mt-2">{subtitle}</p>}

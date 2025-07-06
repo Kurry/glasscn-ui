@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowRight, BarChart3, Filter, Zap } from 'lucide-react'
+import { ArrowRight, ChartLine, Funnel, Lightning } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface FunnelStep {
@@ -36,7 +36,7 @@ export function ApplicationToInterviewFunnel({ steps, dropOffPoint, onOptimize, 
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <Filter className="w-5 h-5" />
+              <Funnel className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Optimizing Your Funnel</CardTitle>
@@ -108,7 +108,7 @@ export function ApplicationToInterviewFunnel({ steps, dropOffPoint, onOptimize, 
 
           {onOptimize && (
             <Button onClick={onOptimize} color="primary" className="w-full">
-              <Zap className="w-4 h-4 mr-2" />
+              <Lightning className="w-4 h-4 mr-2" />
               Optimize Conversion Rates
             </Button>
           )}
@@ -151,7 +151,7 @@ export function ConversionOptimization({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-primary-600 bg-primary-100 dark:bg-primary-900/30 p-2 rounded-lg">
-              <BarChart3 className="w-5 h-5" />
+              <ChartLine className="w-5 h-5" />
             </div>
             <div>
               <CardTitle className="text-lg">Conversion Optimization Strategy</CardTitle>
@@ -171,7 +171,7 @@ export function ConversionOptimization({
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
                     <div className="text-primary-600 mt-0.5">
-                      <Zap className="w-5 h-5" />
+                      <Lightning className="w-5 h-5" />
                     </div>
                     <div className="space-y-1 flex-1">
                       <div className="flex items-center justify-between">

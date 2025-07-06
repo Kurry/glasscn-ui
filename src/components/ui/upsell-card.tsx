@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { TrendingUp, Crown, Zap, Target, Star, ArrowRight, X } from 'lucide-react'
+import { TrendUp, Crown, Lightning, Target, Star, ArrowRight, X } from '@phosphor-icons/react'
 
 interface UpsellFeature {
   name: string
@@ -53,7 +53,7 @@ export function UpsellCard({
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-primary-600" />
+              <TrendUp className="w-6 h-6 text-primary-600" />
             </div>
             <div>
               <CardTitle className="text-xl">{title}</CardTitle>
@@ -134,7 +134,7 @@ export function OptimizeStrategy({ onTryPremium, onDismiss, className }: Optimiz
     {
       name: 'Priority applications',
       description: 'Get your applications seen first',
-      icon: <Zap className="w-4 h-4" />,
+      icon: <Lightning className="w-4 h-4" />,
     },
     {
       name: 'Direct recruiter outreach',
@@ -176,7 +176,7 @@ export function VoiceAgentSuccess({ onUpgradeAgent, className }: VoiceAgentSucce
     {
       name: 'LinkedIn voice messages',
       description: 'Respond to recruiters instantly',
-      icon: <Zap className="w-4 h-4" />,
+      icon: <Lightning className="w-4 h-4" />,
     },
     {
       name: 'Technical screenings',
@@ -186,7 +186,7 @@ export function VoiceAgentSuccess({ onUpgradeAgent, className }: VoiceAgentSucce
     {
       name: 'Salary negotiations',
       description: 'Get the best offers automatically',
-      icon: <TrendingUp className="w-4 h-4" />,
+      icon: <TrendUp className="w-4 h-4" />,
     },
   ]
 

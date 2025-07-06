@@ -10,16 +10,16 @@ import {
   Play,
   Pause,
   Eye,
-  EyeOff,
-  Save,
+  EyeSlash,
+  FloppyDisk,
   SkipForward,
-  AlertTriangle,
+  Warning,
   CheckCircle,
   X,
-  Settings,
-  Maximize2,
-  Minimize2,
-} from 'lucide-react'
+  Gear,
+  ArrowsOut,
+  ArrowsIn,
+} from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface TaskStep {
@@ -52,7 +52,7 @@ interface AgentProgressViewerProps {
   onStop?: () => void
   onTakeControl?: () => void
   onSkipStep?: () => void
-  onSaveRecording?: () => void
+  onFloppyDiskRecording?: () => void
   onBack?: () => void
   isMinimized?: boolean
   onToggleMinimize?: () => void
@@ -70,7 +70,7 @@ export function AgentProgressViewer({
   onStop,
   onTakeControl,
   onSkipStep,
-  onSaveRecording,
+  onFloppyDiskRecording,
   onBack,
   isMinimized = false,
   onToggleMinimize,
@@ -110,7 +110,7 @@ export function AgentProgressViewer({
       case 'completed':
         return <CheckCircle className="w-4 h-4 text-green-500" />
       case 'intervention-needed':
-        return <AlertTriangle className="w-4 h-4 text-orange-500" />
+        return <Warning className="w-4 h-4 text-orange-500" />
       default:
         return <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
     }
@@ -126,7 +126,7 @@ export function AgentProgressViewer({
               <span className="font-medium text-sm">🤖 Applying to {company}</span>
             </div>
             <Button size="sm" variant="ghost" onClick={onToggleMinimize}>
-              <Maximize2 className="w-3 h-3" />
+              <ArrowsOut className="w-3 h-3" />
             </Button>
           </div>
           <Progress value={progress} className="h-2 mb-2" />
@@ -160,7 +160,7 @@ export function AgentProgressViewer({
             <span className="text-sm text-gray-500">AI Agent</span>
             {onToggleMinimize && (
               <Button variant="ghost" size="sm" onClick={onToggleMinimize}>
-                <Minimize2 className="w-4 h-4" />
+                <ArrowsIn className="w-4 h-4" />
               </Button>
             )}
           </div>
@@ -211,7 +211,7 @@ export function AgentProgressViewer({
           onStop={onStop}
           onTakeControl={onTakeControl}
           onSkipStep={onSkipStep}
-          onSaveRecording={onSaveRecording}
+          onFloppyDiskRecording={onFloppyDiskRecording}
           showDetails={showDetails}
           onToggleDetails={() => setShowDetails(!showDetails)}
         />
@@ -234,7 +234,7 @@ export function AgentProgressViewer({
             jobTitle={jobTitle}
             company={company}
             timeElapsed={agentState.timeElapsed || 0}
-            onSaveRecording={onSaveRecording}
+            onFloppyDiskRecording={onFloppyDiskRecording}
             onBack={onBack}
           />
         )}
@@ -336,7 +336,7 @@ function AgentLiveView({ url, isFullscreen, onToggleFullscreen, timeElapsed, tim
                 🔴 Live
               </Badge>
               <Button size="sm" variant="ghost" onClick={onToggleFullscreen}>
-                <Maximize2 className="w-4 h-4" />
+                <ArrowsOut className="w-4 h-4" />
               </Button>
             </div>
           </div>
@@ -361,7 +361,7 @@ function AgentCurrentAction({ action }: AgentCurrentActionProps) {
       <CardContent>
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-            <Settings className="w-5 h-5 text-blue-600 animate-spin" />
+            <Gear className="w-5 h-5 text-blue-600 animate-spin" />
           </div>
           <div>
             <p className="font-medium text-gray-900 dark:text-white">📝 Filling application form</p>
@@ -449,7 +449,7 @@ interface AgentControlsProps {
   onStop?: () => void
   onTakeControl?: () => void
   onSkipStep?: () => void
-  onSaveRecording?: () => void
+  onFloppyDiskRecording?: () => void
   showDetails: boolean
   onToggleDetails: () => void
 }
@@ -461,7 +461,7 @@ function AgentControls({
   onStop,
   onTakeControl,
   onSkipStep,
-  onSaveRecording,
+  onFloppyDiskRecording,
   showDetails,
   onToggleDetails,
 }: AgentControlsProps) {
@@ -491,13 +491,13 @@ function AgentControls({
         </Button>
       )}
       <Button onClick={onToggleDetails} variant="outline">
-        {showDetails ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+        {showDetails ? <EyeSlash className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
         {showDetails ? 'Hide' : 'Show'} Details
       </Button>
-      {onSaveRecording && (
-        <Button onClick={onSaveRecording} variant="outline">
-          <Save className="w-4 h-4 mr-2" />
-          💾 Save Recording
+      {onFloppyDiskRecording && (
+        <Button onClick={onFloppyDiskRecording} variant="outline">
+          <FloppyDisk className="w-4 h-4 mr-2" />
+          💾 FloppyDisk Recording
         </Button>
       )}
       {onStop && (
@@ -521,7 +521,7 @@ function AgentErrorState({ error, onRetry, onStop }: AgentErrorStateProps) {
     <Card className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950/20" variant="solid">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+          <Warning className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
           <div className="flex-1">
             <h3 className="font-semibold text-red-900 dark:text-red-200 mb-2">⚠️ Agent Error</h3>
             <p className="text-red-700 dark:text-red-300 mb-4">{error}</p>
@@ -556,7 +556,7 @@ function AgentInterventionState({ message, onTakeControl, onSkip }: AgentInterve
     <Card className="border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/20" variant="solid">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <AlertTriangle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+          <Warning className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
           <div className="flex-1">
             <h3 className="font-semibold text-orange-900 dark:text-orange-200 mb-2">⚠️ Agent Needs Help</h3>
             <p className="text-orange-700 dark:text-orange-300 mb-4">{message}</p>
@@ -583,11 +583,11 @@ interface AgentCompletedStateProps {
   jobTitle: string
   company: string
   timeElapsed: number
-  onSaveRecording?: () => void
+  onFloppyDiskRecording?: () => void
   onBack?: () => void
 }
 
-function AgentCompletedState({ jobTitle, company, timeElapsed, onSaveRecording, onBack }: AgentCompletedStateProps) {
+function AgentCompletedState({ jobTitle, company, timeElapsed, onFloppyDiskRecording, onBack }: AgentCompletedStateProps) {
   return (
     <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20" variant="solid">
       <CardContent className="p-6 text-center">
@@ -610,9 +610,9 @@ function AgentCompletedState({ jobTitle, company, timeElapsed, onSaveRecording, 
         </div>
 
         <div className="flex justify-center gap-3">
-          {onSaveRecording && (
-            <Button onClick={onSaveRecording} variant="outline">
-              <Save className="w-4 h-4 mr-2" />
+          {onFloppyDiskRecording && (
+            <Button onClick={onFloppyDiskRecording} variant="outline">
+              <FloppyDisk className="w-4 h-4 mr-2" />
               View Recording
             </Button>
           )}
@@ -635,7 +635,7 @@ interface MobileAgentProgressProps {
   taskSteps: TaskStep[]
   onPause?: () => void
   onResume?: () => void
-  onSaveRecording?: () => void
+  onFloppyDiskRecording?: () => void
   className?: string
 }
 
@@ -646,7 +646,7 @@ export function MobileAgentProgress({
   taskSteps,
   onPause,
   onResume,
-  onSaveRecording,
+  onFloppyDiskRecording,
   className,
 }: MobileAgentProgressProps) {
   const [showTaskList, setShowTaskList] = useState(false)
@@ -739,8 +739,8 @@ export function MobileAgentProgress({
         <Button size="sm" variant="outline" onClick={agentState.status === 'active' ? onPause : onResume}>
           {agentState.status === 'active' ? 'Pause' : 'Resume'}
         </Button>
-        <Button size="sm" variant="outline" onClick={onSaveRecording}>
-          Save
+        <Button size="sm" variant="outline" onClick={onFloppyDiskRecording}>
+          FloppyDisk
         </Button>
         <Button size="sm" variant="outline" onClick={() => setShowTaskList(!showTaskList)}>
           Details

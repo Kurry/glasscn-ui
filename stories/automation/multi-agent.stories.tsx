@@ -1,5 +1,5 @@
 import { AgentTeamOverview, LiveAgentCollaboration, MultiAgentDemo } from '@/components/ui/multi-agent-system'
-import { Settings, FileDown, Play, Pause } from 'lucide-react'
+import { Gear, FileArrowDown, Play, Pause } from '@phosphor-icons/react'
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
@@ -23,7 +23,7 @@ export const Agent_Team_Overview = {
           description: 'Finding new jobs across 15 sites',
           status: 'active',
           stats: 'Today: 247 jobs found, 89 match',
-          icon: <Settings className="w-5 h-5" />,
+          icon: <Gear className="w-5 h-5" />,
         },
         {
           id: 'tailor',
@@ -32,7 +32,7 @@ export const Agent_Team_Overview = {
           description: 'Creating custom resumes',
           status: 'active',
           stats: 'Today: 89 resumes generated',
-          icon: <FileDown className="w-5 h-5" />,
+          icon: <FileArrowDown className="w-5 h-5" />,
         },
         {
           id: 'apply',

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowUpRight, CheckCircle, MessageSquare, Settings, TrendingUp, Users } from 'lucide-react'
+import { ArrowSquareOut, CheckCircle, ChatCircle, Gear, TrendUp, Users } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface ProfileMetric {
@@ -55,7 +55,7 @@ export function LinkedInOptimization({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="text-blue-600 dark:text-blue-500 bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
-                <Settings className="w-5 h-5" />
+                <Gear className="w-5 h-5" />
               </div>
               <div>
                 <CardTitle className="text-xl">LinkedIn-Resume Sync</CardTitle>
@@ -129,7 +129,7 @@ export function LinkedInOptimization({
                   {results.profileViews && (
                     <div className="text-center">
                       <div className="flex items-center justify-center gap-1 text-indigo-800 dark:text-indigo-300">
-                        <TrendingUp className="w-4 h-4" />
+                        <TrendUp className="w-4 h-4" />
                         <span className="font-bold">{results.profileViews}</span>
                       </div>
                       <p className="text-sm text-indigo-600 dark:text-indigo-400">Profile views</p>
@@ -139,7 +139,7 @@ export function LinkedInOptimization({
                   {results.recruiterInMails && (
                     <div className="text-center">
                       <div className="flex items-center justify-center gap-1 text-indigo-800 dark:text-indigo-300">
-                        <MessageSquare className="w-4 h-4" />
+                        <ChatCircle className="w-4 h-4" />
                         <span className="font-bold">{results.recruiterInMails}</span>
                       </div>
                       <p className="text-sm text-indigo-600 dark:text-indigo-400">Recruiter InMails</p>
@@ -165,7 +165,7 @@ export function LinkedInOptimization({
             {onViewLinkedIn && (
               <Button onClick={onViewLinkedIn} className="flex-1" color="primary">
                 View LinkedIn
-                <ArrowUpRight className="w-4 h-4 ml-1" />
+                <ArrowSquareOut className="w-4 h-4 ml-1" />
               </Button>
             )}
 

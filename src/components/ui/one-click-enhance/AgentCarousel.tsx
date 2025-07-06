@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Sparkles, CheckCircle2, Loader2, FileText, Zap, Clock } from 'lucide-react';
+import { Robot, Sparkle, CheckCircle, CircleNotch, FileText, Lightning, Clock } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import type { Task } from './TaskList';
 
@@ -15,7 +15,7 @@ const agents: Agent[] = [
   {
     id: 'parser',
     name: 'Parser Agent',
-    icon: <Bot className="w-12 h-12 md:w-16 md:h-16" />,
+    icon: <Robot className="w-12 h-12 md:w-16 md:h-16" />,
     color: 'blue',
     description: 'Analyzing resume structure and extracting content'
   },
@@ -29,14 +29,14 @@ const agents: Agent[] = [
   {
     id: 'optimizer',
     name: 'Optimizer Agent',
-    icon: <Zap className="w-12 h-12 md:w-16 md:h-16" />,
+    icon: <Lightning className="w-12 h-12 md:w-16 md:h-16" />,
     color: 'purple',
     description: 'Enhancing action verbs and quantifying achievements'
   },
   {
     id: 'keyword',
     name: 'Keyword Agent',
-    icon: <Sparkles className="w-12 h-12 md:w-16 md:h-16" />,
+    icon: <Sparkle className="w-12 h-12 md:w-16 md:h-16" />,
     color: 'orange',
     description: 'Adding industry keywords for ATS optimization'
   },
@@ -119,11 +119,11 @@ export function AgentCarousel({
                 : "bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30"
           )}>
             {task?.status === 'completed' ? (
-              <CheckCircle2 className="w-12 h-12 md:w-16 md:h-16 text-green-600" />
+              <CheckCircle className="w-12 h-12 md:w-16 md:h-16 text-green-600" />
             ) : task?.status === 'error' ? (
               <div className="w-12 h-12 md:w-16 md:h-16 text-red-600 flex items-center justify-center">❌</div>
             ) : task?.status === 'active' ? (
-              <Loader2 className={cn("w-12 h-12 md:w-16 md:h-16 animate-spin", getAgentColorClass(agent.color))} />
+              <CircleNotch className={cn("w-12 h-12 md:w-16 md:h-16 animate-spin", getAgentColorClass(agent.color))} />
             ) : (
               <div className={cn("w-12 h-12 md:w-16 md:h-16", getAgentColorClass(agent.color))}>
                 {agent.icon}

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, Clock, CheckCircle, UserCheck } from 'lucide-react'
+import { Warning, Clock, CheckCircle, UserCheck } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface RoadblockAlertProps {
@@ -42,7 +42,7 @@ export function RoadblockAlert({
         <CardHeader className="pb-4">
           <div className="flex items-center gap-3">
             <div className="text-amber-600 dark:text-amber-500">
-              <AlertTriangle className="w-6 h-6" />
+              <Warning className="w-6 h-6" />
             </div>
             <div>
               <CardTitle className="text-lg">Agent Needs Quick Help</CardTitle>
@@ -55,7 +55,7 @@ export function RoadblockAlert({
           <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800">
             <div className="flex items-start gap-3">
               <div className="text-amber-600 dark:text-amber-500 mt-0.5">
-                <AlertTriangle className="w-5 h-5" />
+                <Warning className="w-5 h-5" />
               </div>
               <div>
                 <p className="font-medium text-amber-900 dark:text-amber-200">

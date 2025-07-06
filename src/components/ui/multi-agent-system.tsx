@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Settings, FileDown, Play, Pause } from 'lucide-react'
+import { Gear, FileArrowDown, Play, Pause } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 type AgentStatus = 'active' | 'paused' | 'waiting' | 'error'
@@ -253,7 +253,7 @@ export function MultiAgentDemo() {
       description: 'Finding new jobs across 15 sites',
       status: 'active',
       stats: 'Today: 247 jobs found, 89 match',
-      icon: <Settings className="w-5 h-5" />,
+      icon: <Gear className="w-5 h-5" />,
     },
     {
       id: 'tailor',
@@ -262,7 +262,7 @@ export function MultiAgentDemo() {
       description: 'Creating custom resumes',
       status: 'active',
       stats: 'Today: 89 resumes generated',
-      icon: <FileDown className="w-5 h-5" />,
+      icon: <FileArrowDown className="w-5 h-5" />,
     },
     {
       id: 'apply',

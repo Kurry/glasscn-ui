@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Upload, Plus, Mic, Clock, Zap, Star } from 'lucide-react'
+import { Upload, Plus, Microphone, Clock, Lightning, Star } from '@phosphor-icons/react'
 
 interface CreationPath {
   id: string
@@ -47,7 +47,7 @@ export function CreationPathSelector({ onPathSelect, className }: CreationPathSe
       description: 'Talk through your experience',
       duration: '15 minutes',
       features: ['Natural conversation', 'Smart extraction', 'Personalized content'],
-      icon: <Mic className="w-8 h-8" />,
+      icon: <Microphone className="w-8 h-8" />,
       difficulty: 'advanced',
     },
   ]
@@ -122,7 +122,7 @@ export function CreationPathSelector({ onPathSelect, className }: CreationPathSe
                 <div className="space-y-2">
                   {path.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <Zap className="w-3 h-3 text-primary-500" />
+                      <Lightning className="w-3 h-3 text-primary-500" />
                       <span>{feature}</span>
                     </div>
                   ))}

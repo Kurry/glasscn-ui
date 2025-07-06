@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Check, Download } from 'lucide-react';
+import { X, Check, Download } from '@phosphor-icons/react';
 import { AgentCarousel } from './AgentCarousel';
 import { TaskList, type Task } from './TaskList';
 import { cva } from 'class-variance-authority';

@@ -8,74 +8,82 @@ import { SpinnerIcon } from '../icons/spinner-icon'
 
 const twStyles = {
   base: [
-    'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ',
-    'transition-colors focus-visible:outline-none focus-visible:ring-2',
+    'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium',
+    'transition-all duration-150 focus-visible:outline-none focus-visible:ring-2',
     'focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-    'ring-offset-white focus-visible:ring-gray-950',
-    'dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300',
+    'ring-offset-white focus-visible:ring-blue-600',
+    'dark:ring-offset-gray-950 dark:focus-visible:ring-blue-500',
+    'hover:-translate-y-0.5 active:scale-[0.98]',
   ],
   variant: {
     default: [
-      'bg-gray-900 text-gray-50 hover:bg-gray-900/90',
-      'dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90',
+      'bg-gray-900 text-white shadow-sm hover:bg-gray-800 hover:shadow-md',
+      'dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100',
     ],
     subtle: [
-      'bg-gray-100 text-gray-900 hover:bg-gray-100/80',
-      'dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-800/80',
+      'bg-white ring-1 ring-black/5 shadow-sm text-gray-900 hover:bg-gray-50 hover:shadow-md',
+      'dark:bg-gray-900 dark:ring-white/10 dark:text-white dark:hover:bg-gray-800',
     ],
     outline: [
-      'border border-gray-300 bg-white hover:bg-gray-100 text-gray-900 hover:text-gray-900',
-      'dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800',
-      'dark:text-gray-50 dark:hover:text-gray-50 bg-opacity-30 dark:bg-opacity-30',
-      'backdrop-blur-sm',
+      'bg-white/75 backdrop-blur-lg ring-1 ring-black/5 shadow-sm',
+      'text-gray-900 hover:bg-white hover:shadow-md',
+      'dark:bg-gray-900/75 dark:ring-white/10 dark:text-white dark:hover:bg-gray-900',
     ],
-    ghost: ['hover:bg-gray-100 hover:text-gray-900', 'dark:hover:bg-gray-800 dark:hover:text-gray-50'],
+    ghost: [
+      'hover:bg-gray-100 hover:text-gray-900',
+      'dark:hover:bg-gray-800 dark:hover:text-white',
+    ],
     link: [
-      'text-gray-900 underline decoration-gray-700 decoration-dotted underline-offset-4 hover:decoration-solid',
-      'dark:text-gray-50 dark:decoration-gray-100',
+      'text-gray-900 underline decoration-gray-400 decoration-dotted underline-offset-4 hover:decoration-solid',
+      'dark:text-white dark:decoration-gray-600',
+      'hover:translate-y-0 active:scale-100',
     ],
   },
   colors: {
     primary: [
-      'ring-offset-white focus-visible:ring-primary-900',
-      'dark:ring-offset-primary-900 dark:focus-visible:ring-primary-300',
+      'focus-visible:ring-blue-600',
+      'dark:focus-visible:ring-blue-500',
     ],
     secondary: [
-      'ring-offset-white focus-visible:ring-secondary-900',
-      'dark:ring-offset-secondary-900 dark:focus-visible:ring-secondary-300',
+      'focus-visible:ring-secondary-600',
+      'dark:focus-visible:ring-secondary-500',
     ],
     accent: [
-      'ring-offset-white focus-visible:ring-accent-900',
-      'dark:ring-offset-accent-900 dark:focus-visible:ring-accent-300',
+      'focus-visible:ring-accent-600',
+      'dark:focus-visible:ring-accent-500',
     ],
     danger: [
-      'ring-offset-white focus-visible:ring-danger-900',
-      'dark:ring-offset-danger-900 dark:focus-visible:ring-danger-300',
+      'focus-visible:ring-red-600',
+      'dark:focus-visible:ring-red-500',
     ],
     warning: [
-      'ring-offset-white focus-visible:ring-warning-900',
-      'dark:ring-offset-warning-900 dark:focus-visible:ring-warning-300',
+      'focus-visible:ring-amber-600',
+      'dark:focus-visible:ring-amber-500',
     ],
   },
   colorVariants: {
     primary: {
       default: [
-        'bg-primary-600 text-white hover:bg-primary-600/90',
-        'dark:bg-primary-600 dark:text-white dark:hover:bg-primary-600/90',
+        'bg-blue-600 text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700 hover:shadow-blue-600/30',
+        'dark:bg-blue-600 dark:hover:bg-blue-700',
       ],
       subtle: [
-        'bg-primary-100 text-primary-900 hover:bg-primary-100/80',
-        'dark:bg-primary-800 dark:text-primary-50 dark:hover:bg-primary-800/80',
+        'bg-blue-50 text-blue-700 ring-1 ring-blue-200 hover:bg-blue-100',
+        'dark:bg-blue-950/50 dark:text-blue-400 dark:ring-blue-800 dark:hover:bg-blue-950/70',
       ],
       outline: [
-        'border border-primary-300 bg-white hover:bg-primary-100 text-primary-900 hover:text-primary-900',
-        'dark:border-primary-800 dark:bg-primary-950 dark:hover:bg-primary-800',
-        'dark:text-primary-50 dark:hover:text-primary-50',
+        'bg-white/75 backdrop-blur-lg ring-1 ring-blue-200 text-blue-700',
+        'hover:bg-blue-50 hover:ring-blue-300',
+        'dark:bg-gray-900/75 dark:ring-blue-800 dark:text-blue-400',
+        'dark:hover:bg-blue-950/50',
       ],
-      ghost: ['hover:bg-primary-100 hover:text-primary-900', 'dark:hover:bg-primary-800 dark:hover:text-primary-50'],
+      ghost: [
+        'hover:bg-blue-50 hover:text-blue-700',
+        'dark:hover:bg-blue-950/50 dark:hover:text-blue-400',
+      ],
       link: [
-        'text-primary-700 underline decoration-current decoration-dotted underline-offset-4 hover:decoration-solid',
-        'dark:text-primary-500 dark:decoration-current',
+        'text-blue-600 underline decoration-blue-400 decoration-dotted underline-offset-4 hover:decoration-solid',
+        'dark:text-blue-400 dark:decoration-blue-600',
       ],
     },
     secondary: {
@@ -183,12 +191,12 @@ const buttonVariants = cva(cn(twStyles.base), {
     },
     radius: {
       none: 'rounded-none',
-      sm: 'rounded-sm',
-      default: 'rounded-md',
-      lg: 'rounded-lg',
-      xl: 'rounded-xl',
-      '2xl': 'rounded-2xl',
-      '3xl': 'rounded-3xl',
+      sm: 'rounded',
+      default: 'rounded-lg',
+      lg: 'rounded-xl',
+      xl: 'rounded-2xl',
+      '2xl': 'rounded-3xl',
+      '3xl': 'rounded-[2rem]',
       full: 'rounded-full',
     },
     size: {

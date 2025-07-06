@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { AlertTriangle, BookOpen, CheckCircle, FileText, Link, Zap } from 'lucide-react'
+import { Warning, BookOpen, CheckCircle, FileText, Link, Lightning } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface LearningResource {
@@ -68,7 +68,7 @@ export function AutoLearningSystem({
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
                 <div className="text-amber-600 dark:text-amber-500 mt-0.5 flex-shrink-0">
-                  <AlertTriangle className="w-5 h-5" />
+                  <Warning className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="font-medium text-amber-900 dark:text-amber-200 mb-1">
@@ -125,7 +125,7 @@ export function AutoLearningSystem({
                   {action.completed ? (
                     <CheckCircle className="w-4 h-4 mt-0.5 text-green-600" />
                   ) : (
-                    <Zap className="w-4 h-4 mt-0.5 text-primary-600" />
+                    <Lightning className="w-4 h-4 mt-0.5 text-primary-600" />
                   )}
                   <p className="text-gray-700 dark:text-gray-300">{action.description}</p>
                 </div>

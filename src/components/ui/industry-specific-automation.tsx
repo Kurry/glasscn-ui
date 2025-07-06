@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { Code, GitBranch, Check, Zap, Image } from 'lucide-react'
+import { Code, GitBranch, Check, Lightning, Image } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 interface GitHubMetric {
@@ -198,7 +198,7 @@ export function PortfolioSync({
                 <div key={index} className="p-3 bg-white/50 dark:bg-gray-800/50 border rounded-lg">
                   <div className="flex items-start gap-3">
                     <div className="mt-0.5 text-primary-600">
-                      <Zap className="w-4 h-4" />
+                      <Lightning className="w-4 h-4" />
                     </div>
                     <div>
                       <p className="font-medium text-gray-900 dark:text-white">{study}</p>

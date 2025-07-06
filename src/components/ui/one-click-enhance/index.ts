@@ -8,6 +8,7 @@ export * from './TaskList';
 import { useState } from 'react';
 import { EnhanceButton, type EnhanceButtonProps } from './EnhanceButton';
 import { EnhanceModal } from './EnhanceModal';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../card';
 
 interface OneClickEnhanceProps extends Omit<EnhanceButtonProps, 'onClick'> {
   resumeId: string;
@@ -108,7 +109,6 @@ export function OneClickEnhanceDemo() {
               size="lg"
               fullWidth
               buttonText={<span>🚀 Supercharge My Resume</span>}
-              }
               onEnhanceComplete={setEnhancedResumeId}
             />
           </CardContent>
@@ -127,5 +127,3 @@ export function OneClickEnhanceDemo() {
     </div>
   );
 }
-
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../card';
